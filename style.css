@@ -529,22 +529,23 @@ a:hover {
 }
 
 .official-platform-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 22px;
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  padding: 2px 2px 14px;
+  scrollbar-width: thin;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
 }
 
 .official-platform-card {
+  flex: 0 0 320px;
   overflow: hidden;
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   background: var(--bg-subtle);
   box-shadow: var(--shadow-sm);
-}
-
-.official-platform-card-wide {
-  grid-column: 1 / -1;
-  grid-row: 2;
+  scroll-snap-align: start;
 }
 
 .official-platform-head {
@@ -601,8 +602,8 @@ a:hover {
 }
 
 .kkday-ad-slot {
-  min-height: 250px;
-  padding: 20px;
+  min-height: 286px;
+  padding: 18px;
 }
 
 .kkday-ad-slot iframe {
@@ -992,13 +993,6 @@ a:hover {
   .platform-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  .official-platform-grid {
-    grid-template-columns: 1fr;
-  }
-  .official-platform-card-wide {
-    grid-column: auto;
-    grid-row: auto;
-  }
   .hero {
     text-align: center;
     padding: 40px 0;
@@ -1023,5 +1017,8 @@ a:hover {
   }
   .platform-card {
     min-height: 225px;
+  }
+  .official-platform-card {
+    flex-basis: min(320px, calc(100vw - 52px));
   }
 }

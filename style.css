@@ -130,6 +130,26 @@ a:hover {
   box-shadow: 0 6px 16px rgba(10,101,138,0.32);
 }
 
+.btn-download {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  border-radius: var(--radius-full);
+  background: #111827;
+  color: #ffffff !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
+}
+
+.btn-download:hover {
+  color: #ffffff !important;
+  background: #000000;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.28);
+}
+
 .btn-secondary {
   background: var(--bg-subtle);
   color: var(--text-main);

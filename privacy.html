@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>隱私權政策 (Privacy Policy) - eSIMManager</title>
-  <meta name="description" content="eSIMManager 官方隱私權政策。我們堅持 100% 本機沙盒儲存，不收集個人身份資訊，不主動上傳任何卡片憑證至自建伺服器。">
+  <meta name="description" content="eSIMManager 官方隱私權政策。核心 eSIM 資料保存在裝置本機；不設帳號、分析追蹤或自建雲端資料上傳服務。">
   <link rel="icon" type="image/png" href="assets/app_icon.png">
   <link rel="stylesheet" href="style.css">
   <style>
@@ -67,15 +67,15 @@
 
   <div class="container legal-content">
     <h1>隱私權政策 (Privacy Policy)</h1>
-    <div class="legal-date">最後更新日期：2026 年 8 月（適用於 eSIMManager 版本 1.4 及以上）</div>
+    <div class="legal-date">最後更新日期：2026 年 8 月 21 日（適用於 eSIMManager 版本 1.4 及以上）</div>
 
     <div class="legal-section">
       <h2>1. 前言與核心隱私承諾</h2>
       <p>
-        歡迎使用 <strong>eSIMManager</strong>（以下簡稱「本 App」或「我們」）。我們極度重視每位使用者的個人隱私與數據安全。本 App 採用「本機優先（Local-First）」與「零雲端外洩（Zero-Cloud Leakage）」之架構設計。
+        歡迎使用 <strong>eSIMManager</strong>（以下簡稱「本 App」或「我們」）。我們重視每位使用者的個人隱私與資料安全。本 App 採用「本機優先（Local-First）」的設計。
       </p>
       <p>
-        <strong>本 App 不會將您的任何 eSIM 憑證、開卡代碼、備忘資訊或使用量數據上傳至任何自建或第三方的遠端伺服器。</strong>
+        <strong>本 App 不會自動將您的 eSIM 憑證、開卡代碼、備忘資訊或使用量估算上傳至我們營運的伺服器。</strong>我們不提供帳號系統、分析追蹤或雲端同步服務。
       </p>
     </div>
 
@@ -83,13 +83,13 @@
       <h2>2. 資料儲存與存取原則</h2>
       <ul>
         <li>
-          <strong>本機沙盒儲存 (Local Sandbox)</strong>：您於 App 內建立或匯入的所有資料（包含廠商名稱、方案內容、SM-DP+ 伺服器地址、Matching ID 啟用碼、到期日期、自訂標籤與備忘資訊）皆安全存放於您 iOS 裝置本機的 App 沙盒（SwiftData / SQLite）與 App Group 共享空間中。
+          <strong>本機沙盒儲存 (Local Sandbox)</strong>：您於 App 內建立或匯入的資料（包含廠商名稱、方案內容、SM-DP+ 伺服器地址、Matching ID 啟用碼、到期日期、自訂標籤與備忘資訊）保存在您裝置本機的 App 沙盒（SwiftData / SQLite）。為顯示小工具與捷徑所需的有限摘要會保存在同一裝置的 App Group 共享空間。
         </li>
         <li>
-          <strong>相機與相簿圖片辨識 (Apple Vision)</strong>：當您使用掃描 QR Code 或相簿匯入功能時，所有圖像辨識運算皆在您的 iPhone 裝置端透過 Apple 原生 Vision 框架本機完成，影像絕不上傳至任何雲端伺服器。
+          <strong>相機與相簿圖片辨識 (Apple Vision)</strong>：當您使用掃描 QR Code 或相簿匯入功能時，圖像辨識會在 iPhone 裝置端透過 Apple 原生 Vision 框架完成；除非您自行選擇分享，App 不會將影像上傳至我們營運的伺服器。
         </li>
         <li>
-          <strong>行動流量統計 (Local Cellular Counter)</strong>：App 提供的流量估算功能，係直接讀取本機 Darwin BSD <code>getifaddrs</code> 介面之位元組累計數值，該數據僅保存在裝置記憶體中進行顯示，絕不對外傳輸。
+          <strong>行動流量統計 (Local Cellular Counter)</strong>：App 提供的流量估算功能，係讀取本機 Darwin BSD <code>getifaddrs</code> 介面的位元組累計數值。估算值與必要基準會保存在裝置本機，供 App 與小工具顯示；App 不會將其傳送至我們營運的伺服器。此功能無法辨識實際由哪張 eSIM 使用流量。
         </li>
       </ul>
     </div>
@@ -97,7 +97,7 @@
     <div class="legal-section">
       <h2>3. 不收集個人身份識別資訊</h2>
       <p>
-        本 App <strong>無須註冊帳號、無須綁定電子郵件、無須登入</strong>即可使用所有功能。我們不會收集您的姓名、電話號碼、GPS 精確地理位置、通訊錄或任何個人敏感識別資訊。
+        本 App <strong>無須註冊帳號、無須綁定電子郵件、無須登入</strong>即可使用所有功能。我們不會透過 App 主動蒐集您的姓名、電話號碼、GPS 精確地理位置或通訊錄。若您透過網站表單或電子郵件主動聯絡我們，該內容會由您使用的郵件服務處理，並僅用於回覆您的洽詢。
       </p>
     </div>
 
@@ -105,10 +105,10 @@
       <h2>4. 備份與離線分享安全性</h2>
       <ul>
         <li>
-          <strong>AES-256 加密備份</strong>：當您主動執行「資料備份」時，App 會使用您自訂的密碼以業界標準 AES-256-GCM 演算法將資料加密為 <code>.json</code> 檔案。該檔案由您自行決定儲存於本機檔案夾或透過 AirDrop / 雲端硬碟備份，我們無法亦不會接觸該備份檔與密碼。
+          <strong>選用密碼加密備份</strong>：當您主動執行「資料備份」並設定密碼時，App 會使用 AES-256-GCM 加密 <code>.json</code> 備份。若未設定密碼，匯出的 JSON 不會加密。預設備份會排除啟用碼等敏感資料；若您選擇包含敏感資訊，請自行審慎保管。檔案由您決定是否儲存、AirDrop 或上傳雲端硬碟；我們不會接觸該備份檔或密碼。
         </li>
         <li>
-          <strong>P2P 離線 QR Code 分發</strong>：當您使用「分享 eSIM」功能時，係由本機即時生成包含卡片資訊之二維碼，供另一台裝置面對面掃描，過程中無任何伺服器中轉。
+          <strong>P2P 離線 QR Code 分享</strong>：當您使用「分享 eSIM」功能時，App 會在本機生成包含卡片紀錄與您選擇分享之資訊的二維碼，供另一台裝置面對面掃描，過程中不經由我們的伺服器。這不是已安裝 eSIM、門號、訂單或帳戶的移轉；啟用資訊是否可重複使用仍以供應商規則為準。
         </li>
       </ul>
     </div>
@@ -116,7 +116,7 @@
     <div class="legal-section">
       <h2>5. 第三方外部連結與商業合作</h2>
       <p>
-        本 App 之「eSIM 搜尋」分頁包含導流前往第三方官方平台（如 Klook、KKday、Airalo、Trip.com）之公開推廣網頁連結。當您點擊外部連結時，將開啟系統瀏覽器跳轉至該第三方網站，您在第三方平台上的瀏覽與交易行為將受該平台各自之隱私權政策與服務條款管轄。
+        本 App 的「eSIM 搜尋」分頁會導向第三方平台（如 Klook、KKday、Airalo、Trip.com）的 App 或網頁，並可能帶入您選擇的目的地、天數或流量等搜尋條件；部分連結可能含有推薦／分潤參數。您在第三方平台上的瀏覽與交易行為受該平台各自的隱私權政策與服務條款管轄。方案內容、價格、庫存與實際 eSIM 狀態請以該平台或電信商資訊為準。
       </p>
     </div>
 

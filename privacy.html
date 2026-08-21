@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>隱私權政策 (Privacy Policy) - eSIMManager</title>
+  <meta name="description" content="eSIMManager 官方隱私權政策。我們堅持 100% 本機沙盒儲存，不收集個人身份資訊，不主動上傳任何卡片憑證至自建伺服器。">
+  <link rel="icon" type="image/png" href="assets/app_icon.png">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .legal-content {
+      padding: 60px 0 90px 0;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .legal-content h1 {
+      font-size: 34px;
+      color: #0f2d4a;
+      margin-bottom: 12px;
+    }
+    .legal-date {
+      color: var(--text-light);
+      font-size: 14px;
+      margin-bottom: 36px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .legal-section {
+      margin-bottom: 32px;
+    }
+    .legal-section h2 {
+      font-size: 20px;
+      color: #0f2d4a;
+      margin-bottom: 14px;
+      border-left: 4px solid var(--primary);
+      padding-left: 12px;
+    }
+    .legal-section p, .legal-section li {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 12px;
+    }
+    .legal-section ul {
+      padding-left: 24px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Site Navigation -->
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="index.html" class="brand">
+        <img src="assets/app_icon.png" alt="eSIMManager App Icon" class="brand-icon">
+        <span>eSIMManager</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html#features">產品特色</a></li>
+        <li><a href="index.html#disclaimer">流量估算說明</a></li>
+        <li><a href="index.html#partnership">商業合作</a></li>
+        <li><a href="index.html#faq">常見問題</a></li>
+        <li><a href="index.html" class="btn btn-secondary" style="padding: 6px 14px; font-size: 13px;">返回官網</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <div class="container legal-content">
+    <h1>隱私權政策 (Privacy Policy)</h1>
+    <div class="legal-date">最後更新日期：2026 年 8 月（適用於 eSIMManager 版本 1.4 及以上）</div>
+
+    <div class="legal-section">
+      <h2>1. 前言與核心隱私承諾</h2>
+      <p>
+        歡迎使用 <strong>eSIMManager</strong>（以下簡稱「本 App」或「我們」）。我們極度重視每位使用者的個人隱私與數據安全。本 App 採用「本機優先（Local-First）」與「零雲端外洩（Zero-Cloud Leakage）」之架構設計。
+      </p>
+      <p>
+        <strong>本 App 不會將您的任何 eSIM 憑證、開卡代碼、備忘資訊或使用量數據上傳至任何自建或第三方的遠端伺服器。</strong>
+      </p>
+    </div>
+
+    <div class="legal-section">
+      <h2>2. 資料儲存與存取原則</h2>
+      <ul>
+        <li>
+          <strong>本機沙盒儲存 (Local Sandbox)</strong>：您於 App 內建立或匯入的所有資料（包含廠商名稱、方案內容、SM-DP+ 伺服器地址、Matching ID 啟用碼、到期日期、自訂標籤與備忘資訊）皆安全存放於您 iOS 裝置本機的 App 沙盒（SwiftData / SQLite）與 App Group 共享空間中。
+        </li>
+        <li>
+          <strong>相機與相簿圖片辨識 (Apple Vision)</strong>：當您使用掃描 QR Code 或相簿匯入功能時，所有圖像辨識運算皆在您的 iPhone 裝置端透過 Apple 原生 Vision 框架本機完成，影像絕不上傳至任何雲端伺服器。
+        </li>
+        <li>
+          <strong>行動流量統計 (Local Cellular Counter)</strong>：App 提供的流量估算功能，係直接讀取本機 Darwin BSD <code>getifaddrs</code> 介面之位元組累計數值，該數據僅保存在裝置記憶體中進行顯示，絕不對外傳輸。
+        </li>
+      </ul>
+    </div>
+
+    <div class="legal-section">
+      <h2>3. 不收集個人身份識別資訊</h2>
+      <p>
+        本 App <strong>無須註冊帳號、無須綁定電子郵件、無須登入</strong>即可使用所有功能。我們不會收集您的姓名、電話號碼、GPS 精確地理位置、通訊錄或任何個人敏感識別資訊。
+      </p>
+    </div>
+
+    <div class="legal-section">
+      <h2>4. 備份與離線分享安全性</h2>
+      <ul>
+        <li>
+          <strong>AES-256 加密備份</strong>：當您主動執行「資料備份」時，App 會使用您自訂的密碼以業界標準 AES-256-GCM 演算法將資料加密為 <code>.json</code> 檔案。該檔案由您自行決定儲存於本機檔案夾或透過 AirDrop / 雲端硬碟備份，我們無法亦不會接觸該備份檔與密碼。
+        </li>
+        <li>
+          <strong>P2P 離線 QR Code 分發</strong>：當您使用「分享 eSIM」功能時，係由本機即時生成包含卡片資訊之二維碼，供另一台裝置面對面掃描，過程中無任何伺服器中轉。
+        </li>
+      </ul>
+    </div>
+
+    <div class="legal-section">
+      <h2>5. 第三方外部連結與商業合作</h2>
+      <p>
+        本 App 之「eSIM 搜尋」分頁包含導流前往第三方官方平台（如 Klook、KKday、Airalo、Trip.com）之公開推廣網頁連結。當您點擊外部連結時，將開啟系統瀏覽器跳轉至該第三方網站，您在第三方平台上的瀏覽與交易行為將受該平台各自之隱私權政策與服務條款管轄。
+      </p>
+    </div>
+
+    <div class="legal-section">
+      <h2>6. 隱私政策之修訂與聯絡方式</h2>
+      <p>
+        我們可能隨 App 功能升級或法規要求不定期更新本隱私權政策。更新後之政策將公布於本網頁。
+      </p>
+      <p>
+        若您對本隱私權政策有任何疑問、建議或需要協助，歡迎隨時透過電子郵件與我們聯繫：<br>
+        📧 <strong>聯絡信箱</strong>：<a href="mailto:support.esimmanager@gmail.com">support.esimmanager@gmail.com</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-bottom">
+      <div>&copy; 2026 eSIMManager. All rights reserved.</div>
+      <div><a href="index.html" style="color: #94a3b8;">返回首頁</a> | <a href="terms.html" style="color: #94a3b8;">服務條款</a></div>
+    </div>
+  </footer>
+
+</body>
+</html>

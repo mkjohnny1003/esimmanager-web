@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `合作類型：${type}\n聯絡人／單位名稱：${name}\n聯絡信箱：${email}\n\n合作內容概述：\n${details}\n\n---\n來自 eSIMManager 官方網站洽詢表單`
       );
 
-      window.location.href = `mailto:support.esimmanager@gmail.com?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:mkjohnny@gmail.com?subject=${subject}&body=${body}`;
     });
   }
 });

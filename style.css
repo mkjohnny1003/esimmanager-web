@@ -747,6 +747,38 @@ a:hover {
 }
 
 /* eSIM Purchase Links */
+.sponsored-content-sec {
+  padding: 34px 0 0;
+  background: var(--bg-main);
+}
+
+.sponsored-content-sec[hidden] {
+  display: none;
+}
+
+.sponsored-content-label {
+  width: fit-content;
+  margin: 0 auto 10px;
+  color: var(--text-light);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.adsense-banner-wrap {
+  min-height: 90px;
+  max-width: 970px;
+  margin: 0 auto;
+  padding: 12px 16px;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: #ffffff;
+}
+
+.adsense-banner-slot {
+  min-height: 66px;
+}
+
 .purchase-sec {
   padding: 88px 0;
   background: #ffffff;
@@ -1442,6 +1474,16 @@ a:hover {
 }
 
 @media (max-width: 600px) {
+  .sponsored-content-sec {
+    padding-top: 20px;
+  }
+  .adsense-banner-wrap {
+    min-height: 64px;
+    padding: 8px 12px;
+  }
+  .adsense-banner-slot {
+    min-height: 48px;
+  }
   .priority-shop-card {
     align-items: flex-start;
     flex-direction: column;

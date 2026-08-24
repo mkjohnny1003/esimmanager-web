@@ -340,15 +340,22 @@ a:hover {
 }
 
 .journey-storyboard {
-  display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
   max-width: 1140px;
   margin: 38px auto 54px;
+  padding: 2px 2px 14px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+  scrollbar-width: thin;
+  scrollbar-color: #82bdcf transparent;
 }
 
 .journey-panel {
   position: relative;
+  flex: 1 0 150px;
   min-height: 305px;
   overflow: hidden;
   border: 1px solid #d6e7ef;
@@ -366,11 +373,22 @@ a:hover {
   border-radius: inherit;
 }
 
-.journey-illustration > img { object-position: center; }
-.journey-purchase > img { object-position: left center; }
-.journey-scan > img { object-position: 20% center; }
-.journey-arrival > img { object-position: 60% center; }
-.journey-usage > img { object-position: 80% center; }
+.journey-panel { scroll-snap-align: start; }
+
+.journey-step-arrow {
+  flex: 0 0 20px;
+  display: grid;
+  width: 20px;
+  height: 38px;
+  place-items: center;
+  border-radius: 999px;
+  background: #e6f5f8;
+  color: var(--primary);
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1;
+  box-shadow: 0 4px 12px rgba(10, 101, 138, 0.12);
+}
 
 .journey-app > img {
   object-fit: contain;
@@ -1445,9 +1463,7 @@ a:hover {
   .hero-grid, .partner-grid, .values-grid, .tab-content.active, .disclaimer-grid, .footer-grid, .predeparture-grid {
     grid-template-columns: 1fr;
   }
-  .journey-storyboard {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
+  .journey-panel { flex-basis: 200px; }
   .predeparture-shot { order: -1; }
   .language-callout { grid-template-columns: 1fr; text-align: center; }
   .language-callout > div { justify-content: center; }
@@ -1508,9 +1524,15 @@ a:hover {
     -webkit-overflow-scrolling: touch;
   }
   .journey-panel {
-    flex: 0 0 min(264px, calc(100vw - 64px));
+    flex: 0 0 min(264px, calc(100vw - 78px));
     min-height: 340px;
     scroll-snap-align: start;
+  }
+  .journey-step-arrow {
+    flex-basis: 28px;
+    width: 28px;
+    height: 44px;
+    font-size: 23px;
   }
   .journey-panel > img { min-height: 340px; }
   .platform-grid {

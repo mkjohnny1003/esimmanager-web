@@ -1,4 +1,36 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // Measure promotion performance without collecting contact-form content or
+  // any eSIM information. GA4's automatic page_view is configured in HTML.
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest('a[href]');
+    if (!link || typeof window.gtag !== 'function') return;
+
+    const href = link.href;
+    const hostname = new URL(href, window.location.origin).hostname;
+    const label = (link.textContent || link.getAttribute('aria-label') || 'link')
+      .trim().replace(/\s+/g, ' ').slice(0, 100);
+    let eventName = null;
+    let destination = null;
+
+    if (hostname === 'apps.apple.com') {
+      eventName = 'app_store_click';
+      destination = 'App Store';
+    } else if (hostname === 'shopee.tw') {
+      eventName = 'purchase_link_click';
+      destination = 'Shopee';
+    } else if (hostname.endsWith('klook.com') || hostname.endsWith('kkday.com') || hostname.endsWith('airalo.com') || hostname.endsWith('trip.com')) {
+      eventName = 'platform_link_click';
+      destination = hostname;
+    }
+
+    if (eventName) {
+      window.gtag('event', eventName, {
+        link_destination: destination,
+        link_label: label
+      });
+    }
+  });
+
   // Google AdSense configuration. Add only verified IDs from the eSIMManager AdSense account.
   // The section remains hidden until both values are present, so visitors never see a placeholder.
   const adsenseConfig = {

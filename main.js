@@ -125,6 +125,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // The journey cards can be swiped. This control makes that interaction
+  // discoverable and advances through the same horizontal carousel by click.
+  const journeyStoryboard = document.getElementById('journey-storyboard');
+  const journeyScrollControl = document.querySelector('.journey-scroll-control');
+  if (journeyStoryboard && journeyScrollControl) {
+    journeyScrollControl.addEventListener('click', () => {
+      const maxScrollLeft = journeyStoryboard.scrollWidth - journeyStoryboard.clientWidth;
+      const nextScrollLeft = journeyStoryboard.scrollLeft >= maxScrollLeft - 8
+        ? 0
+        : Math.min(
+          journeyStoryboard.scrollLeft + Math.round(journeyStoryboard.clientWidth * 0.78),
+          maxScrollLeft
+        );
+      journeyStoryboard.scrollTo({ left: nextScrollLeft, behavior: 'smooth' });
+    });
+  }
+
   // 4. Partnership Form Mailto Handler
   const partnerForm = document.getElementById('partner-form');
   if (partnerForm) {

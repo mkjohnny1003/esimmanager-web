@@ -26,7 +26,7 @@
   <link rel="icon" type="image/png" href="assets/app_icon.png">
   <link rel="apple-touch-icon" href="assets/app_icon.png">
   
-  <link rel="stylesheet" href="style.css?v=20260825-journey-carousel">
+  <link rel="stylesheet" href="style.css?v=20260825-journey-scroll-hint">
 </head>
 <body>
 
@@ -261,7 +261,7 @@
         <p>六個步驟帶你完成旅遊 eSIM 的購買、安裝、啟用、用量確認與行程整理。可左右滑動查看每一步；第 4、5 步點選人物手上的手機，可查看真實 App 操作畫面。</p>
       </div>
 
-      <div class="journey-storyboard" aria-label="旅行 eSIM 使用流程">
+      <div class="journey-storyboard" id="journey-storyboard" aria-label="旅行 eSIM 使用流程">
         <article class="journey-panel journey-purchase">
           <img src="assets/v1_5_journey_step1_purchase.png" alt="女性旅人在出發前從旅遊平台尋找 eSIM 方案的插圖" loading="lazy">
           <div class="journey-overlay partner-overlay">
@@ -313,6 +313,12 @@
           <img src="assets/v1_5_trip_completed_6.9.png" alt="eSIMManager 顯示行程已結束的實機畫面" loading="lazy">
           <div class="journey-overlay"><span class="journey-number">6</span><strong>旅行結束，標示行程已結束</strong><span>保留紀錄，方便日後查詢與整理</span></div>
         </article>
+      </div>
+      <div class="journey-carousel-hint">
+        <button class="journey-scroll-control" type="button" aria-controls="journey-storyboard" aria-label="查看下一個 eSIM 使用步驟">
+          <span class="journey-scroll-icon" aria-hidden="true">↔</span>
+          <span>左右滑動查看</span>
+        </button>
       </div>
 
       <div class="predeparture-grid">
@@ -599,6 +605,6 @@
     })(document, "script", "https://affiliate.klook.com/widget/fetch-iframe-init.js");
   </script>
   <script type="text/javascript" src="https://kkpartners.kkday.com/iframe.init.1.0.js"></script>
-  <script src="main.js"></script>
+  <script src="main.js?v=20260825-journey-scroll-hint"></script>
 </body>
 </html>

@@ -345,7 +345,7 @@ a:hover {
   flex-wrap: nowrap;
   gap: 8px;
   max-width: 1140px;
-  margin: 38px auto 54px;
+  margin: 38px auto 16px;
   padding: 2px 2px 14px;
   overflow-x: auto;
   overscroll-behavior-x: contain;
@@ -390,6 +390,58 @@ a:hover {
   font-weight: 800;
   line-height: 1;
   box-shadow: 0 4px 12px rgba(10, 101, 138, 0.12);
+}
+
+.journey-carousel-hint {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto 54px;
+}
+
+.journey-scroll-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 8px 15px;
+  border: 1px solid #c7e4ed;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #0e5c5c;
+  box-shadow: 0 5px 14px rgba(10, 101, 138, 0.12);
+  cursor: pointer;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 750;
+  letter-spacing: 0.01em;
+}
+
+.journey-scroll-control:hover {
+  border-color: #77bdd0;
+  background: #f4fcff;
+  box-shadow: 0 7px 18px rgba(10, 101, 138, 0.18);
+}
+
+.journey-scroll-control:focus-visible {
+  outline: 3px solid rgba(30, 161, 196, 0.38);
+  outline-offset: 3px;
+}
+
+.journey-scroll-icon {
+  display: inline-block;
+  color: var(--primary);
+  font-size: 20px;
+  line-height: 1;
+  animation: journey-horizontal-nudge 1.25s ease-in-out infinite;
+}
+
+@keyframes journey-horizontal-nudge {
+  0%, 100% { transform: translateX(-3px); }
+  50% { transform: translateX(3px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .journey-scroll-icon { animation: none; }
 }
 
 .journey-app > img {
@@ -1520,7 +1572,7 @@ a:hover {
     display: flex;
     gap: 12px;
     overflow-x: auto;
-    margin: 28px -24px 38px;
+    margin: 28px -24px 14px;
     padding: 2px 24px 14px;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
@@ -1538,6 +1590,7 @@ a:hover {
     font-size: 23px;
   }
   .journey-panel > img { min-height: 400px; }
+  .journey-carousel-hint { margin: 0 auto 38px; }
   .platform-grid {
     grid-template-columns: 1fr;
   }

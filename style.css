@@ -342,6 +342,7 @@ a:hover {
 .journey-storyboard {
   display: flex;
   align-items: center;
+  flex-wrap: nowrap;
   gap: 8px;
   max-width: 1140px;
   margin: 38px auto 54px;
@@ -355,8 +356,9 @@ a:hover {
 
 .journey-panel {
   position: relative;
-  flex: 1 0 150px;
-  min-height: 305px;
+  flex: 0 0 210px;
+  height: 370px;
+  min-height: 370px;
   overflow: hidden;
   border: 1px solid #d6e7ef;
   border-radius: 20px;
@@ -367,7 +369,7 @@ a:hover {
 .journey-panel > img {
   width: 100%;
   height: 100%;
-  min-height: 305px;
+  min-height: 370px;
   object-fit: cover;
   display: block;
   border-radius: inherit;
@@ -376,10 +378,10 @@ a:hover {
 .journey-panel { scroll-snap-align: start; }
 
 .journey-step-arrow {
-  flex: 0 0 20px;
+  flex: 0 0 28px;
   display: grid;
-  width: 20px;
-  height: 38px;
+  width: 28px;
+  height: 42px;
   place-items: center;
   border-radius: 999px;
   background: #e6f5f8;
@@ -1463,7 +1465,7 @@ a:hover {
   .hero-grid, .partner-grid, .values-grid, .tab-content.active, .disclaimer-grid, .footer-grid, .predeparture-grid {
     grid-template-columns: 1fr;
   }
-  .journey-panel { flex-basis: 200px; }
+  .journey-panel { flex-basis: 210px; }
   .predeparture-shot { order: -1; }
   .language-callout { grid-template-columns: 1fr; text-align: center; }
   .language-callout > div { justify-content: center; }
@@ -1525,7 +1527,8 @@ a:hover {
   }
   .journey-panel {
     flex: 0 0 min(264px, calc(100vw - 78px));
-    min-height: 340px;
+    height: 400px;
+    min-height: 400px;
     scroll-snap-align: start;
   }
   .journey-step-arrow {
@@ -1534,7 +1537,7 @@ a:hover {
     height: 44px;
     font-size: 23px;
   }
-  .journey-panel > img { min-height: 340px; }
+  .journey-panel > img { min-height: 400px; }
   .platform-grid {
     grid-template-columns: 1fr;
   }

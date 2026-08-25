@@ -31,47 +31,29 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Google AdSense configuration. Add only verified IDs from the eSIMManager AdSense account.
-  // The section remains hidden until both values are present, so visitors never see a placeholder.
-  const adsenseConfig = {
-    client: '', // Example: ca-pub-1234567890123456
-    slot: '' // Example: 1234567890
-  };
+  // Manual side rails protect the main reading and affiliate areas from auto-ad insertion.
+  // They exist only on wide desktop screens and become visible only when AdSense fills them.
+  document.querySelectorAll('[data-adsense-rail]').forEach((rail) => {
+    const ad = rail.querySelector('.adsbygoogle');
+    if (!ad) return;
 
-  const sponsoredSection = document.getElementById('sponsored-content');
-  const adSlot = document.querySelector('[data-adsense-slot]');
-  const hasValidAdSenseConfig = /^ca-pub-\d+$/.test(adsenseConfig.client)
-    && /^\d+$/.test(adsenseConfig.slot);
+    const updateVisibility = () => {
+      const isFilled = ad.getAttribute('data-ad-status') === 'filled';
+      rail.classList.toggle('is-filled', isFilled);
+      rail.setAttribute('aria-hidden', String(!isFilled));
+    };
 
-  if (sponsoredSection && adSlot && hasValidAdSenseConfig) {
-    const adScript = document.createElement('script');
-    adScript.async = true;
-    adScript.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseConfig.client}`;
-    adScript.crossOrigin = 'anonymous';
-
-    adScript.addEventListener('load', () => {
-      const ad = document.createElement('ins');
-      ad.className = 'adsbygoogle';
-      ad.style.display = 'block';
-      ad.dataset.adClient = adsenseConfig.client;
-      ad.dataset.adSlot = adsenseConfig.slot;
-      ad.dataset.adFormat = 'auto';
-      ad.dataset.fullWidthResponsive = 'true';
-      adSlot.appendChild(ad);
-      sponsoredSection.hidden = false;
-
-      try {
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
-      } catch {
-        sponsoredSection.hidden = true;
-      }
+    new MutationObserver(updateVisibility).observe(ad, {
+      attributes: true,
+      attributeFilter: ['data-ad-status']
     });
 
-    adScript.addEventListener('error', () => {
-      sponsoredSection.hidden = true;
-    });
-    document.head.appendChild(adScript);
-  }
+    try {
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+    } catch {
+      updateVisibility();
+    }
+  });
 
   // 1. Feature Tabs Switcher
   const tabBtns = document.querySelectorAll('.tab-btn');

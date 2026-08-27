@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
         navLinks.style.top = '72px';
         navLinks.style.left = '0';
         navLinks.style.right = '0';
-        navLinks.style.background = '#ffffff';
+        navLinks.style.background = 'var(--bg-card)';
         navLinks.style.padding = '20px';
         navLinks.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
       }

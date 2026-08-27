@@ -31,15 +31,28 @@
   <link rel="icon" type="image/png" href="assets/app_icon.png">
   <link rel="apple-touch-icon" href="assets/app_icon.png">
   
-  <link rel="stylesheet" href="style.css?v=20260825-journey-scroll-hint">
+  <link rel="stylesheet" href="style.css?v=20260826-tabi-16-staged">
 </head>
 <body>
 
+  <!-- 1.6 Tabi pixel icon sprite. Decorative only; it never represents a
+       scannable QR code, system state, or an advertisement. -->
+  <svg class="pixel-sprite" aria-hidden="true" focusable="false">
+    <symbol id="pixel-airplane" viewBox="0 0 12 10"><path d="M5 0h2v1H5zM5 1h2v1H5zM5 2h2v1H5zM1 3h10v1H1zM0 4h12v1H0zM0 5h12v1H0zM1 6h10v1H1zM5 7h2v1H5zM4 8h4v1H4zM4 9h4v1H4z"/></symbol>
+    <symbol id="pixel-pin" viewBox="0 0 12 12"><path d="M4 0h4v1H4zM3 1h6v1H3zM2 2h8v1H2zM2 3h8v1H2zM2 4h8v1H2zM3 5h6v1H3zM4 6h4v1H4zM4 7h4v1H4zM5 8h2v1H5zM5 9h2v1H5zM5 10h2v1H5zM5 11h2v1H5z"/></symbol>
+    <symbol id="pixel-cloud" viewBox="0 0 12 6"><path d="M4 0h4v1H4zM2 1h8v1H2zM1 2h10v1H1zM0 3h12v1H0zM1 4h10v1H1zM2 5h8v1H2z"/></symbol>
+    <symbol id="pixel-signal" viewBox="0 0 8 7"><path d="M6 1h1v1H6zM4 2h1v1H4zM6 2h1v1H6zM2 3h1v1H2zM4 3h1v1H4zM6 3h1v1H6zM0 4h1v1H0zM2 4h1v1H2zM4 4h1v1H4zM6 4h1v1H6zM0 5h1v1H0zM2 5h1v1H2zM4 5h1v1H4zM6 5h1v1H6zM0 6h1v1H0zM2 6h1v1H2zM4 6h1v1H4zM6 6h1v1H6z"/></symbol>
+    <symbol id="pixel-luggage" viewBox="0 0 10 7"><path d="M2 0h6v1H2zM1 1h2v1H1zM7 1h2v1H7zM0 2h10v1H0zM0 3h10v1H0zM0 4h10v1H0zM0 5h10v1H0zM1 6h8v1H1z"/></symbol>
+    <symbol id="pixel-sliders" viewBox="0 0 7 6"><path d="M0 0h1v1H0zM0 1h7v1H0zM2 2h1v1H2zM2 3h5v1H2zM4 4h1v1H4zM4 5h3v1H4z"/></symbol>
+  </svg>
+
   <!-- Desktop-only manual AdSense units. They remain visually hidden until Google fills them. -->
   <aside class="adsense-rail adsense-rail--left" data-adsense-rail aria-hidden="true" aria-label="Advertisement">
+    <span class="adsense-label">廣告</span>
     <ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-2607309542240072" data-ad-slot="9787932043"></ins>
   </aside>
   <aside class="adsense-rail adsense-rail--right" data-adsense-rail aria-hidden="true" aria-label="Advertisement">
+    <span class="adsense-label">廣告</span>
     <ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-2607309542240072" data-ad-slot="9193035679"></ins>
   </aside>
 
@@ -57,6 +70,16 @@
         <li><a href="#buy-esim">購買 eSIM</a></li>
         <li><a href="#partnership">商業合作</a></li>
         <li><a href="https://apps.apple.com/app/id6800212290" target="_blank" rel="noopener noreferrer" class="btn btn-download"> App Store</a></li>
+        <li class="language-switcher">
+          <label class="sr-only" for="site-language">網站語言</label>
+          <select id="site-language" aria-label="網站語言">
+            <option value="zh-TW">繁體中文</option>
+            <option value="en">English</option>
+            <option value="zh-CN">简体中文</option>
+            <option value="ja">日本語</option>
+            <option value="ko">한국어</option>
+          </select>
+        </li>
       </ul>
       
       <button class="mobile-menu-btn" aria-label="Toggle Menu">☰</button>
@@ -67,8 +90,9 @@
   <section class="hero">
     <div class="container hero-grid">
       <div class="hero-content">
+        <div class="hero-pixel-scene" aria-hidden="true"><svg class="pixel-icon pixel-icon--hero"><use href="#pixel-airplane"></use></svg><svg class="pixel-icon pixel-icon--cloud"><use href="#pixel-cloud"></use></svg></div>
         <div class="hero-badge">
-          <span>版本 1.5 正式上架 · 多語言與出發前設定流程</span>
+          <span>版本 1.6 正式上架 · Tabi 旅行介面與三種外觀</span>
         </div>
         <h1>自由選擇 eSIM，安心管理每一趟旅程</h1>
         <p class="hero-sub">
@@ -85,16 +109,20 @@
               <div class="big">App Store</div>
             </div>
           </a>
+          <div class="android-coming-soon" role="status" aria-label="Android 版即將推出">
+            <span class="android-coming-soon-dot" aria-hidden="true"></span>
+            <span><strong>Android 版即將推出</strong><small>Google Play 開發中</small></span>
+          </div>
           
           <a href="#how-to-use" class="btn btn-secondary">
-            ✈️ 查看如何使用
+            <svg class="pixel-icon pixel-icon--button" aria-hidden="true"><use href="#pixel-airplane"></use></svg>查看如何使用
           </a>
         </div>
         
         <div class="hero-trust">
-          <span>🛡️ 本機優先・不設自建雲端</span>
-          <span>⚡ 無需註冊登入</span>
-          <span>📱 支援 iOS 17.4+ Widget</span>
+          <span><svg class="pixel-icon pixel-icon--trust" aria-hidden="true"><use href="#pixel-luggage"></use></svg>本機優先・不設自建雲端</span>
+          <span><svg class="pixel-icon pixel-icon--trust" aria-hidden="true"><use href="#pixel-sliders"></use></svg>無需註冊登入</span>
+          <span><svg class="pixel-icon pixel-icon--trust" aria-hidden="true"><use href="#pixel-signal"></use></svg>支援 iOS 17.4+；系統安裝需 17.5+</span>
         </div>
       </div>
       
@@ -102,7 +130,7 @@
         <div class="float-card float-card-1">
           <span>🟢 App 內狀態整理 · 效期倒數</span>
         </div>
-        <img src="assets/v1_5_travel_setup_entry_6.9.png" alt="eSIMManager 出發前設定入口實機截圖" class="phone-mockup">
+        <img src="assets/v1_6/01_tabi_home_light_6.9.png" alt="eSIMManager 1.6 Tabi 亮色主畫面實機截圖" class="phone-mockup">
         <div class="float-card float-card-2">
           <span>🔒 可選密碼加密備份</span>
         </div>
@@ -121,7 +149,7 @@
       
       <div class="values-grid">
         <div class="value-card">
-          <div class="val-icon">🧭</div>
+          <div class="val-icon"><svg class="pixel-icon pixel-icon--value" aria-hidden="true"><use href="#pixel-pin"></use></svg></div>
           <h3>自由選擇供應商</h3>
           <p>
             無論你從旅遊平台、電信商或其他可信賣場取得 eSIM，都能將可用的啟用資訊整理進 App。方案價格、庫存與服務內容，仍以你選擇的供應商頁面為準。
@@ -129,7 +157,7 @@
         </div>
         
         <div class="value-card">
-          <div class="val-icon">🗂️</div>
+          <div class="val-icon"><svg class="pixel-icon pixel-icon--value" aria-hidden="true"><use href="#pixel-luggage"></use></svg></div>
           <h3>集中整理多張 eSIM</h3>
           <p>
             將 QR Code、LPA 啟用資訊、適用地、效期與備忘收在同一處。資料以裝置本機為主保存；你可依需要備份、分享或標示行程已結束。
@@ -137,7 +165,7 @@
         </div>
         
         <div class="value-card">
-          <div class="val-icon">🆓</div>
+          <div class="val-icon"><svg class="pixel-icon pixel-icon--value" aria-hidden="true"><use href="#pixel-sliders"></use></svg></div>
           <h3>全功能免費，協助安心設定</h3>
           <p>
             App 不設內購或卡片數量上限，並提供安裝引導、出發前確認、效期倒數與裝置端流量估算。iPhone 的行動數據與漫遊設定仍須由你在系統中確認。
@@ -153,7 +181,7 @@
       <div class="sec-head">
         <span class="sec-pill">功能圖解</span>
         <h2>實機操作功能全覽</h2>
-        <p>以 App 測試版本畫面說明主要操作流程與使用限制。</p>
+        <p>以 App 正式版畫面說明主要操作流程與使用限制。</p>
       </div>
       
       <div class="tab-nav">
@@ -171,13 +199,13 @@
           <h3>從首頁開始出發前設定</h3>
           <p>建立旅遊 eSIM 後，首頁提供出發前設定入口，讓使用者依序確認重要項目。</p>
           <ul class="tab-bullets">
-            <li><span>✈️ 五步驟</span>：安裝、行動數據、主卡保護、漫遊與連線。</li>
-            <li><span>🛡️ 主卡保護</span>：提醒關閉主卡數據漫遊及行動數據切換。</li>
-            <li><span>📍 設定路徑</span>：以 iPhone「設定」中的操作路徑協助新手確認。</li>
+            <li><span>五步驟</span>：安裝、行動數據、主卡保護、漫遊與連線。</li>
+            <li><span>主卡保護</span>：提醒關閉主卡數據漫遊及行動數據切換。</li>
+            <li><span>設定路徑</span>：以 iPhone「設定」中的操作路徑協助新手確認。</li>
           </ul>
         </div>
         <div class="tab-image">
-          <img src="assets/v1_5_travel_setup_entry_6.9.png" alt="出發前設定首頁入口">
+          <img src="assets/v1_6/03_tabi_predeparture_light_6.9.png" alt="Tabi 出發前設定精靈">
         </div>
       </div>
       
@@ -187,10 +215,10 @@
           <h3>相機、相簿、PDF 與手動四合一匯入</h3>
           <p>支援常見 LPA QR Code、圖片、PDF 與完整 LPA 字串匯入；辨識結果取決於憑證格式、文件內容與影像品質。</p>
           <ul class="tab-bullets">
-            <li><span>📷 相機掃描</span>：對準紙本或螢幕二維碼自動解析。</li>
-            <li><span>🖼️ 相簿辨識</span>：透過 Apple Vision 框架讀取照片中的 QR Code。</li>
-            <li><span>📄 PDF 匯入</span>：直接選取供應商發送之 PDF 憑證文件。</li>
-            <li><span>✍️ 手動輸入</span>：可貼上供應商提供的完整 LPA 啟用碼。</li>
+            <li><span>相機掃描</span>：對準紙本或螢幕二維碼自動解析。</li>
+            <li><span>相簿辨識</span>：透過 Apple Vision 框架讀取照片中的 QR Code。</li>
+            <li><span>PDF 匯入</span>：直接選取供應商發送之 PDF 憑證文件。</li>
+            <li><span>手動輸入</span>：可貼上供應商提供的完整 LPA 啟用碼。</li>
           </ul>
         </div>
         <div class="tab-image">
@@ -204,9 +232,9 @@
           <h3>開啟 iOS 系統 eSIM 安裝流程</h3>
           <p>在啟用資訊完整且裝置支援時，可嘗試開啟 Apple 的系統 eSIM 安裝流程；仍須由使用者在系統畫面確認，安裝結果以 iOS 與供應商為準。</p>
           <ul class="tab-bullets">
-            <li><span>⚡ 安裝流程引導</span>：點擊按鈕後由 iOS 顯示系統 eSIM 安裝畫面。</li>
-            <li><span>🛡️ 手動確認</span>：App 無法靜默安裝、啟用或變更 iPhone 的行動服務設定。</li>
-            <li><span>📲 使用條件</span>：需 iOS 17.5+、支援 eSIM 的 iPhone、有效啟用資訊與網路連線。</li>
+            <li><span>安裝流程引導</span>：點擊按鈕後由 iOS 顯示系統 eSIM 安裝畫面。</li>
+            <li><span>手動確認</span>：App 無法靜默安裝、啟用或變更 iPhone 的行動服務設定。</li>
+            <li><span>使用條件</span>：需 iOS 17.5+、支援 eSIM 的 iPhone、有效啟用資訊與網路連線。</li>
           </ul>
         </div>
         <div class="tab-image">
@@ -220,9 +248,9 @@
           <h3>主卡保護，避免誤用漫遊資料</h3>
           <p>在出國前確認主卡的「數據漫遊」與「允許行動數據切換」皆已關閉，降低高額漫遊費用的風險。</p>
           <ul class="tab-bullets">
-            <li><span>1️⃣ 主卡數據漫遊</span>：在「設定 ＞ 行動服務 ＞ 主卡」中確認關閉。</li>
-            <li><span>2️⃣ 行動數據切換</span>：在「設定 ＞ 行動服務 ＞ 行動數據」中確認關閉。</li>
-            <li><span>ℹ️ 不會自動變更</span>：App 只提供引導與確認紀錄，設定仍由使用者在 iPhone 完成。</li>
+            <li><span>主卡數據漫遊</span>：在「設定 ＞ 行動服務 ＞ 主卡」中確認關閉。</li>
+            <li><span>行動數據切換</span>：在「設定 ＞ 行動服務 ＞ 行動數據」中確認關閉。</li>
+            <li><span>不會自動變更</span>：App 只提供引導與確認紀錄，設定仍由使用者在 iPhone 完成。</li>
           </ul>
         </div>
         <div class="tab-image">
@@ -242,7 +270,7 @@
           </ul>
         </div>
         <div class="tab-image">
-          <img src="assets/v1_5_language_settings_6.9.png" alt="App 語言設定">
+          <img src="assets/v1_6/05_settings_appearance_light_6.9.png" alt="App 外觀與語言設定">
         </div>
       </div>
       
@@ -254,7 +282,7 @@
           <ul class="tab-bullets">
             <li><span>🔐 可選密碼加密</span>：設定密碼後以 AES-256-GCM 加密；未設定密碼的備份不加密，請妥善保存。</li>
             <li><span>📁 彈性儲存</span>：可存入「檔案」App、iCloud Drive 或 AirDrop 傳送。</li>
-            <li><span>🛡️ 敏感資訊排除</span>：預設排除啟用碼；此類備份可還原卡片紀錄，但無法直接用於系統安裝。</li>
+            <li><span>敏感資訊排除</span>：預設排除啟用碼；此類備份可還原卡片紀錄，但無法直接用於系統安裝。</li>
           </ul>
         </div>
         <div class="tab-image">
@@ -283,7 +311,7 @@
             <div class="partner-logo-row" aria-label="可前往搜尋的平台">
               <a class="platform-wordmark klook" href="https://www.klook.com/zh-TW/search/result/?query=eSIM&amp;aid=130752" target="_blank" rel="noopener noreferrer sponsored">Klook</a>
               <a class="platform-wordmark kkday" href="https://www.kkday.com/zh-tw/product/productlist?keyword=eSIM&amp;cid=eSIMManager-26333" target="_blank" rel="noopener noreferrer sponsored">KKday</a>
-              <a class="platform-wordmark airalo" href="https://www.airalo.com/" target="_blank" rel="noopener noreferrer">Airalo</a>
+              <a class="platform-wordmark airalo" href="https://www.airalo.com/zh-hant/?referral=TSUNGY3797" target="_blank" rel="noopener noreferrer sponsored">Airalo</a>
               <a class="platform-wordmark trip" href="https://www.trip.com/sale/w/10229/esim.html?allianceid=9973993&amp;sid=987654" target="_blank" rel="noopener noreferrer sponsored">Trip.com</a>
             </div>
           </div>
@@ -350,7 +378,7 @@
       </div>
 
       <div class="language-callout">
-        <div><span class="language-icon">🌐</span><strong>五種介面語言</strong></div>
+        <div><svg class="pixel-icon pixel-icon--language" aria-hidden="true"><use href="#pixel-sliders"></use></svg><strong>五種介面語言</strong></div>
         <p>可在 App 內切換繁體中文、簡體中文、English、日本語、한국어，或選擇跟隨 iPhone 系統語言。</p>
         <img src="assets/v1_5_language_settings_6.9.png" alt="eSIMManager App 語言設定畫面" loading="lazy">
       </div>
@@ -361,9 +389,9 @@
   <section class="purchase-sec" id="buy-esim">
     <div class="container">
       <div class="sec-head">
-        <span class="sec-pill">購買 eSIM／旅遊上網卡</span>
+        <span class="sec-pill"><svg class="pixel-icon pixel-icon--pill" aria-hidden="true"><use href="#pixel-pin"></use></svg>購買 eSIM／旅遊上網卡</span>
         <h2>你選擇方案，我們幫你整理</h2>
-        <p>先依目的地、使用天數與預算比較適合的方案；取得 QR Code 或 LPA 啟用資訊後，再用 eSIMManager 整理與引導設定。以下提供優先推薦賣場與三個旅遊平台的官方素材，實際方案、價格、庫存與是否支援 eSIM，均以各平台頁面為準。</p>
+      <p>先依目的地、使用天數與預算比較適合的方案；取得 QR Code 或 LPA 啟用資訊後，再用 eSIMManager 整理與引導設定。以下提供首選推薦賣場及 Klook、KKday、Airalo、Trip.com 等平台入口；實際方案、價格、庫存與是否支援 eSIM，均以各平台頁面為準。</p>
       </div>
       <a class="priority-shop-card" href="https://shopee.tw/mannt.chang" target="_blank" rel="noopener noreferrer sponsored" aria-label="前往飛展小舖選購 eSIM 與旅遊上網卡">
         <div class="priority-shop-copy">
@@ -377,9 +405,10 @@
       <div class="official-platform-grid">
         <article class="official-platform-card"><div class="official-platform-head"><div><span class="official-kicker">官方 Banner</span><h3>Klook</h3></div><a href="https://www.klook.com/zh-TW/search/result/?query=eSIM&amp;aid=130752" target="_blank" rel="noopener noreferrer sponsored">搜尋 eSIM ↗</a></div><div class="official-ad-slot official-ad-300"><ins class="klk-aff-widget" data-wid="130752" data-bgtype="Shinkansen" data-adid="1395047" data-lang="zh-TW" data-prod="banner" data-width="300" data-height="250"><a href="//www.klook.com/?aid=">Klook.com</a></ins></div></article>
         <article class="official-platform-card"><div class="official-platform-head"><div><span class="official-kicker">官方動態 eSIM 商品</span><h3>KKday</h3></div><a href="https://www.kkday.com/zh-tw/product/productlist?keyword=eSIM&amp;cid=eSIMManager-26333" target="_blank" rel="noopener noreferrer sponsored">查看更多 eSIM ↗</a></div><div class="official-ad-slot official-ad-300 kkday-ad-slot"><ins class="kkday-product-media" data-oid="11539" data-amount="1" data-origin="https://kkpartners.kkday.com"></ins></div></article>
+        <article class="official-platform-card official-platform-card--airalo"><div class="official-platform-head"><div><span class="official-kicker">目的地 eSIM 方案</span><h3>Airalo</h3></div><a href="https://www.airalo.com/zh-hant/?referral=TSUNGY3797" target="_blank" rel="noopener noreferrer sponsored">瀏覽 eSIM ↗</a></div><a class="airalo-platform-link" href="https://www.airalo.com/zh-hant/?referral=TSUNGY3797" target="_blank" rel="noopener noreferrer sponsored" aria-label="前往 Airalo 瀏覽 eSIM 方案"><img src="assets/platform-airalo-banner.png" alt="Airalo eSIM 方案入口"></a></article>
         <article class="official-platform-card"><div class="official-platform-head"><div><span class="official-kicker">官方 Banner</span><h3>Trip.com</h3></div><a href="https://www.trip.com/sale/w/10229/esim.html?allianceid=9973993&amp;sid=987654" target="_blank" rel="noopener noreferrer sponsored">前往 eSIM 專區 ↗</a></div><div class="official-ad-slot official-ad-300"><iframe title="Trip.com 官方旅遊廣告" src="https://tw.trip.com/partners/ad/SB19383261?Allianceid=9973993&amp;SID=328104141&amp;trip_sub1=" width="300" height="250" frameborder="0" scrolling="no"></iframe></div></article>
       </div>
-      <p class="purchase-note">以上為外部賣場、平台提供的官方廣告或推薦連結；部分連結可能含推薦／分潤參數，這不會增加你的購買價格。點擊後將離開 eSIMManager 網站，交易、商品與服務均由各賣場或平台依其條款提供。</p>
+      <p class="purchase-note">以上為外部賣場、平台提供的官方廣告或推薦連結；部分連結可能含推薦／分潤參數，實際售價、優惠與服務內容以各平台頁面為準。點擊後將離開 eSIMManager 網站，交易、商品與服務均由各賣場或平台依其條款提供。</p>
     </div>
   </section>
 
@@ -387,19 +416,19 @@
   <section class="disclaimer-sec" id="disclaimer">
     <div class="container">
       <div class="disclaimer-box">
-        <h3>ℹ️ 技術透明度與功能免責聲明</h3>
+        <h3><svg class="pixel-icon pixel-icon--heading" aria-hidden="true"><use href="#pixel-sliders"></use></svg>技術透明度與功能免責聲明</h3>
         <p>為保障使用者知情權與對齊系統真實運作機制，特此說明本 App 之技術原理與限制：</p>
         
         <div class="disclaimer-grid">
           <div class="disc-item">
-            <h4>📊 「流量為裝置端估算」技術說明</h4>
+            <h4>「流量為裝置端估算」技術說明</h4>
             <p>
               本 App 的行動流量統計係透過 Darwin BSD 底層 <code>getifaddrs</code> 介面，讀取本機 <code>pdp_ip*</code> 行動數據通道累計的收發位元組數。這是<strong>裝置端網路傳輸量的估算參考</strong>：無法辨識實際使用的是哪張 eSIM，其他 SIM 的流量、介面重設、免流量優惠與帳單週期都可能造成差異。估算值在 App 回到前景時更新，並非電信商即時帳單；實際剩餘額度請以電信商官方系統為準。
             </p>
           </div>
           
           <div class="disc-item">
-            <h4>📲 iOS 系統安裝流程與權限規範</h4>
+            <h4>iOS 系統安裝流程與權限規範</h4>
             <p>
               受限於 Apple iOS 系統安全機制，第三方 App 無法在背景直接靜默安裝 eSIM，也無法替使用者變更行動數據線路。點擊「觸發安裝」僅會嘗試開啟 Apple 的系統 eSIM 安裝流程；是否顯示流程與能否完成安裝，取決於 iOS 版本、裝置、網路、憑證與供應商。使用者仍須在系統畫面手動確認。
             </p>
@@ -421,18 +450,18 @@
         
         <div class="partner-types">
           <div class="pt-card">
-            <h4>💼 電信商與網卡發行商</h4>
+            <h4>電信商與網卡發行商</h4>
             <p>可洽談標準 LPA QR Code 相容性資訊、品牌曝光與專屬優惠等合作方式。</p>
           </div>
           <div class="pt-card">
-            <h4>🤝 旅遊與平台合作夥伴</h4>
+            <h4>旅遊與平台合作夥伴</h4>
             <p>旅遊平台導流、聯合品牌推廣活動、多元商務專案提案。</p>
           </div>
         </div>
       </div>
       
       <div class="partner-form-box">
-        <h3>🤝 商業合作洽詢</h3>
+        <h3>商業合作洽詢</h3>
         <p>填寫下方表單或直接寄信至官方信箱，我們會在可行範圍內盡快回覆。</p>
         
         <form id="partner-form">
@@ -568,7 +597,7 @@
         <ul>
           <li><a href="#features">產品特色</a></li>
           <li><a href="#disclaimer">流量估算說明</a></li>
-          <li><a href="assets/eSIMManager_1.5_User_Manual.pdf" target="_blank">1.5 操作手冊 (PDF)</a></li>
+          <li><a href="assets/v1_6/eSIMManager_1.6_User_Manual.pdf" target="_blank">1.6 操作手冊 (PDF)</a></li>
           <li><a href="assets/demo_simulation_qr.png" target="_blank">示範演練 QR Code</a></li>
         </ul>
       </div>
@@ -608,6 +637,8 @@
     })(document, "script", "https://affiliate.klook.com/widget/fetch-iframe-init.js");
   </script>
   <script type="text/javascript" src="https://kkpartners.kkday.com/iframe.init.1.0.js"></script>
-  <script src="main.js?v=20260825-journey-scroll-hint"></script>
+  <script src="site-translations.js?v=20260826-l10n-fix"></script>
+  <script src="site-i18n.js?v=20260826-l10n-fix"></script>
+  <script src="main.js?v=20260826-tabi-16-staged"></script>
 </body>
 </html>

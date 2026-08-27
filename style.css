@@ -1,16 +1,23 @@
 :root {
-  --primary: #0a658a;
-  --primary-hover: #085372;
-  --primary-light: #e0f2fe;
-  --accent: #0284c7;
-  --text-main: #0f172a;
-  --text-muted: #475569;
-  --text-light: #64748b;
-  --bg-main: #ffffff;
-  --bg-subtle: #f8fafc;
+  /* eSIMManager 1.6 — Tabi palette. */
+  --ivory: #fbf8f0;
+  --sky-blue: #e6f0f4;
+  --mint: #e3f1ea;
+  --deep-teal: #0e5c5c;
+  --warm-coral: #e8704a;
+  --ink: #2b3a3a;
+  --primary: var(--deep-teal);
+  --primary-hover: #0a4c4c;
+  --primary-light: var(--mint);
+  --accent: #3da09e;
+  --text-main: var(--ink);
+  --text-muted: #526666;
+  --text-light: #748383;
+  --bg-main: var(--ivory);
+  --bg-subtle: var(--sky-blue);
   --bg-card: #ffffff;
-  --border: #e2e8f0;
-  --border-focus: #38bdf8;
+  --border: #d5e2df;
+  --border-focus: var(--accent);
   --radius-sm: 8px;
   --radius-md: 14px;
   --radius-lg: 22px;
@@ -18,7 +25,7 @@
   --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
   --shadow-md: 0 4px 14px rgba(0,0,0,0.06);
   --shadow-lg: 0 10px 25px rgba(0,0,0,0.08);
-  --shadow-float: 0 20px 40px rgba(10,101,138,0.12);
+  --shadow-float: 0 20px 40px rgba(14, 92, 92, 0.14);
   --container-max: 1160px;
 }
 
@@ -103,6 +110,43 @@ a:hover {
 
 .nav-links a:hover {
   color: var(--primary);
+}
+
+.language-switcher {
+  display: flex;
+  align-items: center;
+}
+
+.language-switcher select {
+  min-height: 36px;
+  max-width: 118px;
+  padding: 0 27px 0 11px;
+  color: var(--ink);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 650;
+  line-height: 1;
+  background: var(--sky-blue);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.language-switcher select:focus-visible {
+  outline: 2px solid var(--deep-teal);
+  outline-offset: 2px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .btn {
@@ -246,6 +290,44 @@ a:hover {
   width: 28px;
   height: 28px;
   fill: currentColor;
+}
+
+.android-coming-soon {
+  display: inline-flex;
+  align-items: center;
+  min-height: 52px;
+  padding: 8px 16px;
+  gap: 10px;
+  color: var(--ink);
+  background: var(--sky-blue);
+  border: 1px dashed #a9c5c4;
+  border-radius: 12px;
+  line-height: 1.2;
+}
+
+.android-coming-soon-dot {
+  width: 9px;
+  height: 9px;
+  flex: 0 0 auto;
+  border-radius: 2px;
+  background: var(--deep-teal);
+  box-shadow: 4px 0 0 rgba(14, 92, 92, 0.3);
+}
+
+.android-coming-soon strong,
+.android-coming-soon small {
+  display: block;
+}
+
+.android-coming-soon strong {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.android-coming-soon small {
+  margin-top: 3px;
+  color: var(--text-muted);
+  font-size: 11px;
 }
 
 .badge-text {
@@ -1484,6 +1566,16 @@ a:hover {
   display: none;
 }
 
+.adsense-label {
+  display: block;
+  margin: 0 0 6px;
+  color: var(--text-light);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-align: center;
+}
+
 @media (min-width: 1680px) {
   .adsense-rail {
     display: block;
@@ -1491,7 +1583,7 @@ a:hover {
     top: clamp(104px, 18vh, 190px);
     z-index: 20;
     width: 160px;
-    height: 600px;
+    height: 622px;
     opacity: 0;
     pointer-events: none;
     transition: opacity 180ms ease;
@@ -1589,4 +1681,396 @@ a:hover {
   .official-platform-card {
     flex-basis: min(320px, calc(100vw - 52px));
   }
+}
+
+/* -------------------------------------------------------------------------
+   1.6 Tabi visual system — staged locally until the 1.6 App Store release.
+   The palette uses ivory, sky blue, mint, deep teal, warm coral,
+   and ink. Pixel elements are intentionally small decorative wayfinding,
+   never a body typeface or a dominant illustration.
+   ------------------------------------------------------------------------- */
+
+html {
+  background: var(--bg-main);
+}
+
+body {
+  background-color: var(--bg-main);
+  background-image:
+    linear-gradient(rgba(14, 92, 92, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(14, 92, 92, 0.025) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.pixel-sprite {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.pixel-icon {
+  display: inline-block;
+  flex: 0 0 auto;
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+  shape-rendering: crispEdges;
+  vertical-align: -0.13em;
+}
+
+.hero-pixel-scene {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  min-height: 31px;
+  margin-bottom: 10px;
+  color: var(--deep-teal);
+}
+
+.pixel-icon--hero { width: 32px; height: 27px; }
+.pixel-icon--cloud { width: 26px; height: 13px; color: var(--text-light); opacity: 0.64; }
+
+.pixel-icon--trust {
+  width: 16px;
+  height: 16px;
+  color: var(--deep-teal);
+}
+
+.pixel-icon--value {
+  width: 27px;
+  height: 27px;
+  color: var(--deep-teal);
+}
+
+.pixel-icon--pill {
+  width: 13px;
+  height: 13px;
+  margin-right: 5px;
+}
+
+.pixel-icon--heading {
+  width: 21px;
+  height: 21px;
+  margin-right: 2px;
+}
+
+.pixel-icon--button { width: 17px; height: 14px; }
+.pixel-icon--language { width: 24px; height: 21px; margin-right: 8px; vertical-align: -0.18em; }
+
+.site-header {
+  background: rgba(251, 248, 240, 0.9);
+  border-bottom-color: var(--border);
+}
+
+.brand,
+.hero h1,
+.sec-head h2,
+.value-card h3,
+.tab-text h3,
+.official-platform-head h3,
+.disc-item h4,
+.pt-card h4,
+.partner-form-box h3,
+.faq-question {
+  color: var(--text-main);
+}
+
+.nav-links a { color: var(--text-muted); }
+.nav-links a:hover { color: var(--primary); }
+
+.btn-primary {
+  background: var(--deep-teal);
+  box-shadow: 0 6px 16px rgba(14, 92, 92, 0.22);
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+  box-shadow: 0 9px 21px rgba(14, 92, 92, 0.28);
+}
+
+.btn-download {
+  background: var(--deep-teal);
+  box-shadow: 0 5px 14px rgba(14, 92, 92, 0.2);
+}
+
+.btn-download:hover { background: var(--primary-hover); }
+
+.btn-secondary {
+  background: var(--sky-blue);
+  color: var(--ink);
+  border-color: var(--border);
+}
+
+.btn-secondary:hover { background: var(--mint); }
+
+.hero {
+  position: relative;
+  background:
+    radial-gradient(circle at 84% 14%, rgba(227, 241, 234, 0.95) 0 9%, transparent 30%),
+    radial-gradient(circle at 18% 7%, rgba(230, 240, 244, 0.95) 0 13%, transparent 34%),
+    var(--ivory);
+}
+
+.hero::after {
+  position: absolute;
+  right: 6vw;
+  bottom: 8%;
+  width: 82px;
+  height: 58px;
+  opacity: 0.34;
+  background:
+    linear-gradient(var(--deep-teal), var(--deep-teal)) 0 26px / 14px 8px no-repeat,
+    linear-gradient(var(--deep-teal), var(--deep-teal)) 12px 18px / 14px 24px no-repeat,
+    linear-gradient(var(--deep-teal), var(--deep-teal)) 25px 10px / 14px 40px no-repeat,
+    linear-gradient(var(--deep-teal), var(--deep-teal)) 39px 2px / 14px 56px no-repeat,
+    linear-gradient(var(--deep-teal), var(--deep-teal)) 56px 20px / 18px 10px no-repeat;
+  content: "";
+  pointer-events: none;
+}
+
+.hero-grid,
+.hero-content,
+.hero-visual { position: relative; z-index: 1; }
+
+.hero-badge {
+  background: var(--mint);
+  color: var(--deep-teal);
+  border-color: #c9e2d8;
+}
+
+.hero h1 { color: var(--ink); }
+.hero-sub { color: var(--text-muted); }
+
+.hero-trust span { gap: 8px; }
+
+.phone-mockup {
+  border-color: var(--ink);
+  background: var(--ink);
+  box-shadow: 0 22px 42px rgba(14, 92, 92, 0.18);
+}
+
+.float-card {
+  background: rgba(255, 255, 255, 0.92);
+  border-color: #cfe1dc;
+}
+
+.values-sec,
+.faq-sec { background: var(--sky-blue); }
+
+.predeparture-sec {
+  background: linear-gradient(135deg, var(--sky-blue), var(--ivory) 58%, var(--mint));
+  border-top-color: #cfe2df;
+}
+
+.sec-pill,
+.val-icon {
+  background: var(--mint);
+  color: var(--deep-teal);
+}
+
+.value-card,
+.faq-item,
+.partner-form-box,
+.official-platform-head,
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background: var(--bg-card);
+  border-color: var(--border);
+}
+
+.value-card:hover { box-shadow: 0 12px 26px rgba(14, 92, 92, 0.12); }
+
+.tab-btn,
+.tab-content,
+.official-platform-card,
+.official-ad-slot,
+.pt-card {
+  background: var(--sky-blue);
+  border-color: var(--border);
+}
+
+.tab-btn.active,
+.tab-btn:hover {
+  background: var(--deep-teal);
+  border-color: var(--deep-teal);
+}
+
+.tab-image img { border-color: #cfe1dc; }
+
+.journey-panel {
+  border-color: #cfe1dc;
+  box-shadow: 0 12px 28px rgba(14, 92, 92, 0.12);
+}
+
+.journey-step-arrow,
+.journey-scroll-control {
+  background: var(--mint);
+  color: var(--deep-teal);
+  border-color: #c9e2d8;
+  box-shadow: 0 5px 14px rgba(14, 92, 92, 0.12);
+}
+
+.journey-scroll-control:hover {
+  background: var(--sky-blue);
+  border-color: var(--accent);
+  box-shadow: 0 7px 18px rgba(14, 92, 92, 0.16);
+}
+
+.journey-scroll-control:focus-visible { outline-color: rgba(61, 160, 158, 0.45); }
+.journey-app > img { background: var(--sky-blue); }
+
+.predeparture-steps li {
+  background: rgba(255, 255, 255, 0.86);
+  border-color: #cfe1dc;
+}
+
+.predeparture-steps strong { color: var(--ink); }
+.predeparture-note { background: var(--mint); }
+.predeparture-shot img { box-shadow: 0 24px 54px rgba(14, 92, 92, 0.18); }
+
+.language-callout {
+  background: var(--deep-teal);
+}
+
+.language-callout p { color: #dceeea; }
+
+.purchase-sec { background: var(--ivory); }
+
+.priority-shop-card {
+  border-color: rgba(14, 92, 92, 0.25);
+  background: linear-gradient(118deg, var(--deep-teal), #167a78 55%, var(--accent));
+  box-shadow: 0 18px 42px rgba(14, 92, 92, 0.2);
+}
+
+.priority-shop-card:hover { box-shadow: 0 23px 48px rgba(14, 92, 92, 0.28); }
+.priority-shop-badge { color: var(--deep-teal); }
+.priority-shop-action { color: var(--deep-teal); }
+
+.official-platform-head { background: #ffffff; }
+.official-ad-slot { background: var(--sky-blue); }
+
+.airalo-platform-link {
+  display: block;
+  min-height: 286px;
+  overflow: hidden;
+  background: var(--sky-blue);
+}
+
+.airalo-platform-link img {
+  display: block;
+  width: 100%;
+  height: 286px;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 180ms ease;
+}
+
+.airalo-platform-link:hover img { transform: scale(1.025); }
+
+.disclaimer-sec {
+  background: var(--mint);
+  border-color: #c9e2d8;
+}
+
+.disclaimer-box {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: #b9d9cf;
+}
+
+.disclaimer-box h3 { color: var(--deep-teal); }
+
+.cta-sec {
+  background:
+    linear-gradient(135deg, rgba(14, 92, 92, 0.97), rgba(22, 122, 120, 0.94)),
+    var(--deep-teal);
+}
+
+.cta-sec p { color: #dceeea; }
+
+.site-footer {
+  background: var(--ink);
+  color: #b8c8c4;
+}
+
+.footer-col a,
+.footer-about a { color: #b8c8c4 !important; }
+.footer-col a:hover,
+.footer-about a:hover { color: #ffffff !important; }
+.footer-bottom { border-top-color: #425251; }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ivory: #1c211f;
+    --sky-blue: #243434;
+    --mint: #243028;
+    --deep-teal: #3da09e;
+    --warm-coral: #e8815c;
+    --ink: #ede9df;
+    --primary-hover: #58b8b6;
+    --accent: #3da09e;
+    --text-main: #ede9df;
+    --text-muted: #9aa8a8;
+    --text-light: #9aa8a8;
+    --bg-main: #1c211f;
+    --bg-subtle: #243434;
+    --bg-card: #202a27;
+    --border: #2e3835;
+    --border-focus: #3da09e;
+  }
+
+  .site-header { background: rgba(28, 33, 31, 0.9); }
+  .hero { background: radial-gradient(circle at 84% 14%, rgba(36, 48, 40, 0.8), transparent 30%), var(--ivory); }
+  .hero::after { opacity: 0.22; }
+  .hero-badge,
+  .sec-pill,
+  .val-icon,
+  .journey-step-arrow,
+  .journey-scroll-control { color: #d9f4ee; }
+  .float-card,
+  .predeparture-steps li,
+  .disclaimer-box { background: rgba(32, 42, 39, 0.94); }
+  .official-platform-head { background: var(--bg-card); }
+  .journey-popover { background: rgba(32, 42, 39, 0.98); color: var(--text-main); }
+  .priority-shop-card { background: linear-gradient(118deg, #1b5d5b, #2c8885 55%, var(--accent)); }
+  .app-store-badge { background: #121715; }
+  .android-coming-soon {
+    background: #243434;
+    border-color: #3d5754;
+  }
+  .android-coming-soon-dot {
+    background: var(--deep-teal);
+    box-shadow: 4px 0 0 rgba(61, 160, 158, 0.3);
+  }
+
+  .value-card,
+  .official-platform-card,
+  .tab-content,
+  .faq-item,
+  .partner-form-box,
+  .disclaimer-box,
+  .predeparture-steps li,
+  .float-card { box-shadow: none; }
+
+  a:not(.brand):not(.btn):not(.app-store-badge):not(.priority-shop-card):not(.priority-shop-action):not(.platform-wordmark):not(.airalo-platform-link) {
+    text-decoration: underline;
+    text-decoration-color: rgba(61, 160, 158, 0.72);
+    text-underline-offset: 0.18em;
+  }
+
+  .official-ad-slot,
+  .airalo-platform-link {
+    border: 1px solid var(--border);
+  }
+
+  .adsense-rail {
+    padding: 10px 12px 12px;
+    width: 184px;
+    height: 632px;
+    border: 1px solid var(--border);
+    background: #222826;
+  }
+
+  .adsense-label { color: #9aa8a8; }
 }

@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>eSIMManager Official Website - Pre-Departure Setup and Local Management Tools for Travel eSIM</title>
+  <meta name="description" content="eSIMManager 是不綁定單一供應商的 iPhone 與 iPad 旅遊 eSIM 整理工具。自由選擇適合的方案，再以Five steps確認安裝、行動數據、Master Card Roaming Protection與連線。">
+  <meta name="keywords" content="eSIM, eSIM管理, 旅遊網卡, 日本eSIM, 出國上網, 主卡漫遊, Mobile data toggle, eSIM安裝, eSIM備份, eSIM流量估算">
+
+  <!-- Google Analytics 4: website traffic and outbound-link measurement only. -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KJB54JTM44"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-KJB54JTM44');
+  </script>
+
+  <!-- Google AdSense. Ad units are added separately so placement remains deliberate. -->
+  <script async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2607309542240072"
+    crossorigin="anonymous"></script>
+  
+  <!-- OpenGraph / Social Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="eSIMManager - Manage every trip with eSIM of your choice">
+  <meta property="og:description" content="免費、不綁定單一供應商的本機 eSIM 整理工具：集中管理多張卡片，並以Five steps確認旅遊設定。">
+  <meta property="og:image" content="../assets/app_icon.png">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../assets/app_icon.png">
+  <link rel="apple-touch-icon" href="../assets/app_icon.png">
+  
+  <link rel="stylesheet" href="../style.css?v=20260826-tabi-16-staged">
+</head>
+<body>
+
+  <!-- 1.6 Tabi pixel icon sprite. Decorative only; it never represents a
+       scannable QR code, system state, or an advertisement. -->
+  <svg class="pixel-sprite" aria-hidden="true" focusable="false">
+    <symbol id="pixel-airplane" viewBox="0 0 12 10"><path d="M5 0h2v1H5zM5 1h2v1H5zM5 2h2v1H5zM1 3h10v1H1zM0 4h12v1H0zM0 5h12v1H0zM1 6h10v1H1zM5 7h2v1H5zM4 8h4v1H4zM4 9h4v1H4z"/></symbol>
+    <symbol id="pixel-pin" viewBox="0 0 12 12"><path d="M4 0h4v1H4zM3 1h6v1H3zM2 2h8v1H2zM2 3h8v1H2zM2 4h8v1H2zM3 5h6v1H3zM4 6h4v1H4zM4 7h4v1H4zM5 8h2v1H5zM5 9h2v1H5zM5 10h2v1H5zM5 11h2v1H5z"/></symbol>
+    <symbol id="pixel-cloud" viewBox="0 0 12 6"><path d="M4 0h4v1H4zM2 1h8v1H2zM1 2h10v1H1zM0 3h12v1H0zM1 4h10v1H1zM2 5h8v1H2z"/></symbol>
+    <symbol id="pixel-signal" viewBox="0 0 8 7"><path d="M6 1h1v1H6zM4 2h1v1H4zM6 2h1v1H6zM2 3h1v1H2zM4 3h1v1H4zM6 3h1v1H6zM0 4h1v1H0zM2 4h1v1H2zM4 4h1v1H4zM6 4h1v1H6zM0 5h1v1H0zM2 5h1v1H2zM4 5h1v1H4zM6 5h1v1H6zM0 6h1v1H0zM2 6h1v1H2zM4 6h1v1H4zM6 6h1v1H6z"/></symbol>
+    <symbol id="pixel-luggage" viewBox="0 0 10 7"><path d="M2 0h6v1H2zM1 1h2v1H1zM7 1h2v1H7zM0 2h10v1H0zM0 3h10v1H0zM0 4h10v1H0zM0 5h10v1H0zM1 6h8v1H1z"/></symbol>
+    <symbol id="pixel-sliders" viewBox="0 0 7 6"><path d="M0 0h1v1H0zM0 1h7v1H0zM2 2h1v1H2zM2 3h5v1H2zM4 4h1v1H4zM4 5h3v1H4z"/></symbol>
+  </svg>
+
+  <!-- Desktop-only manual AdSense units. They remain visually hidden until Google fills them. -->
+  <aside class="adsense-rail adsense-rail--left" data-adsense-rail aria-hidden="true" aria-label="Advertisement">
+    <span class="adsense-label">Advertised</span>
+    <ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-2607309542240072" data-ad-slot="9787932043"></ins>
+  </aside>
+  <aside class="adsense-rail adsense-rail--right" data-adsense-rail aria-hidden="true" aria-label="Advertisement">
+    <span class="adsense-label">Advertised</span>
+    <ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-2607309542240072" data-ad-slot="9193035679"></ins>
+  </aside>
+
+  <!-- Site Navigation -->
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="#" class="brand">
+        <img src="../assets/app_icon.png" alt="eSIMManager App Icon" class="brand-icon">
+        <span>eSIMManager</span>
+      </a>
+      
+      <ul class="nav-links">
+        <li><a href="#features">Products Capability</a></li>
+        <li><a href="#how-to-use">How to Use</a></li>
+        <li><a href="#buy-esim">Buy eSIM</a></li>
+        <li><a href="#partnership">Business cooperation</a></li>
+        <li><a href="https://apps.apple.com/app/id6800212290" target="_blank" rel="noopener noreferrer" class="btn btn-download"> App Store</a></li>
+        <li class="language-switcher">
+          <label class="sr-only" for="site-language">Site Languages</label>
+          <select id="site-language" aria-label="Site Languages">
+            <option value="zh-TW">Traditional Chinese characters</option>
+            <option value="en" selected>English</option>
+            <option value="zh-CN">SIMPLIFIED CHINESE</option>
+            <option value="ja">Japanese language</option>
+            <option value="ko">한국어</option>
+          </select>
+        </li>
+      </ul>
+      
+      <button class="mobile-menu-btn" aria-label="Toggle Menu">☰</button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="hero-pixel-scene" aria-hidden="true"><svg class="pixel-icon pixel-icon--hero"><use href="#pixel-airplane"></use></svg><svg class="pixel-icon pixel-icon--cloud"><use href="#pixel-cloud"></use></svg></div>
+        <div class="hero-badge">
+          <span>Version 1.6 Officially Launched · Tabi Travel Interface and Three Appearances</span>
+        </div>
+        <h1>Manage every trip with eSIM of your choice</h1>
+        <p class="hero-sub">
+          Not tied to any single eSIM brand. You can compare and choose a plan that fits your budget and trip, then use eSIMManager to organize multiple cards, activation information, and expiration dates in one place. Complete the first 3 confirmations before departure, and 2 activations and connection confirmations after arrival; the actual settings, installation, and usage are still based on the official information of iOS and the supplier.
+        </p>
+        
+        <div class="hero-actions">
+          <a href="https://apps.apple.com/app/id6800212290" target="_blank" rel="noopener noreferrer" class="app-store-badge">
+            <svg viewBox="0 0 170 170">
+              <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.74 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.7-3.08-7.7-7.85-12.02-14.33-6.11-9.14-10.82-19.46-14.13-30.98-3.3-11.51-4.96-22.18-4.96-32.01 0-14.13 3.58-25.79 10.74-34.98 7.17-9.19 16.29-13.88 27.37-14.07 4.58 0 9.8 1.25 15.66 3.75 5.86 2.49 9.53 3.75 11.02 3.75 1.3 0 5.17-1.33 11.6-4 6.43-2.67 11.96-3.86 16.59-3.57 12.84.65 22.84 5.34 30.01 14.07-11.31 6.85-16.86 16.33-16.65 28.43.21 9.57 3.82 17.65 10.82 24.23 7.01 6.58 15.28 10.3 24.81 11.16-2.18 6.53-4.8 12.74-7.86 18.63zM119.22 31.84c0-7.72 2.76-14.86 8.29-21.43 5.53-6.57 12.21-10.41 20.04-11.53.22 1.3.33 2.44.33 3.42 0 7.72-2.88 15.08-8.63 22.08-5.76 7-12.58 10.89-20.47 11.68-.22-1.3-.44-2.71-.44-4.22z"/>
+            </svg>
+            <div class="badge-text">
+              <div class="small">Download on the</div>
+              <div class="big">App Store</div>
+            </div>
+          </a>
+          <div class="android-coming-soon" role="status" aria-label="Coming soon to Android">
+            <span class="android-coming-soon-dot" aria-hidden="true"></span>
+            <span><strong>Coming soon to Android</strong><small>Google Play</small></span>
+          </div>
+          
+          <a href="#how-to-use" class="btn btn-secondary">
+            <svg class="pixel-icon pixel-icon--button" aria-hidden="true"><use href="#pixel-airplane"></use></svg>View How To Use
+          </a>
+        </div>
+        
+        <div class="hero-trust">
+          <span><svg class="pixel-icon pixel-icon--trust" aria-hidden="true"><use href="#pixel-luggage"></use></svg>Local priority · No self-built cloud</span>
+          <span><svg class="pixel-icon pixel-icon--trust" aria-hidden="true"><use href="#pixel-sliders"></use></svg>No signup required</span>
+          <span><svg class="pixel-icon pixel-icon--trust" aria-hidden="true"><use href="#pixel-signal"></use></svg>iOS 17.4+ supported; 17.5+ required for system installation</span>
+        </div>
+      </div>
+      
+      <div class="hero-visual">
+        <div class="float-card float-card-1">
+          <span>🟢 In-App Conditioning · Expiration Countdown</span>
+        </div>
+        <img src="../assets/v1_6/01_tabi_home_light_6.9.png" alt="eSIMManager 1.6 Tabi 亮色主畫面實機截圖" class="phone-mockup">
+        <div class="float-card float-card-2">
+          <span>🔒 Optional Password Encrypted Backup</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Values Section -->
+  <section class="values-sec">
+    <div class="container">
+      <div class="sec-head">
+        <span class="sec-pill">Core Commitments</span>
+        <h2>Choose your plan; manage to eSIMManager</h2>
+        <p>No single supplier, no subscription thresholds, to help you organize dispersed travel eSIM information into a safe departure process.</p>
+      </div>
+      
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="val-icon"><svg class="pixel-icon pixel-icon--value" aria-hidden="true"><use href="#pixel-pin"></use></svg></div>
+          <h3>Freedom to choose suppliers</h3>
+          <p>
+            Whether you get an eSIM from a travel platform, carrier, or other trusted outlet, you can organize the available activation information into an app. Offer prices, inventory, and service content will still be based on the vendor page you select.
+          </p>
+        </div>
+        
+        <div class="value-card">
+          <div class="val-icon"><svg class="pixel-icon pixel-icon--value" aria-hidden="true"><use href="#pixel-luggage"></use></svg></div>
+          <h3>Centralize multiple eSIMs</h3>
+          <p>
+            Keep the QR Code, LPA activation information, where applicable, expiration date, and memo in one place. Data is stored locally on your device; you can back up, share, or mark a trip as ended as needed.
+          </p>
+        </div>
+        
+        <div class="value-card">
+          <div class="val-icon"><svg class="pixel-icon pixel-icon--value" aria-hidden="true"><use href="#pixel-sliders"></use></svg></div>
+          <h3>Help set up with peace of mind-all for free</h3>
+          <p>
+            There is no in-app purchase or maximum number of cards, and there are installation guides, pre-departure confirmations, expiration countdowns, and device traffic estimates. Your iPhone's mobile data and roaming settings still need to be confirmed in the system.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Features Showcase -->
+  <section class="features-sec" id="features">
+    <div class="container">
+      <div class="sec-head">
+        <span class="sec-pill">Functional diagram</span>
+        <h2>Overview of real-world functions</h2>
+        <p>Explore the main workflows and usage limitations through screens from the released app.</p>
+      </div>
+      
+      <div class="tab-nav">
+        <button class="tab-btn active" data-tab="tab-list">Pre-departure settings</button>
+        <button class="tab-btn" data-tab="tab-import">Multiple import methods</button>
+        <button class="tab-btn" data-tab="tab-install">System Installation Guide</button>
+        <button class="tab-btn" data-tab="tab-detail">Master Card Roaming Protection</button>
+        <button class="tab-btn" data-tab="tab-p2p">Five Interface Languages</button>
+        <button class="tab-btn" data-tab="tab-backup">Encrypted Backup Restore</button>
+      </div>
+      
+      <!-- Tab 1: List -->
+      <div class="tab-content active" id="tab-list">
+        <div class="tab-text">
+          <h3>Pre-departure settings from the homepage</h3>
+          <p>After creating a travel eSIM, the homepage provides a pre-departure portal for users to confirm important items in order.</p>
+          <ul class="tab-bullets">
+            <li><span>Five steps</span>: Installation, Cellular Data, Master Card Protection, Roaming and Connectivity.</li>
+            <li><span>Primary Card Protection</span>: Remind to turn off the main card data roaming and mobile data switching.</li>
+            <li><span>Set Path</span>: Use the navigation path in iPhone Settings to help newbies check.</li>
+          </ul>
+        </div>
+        <div class="tab-image">
+          <img src="../assets/v1_6/03_tabi_predeparture_light_6.9.png" alt="Tabi Pre-departure settings精靈">
+        </div>
+      </div>
+      
+      <!-- Tab 2: Import -->
+      <div class="tab-content" id="tab-import">
+        <div class="tab-text">
+          <h3>Camera, Album, PDF and Manual 4-in-1 Import</h3>
+          <p>Supports import of common LPA QR codes, images, PDFs, and full LPA strings; recognition depends on certificate format, document content, and image quality.</p>
+          <ul class="tab-bullets">
+            <li><span>Camera Scanning</span>: Aim for automatic parsing of paper or on-screen QR codes.</li>
+            <li><span>Album recognition</span>: Read the QR code from the photo via the Apple Vision framework.</li>
+            <li><span>PDF Import</span>: Directly select the PDF certificate document sent by the supplier.</li>
+            <li><span>Enter manually</span>: Paste the full LPA activation code provided by the supplier.</li>
+          </ul>
+        </div>
+        <div class="tab-image">
+          <img src="../assets/sop_step2_import_sheet.png" alt="匯入方式選單">
+        </div>
+      </div>
+      
+      <!-- Tab 3: Install -->
+      <div class="tab-content" id="tab-install">
+        <div class="tab-text">
+          <h3>Open the iOS eSIM installation process</h3>
+          <p>When the information is complete and device support is enabled, you can try to open Apple's system eSIM installation process; it must still be confirmed by the user on the system screen, and the installation results are based on iOS and the vendor.</p>
+          <ul class="tab-bullets">
+            <li><span>Installation flow guide</span>: Click the button to display the iOS eSIM installation screen.</li>
+            <li><span>Confirm manually</span>: The app can't silently install, enable, or change your iPhone's mobile settings.</li>
+            <li><span>Conditions of use</span>: Requires iOS 17.5+, eSIM-enabled iPhone, active information, and internet connection.</li>
+          </ul>
+        </div>
+        <div class="tab-image">
+          <img src="../assets/v1_5_travel_setup_guide_6.9.png" alt="系統安裝與Confirm manually引導">
+        </div>
+      </div>
+      
+      <!-- Tab 4: Detail -->
+      <div class="tab-content" id="tab-detail">
+        <div class="tab-text">
+          <h3>Primary card protection to avoid misuse of roaming data</h3>
+          <p>Make sure your primary card's “Data Roaming” and “Allow Mobile Data Switching” are turned off before you leave the country, reducing the risk of high roaming charges.</p>
+          <ul class="tab-bullets">
+            <li><span>Master Card Data Roaming</span>: Confirm deactivation in Settings > Mobile Services > Master Card.</li>
+            <li><span>Mobile data toggle</span>: Confirm to turn off in Settings > Mobile Services > Mobile Data.</li>
+            <li><span>Will not change automatically</span>: The app only provides onboarding and confirmation, and the setup is still done by the user on the iPhone.</li>
+          </ul>
+        </div>
+        <div class="tab-image">
+          <img src="../assets/v1_5_travel_setup_guide_6.9.png" alt="Primary Card Protection設定引導">
+        </div>
+      </div>
+      
+      <!-- Tab 5: P2P Share -->
+      <div class="tab-content" id="tab-p2p">
+        <div class="tab-text">
+          <h3>Choose a language you're familiar with in the app</h3>
+          <p>You can switch the language of the app interface directly during your trip, or choose to follow the language of the iPhone system.</p>
+          <ul class="tab-bullets">
+            <li><span>Traditional Chinese/Simplified Chinese</span>: Supports frequently used interfaces for Taiwanese and Chinese-speaking travelers.</li>
+            <li><span>English/Japanese/</span>: Supports language selection in key travel markets.</li>
+            <li><span>Follow the system</span>: Displays automatically according to your iPhone's app language settings.</li>
+          </ul>
+        </div>
+        <div class="tab-image">
+          <img src="../assets/v1_6/05_settings_appearance_light_6.9.png" alt="App 外觀與語言設定">
+        </div>
+      </div>
+      
+      <!-- Tab 6: Backup -->
+      <div class="tab-content" id="tab-backup">
+        <div class="tab-text">
+          <h3>Switching Phone Backup and Restore</h3>
+          <p>You can export a JSON backup and import card records on a new device; when you set a password, the backup is encrypted with AES-GCM.</p>
+          <ul class="tab-bullets">
+            <li><span>🔐 Optional password encryption</span>: After setting the password, it is encrypted with AES-256-GCM; backups without a password are not encrypted, please keep it properly.</li>
+            <li><span>📁 Flexible storage</span>: Can be sent in the File app, iCloud Drive, or AirDrop.</li>
+            <li><span>Sensitive information exclusion</span>: The activation code is excluded by default; such backups restore the card history but cannot be used directly for system installation.</li>
+          </ul>
+        </div>
+        <div class="tab-image">
+          <img src="../assets/sop_step8_settings_tab.png" alt="設定與備份分頁">
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- How to use -->
+  <section class="predeparture-sec" id="how-to-use">
+    <div class="container">
+      <div class="sec-head">
+        <span class="sec-pill">How to Use</span>
+        <h2>From finding a plan to ending your trip with peace of mind</h2>
+        <p>There are six steps to purchasing, installing, activating, dosing, and organizing your travel eSIM. You can swipe left and right to see each step; step 4 and 5, tap the phone on the character's hand to see the real app operation screen.</p>
+      </div>
+
+      <div class="journey-storyboard" id="journey-storyboard" aria-label="旅行 eSIM 使用流程">
+        <article class="journey-panel journey-purchase">
+          <img src="../assets/v1_5_journey_step1_purchase.png" alt="女性旅人在出發前從旅遊平台尋找 eSIM 方案的插圖" loading="lazy">
+          <div class="journey-overlay partner-overlay">
+            <span class="journey-number">1</span>
+            <strong>Find the right eSIM plan</strong>
+            <div class="partner-logo-row" aria-label="可前往搜尋的平台">
+              <a class="platform-wordmark klook" href="https://www.klook.com/zh-TW/search/result/?query=eSIM&amp;aid=130752" target="_blank" rel="noopener noreferrer sponsored">Klook</a>
+              <a class="platform-wordmark kkday" href="https://www.kkday.com/zh-tw/product/productlist?keyword=eSIM&amp;cid=eSIMManager-26333" target="_blank" rel="noopener noreferrer sponsored">KKday</a>
+              <a class="platform-wordmark airalo" href="https://www.airalo.com/zh-hant/?referral=TSUNGY3797" target="_blank" rel="noopener noreferrer sponsored">Airalo</a>
+              <a class="platform-wordmark trip" href="https://www.trip.com/sale/w/10229/esim.html?allianceid=9973993&amp;sid=987654" target="_blank" rel="noopener noreferrer sponsored">Trip.com</a>
+            </div>
+          </div>
+        </article>
+        <span class="journey-step-arrow" aria-hidden="true">→</span>
+
+        <article class="journey-panel journey-illustration journey-scan">
+          <img src="../assets/v1_5_journey_step2_scan.png" alt="女性旅人用 eSIMManager 掃描供應商 QR Code 的插圖" loading="lazy">
+          <div class="journey-overlay"><span class="journey-number">2</span><strong>Scan import after receiving QR code</strong><span>Use your app camera to add activation info to your card history</span></div>
+        </article>
+        <span class="journey-step-arrow" aria-hidden="true">→</span>
+
+        <article class="journey-panel journey-app journey-install">
+          <img src="../assets/v1_5_install_confirmation_6.9.png" alt="eSIMManager 確認開啟 iOS eSIM 安裝流程的實機畫面" loading="lazy">
+          <div class="journey-overlay"><span class="journey-number">3</span><strong>Once confirmed, the iOS installation process will be triggered</strong><span>System installation still needs to be done manually on the iPhone setup screen</span></div>
+        </article>
+        <span class="journey-step-arrow" aria-hidden="true">→</span>
+
+        <article class="journey-panel journey-illustration journey-arrival">
+          <img src="../assets/v1_5_journey_step4_arrival.png" alt="女性旅人抵達目的地後準備啟用旅遊 eSIM 的插圖" loading="lazy">
+          <button class="journey-phone-hotspot" type="button" aria-label="查看抵達後的真實 App 操作畫面">
+            <span class="hotspot-pulse" aria-hidden="true">＋</span>
+            <span class="journey-popover"><img src="../assets/v1_5_travel_setup_guide_6.9.png" alt="Pre-departure settings精靈實機畫面"><b>Upon arrival: activation and confirmation of connection as per supplier instructions</b></span>
+          </button>
+          <div class="journey-overlay"><span class="journey-number">4</span><strong>When you arrive, follow the instructions to activate</strong><span>Configure data roaming or enable services based on plan rules</span></div>
+        </article>
+        <span class="journey-step-arrow" aria-hidden="true">→</span>
+
+        <article class="journey-panel journey-illustration journey-usage">
+          <img src="../assets/v1_5_journey_step5_usage.png" alt="女性旅人旅行中查看行動流量估算的插圖" loading="lazy">
+          <button class="journey-phone-hotspot" type="button" aria-label="查看旅行中的流量估算實機畫面">
+            <span class="hotspot-pulse" aria-hidden="true">＋</span>
+            <span class="journey-popover"><img src="../assets/v1_5_usage_estimate_6.9.png" alt="行動流量估算實機畫面"><b>While traveling: View local traffic estimates, actual billings are based on vendor</b></span>
+          </button>
+          <div class="journey-overlay"><span class="journey-number">5</span><strong>See traffic estimates while traveling</strong><span>Open the card if in doubt to check the progress of the local estimation</span></div>
+        </article>
+        <span class="journey-step-arrow" aria-hidden="true">→</span>
+
+        <article class="journey-panel journey-app journey-completed">
+          <img src="../assets/v1_5_trip_completed_6.9.png" alt="eSIMManager 顯示行程已結束的實機畫面" loading="lazy">
+          <div class="journey-overlay"><span class="journey-number">6</span><strong>Trip ended, indicating that the trip has ended</strong><span>Keep records for future reference and organization</span></div>
+        </article>
+      </div>
+      <div class="journey-carousel-hint">
+        <button class="journey-scroll-control" type="button" aria-controls="journey-storyboard" aria-label="查看下一個 eSIM 使用步驟">
+          <span class="journey-scroll-icon" aria-hidden="true">↔</span>
+          <span>Swipe left and right to see</span>
+        </button>
+      </div>
+
+      <div class="predeparture-grid">
+        <div class="predeparture-copy">
+          <ol class="predeparture-steps">
+            <li><strong>Pre-Departure: Installation and Master Card Protection Complete</strong><span>Confirm that the travel eSIM is installed and selected as mobile data, and close the main card "Data roaming" and "Allow mobile data switching".</span></li>
+            <li><strong>Upon arrival: Enabled by supplier rules</strong><span>Some programs must be activated upon arrival, or data roaming for travel eSIM must be turned on.</span></li>
+            <li><strong>On trip: Confirm connection to start local estimation</strong><span>Traffic figures are device-side estimates, not real-time carrier balances.</span></li>
+          </ol>
+          <div class="predeparture-note">Important: eSIMManager does not make changes to the iPhone's mobile data lines, roaming settings, or carrier account balances; each step is confirmed by the user according to the instructions of the iPhone and the supplier.</div>
+        </div>
+        <figure class="predeparture-shot">
+          <img src="../assets/v1_5_travel_setup_guide_6.9.png" alt="eSIMManager Pre-departure settings精靈實機畫面" loading="lazy">
+          <figcaption>Real-world app screens: pre-departure, post-arrival, and on-trip confirmations.</figcaption>
+        </figure>
+      </div>
+
+      <div class="language-callout">
+        <div><svg class="pixel-icon pixel-icon--language" aria-hidden="true"><use href="#pixel-sliders"></use></svg><strong>Five Interface Languages</strong></div>
+        <p>You can switch between Traditional Chinese, Simplified Chinese, English, Japanese, Japanese, or choose to follow the iPhone system language in the app.</p>
+        <img src="../assets/v1_5_language_settings_6.9.png" alt="eSIMManager App 語言設定畫面" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- eSIM Purchase Links -->
+  <section class="purchase-sec" id="buy-esim">
+    <div class="container">
+      <div class="sec-head">
+        <span class="sec-pill"><svg class="pixel-icon pixel-icon--pill" aria-hidden="true"><use href="#pixel-pin"></use></svg>Buy an eSIM/Travel Card</span>
+        <h2>You choose your plan, we'll sort it out for you</h2>
+      <p>Get QR code or LPA activation information, then use eSIMManager to organize and guide your settings. The following are preferred recommendation stores and entrances to Klook, KKday, Airalo, Trip.com and other platforms; actual plans, prices, inventory, and whether eSIM is supported are subject to each platform page.</p>
+      </div>
+      <a class="priority-shop-card" href="https://shopee.tw/mannt.chang" target="_blank" rel="noopener noreferrer sponsored" aria-label="前往Flying Show Shop選購 eSIM 與旅遊上網卡">
+        <div class="priority-shop-copy">
+          <span class="priority-shop-badge">eSIM Preferred Purchase Recommendation</span>
+          <span class="priority-shop-eyebrow">Shopee shrimp skin shopping</span>
+          <h3>Flying Show Shop</h3>
+          <p>Browse eSIM and travel card plans; confirm your destination, days of use, how to activate, and item descriptions before placing your order.</p>
+        </div>
+        <span class="priority-shop-action">GO TO store <b>↗</b></span>
+      </a>
+      <div class="official-platform-grid">
+        <article class="official-platform-card"><div class="official-platform-head"><div><span class="official-kicker">Official Banner</span><h3>Klook</h3></div><a href="https://www.klook.com/zh-TW/search/result/?query=eSIM&amp;aid=130752" target="_blank" rel="noopener noreferrer sponsored">Search eSIM ↗</a></div><div class="official-ad-slot official-ad-300"><ins class="klk-aff-widget" data-wid="130752" data-bgtype="Shinkansen" data-adid="1395047" data-lang="zh-TW" data-prod="banner" data-width="300" data-height="250"><a href="//www.klook.com/?aid=">Klook.com</a></ins></div></article>
+        <article class="official-platform-card"><div class="official-platform-head"><div><span class="official-kicker">Official Dynamic eSIM Items</span><h3>KKday</h3></div><a href="https://www.kkday.com/zh-tw/product/productlist?keyword=eSIM&amp;cid=eSIMManager-26333" target="_blank" rel="noopener noreferrer sponsored">See more eSIMs ↗</a></div><div class="official-ad-slot official-ad-300 kkday-ad-slot"><ins class="kkday-product-media" data-oid="11539" data-amount="1" data-origin="https://kkpartners.kkday.com"></ins></div></article>
+        <article class="official-platform-card official-platform-card--airalo"><div class="official-platform-head"><div><span class="official-kicker">Destination eSIM Plan</span><h3>Airalo</h3></div><a href="https://www.airalo.com/zh-hant/?referral=TSUNGY3797" target="_blank" rel="noopener noreferrer sponsored">Explore eSIM ↗</a></div><a class="airalo-platform-link" href="https://www.airalo.com/zh-hant/?referral=TSUNGY3797" target="_blank" rel="noopener noreferrer sponsored" aria-label="前往 Airalo 瀏覽 eSIM 方案"><img src="../assets/platform-airalo-banner.png" alt="Airalo eSIM 方案入口"></a></article>
+        <article class="official-platform-card"><div class="official-platform-head"><div><span class="official-kicker">Official Banner</span><h3>Trip.com</h3></div><a href="https://www.trip.com/sale/w/10229/esim.html?allianceid=9973993&amp;sid=987654" target="_blank" rel="noopener noreferrer sponsored">Go to the eSIM section ↗</a></div><div class="official-ad-slot official-ad-300"><iframe title="Trip.com 官方旅遊Advertised" src="https://tw.trip.com/partners/ad/SB19383261?Allianceid=9973993&amp;SID=328104141&amp;trip_sub1=" width="300" height="250" frameborder="0" scrolling="no"></iframe></div></article>
+      </div>
+      <p class="purchase-note">The above are the official advertisements or referral links provided by external stores and platforms; some of the links may contain referral/profit sharing parameters. The actual price, promotion and service content are subject to the pages of each platform. After clicking, you will leave the eSIMManager website, and the transactions, goods and services are provided by each store or platform in accordance with its terms.</p>
+    </div>
+  </section>
+
+  <!-- Technical Disclaimer Section -->
+  <section class="disclaimer-sec" id="disclaimer">
+    <div class="container">
+      <div class="disclaimer-box">
+        <h3><svg class="pixel-icon pixel-icon--heading" aria-hidden="true"><use href="#pixel-sliders"></use></svg>Technical Transparency and Functional Disclaimer</h3>
+        <p>In order to protect the user's right to know and to align the system with how it really works, we would like to explain the technical rationale and limitations of this app:</p>
+        
+        <div class="disclaimer-grid">
+          <div class="disc-item">
+            <h4>"Traffic is device-side estimation" Technical Instructions</h4>
+            <p>
+              The mobile traffic statistics of this app are collected through the Darwin BSD underlying <code>getifaddrs</code> interface, reading local <code>pdp_ip*</code> The cumulative number of transceiver bytes in the mobile data channel. This is<strong>Device-side network traffic estimation reference</strong>: Unable to identify which eSIM is actually being used, traffic from other SIMs, interface resets, data waiver offers, and billing cycles can all cause discrepancies. Estimates are updated when the app returns to the outlook, not the carrier's live bill; actual remaining balance is subject to the carrier's official system.
+            </p>
+          </div>
+          
+          <div class="disc-item">
+            <h4>iOS System Installation Process and Permission Regulations</h4>
+            <p>
+              Due to Apple's iOS system security, third-party apps cannot silently install eSIM directly in the background, nor can they change mobile data lines for users. Clicking “Trigger Installation” will only attempt to open Apple's system eSIM installation process; the process and ability to complete the installation will depend on the iOS version, device, network, credentials, and vendor. The user still needs to manually confirm on the system screen.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Business Partnership Section -->
+  <section class="partner-sec" id="partnership">
+    <div class="container partner-grid">
+      <div class="partner-info">
+        <span class="sec-pill">Business cooperation</span>
+        <h2>Working together to create a better travel network card ecosystem</h2>
+        <p>
+          eSIMManager focuses on providing pure, high-quality local management tools. We welcome<strong>Carriers, eSIM publishers, travel platforms, and partners</strong>Negotiate appropriate leads, brand exposure, and content collaboration.
+        </p>
+        
+        <div class="partner-types">
+          <div class="pt-card">
+            <h4>Carriers and network card issuers</h4>
+            <p>Negotiate ways to collaborate on standard LPA QR Code compatibility information, brand exposure, and exclusive offers.</p>
+          </div>
+          <div class="pt-card">
+            <h4>Travel & Platform Partners</h4>
+            <p>Travel platform leads, co-branding campaigns, and diverse business project proposals.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="partner-form-box">
+        <h3>Business Cooperation Inquiries</h3>
+        <p>Fill out the form below or send it directly to the official mailbox and we'll get back to you as soon as we can.</p>
+        
+        <form id="partner-form">
+          <div class="form-group">
+            <label for="partner-type">Type of cooperation</label>
+            <select id="partner-type" required>
+              <option value="Carrier/network card issuer cooperation">Carrier/network card issuer cooperation</option>
+              <option value="Travel Platform/OTA Leadership Partnership (Klook/KKday/Trip.com)">Travel Platform/OTA Leadership Partnership</option>
+              <option value="Brand Marketing/Marketing Collaboration">Brand Marketing/Marketing Collaboration</option>
+              <option value="Media Coverage/PR Inquiries">Media Coverage/PR Inquiries</option>
+              <option value="Other business propositions">Other business propositions</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="partner-name">Unit Name/Contact</label>
+            <input type="text" id="partner-name" placeholder="例如：公司名稱 / 聯絡人姓名" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="partner-email">Contact Email</label>
+            <input type="email" id="partner-email" placeholder="name@company.com" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="partner-details">Brief description of the cooperation proposal</label>
+            <textarea id="partner-details" rows="3" placeholder="請簡述您的合作構想與需求..." required></textarea>
+          </div>
+          
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Submit a proposal for a partnership inquiry</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-sec" id="faq">
+    <div class="container">
+      <div class="sec-head">
+        <span class="sec-pill">Asked Questions</span>
+        <h2>Have questions about using? Take a look here</h2>
+      </div>
+      
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Q1: Do I have to buy eSIM with eSIMManager?</span>
+            <span class="faq-icon">▼</span>
+          </button>
+          <div class="faq-answer">
+            No. eSIMManager is a management and configuration facilitator that does not issue eSIM and does not restrict which vendor you buy from. As long as the supplier provides valid QR code or LPA activation information, you can organize, install, and configure according to the app and the supplier's instructions. External referral links on the website may include revenue parameters, but transactions, prices, inventory and after-sales service are provided by the supplier.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Q2: Why hasn't it been installed automatically by clicking on Trigger Install?</span>
+            <span class="faq-icon">▼</span>
+          </button>
+          <div class="faq-answer">
+            Due to Apple's iOS system security framework limitations, any third-party apps cannot install eSIM directly in the background. Clicking will only attempt to open Apple's system eSIM installation process; please confirm manually on the iOS system screen. If the process does not occur or the installation fails, please confirm iOS 17.5+, network, active activation information and provider support status, or use the QR code/official app provided by the provider.
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Q3: What if I can't scan the QR Code prompt?</span>
+            <span class="faq-icon">▼</span>
+          </button>
+          <div class="faq-answer">
+            Please ensure that the QR code or document contains valid LPA activation information (common content is <code>LPA:1$</code> Beginning). Image quality, supplier format, or protected PDF may affect identification; use Manual Input instead to paste the complete LPA string provided by the supplier, or request a standard certificate from the supplier.
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Q4: Is the difference between the local traffic estimation and the carrier bill normal?</span>
+            <span class="faq-icon">▼</span>
+          </button>
+          <div class="faq-answer">
+            Normal. This function counts the throughput of the iPhone's mobile data interface, and it is not possible to identify which eSIM is actually used; the amount of other SIMs, interface resets, traffic-free offers, and different billing cycles may cause a gap. Estimates are only updated when the app returns to the outlook and are for travel reference only; the exact balance is subject to the carrier's official system.
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Q5: Will my card history be lost when I replace my phone?</span>
+            <span class="faq-icon">▼</span>
+          </button>
+          <div class="faq-answer">
+            Cards are not automatically uploaded to the cloud in this app. JSON can be exported before switching over to Configure ➔ Data Backup; passwords are encrypted. The default backup excludes the activation code, so you can restore the card history, but it may not be possible to reinstall eSIM directly; choose whether to include sensitive information and save the file properly if necessary.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-sec">
+    <div class="container">
+      <h2>Choose your plan and travel with peace of mind</h2>
+      <p>Download eSIMManager for free today and organize every travel eSIM into a clear, secure departure flow.</p>
+      <div class="cta-buttons">
+        <a href="https://apps.apple.com/app/id6800212290" target="_blank" rel="noopener noreferrer" class="app-store-badge">
+          <svg viewBox="0 0 170 170">
+            <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.74 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.7-3.08-7.7-7.85-12.02-14.33-6.11-9.14-10.82-19.46-14.13-30.98-3.3-11.51-4.96-22.18-4.96-32.01 0-14.13 3.58-25.79 10.74-34.98 7.17-9.19 16.29-13.88 27.37-14.07 4.58 0 9.8 1.25 15.66 3.75 5.86 2.49 9.53 3.75 11.02 3.75 1.3 0 5.17-1.33 11.6-4 6.43-2.67 11.96-3.86 16.59-3.57 12.84.65 22.84 5.34 30.01 14.07-11.31 6.85-16.86 16.33-16.65 28.43.21 9.57 3.82 17.65 10.82 24.23 7.01 6.58 15.28 10.3 24.81 11.16-2.18 6.53-4.8 12.74-7.86 18.63zM119.22 31.84c0-7.72 2.76-14.86 8.29-21.43 5.53-6.57 12.21-10.41 20.04-11.53.22 1.3.33 2.44.33 3.42 0 7.72-2.88 15.08-8.63 22.08-5.76 7-12.58 10.89-20.47 11.68-.22-1.3-.44-2.71-.44-4.22z"/>
+          </svg>
+          <div class="badge-text">
+            <div class="small">Download on the</div>
+            <div class="big">App Store</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-about">
+        <div class="footer-brand">
+          <img src="../assets/app_icon.png" alt="Logo">
+          <span>eSIMManager</span>
+        </div>
+        <p style="line-height: 1.6; margin-bottom: 16px;">
+          A native iPhone eSIM recording and organizing tool for international travelers. Transparent help is limited, and the current version is free of charge.
+        </p>
+        <p>Support Email:<a href="mailto:mkjohnny@gmail.com" style="color: #38bdf8;">mkjohnny@gmail.com</a></p>
+      </div>
+      
+      <div class="footer-col">
+        <h4>Product information</h4>
+        <ul>
+          <li><a href="#features">Product Features</a></li>
+          <li><a href="#disclaimer">Traffic estimation description</a></li>
+          <li><a href="../assets/v1_6/eSIMManager_1.6_User_Manual.pdf" target="_blank">1.6 Operation Manual (PDF)</a></li>
+          <li><a href="../assets/demo_simulation_qr.png" target="_blank">Demo QR Code</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-col">
+        <h4>Business cooperation</h4>
+        <ul>
+          <li><a href="#partnership">Carrier Partnerships with NIC Platforms</a></li>
+          <li><a href="#partnership">Brand Marketing and Marketing Collaboration</a></li>
+          <li><a href="mailto:mkjohnny@gmail.com?subject=[Business cooperation提案]">Incoming Proposal Inquiry</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-col">
+        <h4>Legal & Licensing</h4>
+        <ul>
+          <li><a href="../privacy.html">Privacy Policy</a></li>
+          <li><a href="../terms.html">Terms of Service</a></li>
+          <li><a href="terms.html#licenses">Open Source License Statement (mit)</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="container footer-bottom">
+      <div>&copy; 2026 eSIMManager. All rights reserved.</div>
+      <div>iOS is a trademark of Apple Inc., registered in the U.S. and other countries.</div>
+    </div>
+  </footer>
+
+  <script type="text/javascript">
+    (function (d, sc, u) {
+      var s = d.createElement(sc), p = d.getElementsByTagName(sc)[0];
+      s.type = "text/javascript";
+      s.async = true;
+      s.src = u;
+      p.parentNode.insertBefore(s, p);
+    })(document, "script", "https://affiliate.klook.com/widget/fetch-iframe-init.js");
+  </script>
+  <script type="text/javascript" src="https://kkpartners.kkday.com/iframe.init.1.0.js"></script>
+  <script src="../site-language-router.js?v=20260827-static-pages"></script>
+  <script src="../main.js?v=20260826-tabi-16-staged"></script>
+</body>
+</html>

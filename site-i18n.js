@@ -100,8 +100,11 @@
     }
   };
 
-  const setText = (selector, value) => {
-    const element = document.querySelector(selector);
+  const setText = (target, value) => {
+    // Callers may pass either a CSS selector or an element from a NodeList.
+    // Treating an element as a selector throws and aborts the whole locale
+    // update before the remaining page copy can be translated.
+    const element = typeof target === 'string' ? document.querySelector(target) : target;
     if (!element || !value) return;
     const icon = element.querySelector(':scope > svg');
     element.replaceChildren(...(icon ? [icon] : []), document.createTextNode(value));

@@ -922,6 +922,7 @@ a:hover {
 
 .guide-preview-card,
 .guide-card {
+  position: relative;
   display: block;
   min-height: 220px;
   padding: 26px;
@@ -931,6 +932,43 @@ a:hover {
   box-shadow: var(--shadow-sm);
   color: var(--text-main);
   transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.guide-preview-card--featured,
+.guide-card--featured {
+  overflow: hidden;
+  border-color: rgba(14, 92, 92, 0.24);
+  background:
+    linear-gradient(90deg, rgba(227, 241, 234, 0.92), rgba(230, 240, 244, 0.92)),
+    #ffffff;
+  box-shadow: var(--shadow-md);
+}
+
+.guide-preview-card--featured {
+  grid-column: span 2;
+}
+
+.guide-card--featured {
+  grid-column: 1 / -1;
+  min-height: 0;
+}
+
+.guide-preview-card--featured::after,
+.guide-card--featured::after {
+  content: "高 CP 值";
+  position: absolute;
+  top: 18px;
+  right: -34px;
+  width: 132px;
+  padding: 6px 0;
+  transform: rotate(28deg);
+  background: var(--warm-coral);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-align: center;
+  box-shadow: 0 8px 18px rgba(232, 112, 74, 0.24);
 }
 
 .guide-preview-card:hover,
@@ -953,6 +991,12 @@ a:hover {
   font-weight: 800;
 }
 
+.guide-preview-card--featured span,
+.guide-card--featured span {
+  background: var(--deep-teal);
+  color: #ffffff;
+}
+
 .guide-preview-card h3,
 .guide-card h2 {
   margin-bottom: 12px;
@@ -967,6 +1011,18 @@ a:hover {
   color: var(--text-muted);
   font-size: 14.5px;
   line-height: 1.7;
+}
+
+.guide-preview-card--featured h3,
+.guide-card--featured h2 {
+  max-width: 720px;
+  font-size: clamp(23px, 3vw, 32px);
+}
+
+.guide-preview-card--featured p,
+.guide-card--featured p {
+  max-width: 760px;
+  font-size: 16px;
 }
 
 .guide-preview-action {
@@ -1041,6 +1097,30 @@ a:hover {
   margin-bottom: 22px;
   color: var(--text-light);
   font-size: 13px;
+}
+
+.article-feature-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  padding: 8px 13px;
+  border-radius: var(--radius-full);
+  background: var(--deep-teal);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  box-shadow: 0 10px 24px rgba(14, 92, 92, 0.18);
+}
+
+.article-feature-badge::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  background: var(--warm-coral);
+  box-shadow: 10px 0 0 rgba(255,255,255,0.68);
 }
 
 .article h1 {
@@ -2045,6 +2125,10 @@ a:hover {
   .guide-hero-grid {
     grid-template-columns: 1fr;
   }
+  .guide-preview-card--featured,
+  .guide-card--featured {
+    grid-column: auto;
+  }
   .journey-panel { flex-basis: 210px; }
   .predeparture-shot { order: -1; }
   .language-callout { grid-template-columns: 1fr; text-align: center; }
@@ -2103,6 +2187,11 @@ a:hover {
   .guide-card {
     min-height: 0;
     padding: 22px;
+  }
+  .guide-preview-card--featured::after,
+  .guide-card--featured::after {
+    top: 16px;
+    right: -38px;
   }
   .article {
     padding-top: 48px;
@@ -2516,6 +2605,12 @@ body {
   .saving-card,
   .guide-hero-card {
     background: var(--bg-card);
+  }
+  .guide-preview-card--featured,
+  .guide-card--featured {
+    background:
+      linear-gradient(90deg, rgba(36, 48, 40, 0.92), rgba(36, 52, 52, 0.9)),
+      var(--bg-card);
   }
   .value-scenario-copy {
     background:

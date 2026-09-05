@@ -23,17 +23,17 @@ eSIMManager iOS 應用程式的官方首頁、隱私權政策和使用者文件�
 
 eSIMManager iOSアプリの公式ランディングページ、プライバシーポリシー、およびユーザーマニュアルです。
 
-ウェブサイト：https://getesimmanager.com/
-プライバシーポリシー：https://getesimmanager.com/privacy.html
-利用規約：https://getesimmanager.com/terms.html
+- ウェブサイト：https://getesimmanager.com/
+- プライバシーポリシー：https://getesimmanager.com/privacy.html
+- 利用規約：https://getesimmanager.com/terms.html
 
 特定のeSIMブランドに縛られることなく、ご予算や旅程に合ったプランを比較検討し、eSIMManagerを使って複数のカード、アクティベーション情報、有効期限を一元管理できます。出発前に3つの確認事項を完了し、到着後に2つのアクティベーションおよび接続確認事項を完了してください。実際のセットアップ、インストール、および使用方法については、iOSおよびプロバイダの公式情報をご確認ください。ソフトウェアの使用中に問題が発生した場合は、お気軽にご意見をお寄せください。
 
 Page d'accueil officielle, politique de confidentialité et documentation utilisateur de l'application iOS eSIMManager.
 
-Site web : https://getesimmanager.com/
-Politique de confidentialité : https://getesimmanager.com/privacy.html
-Conditions d'utilisation : https://getesimmanager.com/terms.html
+- Site web : https://getesimmanager.com/
+- Politique de confidentialité : https://getesimmanager.com/privacy.html
+- Conditions d'utilisation : https://getesimmanager.com/terms.html
 
 Cette application est indépendante de toute marque d'eSIM. Comparez les offres et choisissez le forfait qui correspond à votre budget et à votre itinéraire. eSIMManager vous permet ensuite de gérer plusieurs cartes, leurs informations d'activation et leurs dates d'expiration. Veuillez d'abord effectuer les 3 confirmations avant votre départ, puis les 2 confirmations d'activation et de connexion à votre arrivée. L'installation, la configuration et l'utilisation sont soumises aux informations officielles d'iOS et de votre opérateur. N'hésitez pas à nous faire part de vos suggestions en cas de problème avec l'application.
 
@@ -41,24 +41,24 @@ Cette application est indépendante de toute marque d'eSIM. Comparez les offres 
 783
 eSIMManager iOS 애플리케이션의 공식 랜딩 페이지, 개인정보 보호정책 및 사용자 설명서입니다.
 
-웹사이트: https://getesimmanager.com/
-개인정보 보호정책: https://getesimmanager.com/privacy.html
-이용약관: https://getesimmanager.com/terms.html
+- 웹사이트: https://getesimmanager.com/
+- 개인정보 보호정책: https://getesimmanager.com/privacy.html
+- 이용약관: https://getesimmanager.com/terms.html
 
 eSIMManager는 특정 eSIM 브랜드에 국한되지 않습니다. 예산과 여행 일정에 맞는 요금제를 비교하고 선택한 후, eSIMManager를 사용하여 여러 eSIM 카드, 활성화 정보 및 만료일을 한 곳에서 관리할 수 있습니다. 출발 전 3단계 확인 절차를 완료하고, 도착 후 2단계 활성화 및 연결 확인 절차를 완료하세요. 실제 설정, 설치 및 사용은 iOS 및 통신사에서 제공하는 공식 정보를 따릅니다. 소프트웨어 사용 중 문제가 발생하면 언제든지 의견을 보내주세요.
 
 Offizielle Landingpage, Datenschutzerklärung und Benutzerdokumentation für die eSIMManager iOS-App.
 
-Website: https://getesimmanager.com/
-Datenschutzerklärung: https://getesimmanager.com/privacy.html
-Nutzungsbedingungen: https://getesimmanager.com/terms.html
+- Website: https://getesimmanager.com/
+- Datenschutzerklärung: https://getesimmanager.com/privacy.html
+- Nutzungsbedingungen: https://getesimmanager.com/terms.html
 
 Die App ist an keinen bestimmten eSIM-Anbieter gebunden. Sie können Tarife vergleichen und den passenden für Ihr Budget und Ihre Reise auswählen. Mit eSIMManager verwalten Sie anschließend mehrere eSIM-Karten, Aktivierungsinformationen und Ablaufdaten zentral. Schließen Sie zunächst die drei Bestätigungen vor Reiseantritt ab und bestätigen Sie anschließend die Aktivierung und Verbindung nach Ihrer Ankunft. Einrichtung, Installation und Nutzung richten sich nach den offiziellen Informationen von iOS und Ihrem Anbieter. Bei Problemen mit der Software freuen wir uns über Ihre Anregungen.
 
 Pagina ufficiale, informativa sulla privacy e documentazione utente per l'applicazione iOS eSIMManager.
 
-Sito web: https://getesimmanager.com/
-Informativa sulla privacy: https://getesimmanager.com/privacy.html
-Termini e condizioni: https://getesimmanager.com/terms.html
+- Sito web: https://getesimmanager.com/
+- Informativa sulla privacy: https://getesimmanager.com/privacy.html
+- Termini e condizioni: https://getesimmanager.com/terms.html
 
 L'applicazione non è vincolata a un singolo operatore eSIM. Puoi confrontare e scegliere un piano tariffario adatto al tuo budget e al tuo itinerario, e utilizzare eSIMManager per gestire centralmente più schede, informazioni di attivazione e date di scadenza. Completa prima le 3 conferme pre-partenza e poi le 2 conferme di attivazione e connessione all'arrivo; la configurazione, l'installazione e l'utilizzo effettivi sono soggetti alle informazioni ufficiali di iOS e del fornitore. In caso di problemi con il software, non esitare a fornire suggerimenti.

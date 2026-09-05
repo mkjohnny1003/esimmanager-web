@@ -1114,6 +1114,195 @@ a:hover {
   background: rgba(232, 112, 74, 0.12);
 }
 
+.value-scenario {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(260px, 0.75fr);
+  gap: 22px;
+  align-items: stretch;
+  margin: 26px 0 36px;
+}
+
+.value-scenario-copy,
+.value-scenario-phone {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.value-scenario-copy {
+  padding: 26px;
+  background:
+    radial-gradient(circle at 94% 12%, rgba(61, 160, 158, 0.18), transparent 28%),
+    linear-gradient(135deg, #ffffff 0%, var(--sky-blue) 100%);
+}
+
+.value-scenario-copy span,
+.saving-label {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+}
+
+.value-scenario-copy span {
+  margin-bottom: 12px;
+  padding: 6px 10px;
+  background: var(--mint);
+  color: var(--deep-teal);
+}
+
+.value-scenario-copy h2 {
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.value-scenario-phone {
+  position: relative;
+  overflow: hidden;
+  padding: 22px;
+  background: linear-gradient(165deg, var(--deep-teal), #0a4c4c);
+  color: #ffffff;
+}
+
+.value-scenario-phone::before {
+  content: "";
+  position: absolute;
+  inset: -70px -60px auto auto;
+  width: 170px;
+  height: 170px;
+  border-radius: 44px;
+  background:
+    linear-gradient(90deg, rgba(255,255,255,0.13) 50%, transparent 0) 0 0 / 18px 18px,
+    rgba(255,255,255,0.08);
+  transform: rotate(12deg);
+}
+
+.value-scenario-phone strong,
+.value-scenario-phone div,
+.value-scenario-phone small {
+  position: relative;
+  z-index: 1;
+}
+
+.value-scenario-phone strong {
+  display: block;
+  margin-bottom: 16px;
+  font-size: 18px;
+}
+
+.value-scenario-phone div {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  margin-top: 12px;
+  padding: 13px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.value-scenario-phone b {
+  color: rgba(255, 255, 255, 0.84);
+}
+
+.value-scenario-phone span {
+  color: #ffffff;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.value-scenario-phone small {
+  display: block;
+  margin-top: 18px;
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.65;
+}
+
+.savings-graphic {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 24px 0 26px;
+}
+
+.saving-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 236px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: #ffffff;
+  box-shadow: var(--shadow-sm);
+}
+
+.saving-card--best {
+  border-color: rgba(14, 92, 92, 0.28);
+  background: linear-gradient(180deg, var(--mint), #ffffff 72%);
+  box-shadow: var(--shadow-md);
+}
+
+.saving-label {
+  margin-bottom: 12px;
+  padding: 5px 9px;
+  background: var(--sky-blue);
+  color: var(--deep-teal);
+}
+
+.saving-card--best .saving-label {
+  background: var(--deep-teal);
+  color: #ffffff;
+}
+
+.saving-card strong {
+  color: var(--ink);
+  font-size: 22px;
+  line-height: 1.25;
+}
+
+.saving-card p {
+  margin-top: 8px;
+  color: var(--text-muted);
+  font-size: 14.5px;
+  line-height: 1.55;
+}
+
+.saving-card b {
+  margin-top: auto;
+  color: var(--deep-teal);
+  font-size: 28px;
+  letter-spacing: -0.04em;
+}
+
+.saving-bar {
+  position: relative;
+  overflow: hidden;
+  height: 10px;
+  margin: 12px 0 10px;
+  border-radius: var(--radius-full);
+  background: var(--sky-blue);
+}
+
+.saving-bar::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: var(--bar);
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--deep-teal), var(--accent));
+}
+
+.saving-card:not(.saving-card--best) .saving-bar::after {
+  background: linear-gradient(90deg, var(--warm-coral), #f0a377);
+}
+
+.saving-card small {
+  color: var(--text-light);
+  font-size: 12.5px;
+  line-height: 1.55;
+}
+
 .article-table-wrap {
   overflow-x: auto;
   margin: 20px 0 30px;
@@ -1926,6 +2115,22 @@ a:hover {
   .article li {
     font-size: 15.5px;
   }
+  .value-scenario,
+  .savings-graphic {
+    grid-template-columns: 1fr;
+  }
+  .value-scenario-copy,
+  .value-scenario-phone,
+  .saving-card {
+    padding: 20px;
+  }
+  .saving-card {
+    min-height: 0;
+  }
+  .saving-card b {
+    margin-top: 16px;
+    font-size: 25px;
+  }
   .journey-panel {
     flex: 0 0 min(264px, calc(100vw - 78px));
     height: 400px;
@@ -2303,6 +2508,26 @@ body {
   .journey-popover { background: rgba(32, 42, 39, 0.98); color: var(--text-main); }
   .priority-shop-card { background: linear-gradient(118deg, #1b5d5b, #2c8885 55%, var(--accent)); }
   .app-store-badge { background: #121715; }
+  .article-main {
+    background: linear-gradient(180deg, var(--ivory), #171d1b);
+  }
+  .article-meta,
+  .article-table-wrap,
+  .saving-card,
+  .guide-hero-card {
+    background: var(--bg-card);
+  }
+  .value-scenario-copy {
+    background:
+      radial-gradient(circle at 94% 12%, rgba(61, 160, 158, 0.16), transparent 28%),
+      linear-gradient(135deg, #202a27 0%, var(--sky-blue) 100%);
+  }
+  .value-scenario-phone {
+    background: linear-gradient(165deg, #174b49, #102b28);
+  }
+  .saving-card--best {
+    background: linear-gradient(180deg, #243028, var(--bg-card) 72%);
+  }
   .android-coming-soon {
     background: #243434;
     border-color: #3d5754;

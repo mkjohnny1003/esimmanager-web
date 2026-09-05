@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>eSIMManager 官方網站 - 旅行 eSIM 的出發前設定與本機管理工具</title>
-  <meta name="description" content="eSIMManager 是不綁定單一供應商的 iPhone 與 iPad 旅遊 eSIM 整理工具。自由選擇適合的方案，再以五步驟確認安裝、行動數據、主卡漫遊保護與連線。">
+  <meta name="description" content="eSIMManager 是不綁定單一供應商的 iPhone 與 iPad 旅遊 eSIM 整理工具。自由選擇高 CP 值方案，再以五步驟確認安裝、行動數據、主卡漫遊保護與連線。">
   <meta name="keywords" content="eSIM, eSIM管理, 旅遊網卡, 日本eSIM, 出國上網, 主卡漫遊, 行動數據切換, eSIM安裝, eSIM備份, eSIM流量估算">
 
   <!-- Google Analytics 4: website traffic and outbound-link measurement only. -->
@@ -24,7 +24,7 @@
   <!-- OpenGraph / Social Meta Tags -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="eSIMManager - 自由選擇 eSIM，安心管理每一趟旅程">
-  <meta property="og:description" content="免費、不綁定單一供應商的本機 eSIM 整理工具：集中管理多張卡片，並以五步驟確認旅遊設定。">
+  <meta property="og:description" content="免費、不綁定單一供應商的本機 eSIM 整理工具：讓便宜 eSIM 也能享受接近專業服務的管理體驗。">
   <meta property="og:image" content="assets/app_icon.png">
   
   <!-- Favicon -->
@@ -35,7 +35,7 @@
 </head>
 <body>
 
-  <!-- 1.6 Tabi pixel icon sprite. Decorative only; it never represents a
+  <!-- 1.7 Tabi pixel icon sprite. Decorative only; it never represents a
        scannable QR code, system state, or an advertisement. -->
   <svg class="pixel-sprite" aria-hidden="true" focusable="false">
     <symbol id="pixel-airplane" viewBox="0 0 12 10"><path d="M5 0h2v1H5zM5 1h2v1H5zM5 2h2v1H5zM1 3h10v1H1zM0 4h12v1H0zM0 5h12v1H0zM1 6h10v1H1zM5 7h2v1H5zM4 8h4v1H4zM4 9h4v1H4z"/></symbol>
@@ -67,7 +67,8 @@
       <ul class="nav-links">
         <li><a href="#features">產品功能</a></li>
         <li><a href="#how-to-use">如何使用</a></li>
-        <li><a href="#buy-esim">購買 eSIM</a></li>
+        <li><a href="guides/">eSIM 教學</a></li>
+        <li><a href="#buy-esim">推薦購買入口</a></li>
         <li><a href="#partnership">商業合作</a></li>
         <li><a href="https://apps.apple.com/app/id6800212290" target="_blank" rel="noopener noreferrer" class="btn btn-download"> App Store</a></li>
         <li class="language-switcher">
@@ -78,6 +79,9 @@
             <option value="zh-CN">简体中文</option>
             <option value="ja">日本語</option>
             <option value="ko">한국어</option>
+            <option value="fr">Français</option>
+            <option value="de">Deutsch</option>
+            <option value="es">Español</option>
           </select>
         </li>
       </ul>
@@ -92,17 +96,17 @@
       <div class="hero-content">
         <div class="hero-pixel-scene" aria-hidden="true"><svg class="pixel-icon pixel-icon--hero"><use href="#pixel-airplane"></use></svg><svg class="pixel-icon pixel-icon--cloud"><use href="#pixel-cloud"></use></svg></div>
         <div class="hero-badge">
-          <span>版本 1.6 正式上架 · Tabi 旅行介面與三種外觀</span>
+          <span>1.7 版預告 · 將正式加入法文、德文與西文介面</span>
         </div>
         <h1>自由選擇 eSIM，安心管理每一趟旅程</h1>
         <p class="hero-sub">
-          不綁定任何單一 eSIM 品牌。你可以自行比較並選擇符合預算與行程的方案，再用 eSIMManager 集中整理多張卡片、啟用資訊與效期。先完成出發前 3 項確認，抵達後再完成 2 項啟用與連線確認；實際設定、安裝與用量仍以 iOS 與供應商官方資訊為準。
+          不綁定任何單一 eSIM 品牌。你可以自由比較 Trip.com、Klook、KKday、Airalo、蝦皮賣場或其他可信平台上的高 CP 值方案，再用 eSIMManager 集中整理多張卡片、啟用資訊與效期。先完成出發前 3 項確認，抵達後再完成 2 項啟用與連線確認；實際設定、安裝與用量仍以 iOS 與供應商官方資訊為準。
         </p>
         
         <div class="hero-actions">
           <a href="https://apps.apple.com/app/id6800212290" target="_blank" rel="noopener noreferrer" class="app-store-badge">
             <svg viewBox="0 0 170 170">
-              <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.74 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.7-3.08-7.7-7.85-12.02-14.33-6.11-9.14-10.82-19.46-14.13-30.98-3.3-11.51-4.96-22.18-4.96-32.01 0-14.13 3.58-25.79 10.74-34.98 7.17-9.19 16.29-13.88 27.37-14.07 4.58 0 9.8 1.25 15.66 3.75 5.86 2.49 9.53 3.75 11.02 3.75 1.3 0 5.17-1.33 11.6-4 6.43-2.67 11.96-3.86 16.59-3.57 12.84.65 22.84 5.34 30.01 14.07-11.31 6.85-16.86 16.33-16.65 28.43.21 9.57 3.82 17.65 10.82 24.23 7.01 6.58 15.28 10.3 24.81 11.16-2.18 6.53-4.8 12.74-7.86 18.63zM119.22 31.84c0-7.72 2.76-14.86 8.29-21.43 5.53-6.57 12.21-10.41 20.04-11.53.22 1.3.33 2.44.33 3.42 0 7.72-2.88 15.08-8.63 22.08-5.76 7-12.58 10.89-20.47 11.68-.22-1.3-.44-2.71-.44-4.22z"/>
+              <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.74 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.7-3.08-7.7-7.85-12.02-14.33-6.11-9.14-10.82-19.46-14.13-30.98-3.3-11.51-4.96-22.18-4.96-32.01 0-14.13 3.58-25.79 10.74-34.98 7.17-9.19 16.29-13.88 27.37-14.07 4.58 0 9.8 1.25 15.66 3.75 5.86 2.49 9.53 3.75 11.02 3.75 1.3 0 5.17-1.33 11.7-4 6.43-2.67 11.96-3.86 16.59-3.57 12.84.65 22.84 5.34 30.01 14.07-11.31 6.85-16.86 16.33-16.65 28.43.21 9.57 3.82 17.65 10.82 24.23 7.01 6.58 15.28 10.3 24.81 11.16-2.18 6.53-4.8 12.74-7.86 18.63zM119.22 31.84c0-7.72 2.76-14.86 8.29-21.43 5.53-6.57 12.21-10.41 20.04-11.53.22 1.3.33 2.44.33 3.42 0 7.72-2.88 15.08-8.63 22.08-5.76 7-12.58 10.89-20.47 11.78-.22-1.3-.44-2.71-.44-4.22z"/>
             </svg>
             <div class="badge-text">
               <div class="small">Download on the</div>
@@ -130,7 +134,7 @@
         <div class="float-card float-card-1">
           <span>🟢 App 內狀態整理 · 效期倒數</span>
         </div>
-        <img src="assets/v1_6/01_tabi_home_light_6.9.png" alt="eSIMManager 1.6 Tabi 亮色主畫面實機截圖" class="phone-mockup">
+        <img src="assets/v1_6/01_tabi_home_light_6.9.png" alt="eSIMManager 1.7 Tabi 亮色主畫面實機截圖" class="phone-mockup">
         <div class="float-card float-card-2">
           <span>🔒 可選密碼加密備份</span>
         </div>
@@ -144,7 +148,7 @@
       <div class="sec-head">
         <span class="sec-pill">核心承諾</span>
         <h2>選擇你的方案；管理交給 eSIMManager</h2>
-        <p>不綁定單一供應商、不設訂閱門檻，協助你把分散的旅遊 eSIM 資訊整理成可安心出發的流程。</p>
+        <p>許多高 CP 值 eSIM 方案價格漂亮，但資訊常散在購物平台、Email、PDF 與聊天紀錄裡。eSIMManager 的任務，是把便宜方案整理成接近專業 eSIM 服務的安心使用流程。</p>
       </div>
       
       <div class="values-grid">
@@ -152,7 +156,7 @@
           <div class="val-icon"><svg class="pixel-icon pixel-icon--value" aria-hidden="true"><use href="#pixel-pin"></use></svg></div>
           <h3>自由選擇供應商</h3>
           <p>
-            無論你從旅遊平台、電信商或其他可信賣場取得 eSIM，都能將可用的啟用資訊整理進 App。方案價格、庫存與服務內容，仍以你選擇的供應商頁面為準。
+            無論你從旅遊平台、電信商、蝦皮賣場或其他可信店家取得 eSIM，都能將可用的啟用資訊整理進 App。方案價格、庫存與服務內容，仍以你選擇的供應商頁面為準。
           </p>
         </div>
         
@@ -160,7 +164,7 @@
           <div class="val-icon"><svg class="pixel-icon pixel-icon--value" aria-hidden="true"><use href="#pixel-luggage"></use></svg></div>
           <h3>集中整理多張 eSIM</h3>
           <p>
-            將 QR Code、LPA 啟用資訊、適用地、效期與備忘收在同一處。資料以裝置本機為主保存；你可依需要備份、分享或標示行程已結束。
+            例如每天 1GB、短天數或分國別的平價方案，可能比大型 eSIM App 的包裝服務更省；App 協助你保存啟用資訊、效期與注意事項，減少為了省錢而犧牲便利性的落差。
           </p>
         </div>
         
@@ -189,7 +193,7 @@
         <button class="tab-btn" data-tab="tab-import">多元匯入方式</button>
         <button class="tab-btn" data-tab="tab-install">系統安裝引導</button>
         <button class="tab-btn" data-tab="tab-detail">主卡漫遊保護</button>
-        <button class="tab-btn" data-tab="tab-p2p">五種介面語言</button>
+        <button class="tab-btn" data-tab="tab-p2p">八種介面語言</button>
         <button class="tab-btn" data-tab="tab-backup">加密備份還原</button>
       </div>
       
@@ -265,7 +269,7 @@
           <p>旅程中可直接切換 App 介面語言，也可以選擇跟隨 iPhone 系統語言。</p>
           <ul class="tab-bullets">
             <li><span>繁體中文／简体中文</span>：支援台灣與華語旅客常用介面。</li>
-            <li><span>English／日本語／한국어</span>：支援主要旅遊市場的語言選擇。</li>
+            <li><span>English／日本語／한국어／Français／Deutsch／Español</span>：支援主要旅遊市場的語言選擇。</li>
             <li><span>跟隨系統</span>：可依 iPhone 的 App 語言設定自動顯示。</li>
           </ul>
         </div>
@@ -378,9 +382,40 @@
       </div>
 
       <div class="language-callout">
-        <div><svg class="pixel-icon pixel-icon--language" aria-hidden="true"><use href="#pixel-sliders"></use></svg><strong>五種介面語言</strong></div>
-        <p>可在 App 內切換繁體中文、簡體中文、English、日本語、한국어，或選擇跟隨 iPhone 系統語言。</p>
+        <div><svg class="pixel-icon pixel-icon--language" aria-hidden="true"><use href="#pixel-sliders"></use></svg><strong>八種介面語言</strong></div>
+        <p>可在 App 內切換繁體中文、簡體中文、English、日本語、한국어、Français、Deutsch、Español，或選擇跟隨 iPhone 系統語言。</p>
         <img src="assets/v1_5_language_settings_6.9.png" alt="eSIMManager App 語言設定畫面" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- Guides Section -->
+  <section class="guide-preview-sec" id="guides">
+    <div class="container">
+      <div class="sec-head">
+        <span class="sec-pill">eSIM 教學</span>
+        <h2>不是只推薦購買，而是把出國上網講清楚</h2>
+        <p>我們整理出國前設定、主卡漫遊保護、使用完畢是否刪除、流量估算限制與日本 eSIM CP 值分析，讓你先理解怎麼選、怎麼用，再決定要買哪一種方案。</p>
+      </div>
+      <div class="guide-preview-grid">
+        <a class="guide-preview-card" href="guides/iphone-esim-setup.html">
+          <span>出發前設定</span>
+          <h3>出國前如何設定 iPhone eSIM，避免主卡漫遊費</h3>
+          <p>整理安裝、行動數據、主卡漫遊保護、抵達後啟用與故障排除。</p>
+        </a>
+        <a class="guide-preview-card" href="guides/japan-esim-value-analysis.html">
+          <span>日本 eSIM 分析</span>
+          <h3>每日 1GB、總量包與吃到飽怎麼比較？</h3>
+          <p>以日本旅遊為例，說明為什麼高 CP 值方案不能只看最低標價。</p>
+        </a>
+        <a class="guide-preview-card" href="guides/manage-cheap-esim.html">
+          <span>高 CP 值管理法</span>
+          <h3>便宜 eSIM 怎麼管理才不會亂？</h3>
+          <p>適合從 Trip.com、蝦皮或各平台購入多張旅遊 eSIM 的整理方法。</p>
+        </a>
+      </div>
+      <div class="guide-preview-action">
+        <a href="guides/" class="btn btn-primary">查看完整 eSIM 教學中心</a>
       </div>
     </div>
   </section>
@@ -389,9 +424,9 @@
   <section class="purchase-sec" id="buy-esim">
     <div class="container">
       <div class="sec-head">
-        <span class="sec-pill"><svg class="pixel-icon pixel-icon--pill" aria-hidden="true"><use href="#pixel-pin"></use></svg>購買 eSIM／旅遊上網卡</span>
-        <h2>你選擇方案，我們幫你整理</h2>
-      <p>先依目的地、使用天數與預算比較適合的方案；取得 QR Code 或 LPA 啟用資訊後，再用 eSIMManager 整理與引導設定。以下提供首選推薦賣場及 Klook、KKday、Airalo、Trip.com 等平台入口；實際方案、價格、庫存與是否支援 eSIM，均以各平台頁面為準。</p>
+        <span class="sec-pill"><svg class="pixel-icon pixel-icon--pill" aria-hidden="true"><use href="#pixel-pin"></use></svg>推薦購買入口</span>
+        <h2>高 CP 值方案自己挑，後續管理交給 App</h2>
+      <p>許多旅人會在不同平台找到每天 1GB、短天數或特定國家的平價 eSIM，整趟旅程下來可能省下不少費用。以下提供外部賣場與平台入口；實際方案、價格、庫存、啟用規則與是否支援 eSIM，均以各平台頁面為準。</p>
       </div>
       <a class="priority-shop-card" href="https://shopee.tw/mannt.chang" target="_blank" rel="noopener noreferrer sponsored" aria-label="前往飛展小舖選購 eSIM 與旅遊上網卡">
         <div class="priority-shop-copy">
@@ -567,7 +602,7 @@
       <div class="cta-buttons">
         <a href="https://apps.apple.com/app/id6800212290" target="_blank" rel="noopener noreferrer" class="app-store-badge">
           <svg viewBox="0 0 170 170">
-            <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.74 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.7-3.08-7.7-7.85-12.02-14.33-6.11-9.14-10.82-19.46-14.13-30.98-3.3-11.51-4.96-22.18-4.96-32.01 0-14.13 3.58-25.79 10.74-34.98 7.17-9.19 16.29-13.88 27.37-14.07 4.58 0 9.8 1.25 15.66 3.75 5.86 2.49 9.53 3.75 11.02 3.75 1.3 0 5.17-1.33 11.6-4 6.43-2.67 11.96-3.86 16.59-3.57 12.84.65 22.84 5.34 30.01 14.07-11.31 6.85-16.86 16.33-16.65 28.43.21 9.57 3.82 17.65 10.82 24.23 7.01 6.58 15.28 10.3 24.81 11.16-2.18 6.53-4.8 12.74-7.86 18.63zM119.22 31.84c0-7.72 2.76-14.86 8.29-21.43 5.53-6.57 12.21-10.41 20.04-11.53.22 1.3.33 2.44.33 3.42 0 7.72-2.88 15.08-8.63 22.08-5.76 7-12.58 10.89-20.47 11.68-.22-1.3-.44-2.71-.44-4.22z"/>
+            <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.74 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.7-3.08-7.7-7.85-12.02-14.33-6.11-9.14-10.82-19.46-14.13-30.98-3.3-11.51-4.96-22.18-4.96-32.01 0-14.13 3.58-25.79 10.74-34.98 7.17-9.19 16.29-13.88 27.37-14.07 4.58 0 9.8 1.25 15.66 3.75 5.86 2.49 9.53 3.75 11.02 3.75 1.3 0 5.17-1.33 11.7-4 6.43-2.67 11.96-3.86 16.59-3.57 12.84.65 22.84 5.34 30.01 14.07-11.31 6.85-16.86 16.33-16.65 28.43.21 9.57 3.82 17.65 10.82 24.23 7.01 6.58 15.28 10.3 24.81 11.16-2.18 6.53-4.8 12.74-7.86 18.63zM119.22 31.84c0-7.72 2.76-14.86 8.29-21.43 5.53-6.57 12.21-10.41 20.04-11.53.22 1.3.33 2.44.33 3.42 0 7.72-2.88 15.08-8.63 22.08-5.76 7-12.58 10.89-20.47 11.78-.22-1.3-.44-2.71-.44-4.22z"/>
           </svg>
           <div class="badge-text">
             <div class="small">Download on the</div>
@@ -586,7 +621,7 @@
           <img src="assets/app_icon.png" alt="Logo">
           <span>eSIMManager</span>
         </div>
-        <p style="line-height: 1.6; margin-bottom: 16px;">
+        <p style="line-height: 1.7; margin-bottom: 16px;">
           專為海外旅人打造的 iPhone 本機 eSIM 紀錄與整理工具。透明說明限制，現行版本全功能免費。
         </p>
         <p>支援信箱：<a href="mailto:mkjohnny@gmail.com" style="color: #38bdf8;">mkjohnny@gmail.com</a></p>
@@ -596,8 +631,9 @@
         <h4>產品資訊</h4>
         <ul>
           <li><a href="#features">產品特色</a></li>
+          <li><a href="guides/">eSIM 教學中心</a></li>
           <li><a href="#disclaimer">流量估算說明</a></li>
-          <li><a href="assets/v1_6/eSIMManager_1.6_User_Manual.pdf" target="_blank">1.6 操作手冊 (PDF)</a></li>
+          <li><a href="assets/v1_6/eSIMManager_1.6_User_Manual.pdf" target="_blank">操作手冊 (PDF)</a></li>
           <li><a href="assets/demo_simulation_qr.png" target="_blank">示範演練 QR Code</a></li>
         </ul>
       </div>

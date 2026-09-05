@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>為什麼 App 只能估算流量？｜eSIMManager</title>
+  <meta name="description" content="說明 iPhone 第三方 App 無法直接讀取每張 eSIM 真實用量，eSIMManager 如何用裝置端資料估算旅遊 eSIM 流量，以及正確使用方式。">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KJB54JTM44"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KJB54JTM44');</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2607309542240072" crossorigin="anonymous"></script>
+  <link rel="icon" type="image/png" href="../assets/app_icon.png">
+  <link rel="stylesheet" href="../style.css?v=20260906-guides">
+</head>
+<body>
+  <header class="site-header"><div class="container nav-wrap"><a href="../" class="brand"><img src="../assets/app_icon.png" alt="eSIMManager App Icon" class="brand-icon"><span>eSIMManager</span></a><ul class="nav-links"><li><a href="./">eSIM 教學</a></li><li><a href="../#disclaimer">技術說明</a></li><li><a href="../privacy.html">隱私權政策</a></li><li><a href="https://apps.apple.com/app/id6800212290" target="_blank" rel="noopener noreferrer" class="btn btn-download"> App Store</a></li></ul><button class="mobile-menu-btn" aria-label="Toggle Menu">☰</button></div></header>
+  <main class="article-main">
+    <article class="article container">
+      <nav class="article-breadcrumb"><a href="./">eSIM 教學中心</a> / 流量估算</nav>
+      <h1>為什麼 App 只能估算流量，不能直接讀取每張 eSIM 真實用量？</h1>
+      <p class="article-lead">很多使用者希望 App 能像電信商後台一樣顯示「這張 eSIM 還剩多少 GB」。但在 iPhone 上，第三方 App 無法直接讀取每一張行動方案的官方用量與餘額，因此 eSIMManager 採用的是透明標示的本機估算方式。</p>
+
+      <h2>iOS 不開放每張 eSIM 的精確用量給第三方 App</h2>
+      <p>iPhone 的行動服務設定屬於系統與電信商層級資料。第三方 App 無法知道目前哪一張 eSIM 正在被計費，也無法查詢供應商後台的剩餘流量。這樣的限制能保護門號、帳務與行動服務設定不被 App 任意讀取或修改。</p>
+
+      <h2>eSIMManager 的估算方式</h2>
+      <p>App 會在裝置端讀取行動數據網路介面的傳輸量，並以使用者設定的切換點作為估算起點。這能協助旅途中大致掌握使用速度，例如今天是否突然用量暴增，或 10GB 方案是否可能撐到行程結束。</p>
+
+      <h2>為什麼會有誤差？</h2>
+      <p>誤差可能來自多個原因：iPhone 網路介面重新計數、主卡或其他 SIM 同時使用行動數據、供應商有免流量或壓縮計算、電信商帳務週期與裝置端統計不同，以及 App 只有在開啟或回到前景時更新估算。</p>
+
+      <h2>怎麼用才比較準？</h2>
+      <p>啟用一張新的旅遊 eSIM 後，建議在 App 內確認或重設該卡的估算起點。旅程中定期打開 App 讓它更新數字。如果方案有官方查詢頁、簡訊或供應商 App，精確剩餘額度仍應以供應商官方資料為準。</p>
+
+      <div class="article-callout">
+        <strong>正確期待：</strong>本機流量估算適合用來判斷趨勢與提醒自己節制使用，不應被視為電信商帳單或官方餘額。
+      </div>
+    </article>
+  </main>
+  <script src="../main.js?v=20260906-guides"></script>
+</body>
+</html>

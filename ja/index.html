@@ -35,7 +35,7 @@
 </head>
 <body>
 
-  <!-- 1.6 Tabi pixel icon sprite. Decorative only; it never represents a
+  <!-- 1.7 Tabi pixel icon sprite. Decorative only; it never represents a
        scannable QR code, system state, or an advertisement. -->
   <svg class="pixel-sprite" aria-hidden="true" focusable="false">
     <symbol id="pixel-airplane" viewBox="0 0 12 10"><path d="M5 0h2v1H5zM5 1h2v1H5zM5 2h2v1H5zM1 3h10v1H1zM0 4h12v1H0zM0 5h12v1H0zM1 6h10v1H1zM5 7h2v1H5zM4 8h4v1H4zM4 9h4v1H4z"/></symbol>
@@ -67,17 +67,21 @@
       <ul class="nav-links">
         <li><a href="#features">製品の特徴</a></li>
         <li><a href="#how-to-use">詳しい流れ</a></li>
-        <li><a href="#buy-esim">eSIMを購入</a></li>
+        <li><a href="../guides/">eSIMガイド</a></li>
+        <li><a href="#buy-esim">おすすめ購入先</a></li>
         <li><a href="#partnership">ビジネス連携</a></li>
         <li><a href="https://apps.apple.com/app/id6800212290" target="_blank" rel="noopener noreferrer" class="btn btn-download"> App Store</a></li>
         <li class="language-switcher">
           <label class="sr-only" for="site-language">ウェブサイトの言語</label>
           <select id="site-language" aria-label="ウェブサイトの言語">
-            <option value="zh-TW">中国語（繁体字）</option>
+            <option value="zh-TW">繁體中文</option>
             <option value="en">English</option>
-            <option value="zh-CN">簡体字中国語</option>
-            <option value="ja" selected>Japanese</option>
+            <option value="zh-CN">简体中文</option>
+            <option value="ja" selected>日本語</option>
             <option value="ko">한국어</option>
+            <option value="fr">Français</option>
+            <option value="de">Deutsch</option>
+            <option value="es">Español</option>
           </select>
         </li>
       </ul>
@@ -92,7 +96,7 @@
       <div class="hero-content">
         <div class="hero-pixel-scene" aria-hidden="true"><svg class="pixel-icon pixel-icon--hero"><use href="#pixel-airplane"></use></svg><svg class="pixel-icon pixel-icon--cloud"><use href="#pixel-cloud"></use></svg></div>
         <div class="hero-badge">
-          <span>バージョン1.6正式発売・TABIトラベルインターフェースと3つの外観</span>
+          <span>バージョン 1.7 · 欧州言語と旅行後の安全ガイドを追加</span>
         </div>
         <h1>お好みのeSIMですべての乗車を管理</h1>
         <p class="hero-sub">
@@ -102,7 +106,7 @@
         <div class="hero-actions">
           <a href="https://apps.apple.com/app/id6800212290" target="_blank" rel="noopener noreferrer" class="app-store-badge">
             <svg viewBox="0 0 170 170">
-              <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.74 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.7-3.08-7.7-7.85-12.02-14.33-6.11-9.14-10.82-19.46-14.13-30.98-3.3-11.51-4.96-22.18-4.96-32.01 0-14.13 3.58-25.79 10.74-34.98 7.17-9.19 16.29-13.88 27.37-14.07 4.58 0 9.8 1.25 15.66 3.75 5.86 2.49 9.53 3.75 11.02 3.75 1.3 0 5.17-1.33 11.6-4 6.43-2.67 11.96-3.86 16.59-3.57 12.84.65 22.84 5.34 30.01 14.07-11.31 6.85-16.86 16.33-16.65 28.43.21 9.57 3.82 17.65 10.82 24.23 7.01 6.58 15.28 10.3 24.81 11.16-2.18 6.53-4.8 12.74-7.86 18.63zM119.22 31.84c0-7.72 2.76-14.86 8.29-21.43 5.53-6.57 12.21-10.41 20.04-11.53.22 1.3.33 2.44.33 3.42 0 7.72-2.88 15.08-8.63 22.08-5.76 7-12.58 10.89-20.47 11.68-.22-1.3-.44-2.71-.44-4.22z"/>
+              <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.74 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.7-3.08-7.7-7.85-12.02-14.33-6.11-9.14-10.82-19.46-14.13-30.98-3.3-11.51-4.96-22.18-4.96-32.01 0-14.13 3.58-25.79 10.74-34.98 7.17-9.19 16.29-13.88 27.37-14.07 4.58 0 9.8 1.25 15.66 3.75 5.86 2.49 9.53 3.75 11.02 3.75 1.3 0 5.17-1.33 11.7-4 6.43-2.67 11.96-3.86 16.59-3.57 12.84.65 22.84 5.34 30.01 14.07-11.31 6.85-16.86 16.33-16.65 28.43.21 9.57 3.82 17.65 10.82 24.23 7.01 6.58 15.28 10.3 24.81 11.16-2.18 6.53-4.8 12.74-7.86 18.63zM119.22 31.84c0-7.72 2.76-14.86 8.29-21.43 5.53-6.57 12.21-10.41 20.04-11.53.22 1.3.33 2.44.33 3.42 0 7.72-2.88 15.08-8.63 22.08-5.76 7-12.58 10.89-20.47 11.78-.22-1.3-.44-2.71-.44-4.22z"/>
             </svg>
             <div class="badge-text">
               <div class="small">Download on the</div>
@@ -111,7 +115,7 @@
           </a>
           <div class="android-coming-soon" role="status" aria-label="Android版がまもなく登場">
             <span class="android-coming-soon-dot" aria-hidden="true"></span>
-            <span><strong>Android版がまもなく登場</strong><small>開発中のGoogle Play</small></span>
+            <span><strong>Android版がまもなく登場</strong><small>Google Play向けに開発中</small></span>
           </div>
           
           <a href="#how-to-use" class="btn btn-secondary">
@@ -130,7 +134,7 @@
         <div class="float-card float-card-1">
           <span>🟢 アプリ内コンディショニング・有効期限カウントダウン</span>
         </div>
-        <img src="../assets/v1_6/01_tabi_home_light_6.9.png" alt="eSIMManager 1.6 Tabi 亮色主畫面實機截圖" class="phone-mockup">
+        <img src="../assets/v1_6/01_tabi_home_light_6.9.png" alt="eSIMManager 1.7 Tabi 亮色主畫面實機截圖" class="phone-mockup">
         <div class="float-card float-card-2">
           <span>🔒 オプションのパスワード暗号化バックアップ</span>
         </div>
@@ -264,7 +268,7 @@
           <h3>アプリで使い慣れた言語を選択してください</h3>
           <p>乗車中にアプリのインターフェースの言語を直接切り替えることも、iPhoneシステムの言語に従うこともできます。</p>
           <ul class="tab-bullets">
-            <li><span>繁体字中国語/簡体字中国語</span>：台湾語と中国語を話す旅行者のために頻繁に使用されるインターフェースをサポートしています。</li>
+            <li><span>繁体字中国語/简体中文</span>：台湾語と中国語を話す旅行者のために頻繁に使用されるインターフェースをサポートしています。</li>
             <li><span>英語/Japanese/</span>：主要な旅行市場での言語選択をサポートしています。</li>
             <li><span>星系をたどる</span>： iPhoneのアプリの言語設定に従って自動的に表示されます。</li>
           </ul>
@@ -379,7 +383,7 @@
 
       <div class="language-callout">
         <div><svg class="pixel-icon pixel-icon--language" aria-hidden="true"><use href="#pixel-sliders"></use></svg><strong>5つのインターフェース言語</strong></div>
-        <p>繁体字中国語、簡体字中国語、英語、Japanese、Japaneseを切り替えることも、アプリのiPhoneシステム言語に従うこともできます。</p>
+        <p>繁体字中国語、简体中文、英語、Japanese、Japaneseを切り替えることも、アプリのiPhoneシステム言語に従うこともできます。</p>
         <img src="../assets/v1_5_language_settings_6.9.png" alt="eSIMManager App 語言設定畫面" loading="lazy">
       </div>
     </div>
@@ -567,7 +571,7 @@
       <div class="cta-buttons">
         <a href="https://apps.apple.com/app/id6800212290" target="_blank" rel="noopener noreferrer" class="app-store-badge">
           <svg viewBox="0 0 170 170">
-            <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.74 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.7-3.08-7.7-7.85-12.02-14.33-6.11-9.14-10.82-19.46-14.13-30.98-3.3-11.51-4.96-22.18-4.96-32.01 0-14.13 3.58-25.79 10.74-34.98 7.17-9.19 16.29-13.88 27.37-14.07 4.58 0 9.8 1.25 15.66 3.75 5.86 2.49 9.53 3.75 11.02 3.75 1.3 0 5.17-1.33 11.6-4 6.43-2.67 11.96-3.86 16.59-3.57 12.84.65 22.84 5.34 30.01 14.07-11.31 6.85-16.86 16.33-16.65 28.43.21 9.57 3.82 17.65 10.82 24.23 7.01 6.58 15.28 10.3 24.81 11.16-2.18 6.53-4.8 12.74-7.86 18.63zM119.22 31.84c0-7.72 2.76-14.86 8.29-21.43 5.53-6.57 12.21-10.41 20.04-11.53.22 1.3.33 2.44.33 3.42 0 7.72-2.88 15.08-8.63 22.08-5.76 7-12.58 10.89-20.47 11.68-.22-1.3-.44-2.71-.44-4.22z"/>
+            <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.74 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.7-3.08-7.7-7.85-12.02-14.33-6.11-9.14-10.82-19.46-14.13-30.98-3.3-11.51-4.96-22.18-4.96-32.01 0-14.13 3.58-25.79 10.74-34.98 7.17-9.19 16.29-13.88 27.37-14.07 4.58 0 9.8 1.25 15.66 3.75 5.86 2.49 9.53 3.75 11.02 3.75 1.3 0 5.17-1.33 11.7-4 6.43-2.67 11.96-3.86 16.59-3.57 12.84.65 22.84 5.34 30.01 14.07-11.31 6.85-16.86 16.33-16.65 28.43.21 9.57 3.82 17.65 10.82 24.23 7.01 6.58 15.28 10.3 24.81 11.16-2.18 6.53-4.8 12.74-7.86 18.63zM119.22 31.84c0-7.72 2.76-14.86 8.29-21.43 5.53-6.57 12.21-10.41 20.04-11.53.22 1.3.33 2.44.33 3.42 0 7.72-2.88 15.08-8.63 22.08-5.76 7-12.58 10.89-20.47 11.78-.22-1.3-.44-2.71-.44-4.22z"/>
           </svg>
           <div class="badge-text">
             <div class="small">Download on the</div>
@@ -586,7 +590,7 @@
           <img src="../assets/app_icon.png" alt="Logo">
           <span>eSIMManager</span>
         </div>
-        <p style="line-height: 1.6; margin-bottom: 16px;">
+        <p style="line-height: 1.7; margin-bottom: 16px;">
           海外旅行者向けのネイティブiPhone eSIM記録および整理ツール。透明性のあるヘルプは限られており、現在のバージョンは無料です。
         </p>
         <p>サポートのメールアドレス：<a href="mailto:mkjohnny@gmail.com" style="color: #38bdf8;">mkjohnny@gmail.com</a></p>
@@ -597,7 +601,7 @@
         <ul>
           <li><a href="#features">製品の特徴</a></li>
           <li><a href="#disclaimer">トラフィック推定の説明</a></li>
-          <li><a href="../assets/v1_6/eSIMManager_1.6_User_Manual.pdf" target="_blank">1.6取扱説明書（ PDF ）</a></li>
+          <li><a href="../assets/v1_6/eSIMManager_1.6_User_Manual.pdf" target="_blank">取扱説明書 (PDF)</a></li>
           <li><a href="../assets/demo_simulation_qr.png" target="_blank">デモQRコード</a></li>
         </ul>
       </div>
@@ -607,7 +611,7 @@
         <ul>
           <li><a href="#partnership">キャリアとNICプラットフォームのパートナーシップ</a></li>
           <li><a href="#partnership">ブランドマーケティングとマーケティングのコラボレーション</a></li>
-          <li><a href="mailto:mkjohnny@gmail.com?subject=[ビジネス連携提案]">着信する求人照会</a></li>
+          <li><a href="mailto:mkjohnny@gmail.com?subject=[eSIMManager ビジネス連携]">提案をメールで送る</a></li>
         </ul>
       </div>
       
@@ -616,7 +620,7 @@
         <ul>
           <li><a href="../privacy.html">個人情報保護方針</a></li>
           <li><a href="../terms.html">サービス利用規約</a></li>
-          <li><a href="terms.html#licenses">オープンソースライセンスステートメント（ MIT ）</a></li>
+          <li><a href="../terms.html#licenses">オープンソースライセンスステートメント（ MIT ）</a></li>
         </ul>
       </div>
     </div>

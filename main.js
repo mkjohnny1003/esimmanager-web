@@ -15,6 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (hostname === 'apps.apple.com') {
       eventName = 'app_store_click';
       destination = 'App Store';
+    } else if (hostname === 'play.google.com') {
+      eventName = 'play_store_click';
+      destination = 'Google Play';
     } else if (hostname === 'shopee.tw') {
       eventName = 'purchase_link_click';
       destination = 'Shopee';

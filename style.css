@@ -303,6 +303,16 @@ a:hover {
   border: 1px dashed #a9c5c4;
   border-radius: 12px;
   line-height: 1.2;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s, background 0.2s;
+}
+
+.android-coming-soon:hover {
+  transform: translateY(-2px);
+  color: var(--ink);
+  background: var(--mint);
+  border-color: var(--deep-teal);
+  box-shadow: 0 10px 24px rgba(14, 92, 92, 0.12);
 }
 
 .android-coming-soon-dot {
@@ -328,6 +338,81 @@ a:hover {
   margin-top: 3px;
   color: var(--text-muted);
   font-size: 11px;
+}
+
+.android-early-section {
+  padding: 28px 0 64px;
+}
+
+.android-early-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 28px;
+  align-items: center;
+  padding: 30px;
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 92% 16%, rgba(232, 112, 74, 0.14), transparent 26%),
+    linear-gradient(135deg, var(--mint) 0%, var(--sky-blue) 100%);
+  box-shadow: var(--shadow-soft);
+}
+
+.android-early-copy h2 {
+  margin: 8px 0 12px;
+  color: var(--ink);
+  font-size: clamp(28px, 4vw, 42px);
+  letter-spacing: -0.03em;
+}
+
+.android-early-copy p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.android-early-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.android-early-list span {
+  position: relative;
+  padding-left: 24px;
+  color: var(--ink);
+  line-height: 1.55;
+}
+
+.android-early-list span::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.65em;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  background: var(--deep-teal);
+  box-shadow: 5px 0 0 rgba(14, 92, 92, 0.25);
+}
+
+.android-early-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: stretch;
+  min-width: min(320px, 100%);
+}
+
+.android-early-actions .btn {
+  justify-content: center;
+}
+
+.android-early-actions small {
+  color: var(--text-muted);
+  font-size: 12px;
+  line-height: 1.6;
 }
 
 .badge-text {
@@ -2166,6 +2251,9 @@ a:hover {
   .hero-grid, .partner-grid, .values-grid, .tab-content.active, .disclaimer-grid, .footer-grid, .predeparture-grid {
     grid-template-columns: 1fr;
   }
+  .android-early-card {
+    grid-template-columns: 1fr;
+  }
   .guide-preview-grid,
   .guide-card-grid,
   .guide-hero-grid {
@@ -2193,6 +2281,9 @@ a:hover {
   }
   .hero-actions, .hero-trust {
     justify-content: center;
+  }
+  .android-early-actions {
+    align-items: center;
   }
   .float-card {
     display: none;
@@ -2677,9 +2768,19 @@ body {
     background: #243434;
     border-color: #3d5754;
   }
+  .android-coming-soon:hover {
+    background: #213c36;
+    border-color: var(--deep-teal);
+  }
   .android-coming-soon-dot {
     background: var(--deep-teal);
     box-shadow: 4px 0 0 rgba(61, 160, 158, 0.3);
+  }
+  .android-early-card {
+    background:
+      radial-gradient(circle at 92% 16%, rgba(232, 131, 92, 0.12), transparent 26%),
+      linear-gradient(135deg, #20322a 0%, #1f3434 100%);
+    border-color: #2b3c38;
   }
 
   .value-card,

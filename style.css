@@ -1,5 +1,5 @@
 :root {
-  /* eSIMManager 1.6 — Tabi palette. */
+  /* eSIMManager 1.7 — Tabi palette. */
   --ivory: #fbf8f0;
   --sky-blue: #e6f0f4;
   --mint: #e3f1ea;
@@ -359,6 +359,40 @@ a:hover {
   display: flex;
   align-items: center;
   gap: 6px;
+}
+
+.hero-language-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  color: var(--text-light);
+  font-size: 13px;
+}
+
+.hero-language-links span {
+  margin-right: 2px;
+  font-weight: 750;
+  color: var(--text-muted);
+}
+
+.hero-language-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 5px 10px;
+  border: 1px solid rgba(14, 92, 92, 0.16);
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--deep-teal);
+  font-weight: 750;
+  line-height: 1;
+}
+
+.hero-language-links a:hover {
+  background: var(--mint);
+  color: var(--primary-hover);
 }
 
 .hero-visual {
@@ -918,6 +952,18 @@ a:hover {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 20px;
+}
+
+.guide-preview-grid--wide {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.guide-preview-grid--wide .guide-preview-card {
+  grid-column: span 2;
+}
+
+.guide-preview-grid--wide .guide-preview-card--featured {
+  grid-column: span 3;
 }
 
 .guide-preview-card,
@@ -2129,6 +2175,10 @@ a:hover {
   .guide-card--featured {
     grid-column: auto;
   }
+  .guide-preview-grid--wide .guide-preview-card,
+  .guide-preview-grid--wide .guide-preview-card--featured {
+    grid-column: auto;
+  }
   .journey-panel { flex-basis: 210px; }
   .predeparture-shot { order: -1; }
   .language-callout { grid-template-columns: 1fr; text-align: center; }
@@ -2246,7 +2296,7 @@ a:hover {
 }
 
 /* -------------------------------------------------------------------------
-   1.6 Tabi visual system — staged locally until the 1.6 App Store release.
+   1.7 Tabi visual system — live with the current App Store release.
    The palette uses ivory, sky blue, mint, deep teal, warm coral,
    and ink. Pixel elements are intentionally small decorative wayfinding,
    never a body typeface or a dominant illustration.

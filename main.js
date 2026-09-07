@@ -1,9 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Measure promotion performance without collecting contact-form content or
   // any eSIM information. GA4's automatic page_view is configured in HTML.
-  document.addEventListener('click', (event) => {
-    const link = event.target.closest('a[href]');
-    if (!link || typeof window.gtag !== 'function') return;
+  const trackedOutboundClicks = new WeakMap();
+
+  const getOutboundTrackingInfo = (link) => {
+    if (!link) return null;
 
     const href = link.href;
     const hostname = new URL(href, window.location.origin).hostname;
@@ -26,35 +27,75 @@ document.addEventListener('DOMContentLoaded', () => {
       destination = hostname;
     }
 
-    if (eventName) {
-      let callbackFired = false;
-      const openTargetAfterTracking = () => {
-        if (callbackFired) return;
-        callbackFired = true;
+    if (!eventName) return null;
 
+    return { eventName, destination, href, label };
+  };
+
+  const sendOutboundTrackingEvent = (link, options = {}) => {
+    const info = getOutboundTrackingInfo(link);
+    if (!info || typeof window.gtag !== 'function') return false;
+
+    const now = Date.now();
+    const lastTrackedAt = trackedOutboundClicks.get(link) || 0;
+    if (now - lastTrackedAt < 2000) {
+      if (options.openAfterTracking) {
         if (link.target === '_blank') {
-          window.open(href, '_blank', 'noopener,noreferrer');
+          window.open(info.href, '_blank', 'noopener,noreferrer');
         } else {
-          window.location.href = href;
+          window.location.href = info.href;
         }
-      };
+      }
+      return true;
+    }
+    trackedOutboundClicks.set(link, now);
 
-      // Prevent navigation from racing the analytics request. This is especially
-      // important for Google Ads conversion diagnostics: outbound app-store
-      // clicks must reach GA4 before the browser leaves the landing page.
-      event.preventDefault();
-      window.gtag('event', eventName, {
-        event_category: 'outbound',
-        link_destination: destination,
-        link_label: label,
-        link_url: href,
-        transport_type: 'beacon',
-        event_callback: openTargetAfterTracking,
-        event_timeout: 1200
-      });
+    let callbackFired = false;
+    const openTargetAfterTracking = () => {
+      if (!options.openAfterTracking || callbackFired) return;
+      callbackFired = true;
 
+      if (link.target === '_blank') {
+        window.open(info.href, '_blank', 'noopener,noreferrer');
+      } else {
+        window.location.href = info.href;
+      }
+    };
+
+    window.gtag('event', info.eventName, {
+      event_category: 'outbound',
+      link_destination: info.destination,
+      link_label: info.label,
+      link_url: info.href,
+      transport_type: 'beacon',
+      event_callback: openTargetAfterTracking,
+      event_timeout: 1200
+    });
+
+    if (options.openAfterTracking) {
       window.setTimeout(openTargetAfterTracking, 1500);
     }
+
+    return true;
+  };
+
+  // Fire as early as possible for mouse/touch interactions. This makes Google
+  // Analytics / Ads conversion diagnostics more reliable for outbound store
+  // links that open a new tab or leave the landing page immediately.
+  document.addEventListener('pointerdown', (event) => {
+    const link = event.target.closest('a[href]');
+    sendOutboundTrackingEvent(link);
+  }, { capture: true });
+
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest('a[href]');
+    const info = getOutboundTrackingInfo(link);
+    if (!info || typeof window.gtag !== 'function') return;
+
+    // Prevent navigation from racing the analytics request. This click handler
+    // also covers keyboard activation where pointerdown is not fired.
+    event.preventDefault();
+    sendOutboundTrackingEvent(link, { openAfterTracking: true });
   });
 
   // Manual side rails protect the main reading and affiliate areas from auto-ad insertion.

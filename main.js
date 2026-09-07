@@ -27,10 +27,33 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (eventName) {
+      let callbackFired = false;
+      const openTargetAfterTracking = () => {
+        if (callbackFired) return;
+        callbackFired = true;
+
+        if (link.target === '_blank') {
+          window.open(href, '_blank', 'noopener,noreferrer');
+        } else {
+          window.location.href = href;
+        }
+      };
+
+      // Prevent navigation from racing the analytics request. This is especially
+      // important for Google Ads conversion diagnostics: outbound app-store
+      // clicks must reach GA4 before the browser leaves the landing page.
+      event.preventDefault();
       window.gtag('event', eventName, {
+        event_category: 'outbound',
         link_destination: destination,
-        link_label: label
+        link_label: label,
+        link_url: href,
+        transport_type: 'beacon',
+        event_callback: openTargetAfterTracking,
+        event_timeout: 1200
       });
+
+      window.setTimeout(openTargetAfterTracking, 1500);
     }
   });
 

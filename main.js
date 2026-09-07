@@ -40,11 +40,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const lastTrackedAt = trackedOutboundClicks.get(link) || 0;
     if (now - lastTrackedAt < 2000) {
       if (options.openAfterTracking) {
-        if (link.target === '_blank') {
-          window.open(info.href, '_blank', 'noopener,noreferrer');
-        } else {
-          window.location.href = info.href;
-        }
+        window.setTimeout(() => {
+          if (link.target === '_blank') {
+            window.open(info.href, '_blank', 'noopener,noreferrer');
+          } else {
+            window.location.href = info.href;
+          }
+        }, 500);
       }
       return true;
     }
@@ -70,7 +72,9 @@ document.addEventListener('DOMContentLoaded', () => {
       link_destination: info.destination,
       link_label: info.label,
       link_url: info.href,
-      transport_type: 'beacon'
+      transport_type: 'beacon',
+      event_callback: openTargetAfterTracking,
+      event_timeout: 1500
     });
 
     window.gtag('event', info.eventName, {

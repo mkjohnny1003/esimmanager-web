@@ -62,6 +62,17 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     };
 
+    // Google Ads conversion action created from the campaign recommendation:
+    // OUTBOUND_CLICK / 網站外連點擊. Keep this event name in sync with
+    // Google Ads so affiliate/store/App Store clicks can count as conversions.
+    window.gtag('event', 'conversion_event_outbound_click_1', {
+      event_category: 'outbound',
+      link_destination: info.destination,
+      link_label: info.label,
+      link_url: info.href,
+      transport_type: 'beacon'
+    });
+
     window.gtag('event', info.eventName, {
       event_category: 'outbound',
       link_destination: info.destination,

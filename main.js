@@ -64,10 +64,11 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     };
 
-    // Google Ads conversion action created from the campaign recommendation:
-    // OUTBOUND_CLICK / 網站外連點擊. Keep this event name in sync with
-    // Google Ads so affiliate/store/App Store clicks can count as conversions.
-    window.gtag('event', 'conversion_event_outbound_click_1', {
+    // Google Ads imported GA4 conversion action:
+    // OUTBOUND_CLICK / Google Analytics 4 event: conversion_event_outbound_click.
+    // Keep this exact event name in sync with Google Ads; otherwise the campaign
+    // diagnostic will keep reporting incomplete conversion tracking.
+    window.gtag('event', 'conversion_event_outbound_click', {
       event_category: 'outbound',
       link_destination: info.destination,
       link_label: info.label,
@@ -75,6 +76,16 @@ document.addEventListener('DOMContentLoaded', () => {
       transport_type: 'beacon',
       event_callback: openTargetAfterTracking,
       event_timeout: 1500
+    });
+
+    // Legacy event kept temporarily for historical GA4 continuity. It is not
+    // the current Google Ads primary conversion action.
+    window.gtag('event', 'conversion_event_outbound_click_1', {
+      event_category: 'outbound',
+      link_destination: info.destination,
+      link_label: info.label,
+      link_url: info.href,
+      transport_type: 'beacon'
     });
 
     window.gtag('event', info.eventName, {

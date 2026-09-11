@@ -24,18 +24,19 @@
   <!-- OpenGraph / Social Meta Tags -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="eSIMManager - 自由選擇 eSIM，安心管理每一趟旅程">
-  <meta property="og:description" content="免費、不綁定單一供應商的本機 eSIM 整理工具：讓便宜 eSIM 也能享受接近專業服務的管理體驗。">
-  <meta property="og:image" content="assets/app_icon.png">
+  <meta property="og:description" content="核心管理免費：批次匯入 eSIM、分階段旅程確認、效期與流量估算集中整理。">
+  <meta property="og:image" content="https://getesimmanager.com/assets/app_icon.png">
+  <link rel="canonical" href="https://getesimmanager.com/">
   
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="assets/app_icon.png">
   <link rel="apple-touch-icon" href="assets/app_icon.png">
   
-  <link rel="stylesheet" href="style.css?v=20260906-cp-localized">
+  <link rel="stylesheet" href="style.css?v=20260911-ios18">
 </head>
 <body>
 
-  <!-- 1.7 Tabi pixel icon sprite. Decorative only; it never represents a
+  <!-- Tabi pixel icon sprite. Decorative only; it never represents a
        scannable QR code, system state, or an advertisement. -->
   <svg class="pixel-sprite" aria-hidden="true" focusable="false">
     <symbol id="pixel-airplane" viewBox="0 0 12 10"><path d="M5 0h2v1H5zM5 1h2v1H5zM5 2h2v1H5zM1 3h10v1H1zM0 4h12v1H0zM0 5h12v1H0zM1 6h10v1H1zM5 7h2v1H5zM4 8h4v1H4zM4 9h4v1H4z"/></symbol>
@@ -96,7 +97,7 @@
       <div class="hero-content">
         <div class="hero-pixel-scene" aria-hidden="true"><svg class="pixel-icon pixel-icon--hero"><use href="#pixel-airplane"></use></svg><svg class="pixel-icon pixel-icon--cloud"><use href="#pixel-cloud"></use></svg></div>
         <div class="hero-badge">
-          <span>1.7 已正式上架 · 新增歐洲語系、使用完畢安全提醒與網站教學內容</span>
+          <span>iOS 1.8 已正式上架 · 批次匯入、旅程整理與分階段設定</span>
         </div>
         <h1>自由選擇 eSIM，安心管理每一趟旅程</h1>
         <p class="hero-sub">
@@ -145,11 +146,26 @@
         <div class="float-card float-card-1">
           <span>🟢 App 內狀態整理 · 效期倒數</span>
         </div>
-        <img src="assets/v1_6/01_tabi_home_light_6.9.png" alt="eSIMManager 1.7 Tabi 亮色主畫面實機截圖" class="phone-mockup">
+        <img src="assets/v1_6/01_tabi_home_light_6.9.png" alt="eSIMManager 1.8 Tabi 亮色主畫面實機截圖" class="phone-mockup">
         <div class="float-card float-card-2">
           <span>🔒 可選密碼加密備份</span>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="release-18-sec" id="ios-18">
+    <div class="container">
+      <div class="sec-head">
+        <span class="sec-pill">iOS 1.8</span>
+        <h2>更快整理，也更適合多人旅行</h2>
+        <p>1.8 已在 App Store 上架。核心管理功能維持免費，加入廣告與一次性「永久移除廣告」購買；不是訂閱。</p>
+      </div>
+      <div class="release-18-grid">
+        <article class="release-18-card"><img src="assets/v1_8/travel_checks_iphone.png" alt="出發、抵達與返程分階段設定清單"><div class="release-18-copy"><h3>分階段旅程確認</h3><p>依出發、抵達與返程顯示必要步驟，清單只記錄你的確認，不會替你變更 iPhone 行動數據或漫遊設定。</p></div></article>
+        <article class="release-18-card"><img src="assets/v1_8/batch_import.png" alt="eSIMManager 多 QR 與簡化匯入畫面"><div class="release-18-copy"><h3>批次匯入與重複檢查</h3><p>可從圖片或 PDF 辨識多個 eSIM QR Code、勾選要加入的項目，並在保存前檢查重複資料。</p></div></article>
+      </div>
+      <p class="release-18-note">廣告由 Google AdMob 提供，實際顯示須待平台驗證及供應狀況；未載入廣告不影響管理功能。一次購買「永久移除廣告」會由 Apple 顯示所在地價格，購買前可先確認付款資訊。</p>
     </div>
   </section>
 
@@ -203,9 +219,9 @@
         
         <div class="value-card">
           <div class="val-icon"><svg class="pixel-icon pixel-icon--value" aria-hidden="true"><use href="#pixel-sliders"></use></svg></div>
-          <h3>全功能免費，協助安心設定</h3>
+          <h3>核心功能免費，協助安心設定</h3>
           <p>
-            App 不設內購或卡片數量上限，並提供安裝引導、出發前確認、效期倒數與裝置端流量估算。iPhone 的行動數據與漫遊設定仍須由你在系統中確認。
+            App 不限制卡片數量，管理、匯入、備份與設定引導維持免費。1.8 含廣告，並提供一次性「永久移除廣告」購買；不是訂閱。iPhone 的行動數據與漫遊設定仍須由你在系統中確認。
           </p>
         </div>
       </div>
@@ -676,7 +692,7 @@
           <span>eSIMManager</span>
         </div>
         <p style="line-height: 1.7; margin-bottom: 16px;">
-          專為海外旅人打造的 iPhone 本機 eSIM 紀錄與整理工具。透明說明限制，現行版本全功能免費。
+          專為海外旅人打造的 iPhone 本機 eSIM 紀錄與整理工具。核心管理功能免費；1.8 含廣告並提供一次性永久去廣告購買。
         </p>
         <p>支援信箱：<a href="mailto:mkjohnny@gmail.com" style="color: #38bdf8;">mkjohnny@gmail.com</a></p>
       </div>
@@ -687,7 +703,7 @@
           <li><a href="#features">產品特色</a></li>
           <li><a href="guides/">eSIM 教學中心</a></li>
           <li><a href="#disclaimer">流量估算說明</a></li>
-          <li><a href="assets/v1_6/eSIMManager_1.6_User_Manual.pdf" target="_blank">操作手冊（1.6/1.7 通用 PDF）</a></li>
+          <li><a href="assets/v1_6/eSIMManager_1.6_User_Manual.pdf" target="_blank">基本操作手冊（PDF；1.8 新功能請見本頁）</a></li>
           <li><a href="assets/demo_simulation_qr.png" target="_blank">示範演練 QR Code</a></li>
         </ul>
       </div>

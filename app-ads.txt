@@ -1,2 +1,4 @@
 google.com, pub-2607309542240072, DIRECT, f08c47fec0942fa0
 vungle.com, 6aa58525adbd10019b999820, DIRECT, c107d686becd2d77
+unity.com, 149361862, DIRECT, 96cabb5fbdde37a7
+ownerdomain=getesimmanager.com

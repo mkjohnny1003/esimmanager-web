@@ -14,6 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let destination = null;
 
     if (hostname === 'apps.apple.com') {
+      // Other apps we promote must not count as eSIMManager conversions.
+      if (!/\/id6800212290(?:\/|$)/.test(new URL(href).pathname)) return null;
       eventName = 'app_store_click';
       destination = 'App Store';
     } else if (hostname === 'play.google.com') {

@@ -342,11 +342,12 @@ a:hover {
 
 .android-early-section {
   padding: 28px 0 64px;
+  scroll-margin-top: 84px;
 }
 
 .android-early-card {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 320px);
   gap: 28px;
   align-items: center;
   padding: 30px;
@@ -361,7 +362,8 @@ a:hover {
 .android-early-copy h2 {
   margin: 8px 0 12px;
   color: var(--ink);
-  font-size: clamp(28px, 4vw, 42px);
+  font-size: clamp(26px, 3vw, 34px);
+  text-wrap: balance;
   letter-spacing: -0.03em;
 }
 
@@ -407,6 +409,13 @@ a:hover {
 
 .android-early-actions .btn {
   justify-content: center;
+  white-space: normal;
+  text-align: center;
+}
+
+.android-early-copy .android-reward-note {
+  margin-top: 18px;
+  font-size: 14px;
 }
 
 .android-early-actions small {

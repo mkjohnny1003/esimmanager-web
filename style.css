@@ -340,6 +340,39 @@ a:hover {
   font-size: 11px;
 }
 
+.more-apps-section {
+  padding: 56px 0;
+  scroll-margin-top: 84px;
+}
+.sister-app-card {
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr) minmax(150px, 210px);
+  gap: 28px;
+  align-items: start;
+  margin-top: 18px;
+  padding: 32px;
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  background: var(--sky-blue);
+}
+.sister-app-icon { width: 112px; height: 112px; border-radius: 24px; }
+.sister-app-copy h2 { margin: 0 0 10px; font-size: clamp(26px, 3vw, 34px); color: var(--ink); }
+.sister-app-copy p { color: var(--text-muted); line-height: 1.7; margin: 10px 0; }
+.sister-app-copy .sister-app-tagline { font-weight: 600; color: var(--ink); }
+.sister-app-features { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 16px 0; }
+.sister-app-features li { background: var(--mint); color: var(--ink); border-radius: 8px; padding: 6px 10px; font-size: 13px; }
+.sister-app-copy .sister-app-note { font-size: 13px; margin-bottom: 0; }
+.sister-app-download { align-self: center; white-space: normal; text-align: center; justify-content: center; }
+@media (max-width: 900px) {
+  .sister-app-card { grid-template-columns: 80px minmax(0, 1fr); gap: 20px; padding: 24px; }
+  .sister-app-icon { width: 80px; height: 80px; border-radius: 18px; }
+  .sister-app-download { grid-column: 1 / -1; justify-self: start; }
+}
+@media (max-width: 520px) {
+  .sister-app-card { grid-template-columns: minmax(0, 1fr); }
+  .sister-app-download { justify-self: stretch; }
+}
+
 .android-early-section {
   padding: 28px 0 64px;
   scroll-margin-top: 84px;

@@ -17,9 +17,9 @@ eSIMManager iOS 應用程式的官方首頁、隱私權政策和使用者文件�
 - 隱私權政策：https://getesimmanager.com/privacy.html
 - 條款：https://getesimmanager.com/terms.html
 - eSIMManager安卓測試：https://play.google.com/apps/testing/com.mkjohnny.esimmanager
-                      https://play.google.com/store/apps/details?id=com.mkjohnny.esimmanager
+- https://play.google.com/store/apps/details?id=com.mkjohnny.esimmanager
 - 人脈大師安卓測試：https://play.google.com/apps/testing/com.mkjohnny.renmaimaster
-                   https://play.google.com/store/apps/details?id=com.mkjohnny.renmaimaster
+- https://play.google.com/store/apps/details?id=com.mkjohnny.renmaimaster
 
 不綁定任何單一 eSIM 品牌。你可以自行比較並選擇符合預算與行程的方案，再用 eSIMManager 集中整理多張卡片、啟用資訊與效期。先完成出發前 3 項確認，抵達後再完成 2 項啟用與連線確認；實際設定、安裝與用量仍以 iOS 與供應商官方資訊為準。
 

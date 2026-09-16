@@ -16,7 +16,7 @@
     gtag('config', 'G-KJB54JTM44');
 
     document.addEventListener('DOMContentLoaded', function() {
-      // Track all App Store download button clicks
+      // Track all App Store download button clicks, compatible with Google Ads GA4 conversion actions
       document.querySelectorAll('a[href*="apps.apple.com"]').forEach(function(btn) {
         btn.addEventListener('click', function() {
           var position = this.closest('.hero') ? 'hero' : (this.closest('.cta-banner') ? 'cta_banner' : (this.closest('.nav-container') ? 'navbar' : 'other'));
@@ -24,7 +24,15 @@
             event_category: 'conversion',
             event_label: 'Card Master iOS Download (EN)',
             click_position: position,
-            link_url: this.href
+            link_url: this.href,
+            transport_type: 'beacon'
+          });
+          gtag('event', 'conversion_event_outbound_click', {
+            event_category: 'outbound',
+            link_destination: 'App Store',
+            link_label: 'Card Master iOS Download (EN)',
+            link_url: this.href,
+            transport_type: 'beacon'
           });
         });
       });

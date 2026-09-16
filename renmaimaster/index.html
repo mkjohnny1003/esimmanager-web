@@ -16,7 +16,7 @@
     gtag('config', 'G-KJB54JTM44');
 
     document.addEventListener('DOMContentLoaded', function() {
-      // 追蹤所有連往 App Store 的下載點擊
+      // 追蹤所有連往 App Store 的下載點擊，相容 Google Ads GA4 轉換事件
       document.querySelectorAll('a[href*="apps.apple.com"]').forEach(function(btn) {
         btn.addEventListener('click', function() {
           var position = this.closest('.hero') ? 'hero' : (this.closest('.cta-banner') ? 'cta_banner' : (this.closest('.nav-container') ? 'navbar' : 'other'));
@@ -24,7 +24,16 @@
             event_category: 'conversion',
             event_label: 'RenMaiMaster iOS Download',
             click_position: position,
-            link_url: this.href
+            link_url: this.href,
+            transport_type: 'beacon'
+          });
+          // Google Ads 原生匯入相容事件名
+          gtag('event', 'conversion_event_outbound_click', {
+            event_category: 'outbound',
+            link_destination: 'App Store',
+            link_label: 'RenMaiMaster iOS Download',
+            link_url: this.href,
+            transport_type: 'beacon'
           });
         });
       });

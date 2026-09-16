@@ -1,5 +1,467 @@
-<!doctype html><html lang="zh-Hant-TW"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>人脈大師｜重要的人脈，妥善留在身邊</title><meta name="description" content="為台灣設計的 iPhone 名片管理 App，使用 Apple 裝置端辨識，提供私密名片與加密備份。"><link rel="stylesheet" href="style.css"></head><body>
-<header><a class="brand" href="./">人脈大師</a><nav aria-label="網站導覽"><a href="support.html">使用支援</a><a href="privacy.html">隱私政策</a><a href="en/">English</a></nav></header>
-<main><section class="hero"><span class="pill">iPhone App · 已於 App Store 上架</span><h1>重要的人脈，<br>妥善留在身邊。</h1><p class="lead">將紙本名片整理成可搜尋、可編輯的聯絡資料。</p><p>以台灣使用者為核心，使用 Apple 裝置端文字辨識，免註冊即可管理名片。辨識後請核對原圖，尤其是電話、Email 與姓名。</p></section>
-<section class="grid"><div class="tile"><h2>裝置端辨識</h2><p>繁體中文與英文名片在 iPhone 上辨識，不傳給外部 AI 服務。</p></div><div class="tile"><h2>私密名片</h2><p>特定名片可鎖定，使用 Face ID、Touch ID 或裝置密碼驗證後管理。</p></div><div class="tile"><h2>加密備份</h2><p>保存備份及獨立恢復碼，方便換機還原。沒有恢復碼，客服也無法解密。</p></div><div class="tile"><h2>一次購買去廣告</h2><p>免費版含廣告，所有名片功能皆可使用；可一次購買永久去廣告。實際價格以 App 內顯示為準。</p></div></section></main>
-<footer>人脈大師 · 台灣繁體中文名片管理<br><a href="mailto:mkjohnny@gmail.com">mkjohnny@gmail.com</a></footer></body></html>
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>人脈大師｜重要的人脈，屬於你自己，而不是公司 — iPhone 原生名片管理 App</title>
+  <meta name="description" content="100% 零雲端、純 Apple 裝置端處理、無需註冊帳號。專為注重人脈資產與個人隱私的專業人士打造的 iPhone 名片管理工具。支援 Face ID 私密名片保險箱、商務循環拜訪與日曆連動。">
+  <meta name="keywords" content="人脈大師, 名片管理, iPhone 名片 App, 離線 OCR, 私密名片, 商務拜訪, vCard 匯出, 零雲端名片, RenMaiMaster">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://getesimmanager.com/renmaimaster/">
+  <meta property="og:title" content="人脈大師｜重要的人脈，屬於你自己，而不是公司">
+  <meta property="og:description" content="100% 零雲端、純 Apple 裝置端處理。第一款專為專業人士捍衛人脈資產與隱私的 iPhone 名片管理工具。">
+  <meta property="og:image" content="assets/brand-logo.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:title" content="人脈大師｜重要的人脈，屬於你自己，而不是公司">
+  <meta property="twitter:description" content="100% 零雲端、純 Apple 裝置端處理。專為商務人士打造的私密名片管理工具。">
+  <meta property="twitter:image" content="assets/brand-logo.png">
+
+  <link rel="icon" type="image/png" href="assets/brand-logo.png">
+  <link rel="apple-touch-icon" href="assets/app-icon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 頂部導航列 -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a class="brand-link" href="./">
+        <img class="brand-icon" src="assets/brand-logo.png" alt="人脈大師 Logo" width="36" height="36">
+        <span>人脈大師</span>
+      </a>
+      <ul class="nav-menu">
+        <li><a class="nav-link" href="#why">為什麼選人脈大師</a></li>
+        <li><a class="nav-link" href="#features">功能特色</a></li>
+        <li><a class="nav-link" href="#pricing">方案定價</a></li>
+        <li><a class="nav-link" href="#faq">常見問答</a></li>
+        <li><a class="nav-link" href="support.html">使用支援</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a class="lang-switch" href="en/" title="Switch to English">🌐 English</a>
+        <a class="btn btn-primary" href="https://apps.apple.com/tw/app/id6809885544" target="_blank" rel="noopener">免費下載</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- 英雄首頁區塊 -->
+    <section class="hero-section">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="dot"></span>
+            <span>iOS 1.2.2 正式上架 · 真正的零雲端名片守護者</span>
+          </div>
+          <h1 class="hero-title">
+            重要的人脈，<br>
+            <span class="gradient-text">屬於你自己</span>，<br>
+            而不是公司。
+          </h1>
+          <p class="hero-lead">
+            告別將客戶名單上傳公司 CRM 隨時被監控、換工作直接被清空的風險。人脈大師以 Apple 晶片端純本機運算，無伺服器、零雲端留存，讓你 100% 永久擁有自己的商業人脈資產。
+          </p>
+          <div class="hero-actions">
+            <a class="btn-appstore" href="https://apps.apple.com/tw/app/id6809885544" target="_blank" rel="noopener">
+              <svg class="appstore-icon" viewBox="0 0 24 24">
+                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.61-.75 1.04-1.8 0.92-2.87-.92.04-2.02.62-2.67 1.37-.58.66-1.09 1.74-.96 2.78 1.03.08 2.08-.54 2.71-1.28z"/>
+              </svg>
+              <div class="appstore-text">
+                <div class="appstore-sub">前往下載</div>
+                <div class="appstore-title">App Store</div>
+              </div>
+            </a>
+            <a class="btn btn-secondary" href="#why">深入了解隱私保障 ↓</a>
+          </div>
+          <div class="trust-indicators">
+            <div class="trust-item">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+              <span>100% 零雲端留存</span>
+            </div>
+            <div class="trust-item">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+              <span>Apple 原生晶片文字辨識</span>
+            </div>
+            <div class="trust-item">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+              <span>Face ID 私密保險箱</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 實機預覽卡片 (Pure CSS/HTML Phone Mockup) -->
+        <div class="phone-mockup-wrapper">
+          <div class="phone-frame">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <div class="app-header-preview">
+                <div class="app-header-top">
+                  <img class="app-header-logo" src="assets/brand-logo.png" alt="人脈大師 Logo">
+                  <div>
+                    <div class="app-header-title">人脈大師</div>
+                    <div class="app-header-sub">32 張名片 · 8 已收藏</div>
+                  </div>
+                </div>
+                <div class="app-search-preview">
+                  <span>🔍 搜尋姓名、公司、電話、職稱...</span>
+                </div>
+              </div>
+
+              <div class="preview-card-list">
+                <!-- 名片 1 -->
+                <div class="mini-card theme-indigo">
+                  <div class="mini-card-head">
+                    <div>
+                      <div class="mini-card-name">林怡安</div>
+                      <div class="mini-card-company">青禾設計工作室 · 品牌總監</div>
+                    </div>
+                    <span class="mini-card-badge badge-followup">📅 下週二回訪</span>
+                  </div>
+                  <div class="mini-card-details">
+                    <span>📱 0912-345-678 · 台北市信義區</span>
+                    <span>🏷️ 設計交流、合作夥伴</span>
+                  </div>
+                </div>
+
+                <!-- 名片 2 (私密已鎖定) -->
+                <div class="mini-card theme-amber">
+                  <div class="mini-card-head">
+                    <div>
+                      <div class="mini-card-name">陳建銘（VIP）</div>
+                      <div class="mini-card-company">頂峰創投 · 執行合夥人</div>
+                    </div>
+                    <span class="mini-card-badge badge-locked">🔒 Face ID 保險箱</span>
+                  </div>
+                  <div class="mini-card-details">
+                    <span>💼 核心投資人 · 已完成 AES-GCM 硬體加密</span>
+                    <span>🛡️ 未驗證前不出現於一般搜尋與快取</span>
+                  </div>
+                </div>
+
+                <!-- 名片 3 -->
+                <div class="mini-card theme-sky">
+                  <div class="mini-card-head">
+                    <div>
+                      <div class="mini-card-name">張雅婷</div>
+                      <div class="mini-card-company">日日策劃 · 專案協理</div>
+                    </div>
+                    <span class="mini-card-badge">⭐ 已收藏</span>
+                  </div>
+                  <div class="mini-card-details">
+                    <span>☎️ (02) 2345-6789 #205 · 台灣自動化展</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 痛點對比表區塊 -->
+    <section id="why" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">THE CONTRAST</span>
+          <h2 class="section-title">為什麼不該把人脈交給一般雲端 CRM？</h2>
+          <p class="section-desc">
+            商業人脈是你多年累積的核心個人資產。看看一般企業工具與人脈大師的本質差距：
+          </p>
+        </div>
+
+        <div class="contrast-table-wrapper">
+          <table class="contrast-table">
+            <thead>
+              <tr>
+                <th style="width: 25%;">評比維度</th>
+                <th style="width: 37%;">傳統公司 CRM / 雲端名片 App</th>
+                <th style="width: 38%;" class="col-highlight">人脈大師 (RenMaiMaster)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="contrast-row-title">資料所有權</td>
+                <td class="contrast-bad">✕ 歸公司後台所有，離職時名單直接被收回清空</td>
+                <td class="contrast-good">✓ <strong>100% 歸你個人所有</strong>，換工作名單依然在手機</td>
+              </tr>
+              <tr>
+                <td class="contrast-row-title">雲端外洩風險</td>
+                <td class="contrast-bad">✕ 上傳第三方雲端伺服器，面臨資料庫被駭與爬取風險</td>
+                <td class="contrast-good">✓ <strong>零雲端、無後端伺服器</strong>，名片圖文永不離開裝置</td>
+              </tr>
+              <tr>
+                <td class="contrast-row-title">隱私與 AI 濫用</td>
+                <td class="contrast-bad">✕ 將名片送往外部 AI 雲端模型分析，隱私無保障</td>
+                <td class="contrast-good">✓ <strong>Apple 晶片原生神經引擎</strong>本機辨識，不串接外部 AI</td>
+              </tr>
+              <tr>
+                <td class="contrast-row-title">VIP 敏感關係隔離</td>
+                <td class="contrast-bad">✕ 全混在一般清單中，手機借人或後台隨時一覽無遺</td>
+                <td class="contrast-good">✓ <strong>Face ID / Touch ID 獨立保險箱</strong> + AES-GCM 硬體加密</td>
+              </tr>
+              <tr>
+                <td class="contrast-row-title">帳號與隱私追蹤</td>
+                <td class="contrast-bad">✕ 強制註冊手機、綁定信箱，收集跨 App 行為</td>
+                <td class="contrast-good">✓ <strong>免註冊、免帳號</strong>，下載立即可用，絕不追蹤使用者</td>
+              </tr>
+              <tr>
+                <td class="contrast-row-title">收費模式</td>
+                <td class="contrast-bad">✕ 每月 NT$200 ~ NT$500 昂貴訂閱制，不續約無法看名片</td>
+                <td class="contrast-good">✓ <strong>核心免費；US$0.99 一次買斷</strong>永久去廣告與商務解鎖</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 六大核心特色區塊 -->
+    <section id="features" class="section" style="background: var(--bg-surface);">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">CORE CAPABILITIES</span>
+          <h2 class="section-title">專為商務人士打造的專業名片利器</h2>
+          <p class="section-desc">
+            回歸名片管理的本質：精準、快速、安全，把每一張名片轉化為實質商業機會。
+          </p>
+        </div>
+
+        <div class="features-grid">
+          <!-- 特色 1 -->
+          <div class="feature-card">
+            <div class="feature-icon-wrapper">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V4h16v3M9 20h6M12 4v16"/></svg>
+            </div>
+            <h3 class="feature-title">Apple 晶片原生文字辨識</h3>
+            <p class="feature-desc">
+              全程由 iPhone 裝置端類神經引擎秒速辨識繁體中文與英文。專為台灣電話格式優化（02~08 市話、09 手機、分機號碼、傳真），並聰明排除 8 碼統編避免誤判。
+            </p>
+          </div>
+
+          <!-- 特色 2 -->
+          <div class="feature-card">
+            <div class="feature-icon-wrapper">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+            <h3 class="feature-title">Face ID 私密名片保險箱</h3>
+            <p class="feature-desc">
+              重要貴賓與私密客戶名片可單獨設為私密。透過 CryptoKit AES-GCM 加密，未通過 Face ID 或 Touch ID 驗證前，名片絕不出現在一般搜尋、列表或縮圖中。
+            </p>
+          </div>
+
+          <!-- 特色 3 -->
+          <div class="feature-card">
+            <div class="feature-icon-wrapper">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <h3 class="feature-title">相識記錄與循環拜訪提醒</h3>
+            <p class="feature-desc">
+              記下「何時在哪裡認識」以及「下次拜訪時間」。支援單向寫入 iPhone 系統行事曆，並貼心設定提前一週自動提醒，讓客戶深深感受到你的專業與用心。
+            </p>
+          </div>
+
+          <!-- 特色 4 -->
+          <div class="feature-card">
+            <div class="feature-icon-wrapper">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+            </div>
+            <h3 class="feature-title">智慧四角透視校正</h3>
+            <p class="feature-desc">
+              手動快門拍照後，自動偵測名片邊緣並進行四角透視校正。支援手動拖曳角落微調，即使放在桌上斜著拍也能拉平為方正影像，同時保留未裁切原圖備查。
+            </p>
+          </div>
+
+          <!-- 特色 5 -->
+          <div class="feature-card">
+            <div class="feature-icon-wrapper">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            </div>
+            <h3 class="feature-title">完全自由的匯出與備份</h3>
+            <p class="feature-desc">
+              支援標準 vCard 3.0 單張與批次匯出、Excel 相容 CSV 匯出入，並可一鍵存入 iPhone 通訊錄。內建 256-bit 獨立金鑰加密備份，換機時無痛完整還原。
+            </p>
+          </div>
+
+          <!-- 特色 6 -->
+          <div class="feature-card">
+            <div class="feature-icon-wrapper">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            </div>
+            <h3 class="feature-title">個人名片專屬 QR Code</h3>
+            <p class="feature-desc">
+              建立自己的商務名片，一鍵出示高清 vCard QR Code。社交或展會場合見面時，對方只需用內建相機掃描即可秒存通訊錄，對方完全不需要安裝任何 App。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 定價方案區塊 -->
+    <section id="pricing" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">TRANSPARENT PRICING</span>
+          <h2 class="section-title">誠信定價，拒絕訂閱制吸血</h2>
+          <p class="section-desc">
+            人脈大師是一次付費、終身受用的隨身工具，不收月費、不收年費，更不拿你的資料牟利。
+          </p>
+        </div>
+
+        <div class="pricing-grid">
+          <!-- 免費版 -->
+          <div class="pricing-card">
+            <div class="pricing-plan-name">免費體驗版</div>
+            <div class="pricing-plan-desc">完整功能無鎖死，適合初次使用的個人</div>
+            <div class="pricing-price">
+              <span class="currency">NT$</span>0
+              <span class="pricing-period">/ 永久免費</span>
+            </div>
+            <ul class="pricing-features">
+              <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Apple 原生晶片離線辨識</li>
+              <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> 無掃描張數商業限制</li>
+              <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Face ID 私密名片保險箱</li>
+              <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> vCard / CSV / 通訊錄匯入匯出</li>
+              <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> 包含非侵入式廣告</li>
+            </ul>
+            <a class="btn btn-secondary" style="width: 100%;" href="https://apps.apple.com/tw/app/id6809885544" target="_blank" rel="noopener">立即免費下載</a>
+          </div>
+
+          <!-- 永久買斷商務版 -->
+          <div class="pricing-card featured">
+            <span class="pricing-badge">一次購買 · 終生受用</span>
+            <div class="pricing-plan-name">永久去廣告 & 商務解鎖</div>
+            <div class="pricing-plan-desc">專為業務主管、創業者與高階專業人士打造</div>
+            <div class="pricing-price">
+              <span class="currency">US$</span>0.99
+              <span class="pricing-period">/ 一次買斷（約 NT$30）</span>
+            </div>
+            <ul class="pricing-features">
+              <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> <strong>永久移除所有 App 內廣告</strong></li>
+              <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> <strong>商務相識記錄與週期性拜訪排程</strong></li>
+              <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> <strong>一鍵連動系統行事曆（提前一週提醒）</strong></li>
+              <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> <strong>Apple 地圖與 Google 地圖一鍵導航</strong></li>
+              <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> 同一 Apple 帳號換機一鍵免費恢復</li>
+            </ul>
+            <a class="btn btn-primary" style="width: 100%;" href="https://apps.apple.com/tw/app/id6809885544" target="_blank" rel="noopener">於 App 內購買解鎖</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 常見問答區塊 -->
+    <section id="faq" class="section" style="background: var(--bg-surface);">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">FREQUENTLY ASKED QUESTIONS</span>
+          <h2 class="section-title">常見問答</h2>
+          <p class="section-desc">關於隱私、備份與換機疑慮，我們為你一一解答。</p>
+        </div>
+
+        <div class="faq-list">
+          <details class="faq-item" open>
+            <summary class="faq-question">如果完全沒有雲端，那我換新 iPhone 時資料該怎麼移轉？</summary>
+            <div class="faq-answer">
+              人脈大師內建「可攜式加密備份」功能。您可以在設定中一鍵匯出高強度 AES-GCM 加密的備份檔，並取得一組專屬的 256-bit 獨立恢復碼（Recovery Code）。換新手機後，只需下載 App 並輸入恢復碼，就能在全新裝置上安全還原所有名片（包含私密名片與照片），完全不需要透過第三方伺服器！
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">公司老闆或 IT 管理員看得到我在 App 裡存的名片嗎？</summary>
+            <div class="faq-answer">
+              完全看不到。人脈大師是完全安裝在您私人 iPhone 安全沙盒（Sandbox）內的個人單機 App，沒有企業管理後台，也沒有團隊共享伺服器。無論您是否離職或更換工作，這份名冊都是您隨身攜帶、100% 屬於您的個人人脈資產。
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">離線沒有網路或在飛機上可以使用辨識功能嗎？</summary>
+            <div class="faq-answer">
+              可以，完全沒問題！因為人脈大師採用 Apple 原生 Vision 裝置端神經網路技術，辨識運算全都在 iPhone 的 Apple 晶片上完成，不需要任何網路傳輸。在展覽會場收訊不良或飛行途中，都能流暢拍照、辨識、編輯與搜尋名片。
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">去廣告真的是一次買斷嗎？會不會以後又變成訂閱制？</summary>
+            <div class="faq-answer">
+              是的，我們採用 Apple App Store 標準的「非消耗型一次性購買」（Non-consumable IAP）。只要花費約一杯奶茶的價格（US$0.99 / NT$30），就能永久去廣告並解鎖商務排程功能。同一 Apple ID 在任何新手機上點擊「恢復購買」即可繼續使用，絕不扣取月費或年費。
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">為什麼你們堅持不用 OpenAI 或 ChatGPT 等雲端 AI 來辨識？</summary>
+            <div class="faq-answer">
+              因為將名片圖片或文字送往雲端 AI 伺服器，等同於將對方的私人電話、手機、公司名稱與備註曝險於外部伺服器，甚至可能被雲端廠商納入模型訓練資料庫。我們堅持使用 Apple 裝置端晶片運算，杜絕任何個資外流的機會。
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- 底層 CTA 橫幅 -->
+    <section class="section" style="padding-bottom: 0;">
+      <div class="container">
+        <div class="cta-banner">
+          <h2>今天就開始，掌握屬於你的人脈資產。</h2>
+          <p>零雲端留存、保護個人隱私、離職帶得走。立即下載體驗真正安心的名片管理。</p>
+          <div class="cta-banner-actions">
+            <a class="btn-appstore" href="https://apps.apple.com/tw/app/id6809885544" target="_blank" rel="noopener">
+              <svg class="appstore-icon" viewBox="0 0 24 24">
+                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.61-.75 1.04-1.8 0.92-2.87-.92.04-2.02.62-2.67 1.37-.58.66-1.09 1.74-.96 2.78 1.03.08 2.08-.54 2.71-1.28z"/>
+              </svg>
+              <div class="appstore-text">
+                <div class="appstore-sub">前往下載</div>
+                <div class="appstore-title">App Store</div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 頁尾 -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <h3>人脈大師 (RenMaiMaster)</h3>
+          <p>專為注重隱私與資料自主權的專業人士設計的 iPhone 名片管理工具。Apple 晶片原生辨識、特定名片 Face ID 保險箱、純本機離線保存。</p>
+        </div>
+        <div class="footer-col">
+          <h4>產品與特色</h4>
+          <ul class="footer-links">
+            <li><a href="#features">裝置端文字辨識</a></li>
+            <li><a href="#features">Face ID 私密名片</a></li>
+            <li><a href="#features">商務循環拜訪</a></li>
+            <li><a href="#pricing">方案定價</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>支援與服務</h4>
+          <ul class="footer-links">
+            <li><a href="support.html">使用支援與指南</a></li>
+            <li><a href="privacy.html">隱私政策</a></li>
+            <li><a href="mailto:mkjohnny@gmail.com">聯絡開發者</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>語言版本</h4>
+          <ul class="footer-links">
+            <li><a href="./">繁體中文 (台灣)</a></li>
+            <li><a href="en/">English (US)</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 人脈大師 · 保留所有權利</div>
+        <div>
+          支援信箱：<a href="mailto:mkjohnny@gmail.com">mkjohnny@gmail.com</a> · 已在 App Store 正式發布 (iOS 1.2.2)
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

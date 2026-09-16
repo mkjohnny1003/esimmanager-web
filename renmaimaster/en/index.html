@@ -7,6 +7,30 @@
   <meta name="description" content="100% Zero-cloud, on-device Apple silicon text recognition, no sign-up required. Built for professionals who value network ownership, privacy, Face ID private vault, and recurring follow-up reminders.">
   <meta name="keywords" content="Card Master, business card manager, iPhone card scanner, offline OCR, private cards, Face ID vault, vCard export, zero-cloud CRM, RenMaiMaster">
   
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KJB54JTM44"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-KJB54JTM44');
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // Track all App Store download button clicks
+      document.querySelectorAll('a[href*="apps.apple.com"]').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var position = this.closest('.hero') ? 'hero' : (this.closest('.cta-banner') ? 'cta_banner' : (this.closest('.nav-container') ? 'navbar' : 'other'));
+          gtag('event', 'app_store_click', {
+            event_category: 'conversion',
+            event_label: 'Card Master iOS Download (EN)',
+            click_position: position,
+            link_url: this.href
+          });
+        });
+      });
+    });
+  </script>
+  
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://getesimmanager.com/renmaimaster/en/">

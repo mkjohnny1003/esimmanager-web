@@ -7,6 +7,30 @@
   <meta name="description" content="100% 零雲端、純 Apple 裝置端處理、無需註冊帳號。專為注重人脈資產與個人隱私的專業人士打造的 iPhone 名片管理工具。支援 Face ID 私密名片保險箱、商務循環拜訪與日曆連動。">
   <meta name="keywords" content="人脈大師, 名片管理, iPhone 名片 App, 離線 OCR, 私密名片, 商務拜訪, vCard 匯出, 零雲端名片, RenMaiMaster">
   
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KJB54JTM44"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-KJB54JTM44');
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // 追蹤所有連往 App Store 的下載點擊
+      document.querySelectorAll('a[href*="apps.apple.com"]').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var position = this.closest('.hero') ? 'hero' : (this.closest('.cta-banner') ? 'cta_banner' : (this.closest('.nav-container') ? 'navbar' : 'other'));
+          gtag('event', 'app_store_click', {
+            event_category: 'conversion',
+            event_label: 'RenMaiMaster iOS Download',
+            click_position: position,
+            link_url: this.href
+          });
+        });
+      });
+    });
+  </script>
+  
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://getesimmanager.com/renmaimaster/">

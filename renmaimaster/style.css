@@ -1059,3 +1059,10 @@ a:hover {
 html[lang="ja"] body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",sans-serif;}
 .nav-actions{flex-wrap:wrap;}
 @media(max-width:600px){.nav-container{flex-wrap:wrap;gap:12px;height:auto;min-height:var(--header-height);padding-top:12px;padding-bottom:12px}.nav-actions{gap:12px}.hero-title{overflow-wrap:anywhere}.section-title{overflow-wrap:anywhere}}
+
+html[lang="ja"] .pricing-price{font-size:2.8rem;}
+html[lang="ja"] .hero-title{line-height:1.3;}
+html[lang="ja"] section[id]{scroll-margin-top:90px;}
+@media(max-width:600px){html[lang="ja"] section[id]{scroll-margin-top:180px;}}
+html[lang="ja"] .pricing-card.featured .pricing-price{flex-wrap:wrap;}
+html[lang="ja"] .pricing-card.featured .pricing-period{flex-basis:100%;}

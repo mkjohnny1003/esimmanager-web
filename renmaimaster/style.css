@@ -1054,3 +1054,8 @@ a:hover {
   .sister-app-card { grid-template-columns: minmax(0, 1fr); }
   .sister-app-download { justify-self: stretch; }
 }
+
+/* 1.5: three-language navigation and Japanese typography */
+html[lang="ja"] body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",sans-serif;}
+.nav-actions{flex-wrap:wrap;}
+@media(max-width:600px){.nav-container{flex-wrap:wrap;gap:12px;height:auto;min-height:var(--header-height);padding-top:12px;padding-bottom:12px}.nav-actions{gap:12px}.hero-title{overflow-wrap:anywhere}.section-title{overflow-wrap:anywhere}}

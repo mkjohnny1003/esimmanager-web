@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>人脈大師｜重要的人脈，屬於你自己，而不是公司 — iPhone 原生名片管理 App</title>
   <meta name="description" content="本機優先，iCloud 備份由你選擇、純 Apple 裝置端處理、無需註冊帳號。專為注重人脈資產與個人隱私的專業人士打造的 iPhone 名片管理工具。支援 Face ID 私密名片保險箱、商務循環拜訪與日曆連動。">
-  <meta name="keywords" content="人脈大師, 名片管理, iPhone 名片 App, 離線 OCR, 私密名片, 商務拜訪, vCard 匯出, 零雲端名片, RenMaiMaster">
+  <meta name="keywords" content="人脈大師, 名片管理, iPhone 名片 App, 離線 OCR, 私密名片, 商務拜訪, vCard 匯出, 裝置端名片, RenMaiMaster">
   
   <!-- Google Analytics 4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-KJB54JTM44"></script>
@@ -19,7 +19,7 @@
       // 追蹤所有連往 App Store 的下載點擊，相容 Google Ads GA4 轉換事件
       document.querySelectorAll('a[href*="apps.apple.com"]').forEach(function(btn) {
         btn.addEventListener('click', function() {
-          var position = this.closest('.hero') ? 'hero' : (this.closest('.cta-banner') ? 'cta_banner' : (this.closest('.nav-container') ? 'navbar' : 'other'));
+          var position = this.closest('.hero-section') ? 'hero' : (this.closest('.cta-banner') ? 'cta_banner' : (this.closest('.nav-container') ? 'navbar' : 'other'));
           gtag('event', 'app_store_click', {
             event_category: 'conversion',
             event_label: 'RenMaiMaster iOS Download',
@@ -44,7 +44,7 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://getesimmanager.com/renmaimaster/">
   <meta property="og:title" content="人脈大師｜重要的人脈，屬於你自己，而不是公司">
-  <meta property="og:description" content="本機優先，iCloud 備份由你選擇、純 Apple 裝置端處理。第一款專為專業人士捍衛人脈資產與隱私的 iPhone 名片管理工具。">
+  <meta property="og:description" content="本機優先，iCloud 備份由你選擇、純 Apple 裝置端處理。專為專業人士捍衛人脈資產與隱私的 iPhone 名片管理工具。">
   <meta property="og:image" content="assets/brand-logo.png">
 
   <!-- Twitter -->
@@ -56,6 +56,10 @@
   <link rel="icon" type="image/png" href="assets/brand-logo.png">
   <link rel="apple-touch-icon" href="assets/app-icon.png">
   <link rel="stylesheet" href="style.css">
+<link rel="alternate" hreflang="zh-Hant" href="https://getesimmanager.com/renmaimaster/">
+<link rel="alternate" hreflang="en" href="https://getesimmanager.com/renmaimaster/en/">
+<link rel="alternate" hreflang="ja" href="https://getesimmanager.com/renmaimaster/ja/">
+<link rel="canonical" href="https://getesimmanager.com/renmaimaster/">
 </head>
 <body>
 
@@ -74,6 +78,7 @@
         <li><a class="nav-link" href="support.html">使用支援</a></li>
       </ul>
       <div class="nav-actions">
+        <a class="lang-switch" hreflang="ja" href="ja/">日本語</a>
         <a class="lang-switch" href="en/" title="Switch to English">🌐 English</a>
         <a class="btn btn-primary" href="https://apps.apple.com/tw/app/id6809885544" target="_blank" rel="noopener">免費下載</a>
       </div>
@@ -81,13 +86,14 @@
   </header>
 
   <main>
+
     <!-- 英雄首頁區塊 -->
     <section class="hero-section">
       <div class="container hero-grid">
         <div class="hero-content">
           <div class="hero-badge">
             <span class="dot"></span>
-            <span>iOS 1.4 正式上架 · 你的人脈，由你掌握</span>
+            <span>iOS 1.5 正式上架 · 你的人脈，由你掌握</span>
           </div>
           <h1 class="hero-title">
             重要的人脈，<br>
@@ -95,9 +101,9 @@
             而不是公司。
           </h1>
           <p class="hero-lead">
-            告別將客戶名單上傳公司 CRM 隨時被監控、換工作直接被清空的風險。人脈大師使用 Apple 裝置端辨識與 AI，無自建名片伺服器；資料預設本機保存，可自行選擇個人 iCloud 加密備份，讓你 100% 永久擁有自己的商業人脈資產。
+            告別將客戶名單上傳公司 CRM 隨時被監控、換工作直接被清空的風險。人脈大師使用 Apple 裝置端辨識與 AI，無自建名片伺服器；資料預設本機保存，可自行選擇個人 iCloud 加密備份，讓你 自行管理與匯出名片資料。
           </p>
-          <p class="hero-lead" style="font-size:1rem">1.4 新增<strong>人脈圖</strong>與<strong>個人 iCloud 加密備份</strong>，既有永久解鎖用戶直接享有；<strong>App 內行事曆編輯免費開放</strong>。AI 分類建議須支援 Apple Intelligence 的裝置，無法使用時仍可手動整理。</p>
+          <p class="hero-lead" style="font-size:1rem">永久解鎖包含<strong>人脈圖</strong>與<strong>個人 iCloud 加密備份</strong>，既有永久解鎖用戶直接享有；<strong>App 內行事曆編輯免費開放</strong>。AI 分類建議須支援 Apple Intelligence 的裝置，無法使用時仍可手動整理。</p>
           <div class="hero-actions">
             <a class="btn-appstore" href="https://apps.apple.com/tw/app/id6809885544" target="_blank" rel="noopener">
               <svg class="appstore-icon" viewBox="0 0 24 24">
@@ -196,7 +202,8 @@
     </section>
 
     <!-- 痛點對比表區塊 -->
-    <section id="why" class="section">
+    <section id="new-in-15" class="section"><div class="container"><span class="section-tag">VERSION 1.5</span><h2 class="section-title">1.5：日文、分機與選填背面</h2><p class="section-desc">新增日文介面與名片國家／地區設定，可整理部門與姓名讀音。電話分機可設定等待秒數：一個逗號暫停 2 秒，兩個逗號暫停 4 秒，並保留於通訊錄與 vCard。名片背面完全選填，只拍正面即可儲存，也能日後補拍或匯入。背面的第二語言、產品與服務文字在裝置端辨識，校對並確認後可搜尋；永久解鎖的人脈圖可依共同產品／服務整理關聯，共同屬性不代表彼此認識。</p><p style="margin-top:20px;line-height:1.8">需要 iOS 17 或以上；Apple Vision 文字辨識不需要 Apple Intelligence。產業分類建議另需支援 Apple Intelligence 的 iOS 26 或以上裝置、語言與可用模型；不可用時仍可手動整理。不使用外部或雲端 AI。廣告、購買與使用者主動啟用的個人 iCloud 加密備份需要網路。</p></div></section>
+<section id="why" class="section">
       <div class="container">
         <div class="section-header">
           <span class="section-tag">THE CONTRAST</span>
@@ -374,8 +381,8 @@
             </div>
             <ul class="pricing-features">
               <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> <strong>永久移除所有 App 內廣告</strong></li>
-              <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> <strong>人脈圖：公司、地區、產業與手動關係（1.4）</strong></li>
-              <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> <strong>個人 iCloud 加密備份與還原（1.4）</strong></li>
+              <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> <strong>人脈圖：公司、地區、產業與手動關係</strong></li>
+              <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> <strong>個人 iCloud 加密備份與還原</strong></li>
               <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> <strong>Apple 地圖與 Google 地圖一鍵導航</strong></li>
               <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> 同一 Apple 帳號可恢復購買權益</li>
             </ul>
@@ -471,7 +478,7 @@
         </article>
       </div>
     </section>
-  <section class="container" style="padding:24px;line-height:1.8"><h2>1.4：資料由你掌握</h2><p>1.4 已正式上架：免費使用 App 內 Apple 原生行事曆編輯器新增、連結與編輯事件。原有永久解鎖用戶可使用人脈圖與個人 iCloud 加密備份／還原，無須再次購買。本機加密備份仍免費。iCloud 備份由你主動啟動，需 Apple 帳號、iCloud Drive 與足夠空間，不是即時同步；只上傳加密檔，不上傳恢復碼。請另存恢復碼，客服無法取回。可在「檔案 → iCloud Drive → 人脈大師 → EncryptedBackups」刪除備份，再到「最近刪除」永久移除；刪除備份不會刪除 App 內名片，刪除 App 也不會自動清除雲端備份。人脈圖使用共同屬性與手動關係，並不表示兩人彼此認識；可用時的 Apple Intelligence 產業建議僅在裝置端處理公司與職稱，需使用者確認。行事曆完整存取只在使用時要求，以讀取和編輯你主動連結的事件；事件依行事曆帳號設定同步。不存取提醒事項。</p></section>
+  <section class="container" style="padding:24px;line-height:1.8"><h2>資料由你掌握</h2><p>1.5 已正式上架：免費使用 App 內 Apple 原生行事曆編輯器新增、連結與編輯事件。原有永久解鎖用戶可使用人脈圖與個人 iCloud 加密備份／還原，無須再次購買。本機加密備份仍免費。iCloud 備份由你主動啟動，需 Apple 帳號、iCloud Drive 與足夠空間，不是即時同步；只上傳加密檔，不上傳恢復碼。請另存恢復碼，客服無法取回。可在「檔案 → iCloud Drive → 人脈大師 → EncryptedBackups」刪除備份，再到「最近刪除」永久移除；刪除備份不會刪除 App 內名片，刪除 App 也不會自動清除雲端備份。人脈圖使用共同屬性與手動關係，並不表示兩人彼此認識；可用時的 Apple Intelligence 產業建議僅在裝置端處理公司與職稱，需使用者確認。行事曆完整存取只在使用時要求，以讀取和編輯你主動連結的事件；事件依行事曆帳號設定同步。不存取提醒事項。</p></section>
 </main>
 
   <!-- 頁尾 -->
@@ -510,7 +517,7 @@
       <div class="footer-bottom">
         <div>&copy; 2026 人脈大師 · 保留所有權利</div>
         <div>
-          支援信箱：<a href="mailto:mkjohnny@gmail.com">mkjohnny@gmail.com</a> · 已在 App Store 正式發布 (iOS 1.4)
+          支援信箱：<a href="mailto:mkjohnny@gmail.com">mkjohnny@gmail.com</a> · 已在 App Store 正式發布 (iOS 1.5)
         </div>
       </div>
     </div>

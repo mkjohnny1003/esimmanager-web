@@ -1,0 +1,219 @@
+/* Shared recommendations across the four app websites. */
+.more-apps-section,
+main > .grid[aria-label="其他 App"],
+main > .grid[aria-label="Other apps"],
+main > .details[aria-label="其他 App"],
+main > .details[aria-label="Other apps"] {
+  padding-top: 48px;
+  padding-bottom: 48px;
+}
+
+.more-apps-section .container,
+main > .grid[aria-label="其他 App"],
+main > .grid[aria-label="Other apps"],
+main > .details[aria-label="其他 App"],
+main > .details[aria-label="Other apps"] {
+  --related-ink: #1c302c;
+  --related-muted: #4f625c;
+  --related-line: #d6e4dd;
+  --related-accent: #087e5d;
+}
+
+.more-apps-section .section-eyebrow,
+main > .grid[aria-label="其他 App"]::before,
+main > .grid[aria-label="Other apps"]::before,
+main > .details[aria-label="其他 App"]::before,
+main > .details[aria-label="Other apps"]::before {
+  display: block;
+  grid-column: 1 / -1;
+  margin: 0 0 18px;
+  color: var(--related-accent);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+main > .grid[aria-label="其他 App"]::before,
+main > .details[aria-label="其他 App"]::before { content: "我們開發的其他 App"; }
+main > .grid[aria-label="Other apps"]::before,
+main > .details[aria-label="Other apps"]::before { content: "More apps from our developer"; }
+
+.more-apps-section .sister-app-card,
+main > .grid[aria-label="其他 App"] > .tile,
+main > .grid[aria-label="Other apps"] > .tile,
+main > .details[aria-label="其他 App"] > div,
+main > .details[aria-label="Other apps"] > div {
+  display: grid;
+  grid-template-columns: 80px minmax(0, 1fr) auto;
+  column-gap: 24px;
+  align-items: start;
+  width: 100%;
+  margin: 0 0 16px;
+  padding: 24px;
+  border: 1px solid var(--related-line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--related-ink);
+  box-shadow: none;
+}
+
+.more-apps-section .sister-app-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.more-apps-section .sister-app-copy h2,
+main > .grid[aria-label="其他 App"] .tile h2,
+main > .grid[aria-label="Other apps"] .tile h2,
+main > .details[aria-label="其他 App"] > div h2,
+main > .details[aria-label="Other apps"] > div h2 {
+  margin: 0 0 8px;
+  color: var(--related-ink);
+  font-size: 23px;
+  line-height: 1.35;
+  letter-spacing: 0;
+}
+
+.more-apps-section .sister-app-copy p,
+main > .grid[aria-label="其他 App"] .tile p,
+main > .grid[aria-label="Other apps"] .tile p,
+main > .details[aria-label="其他 App"] > div p,
+main > .details[aria-label="Other apps"] > div p {
+  margin: 0 0 8px;
+  color: var(--related-muted);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.more-apps-section .sister-app-download,
+main > .grid[aria-label="其他 App"] .tile a,
+main > .grid[aria-label="Other apps"] .tile a,
+main > .details[aria-label="其他 App"] > div a,
+main > .details[aria-label="Other apps"] > div a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 8px 14px;
+  border: 1px solid var(--related-accent);
+  border-radius: 6px;
+  background: var(--related-accent);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 1.35;
+  text-decoration: none;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.more-apps-section .sister-app-download:hover,
+main > .grid[aria-label="其他 App"] .tile a:hover,
+main > .grid[aria-label="Other apps"] .tile a:hover,
+main > .details[aria-label="其他 App"] > div a:hover,
+main > .details[aria-label="Other apps"] > div a:hover { background: #06694e; color: #fff; }
+
+main > .grid[aria-label="其他 App"],
+main > .grid[aria-label="Other apps"],
+main > .details[aria-label="其他 App"],
+main > .details[aria-label="Other apps"] { display: block; }
+
+main > .grid[aria-label="其他 App"] > .tile,
+main > .grid[aria-label="Other apps"] > .tile,
+main > .details[aria-label="其他 App"] > div,
+main > .details[aria-label="Other apps"] > div {
+  position: relative;
+  grid-template-columns: 80px minmax(0, 1fr) auto;
+  grid-template-rows: auto auto 1fr;
+}
+
+main > .grid[aria-label="其他 App"] > .tile::before,
+main > .grid[aria-label="Other apps"] > .tile::before,
+main > .details[aria-label="其他 App"] > div::before,
+main > .details[aria-label="Other apps"] > div::before {
+  content: "";
+  grid-column: 1;
+  grid-row: 1 / 4;
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  background: center / cover no-repeat;
+}
+
+main > .grid[aria-label="其他 App"] > .tile:nth-of-type(1)::before,
+main > .grid[aria-label="Other apps"] > .tile:nth-of-type(1)::before,
+main > .details[aria-label="其他 App"] > div:nth-of-type(1)::before,
+main > .details[aria-label="Other apps"] > div:nth-of-type(1)::before { background-image: url("app_icon.png"); }
+main > .grid[aria-label="其他 App"] > .tile:nth-of-type(2)::before,
+main > .grid[aria-label="Other apps"] > .tile:nth-of-type(2)::before,
+main > .details[aria-label="其他 App"] > div:nth-of-type(2)::before,
+main > .details[aria-label="Other apps"] > div:nth-of-type(2)::before { background-image: url("card-master-icon-20260920.png"); }
+main > .grid[aria-label="其他 App"] > .tile:nth-of-type(3)::before,
+main > .grid[aria-label="Other apps"] > .tile:nth-of-type(3)::before,
+main > .details[aria-label="其他 App"] > div:nth-of-type(3)::before,
+main > .details[aria-label="Other apps"] > div:nth-of-type(3)::before { background-image: url("gutsy-icon.png"); }
+main > .details[aria-label="其他 App"] > div:nth-of-type(3)::before,
+main > .details[aria-label="Other apps"] > div:nth-of-type(3)::before { background-image: url("menulens-icon.png"); }
+
+main > .grid[aria-label="其他 App"] .tile > *,
+main > .grid[aria-label="Other apps"] .tile > *,
+main > .details[aria-label="其他 App"] > div > *,
+main > .details[aria-label="Other apps"] > div > * { grid-column: 2; }
+
+main > .grid[aria-label="其他 App"] .tile > p:last-child,
+main > .grid[aria-label="Other apps"] .tile > p:last-child,
+main > .details[aria-label="其他 App"] > div > a,
+main > .details[aria-label="Other apps"] > div > a { grid-column: 3; grid-row: 1 / 4; align-self: center; }
+
+main > .grid[aria-label="其他 App"] .tile p:last-child,
+main > .grid[aria-label="Other apps"] .tile p:last-child,
+main > .details[aria-label="其他 App"] > div p:last-child,
+main > .details[aria-label="Other apps"] > div p:last-child { margin-top: 8px; }
+
+main > .details[aria-label="其他 App"] > div .eyebrow,
+main > .details[aria-label="Other apps"] > div .eyebrow { display: none; }
+
+@media (max-width: 700px) {
+  .more-apps-section .sister-app-card {
+    grid-template-columns: 64px minmax(0, 1fr);
+    gap: 16px;
+    padding: 18px;
+  }
+  .more-apps-section .sister-app-icon { width: 64px; height: 64px; }
+  .more-apps-section .sister-app-download { grid-column: 1 / -1; justify-self: stretch; }
+  main > .grid[aria-label="其他 App"] > .tile,
+  main > .grid[aria-label="Other apps"] > .tile,
+  main > .details[aria-label="其他 App"] > div,
+  main > .details[aria-label="Other apps"] > div { grid-template-columns: 64px minmax(0, 1fr); gap: 0 16px; padding: 18px; }
+  main > .grid[aria-label="其他 App"] > .tile::before,
+  main > .grid[aria-label="Other apps"] > .tile::before,
+  main > .details[aria-label="其他 App"] > div::before,
+  main > .details[aria-label="Other apps"] > div::before { width: 64px; height: 64px; }
+  main > .grid[aria-label="其他 App"] .tile > p:last-child,
+  main > .grid[aria-label="Other apps"] .tile > p:last-child,
+  main > .details[aria-label="其他 App"] > div > a,
+  main > .details[aria-label="Other apps"] > div > a { grid-column: 1 / -1; grid-row: auto; justify-self: stretch; margin-top: 14px; }
+  main > .grid[aria-label="其他 App"] .tile > p:last-child a,
+  main > .grid[aria-label="Other apps"] .tile > p:last-child a { width: 100%; }
+}
+
+@media (prefers-color-scheme: dark) {
+  .more-apps-section .sister-app-card,
+  main > .grid[aria-label="其他 App"] > .tile,
+  main > .grid[aria-label="Other apps"] > .tile,
+  main > .details[aria-label="其他 App"] > div,
+  main > .details[aria-label="Other apps"] > div { background: #172622; border-color: #385047; color: #edf6f0; }
+  .more-apps-section .sister-app-copy h2,
+  .more-apps-section .sister-app-copy .sister-app-tagline,
+  main > .grid[aria-label="其他 App"] .tile h2,
+  main > .grid[aria-label="Other apps"] .tile h2,
+  main > .details[aria-label="其他 App"] > div h2,
+  main > .details[aria-label="Other apps"] > div h2 { color: #edf6f0; }
+  .more-apps-section .sister-app-copy p,
+  main > .grid[aria-label="其他 App"] .tile p,
+  main > .grid[aria-label="Other apps"] .tile p,
+  main > .details[aria-label="其他 App"] > div p,
+  main > .details[aria-label="Other apps"] > div p { color: #b4c9bd; }
+}

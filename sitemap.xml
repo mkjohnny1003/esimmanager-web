@@ -76,10 +76,16 @@
   <url><loc>https://getesimmanager.com/renmaimaster/en/</loc><lastmod>2026-09-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://getesimmanager.com/renmaimaster/support.html</loc><lastmod>2026-09-16</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://getesimmanager.com/renmaimaster/privacy.html</loc><lastmod>2026-09-16</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://getesimmanager.com/menulens/</loc></url>
-  <url><loc>https://getesimmanager.com/menulens/support.html</loc></url>
-  <url><loc>https://getesimmanager.com/menulens/privacy.html</loc></url>
-  <url><loc>https://getesimmanager.com/menulens/en/</loc></url>
-  <url><loc>https://getesimmanager.com/menulens/en/support.html</loc></url>
-  <url><loc>https://getesimmanager.com/menulens/en/privacy.html</loc></url>
+  <url><loc>https://getesimmanager.com/menulens/</loc><lastmod>2026-09-23</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://getesimmanager.com/menulens/support.html</loc><lastmod>2026-09-23</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://getesimmanager.com/menulens/privacy.html</loc><lastmod>2026-09-23</lastmod><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://getesimmanager.com/menulens/en/</loc><lastmod>2026-09-23</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://getesimmanager.com/menulens/en/support.html</loc><lastmod>2026-09-23</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://getesimmanager.com/menulens/en/privacy.html</loc><lastmod>2026-09-23</lastmod><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://getesimmanager.com/gutsy/</loc><lastmod>2026-09-23</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://getesimmanager.com/gutsy/support.html</loc><lastmod>2026-09-23</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://getesimmanager.com/gutsy/privacy.html</loc><lastmod>2026-09-23</lastmod><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://getesimmanager.com/gutsy/en/</loc><lastmod>2026-09-23</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://getesimmanager.com/gutsy/en/support.html</loc><lastmod>2026-09-23</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://getesimmanager.com/gutsy/en/privacy.html</loc><lastmod>2026-09-23</lastmod><changefreq>yearly</changefreq><priority>0.5</priority></url>
 </urlset>

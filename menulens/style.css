@@ -6,9 +6,19 @@ a:focus-visible{outline:3px solid var(--accent);outline-offset:5px}
 .download-note,figcaption{font-size:14px;color:var(--muted)}
 .story{padding:12px 0 28px;border-bottom:1px solid var(--line)}
 .screenshots{padding:12px 0 28px;border-bottom:1px solid var(--line)}
-.screenshot-track{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x proximity;padding:12px 4px 20px;overscroll-behavior-x:contain}
+.screenshot-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:34px}
+.screenshot-heading h2{margin:0}
+.screenshot-controls{display:flex;flex-shrink:0;gap:8px}
+.screenshot-controls[hidden]{display:none}
+.screenshot-controls button{display:grid;place-items:center;width:44px;height:44px;padding:0;border:1px solid var(--accent);border-radius:50%;background:var(--surface);color:var(--accent);cursor:pointer}
+.screenshot-controls button:hover:not(:disabled){background:var(--accent);color:var(--bg)}
+.screenshot-controls button:disabled{border-color:var(--line);color:var(--muted);opacity:.4;cursor:default}
+.screenshot-controls button:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+.gallery-arrow{width:24px;height:24px;background:currentColor;mask:url("assets/icons/chevron-left.svg") center/contain no-repeat}
+.gallery-arrow-next{transform:rotate(180deg)}
+.screenshot-track{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;padding:12px 0 20px;overscroll-behavior-x:contain;scrollbar-width:thin;scrollbar-color:var(--accent) var(--line)}
 .screenshot-track:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
-.screenshot{flex:0 0 240px;min-width:0;margin:0;scroll-snap-align:start}
+.screenshot{flex:0 0 240px;min-width:0;max-width:100%;margin:0;scroll-snap-align:start}
 .screenshot a{display:flex;align-items:center;justify-content:center;height:522px;background:var(--surface);border:1px solid var(--line);border-radius:8px;overflow:hidden}
 .screenshot img{display:block;width:100%;height:100%;object-fit:contain}
 .screenshot-landscape{flex-basis:720px;max-width:100%}

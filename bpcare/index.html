@@ -4,44 +4,206 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>我的血壓｜血壓紀錄、吃藥提醒、回診與慢箋領藥</title>
-  <meta name="description" content="專為長輩設計的血壓管理 App:量血壓提醒、血壓與心率分級、今天吃藥了嗎、回診與健保慢箋領藥提醒、Apple Watch 與回診 PDF 報告。">
+  <meta name="description" content="專為長輩與家人設計的血壓管理 App:拍血壓計自動帶入數字、722 居家量測、吃藥提醒、回診與健保慢箋領藥提醒、傳給家人、Apple Watch 與回診 PDF 報告。資料只存在你的 iPhone。">
+  <meta name="keywords" content="我的血壓, 血壓紀錄, 血壓 App, 吃藥提醒, 慢箋, 慢性病連續處方箋, 722 量血壓, 居家血壓, 長輩, Apple Watch">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="apple-touch-icon" href="assets/app-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://getesimmanager.com/bpcare/">
+  <meta property="og:title" content="我的血壓｜量血壓、吃藥、回診，一個 App 顧好">
+  <meta property="og:description" content="拍血壓計自動帶入數字、722 居家量測、吃藥與慢箋領藥提醒，一鍵把今天的狀況傳給家人。">
+  <meta property="og:image" content="https://getesimmanager.com/bpcare/assets/hero.jpg">
   <link rel="stylesheet" href="style.css">
+
+  <!-- Google Analytics 4(全站共用) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KJB54JTM44"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-KJB54JTM44');
+    document.addEventListener('DOMContentLoaded', function() {
+      // 下載與說明書點擊
+      document.querySelectorAll('a[href*="apps.apple.com"]').forEach(function(a) {
+        a.addEventListener('click', function() {
+          gtag('event', 'app_store_click', { event_category: 'conversion', event_label: 'BPCare iOS Download',
+            click_position: this.dataset.pos || 'other', link_url: this.href, transport_type: 'beacon' });
+        });
+      });
+      document.querySelectorAll('a[href$=".pdf"]').forEach(function(a) {
+        a.addEventListener('click', function() {
+          gtag('event', 'file_download', { file_name: 'bpcare-manual-1.1.pdf', link_url: this.href, transport_type: 'beacon' });
+        });
+      });
+    });
+  </script>
 </head>
 <body>
   <header>
-    <div class="wrap">
+    <div class="wrap wide">
       <a class="brand" href="./"><img src="assets/app-icon.png" alt="我的血壓 圖示"><span>我的血壓</span></a>
       <nav>
         <a href="./" class="active">首頁</a>
-        <a href="support.html" class="">使用支援</a>
-        <a href="privacy.html" class="">隱私權政策</a>
+        <a href="assets/bpcare-manual-1.1.pdf" target="_blank" rel="noopener">使用說明書</a>
+        <a href="support.html">使用支援</a>
+        <a href="privacy.html">隱私權政策</a>
       </nav>
     </div>
   </header>
-  <main class="wrap">
-    <section class="hero">
-      <img src="assets/app-icon.png" alt="我的血壓">
-      <h1>量血壓、吃藥、回診,<br>一個 App 顧好</h1>
-      <p class="lead">專為長輩設計的大字介面。每天早晚提醒量血壓,自動判斷血壓與心率高低;
-      「今天吃藥了嗎?」一眼就知道;回診帶什麼、慢箋什麼時候可以領,都幫你記得。</p>
+
+  <main class="wrap wide">
+    <section class="hero2">
+      <div>
+        <span class="tag">iPhone · Apple Watch · 1.1 版</span>
+        <h1>量血壓、吃藥、回診，<br>一個 App 顧好</h1>
+        <p class="lead">專為長輩設計的大字介面，也讓家人放心。拍一下血壓計就能記錄，每天準時提醒吃藥，回診帶什麼、慢箋什麼時候可以領，都幫你記得。</p>
+        <div class="actions">
+          <a class="btn-appstore" data-pos="hero" href="https://apps.apple.com/tw/app/id6816619503" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.61-.75 1.04-1.8 0.92-2.87-.92.04-2.02.62-2.67 1.37-.58.66-1.09 1.74-.96 2.78 1.03.08 2.08-.54 2.71-1.28z"/></svg>
+            <span><span class="sub">免費下載</span><br><span class="title">App Store</span></span>
+          </a>
+          <a class="btn-ghost" href="assets/bpcare-manual-1.1.pdf" target="_blank" rel="noopener">📘 使用說明書（PDF）</a>
+        </div>
+        <div class="chips"><span class="chip">免註冊、免帳號</span><span class="chip">資料只在你的 iPhone</span><span class="chip">大字、大按鈕</span><span class="chip">繁體中文</span></div>
+      </div>
+      <div class="art"><img src="assets/hero.jpg" alt="長輩在家用手機記錄血壓的插圖"></div>
     </section>
-    <div class="grid">
-      <div class="feature"><h3>血壓與心率分級</h3><p>依 2022 台灣高血壓治療指引,即時判斷正常、偏高、第一期或第二期高血壓,並給出白話建議。</p></div>
-      <div class="feature"><h3>今天吃藥了嗎?</h3><p>每天像鬧鐘一樣提醒吃藥,通知上直接按「已服用」;可設定每次吃幾顆、半顆。</p></div>
-      <div class="feature"><h3>回診與出門前檢查</h3><p>前一晚與看診前提醒,出門前用大字清單確認健保卡、慢箋、藥袋都帶了。</p></div>
-      <div class="feature"><h3>健保慢箋領藥</h3><p>依「用完前 10 天內可領」規則,自動算出第 2、3 次可領藥期間並提前提醒。</p></div>
-      <div class="feature"><h3>回診 PDF 報告</h3><p>一鍵產生中文血壓報告:早晚平均、趨勢圖、用藥與量測明細,可列印或傳給醫師。</p></div>
-      <div class="feature"><h3>Apple Watch 與健康 App</h3><p>手錶上記錄血壓(自動帶入心率)、勾選用藥;可選擇把血壓與心率寫入「健康」App。</p></div>
-      <div class="feature"><h3>漏吃藥通知家人</h3><p>連續漏服時,透過 iPhone「捷徑」自動傳簡訊給家人,不經過任何伺服器。</p></div>
-      <div class="feature"><h3>資料只在你的手機</h3><p>免註冊、無雲端帳號。紀錄只存在你的 iPhone,開發者看不到你的健康資料。</p></div>
-    </div>
-    <p class="note">本 App 僅供個人紀錄與提醒,不能取代醫師診斷。若血壓 ≥ 180/120 或有胸痛、呼吸困難、單側無力等症狀,請立即就醫或撥打 119。</p>
+
+    <!-- 1.1 新功能 -->
+    <section class="section">
+      <span class="tag">1.1 版新功能</span>
+      <h2 class="big">更少輸入、更安心</h2>
+      <p class="intro">依照長輩與家人每天實際會遇到的情況重新整理：從第一次打開、每天量血壓吃藥，到回診前、換新手機，都幫你想好了。</p>
+
+      <div class="showcase">
+        <div class="text">
+          <span class="new">NEW</span>
+          <h3>拍血壓計，數字自動帶入</h3>
+          <p>量完血壓，把血壓計螢幕對準白框拍一張，收縮壓、舒張壓、心率自動填好，不必一個一個按數字。</p>
+          <ul>
+            <li>在 iPhone 上辨識，照片不上傳、不保存。</li>
+            <li>同一張照片讀兩次，看不清楚的欄位留空讓你自己輸入。</li>
+            <li>需要支援 Apple Intelligence 的 iPhone（iOS 27 以上）。</li>
+          </ul>
+        </div>
+        <div class="phones">
+          <div class="phone"><img src="assets/shots/camera.jpg" alt="拍血壓計畫面：把螢幕對準白框" loading="lazy"></div>
+          <div class="phone"><img src="assets/shots/photo-result.jpg" alt="數字自動帶入後核對儲存" loading="lazy"></div>
+        </div>
+      </div>
+
+      <div class="showcase flip">
+        <div class="text">
+          <span class="new">NEW</span>
+          <h3>722 居家量測，陪你量完一週</h3>
+          <p>台灣高血壓學會建議回診前在家做「722」：連續 <b>7</b> 天、每天早晚 <b>2</b> 回、每回量 <b>2</b> 次。App 用格子顯示進度，第 1 次存好會倒數 1 分鐘提醒量第 2 次。</p>
+          <ul>
+            <li>7 天後自動算出平均血壓，以及早上、晚上各自的平均。</li>
+            <li>一鍵產生只包含這 7 天的回診 PDF 報告。</li>
+            <li>回診前 7～10 天，首頁會提醒你開始量。</li>
+          </ul>
+        </div>
+        <div class="phones">
+          <div class="phone"><img src="assets/shots/722-progress.jpg" alt="722 量測進度格子" loading="lazy"></div>
+          <div class="phone"><img src="assets/shots/722-done.jpg" alt="722 量測完成的平均值" loading="lazy"></div>
+        </div>
+      </div>
+
+      <div class="showcase">
+        <div class="text">
+          <span class="new">NEW</span>
+          <h3>讓家人放心</h3>
+          <p>首頁右上角「傳給家人」，一段文字把今天的血壓、近 7 天平均、還沒吃的藥傳到 LINE。量到 ≥180/120 時，大字的處置畫面陪你一步步做：休息、5 分鐘後再量、一鍵撥 119、一鍵通知家人。</p>
+          <ul>
+            <li>連續漏服藥時，可透過 iPhone「捷徑」自動傳簡訊給家人。</li>
+            <li>全部不經過我們的伺服器，也不用註冊帳號。</li>
+          </ul>
+        </div>
+        <div class="illus"><img src="assets/family.jpg" alt="長輩與女兒透過手機互相關心的插圖" loading="lazy"></div>
+      </div>
+
+      <div class="showcase flip">
+        <div class="text">
+          <span class="new">NEW</span>
+          <h3>第一次使用，幾個問題就設定好</h3>
+          <p>打開 App 後，設定精靈用大字一步步問你：想用來做什麼、每天幾點量血壓、吃哪些藥、下次回診是什麼時候。每一步都能略過；換新手機的人也能直接從備份檔還原。</p>
+          <ul>
+            <li><b>備份與還原</b>：自己匯出備份檔，存到「檔案」或傳 LINE 保存。</li>
+            <li><b>Apple 健康雙向</b>：除了寫入，也能讀入藍牙血壓計 App 的紀錄。</li>
+            <li><b>通知被關掉會提醒</b>：提醒不會響時，首頁出現紅色提示。</li>
+          </ul>
+        </div>
+        <div class="phones">
+          <div class="phone"><img src="assets/shots/welcome.jpg" alt="設定精靈歡迎畫面" loading="lazy"></div>
+          <div class="phone"><img src="assets/shots/wizard-reminders.jpg" alt="設定每天量血壓時間" loading="lazy"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 功能總覽 -->
+    <section class="section">
+      <span class="tag">功能總覽</span>
+      <h2 class="big">每天會用到的，都在這裡</h2>
+      <div class="grid">
+        <div class="feature"><h3>🩺 血壓與心率分級</h3><p>依 2022 台灣高血壓治療指引，即時判斷正常、偏高、第一期或第二期高血壓，並給出白話建議。</p></div>
+        <div class="feature"><h3>💊 今天吃藥了嗎？</h3><p>每天像鬧鐘一樣提醒吃藥，通知上直接按「已服用」；可設定每次吃幾顆、半顆，看近 7 天服藥率。</p></div>
+        <div class="feature"><h3>🏥 回診與出門前檢查</h3><p>前一晚與看診前提醒，出門前用大字清單確認健保卡、慢箋、藥袋都帶了。</p></div>
+        <div class="feature"><h3>🧾 健保慢箋領藥</h3><p>依健保規定「上次給藥期間屆滿前 10 日內」自動算出每次最早可領日，時間到提醒你去領。</p></div>
+        <div class="feature"><h3>📄 回診 PDF 報告</h3><p>一鍵產生中文血壓報告：早晚平均、趨勢圖、用藥與服藥率、量測明細，可列印或傳給醫師。</p></div>
+        <div class="feature"><h3>⌚ Apple Watch</h3><p>手錶上記錄血壓（自動帶入手錶心率）、勾選用藥；錶面小工具一眼看到今天吃藥了沒。</p></div>
+        <div class="feature"><h3>❤️ Apple 健康</h3><p>可把血壓與心率寫入「健康」App，也能讀入藍牙血壓計 App 的紀錄，不用重複輸入。</p></div>
+        <div class="feature"><h3>🔒 資料只在你的手機</h3><p>免註冊、無雲端帳號。紀錄只存在你的 iPhone，開發者看不到你的健康資料。</p></div>
+      </div>
+    </section>
+
+    <!-- 畫面一覽 -->
+    <section class="section">
+      <span class="tag">畫面一覽</span>
+      <h2 class="big">大字、清楚、好按</h2>
+      <div class="gallery">
+        <figure><div class="phone"><img src="assets/shots/home.jpg" alt="首頁" loading="lazy"></div><figcaption>首頁「今天」</figcaption></figure>
+        <figure><div class="phone"><img src="assets/shots/bp.jpg" alt="血壓趨勢" loading="lazy"></div><figcaption>血壓趨勢</figcaption></figure>
+        <figure><div class="phone"><img src="assets/shots/meds.jpg" alt="今天吃藥了嗎" loading="lazy"></div><figcaption>今天吃藥了嗎？</figcaption></figure>
+        <figure><div class="phone"><img src="assets/shots/visits.jpg" alt="回診" loading="lazy"></div><figcaption>回診</figcaption></figure>
+        <figure><div class="phone"><img src="assets/shots/checklist.jpg" alt="出門前檢查清單" loading="lazy"></div><figcaption>出門前檢查</figcaption></figure>
+        <figure><div class="phone"><img src="assets/shots/refill.jpg" alt="慢箋領藥時程" loading="lazy"></div><figcaption>慢箋領藥</figcaption></figure>
+        <figure><div class="phone"><img src="assets/shots/crisis.jpg" alt="量到危險值時的處置步驟" loading="lazy"></div><figcaption>危險值處置</figcaption></figure>
+        <figure><div class="phone"><img src="assets/shots/backup.jpg" alt="備份與還原" loading="lazy"></div><figcaption>備份與還原</figcaption></figure>
+        <figure><div class="watch"><img src="assets/shots/watch.jpg" alt="Apple Watch 主畫面" loading="lazy"></div><figcaption>Apple Watch</figcaption></figure>
+      </div>
+    </section>
+
+    <!-- 正確量血壓 -->
+    <section class="section">
+      <div class="showcase">
+        <div class="illus"><img src="assets/posture.jpg" alt="正確量血壓坐姿：背靠椅背、雙腳平放、手臂與心臟同高" loading="lazy"></div>
+        <div class="text">
+          <span class="tag">量血壓小教室</span>
+          <h3>正確量血壓的方法</h3>
+          <ol class="steps2">
+            <li>量測前 30 分鐘不喝咖啡、不抽菸、不運動，先上完廁所。</li>
+            <li>坐在有靠背的椅子上靜坐 5 分鐘，雙腳平放、不翹腳。</li>
+            <li>手臂平放桌上，壓脈帶綁在上臂、與心臟同高。</li>
+            <li>每回量 2 次、間隔 1 分鐘，兩次都記錄。</li>
+            <li>早上起床 1 小時內、晚上睡前各量一回。</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- 說明書 -->
+    <section class="manual-cta">
+      <div class="icon">📘</div>
+      <div><h2>完整使用說明書</h2><p>快速設定、介面導覽、每個功能的操作步驟與常見問題，圖文並茂共 33 頁。適合列印給長輩，或家人先看過再教。</p></div>
+      <a href="assets/bpcare-manual-1.1.pdf" target="_blank" rel="noopener">下載 PDF（10 MB）</a>
+    </section>
+
+    <p class="note">本 App 僅供個人紀錄與提醒，不是醫療器材，不能取代醫師診斷。若血壓 ≥ 180/120，或有胸痛、呼吸困難、單側無力、說話不清等症狀，請立即就醫或撥打 119。</p>
   </main>
+
   <footer>
-    <div class="wrap">© 2026 我的血壓 · 聯絡我們:<a href="mailto:mkjohnny@gmail.com">mkjohnny@gmail.com</a><br>
-    本 App 僅供個人健康紀錄與提醒,不能取代專業醫療診斷。</div>
+    <div class="wrap">© 2026 我的血壓 · 聯絡我們：<a href="mailto:mkjohnny@gmail.com">mkjohnny@gmail.com</a><br>
+    本 App 僅供個人健康紀錄與提醒，不能取代專業醫療診斷。</div>
   </footer>
 </body>
 </html>

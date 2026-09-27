@@ -18,8 +18,10 @@
     #gbwrap{width:min(92vw,max(320px,calc(111dvh - 145px)),960px);}
     #gbshell>div:not(:first-child){display:none!important;}
   }
-  #game-toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:0 0 12px;color:#f0f0e8;font:600 14px/1.4 system-ui,sans-serif;}
-  #game-toolbar a{color:#f0f0e8;text-underline-offset:3px;}
+  #game-toolbar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;margin:0 0 12px;color:#f0f0e8;font:600 14px/1.4 system-ui,sans-serif;}
+  #game-toolbar a{display:inline-flex;align-items:center;min-height:38px;box-sizing:border-box;border:1px solid #d7eb91;
+    border-radius:6px;background:#b8da55;color:#182b19;padding:8px 14px;text-decoration:none;font-weight:800;}
+  #game-toolbar a:hover,#game-toolbar a:focus-visible{background:#d3ed87;}
   #game-toolbar button{border:1px solid #789c6d;border-radius:6px;background:#294b35;color:#fff;padding:8px 12px;font:inherit;}
   #score-dialog{width:min(420px,calc(100vw - 32px));max-height:calc(100dvh - 32px);overflow:auto;box-sizing:border-box;border:1px solid #486a52;border-radius:8px;background:#f4f7ef;color:#172a1e;padding:22px;box-shadow:0 12px 42px #0008;font:15px/1.5 system-ui,sans-serif;}
   #score-dialog::backdrop{background:#0009;}
@@ -34,12 +36,12 @@
   #score-dialog li span{float:right;font-variant-numeric:tabular-nums;font-weight:700;}
   #score-status{min-height:1.5em;color:#38594a;}
   #score-dialog [hidden]{display:none;}
-  #controls-dialog{width:min(430px,calc(100vw - 32px));box-sizing:border-box;border:1px solid #71917a;
+  #controls-dialog{width:min(500px,calc(100vw - 32px));box-sizing:border-box;border:1px solid #71917a;
     border-radius:8px;background:#f4f7ef;color:#172a1e;padding:24px;box-shadow:0 12px 42px #0008;
     font:15px/1.5 system-ui,sans-serif;}
   #controls-dialog::backdrop{background:#000b;}
   #controls-dialog h2{margin:0 0 14px;font-size:24px;}
-  #controls-dialog dl{display:grid;grid-template-columns:1fr auto;gap:10px 18px;margin:0 0 22px;}
+  #controls-dialog dl{display:grid;grid-template-columns:1fr 1fr;gap:10px 18px;margin:0 0 22px;}
   #controls-dialog dt{font-weight:700;}
   #controls-dialog dd{margin:0;text-align:right;}
   #controls-dialog button{border:1px solid #245d3c;border-radius:6px;background:#245d3c;color:#fff;
@@ -49,7 +51,7 @@
 <body>
 
 <div id="gbwrap">
-<div id="game-toolbar"><a href="../">GUTSY 官網</a><button id="show-scores" type="button">全球排行榜</button></div>
+<div id="game-toolbar"><a href="../">前往 GUTSY 官網下載 App</a><button id="show-scores" type="button">全球排行榜</button></div>
 <div id="gbshell" style="background:#c9c9c1;border-radius:12px 12px 44px 12px;padding:12px 12px 16px;box-sizing:border-box;border:1px solid #a8a89f;">
 
   <div style="background:#4a4a52;border-radius:8px 8px 28px 8px;padding:14px 12px 20px;">
@@ -91,15 +93,15 @@
 </div>
 
 <dialog id="controls-dialog" aria-labelledby="controls-title">
-  <h2 id="controls-title">鍵盤操作</h2>
+  <h2 id="controls-title">鍵盤操作 / Keyboard controls</h2>
   <dl>
-    <dt id="control-move">移動／選單</dt><dd>方向鍵 / WASD</dd>
-    <dt id="control-confirm">確認／暫停</dt><dd>Enter / 空白鍵</dd>
-    <dt id="control-back">返回／繼續</dt><dd>Esc / X</dd>
-    <dt id="control-settings">設定</dt><dd>C</dd>
-    <dt id="control-mute">靜音</dt><dd>M</dd>
+    <dt>移動／選單 · Move / menu</dt><dd>方向鍵 · Arrow keys / WASD</dd>
+    <dt>確認／暫停 · Confirm / pause</dt><dd>Enter / 空白鍵 · Space</dd>
+    <dt>返回／繼續 · Back / resume</dt><dd>Esc / X</dd>
+    <dt>設定 · Settings</dt><dd>C</dd>
+    <dt>靜音 · Mute</dt><dd>M</dd>
   </dl>
-  <button id="close-controls" type="button">進入選單</button>
+  <button id="close-controls" type="button">進入選單 / Enter menu</button>
 </dialog>
 
 <dialog id="score-dialog" aria-labelledby="score-dialog-title">
@@ -883,7 +885,7 @@ var scoreStatus=document.getElementById('score-status');
 var scoreApi=document.querySelector('meta[name="gutsy-score-api"]').content;
 var english=new URLSearchParams(location.search).get('lang')==='en';
 var messages=english?{
- home:'GUTSY home',board:'Global leaderboard',pending:'Leaderboard · pending',name:'Player name',
+ home:'GUTSY site · Get app',board:'Global leaderboard',pending:'Leaderboard · pending',name:'Player name',
  disclosure:'Your name and score will be publicly visible after submission.',submit:'Submit score',
  refresh:'Refresh',close:'Back to game',complete:'First three worlds complete!',over:'Run over',
  score:'Score',stage:'Stage',unavailable:'The public leaderboard is not available yet.',
@@ -891,11 +893,9 @@ var messages=english?{
  invalid:'Use 1–20 letters, numbers, spaces, underscores, periods, or hyphens.',
  stored:'The leaderboard is unavailable. Your score is saved in this browser.',
  submitting:'Submitting…',saved:'Your score is public.',
- submitError:'Submission failed. Your score is saved in this browser; please try again.',
- controlsTitle:'Keyboard controls',move:'Move / menu',confirm:'Confirm / pause',back:'Back / resume',
- settings:'Settings',mute:'Mute',enterMenu:'Enter menu'
+ submitError:'Submission failed. Your score is saved in this browser; please try again.'
 }:{
- home:'GUTSY 官網',board:'全球排行榜',pending:'排行榜 · 待提交',name:'玩家名稱',
+ home:'前往 GUTSY 官網下載 App',board:'全球排行榜',pending:'排行榜 · 待提交',name:'玩家名稱',
  disclosure:'提交後，玩家名稱與分數會公開顯示。',submit:'留下紀錄',
  refresh:'重新整理',close:'返回遊戲',complete:'前三個世界完成！',over:'本局結束',
  score:'分數',stage:'關卡',unavailable:'公開排行榜尚未啟用。',
@@ -903,20 +903,9 @@ var messages=english?{
  invalid:'名稱請使用 1 至 20 個字的文字、數字、空格、底線、句點或連字號。',
  stored:'公開排行榜尚未啟用，紀錄已暫存於此瀏覽器。',
  submitting:'提交中…',saved:'紀錄已公開。',
- submitError:'提交失敗，紀錄已暫存於此瀏覽器，請稍後重試。',
- controlsTitle:'鍵盤操作',move:'移動／選單',confirm:'確認／暫停',back:'返回／繼續',
- settings:'設定',mute:'靜音',enterMenu:'進入選單'
+ submitError:'提交失敗，紀錄已暫存於此瀏覽器，請稍後重試。'
 };
 document.documentElement.lang=english?'en':'zh-Hant';
-document.getElementById('controls-title').textContent=messages.controlsTitle;
-document.getElementById('control-move').textContent=messages.move;
-document.getElementById('control-confirm').textContent=messages.confirm;
-document.getElementById('control-back').textContent=messages.back;
-document.getElementById('control-settings').textContent=messages.settings;
-document.getElementById('control-mute').textContent=messages.mute;
-document.getElementById('close-controls').textContent=messages.enterMenu;
-document.querySelector('#control-move+dd').textContent=english?'Arrow keys / WASD':'方向鍵 / WASD';
-document.querySelector('#control-confirm+dd').textContent=english?'Enter / Space':'Enter / 空白鍵';
 document.getElementById('game-toolbar').querySelector('a').textContent=messages.home;
 document.getElementById('score-dialog-title').textContent=messages.board;
 document.querySelector('label[for="player-name"]').textContent=messages.name;

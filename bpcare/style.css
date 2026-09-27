@@ -1,0 +1,50 @@
+/* 我的血壓 (BPCare) 官網樣式 — 溫和醫療風:米白底、深青綠主色、白色大圓角卡片 */
+:root {
+  color-scheme: light dark;
+  --bg: #F4F1EC; --card: #FFFFFF; --fill: #F7F5F0; --border: #ECE7DE;
+  --ink: #1F2A2E; --ink2: #596569; --ink3: #7C878B;
+  --primary: #2E7A70; --primary-soft: #E3F0EE; --primary-deep: #1F625A;
+  --warm: #8A5A1F; --warm-soft: #F6EBDD; --danger: #A12E27; --danger-soft: #FAE0DE;
+  --radius: 22px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #131718; --card: #1E2425; --fill: #283031; --border: #2B3334;
+    --ink: #ECEAE5; --ink2: #A3ADB0; --ink3: #7D888C;
+    --primary: #5BAFA2; --primary-soft: #1C3531; --primary-deep: #9AD6CB;
+    --warm: #E7B77A; --warm-soft: #352A1C; --danger: #F08B83; --danger-soft: #3B1D1B;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink);
+  font-family: -apple-system, "SF Pro Text", "PingFang TC", "Noto Sans TC", sans-serif; line-height: 1.75; }
+a { color: var(--primary); }
+.wrap { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+header { position: sticky; top: 0; background: color-mix(in srgb, var(--bg) 92%, transparent);
+  backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); z-index: 10; }
+header .wrap { display: flex; align-items: center; gap: 16px; min-height: 64px; flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.15rem; color: var(--ink); text-decoration: none; }
+.brand img { width: 36px; height: 36px; border-radius: 9px; }
+nav { margin-left: auto; display: flex; gap: 18px; flex-wrap: wrap; }
+nav a { color: var(--ink2); text-decoration: none; font-weight: 600; }
+nav a.active { color: var(--primary); }
+main { padding: 40px 0 72px; }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 36px 32px; box-shadow: 0 1px 3px rgba(60, 50, 30, .05); }
+.tag { display: inline-block; font-size: .8rem; font-weight: 700; letter-spacing: .06em; color: var(--primary);
+  background: var(--primary-soft); padding: 2px 12px; border-radius: 999px; }
+h1 { font-size: 2.1rem; line-height: 1.3; margin: 14px 0 12px; }
+h2 { font-size: 1.25rem; margin: 30px 0 6px; }
+p, li { color: var(--ink2); font-size: 1.05rem; }
+.lead { font-size: 1.15rem; }
+.hero { text-align: center; padding: 24px 0 8px; }
+.hero img { width: 112px; height: 112px; border-radius: 26px; box-shadow: 0 10px 30px rgba(46, 122, 112, .25); }
+.btn { display: inline-block; background: var(--primary); color: #fff; font-weight: 700; text-decoration: none;
+  padding: 14px 28px; border-radius: 16px; margin-top: 12px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 28px; }
+.feature { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; }
+.feature h3 { margin: 0 0 6px; font-size: 1.1rem; }
+.feature p { margin: 0; font-size: 1rem; }
+.note { background: var(--danger-soft); color: var(--danger); border-radius: 16px; padding: 14px 18px; margin-top: 28px; }
+footer { border-top: 1px solid var(--border); padding: 24px 0 40px; color: var(--ink3); font-size: .9rem; text-align: center; }
+@media (max-width: 600px) { .card { padding: 26px 20px; } h1 { font-size: 1.7rem; } nav { margin-left: 0; } }

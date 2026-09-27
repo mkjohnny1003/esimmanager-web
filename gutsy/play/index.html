@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>GUTSY — 腸腸久久</title>
+<meta name="description" content="Play the first three worlds of GUTSY in your browser.">
+<meta name="gutsy-score-api" content="https://gutsy-scores.mkjohnny.workers.dev">
+<style>
+  html{min-height:100%;background:#20202a;}
+  body{margin:0;min-height:100dvh;padding:24px 12px;box-sizing:border-box;
+    display:grid;place-items:center;background:#20202a;
+    font-family:ui-sans-serif,system-ui,sans-serif;-webkit-text-size-adjust:100%;}
+  button{-webkit-tap-highlight-color:transparent;touch-action:manipulation;cursor:pointer;}
+  #gbwrap{width:min(94vw,820px);}
+  #gbshell{width:100%;}
+  @media (min-width:900px){
+    #gbwrap{width:min(92vw,116dvh,1020px);}
+    #gbshell{display:grid;grid-template-columns:minmax(0,1fr) 180px;grid-template-rows:auto auto auto 1fr;column-gap:14px;}
+    #gbshell>div:first-child{grid-column:1;grid-row:1 / 5;align-self:start;}
+    #gbshell>div:nth-child(2){grid-column:2;grid-row:1;margin:12px 0 22px!important;text-align:center!important;}
+    #gbshell>div:nth-child(3){grid-column:2;grid-row:2;flex-direction:column;gap:24px;margin:0!important;}
+    #gbshell>div:nth-child(3)>div:last-child{align-self:center;}
+    #gbshell>div:nth-child(4){grid-column:2;grid-row:3;margin:30px 0 0!important;}
+    #gbshell>div:nth-child(5){grid-column:2;grid-row:4;align-self:end;}
+  }
+  #game-toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:0 0 12px;color:#f0f0e8;font:600 14px/1.4 system-ui,sans-serif;}
+  #game-toolbar a{color:#f0f0e8;text-underline-offset:3px;}
+  #game-toolbar button{border:1px solid #789c6d;border-radius:6px;background:#294b35;color:#fff;padding:8px 12px;font:inherit;}
+  #score-dialog{width:min(420px,calc(100vw - 32px));max-height:calc(100dvh - 32px);overflow:auto;box-sizing:border-box;border:1px solid #486a52;border-radius:8px;background:#f4f7ef;color:#172a1e;padding:22px;box-shadow:0 12px 42px #0008;font:15px/1.5 system-ui,sans-serif;}
+  #score-dialog::backdrop{background:#0009;}
+  #score-dialog h2{margin:0 0 12px;font-size:22px;}
+  #score-dialog label{display:block;font-weight:700;margin:16px 0 6px;}
+  #score-dialog input{width:100%;box-sizing:border-box;border:1px solid #71917a;border-radius:6px;padding:10px;font:inherit;}
+  #score-dialog button{border:1px solid #245d3c;border-radius:6px;background:#245d3c;color:#fff;padding:9px 13px;font:700 14px/1.3 system-ui,sans-serif;}
+  #score-dialog button.secondary{background:transparent;color:#245d3c;}
+  #score-dialog .dialog-actions{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0;}
+  #score-dialog ol{padding-left:30px;margin:8px 0 0;}
+  #score-dialog li{padding:5px 0;border-bottom:1px solid #d7e2d5;}
+  #score-dialog li span{float:right;font-variant-numeric:tabular-nums;font-weight:700;}
+  #score-status{min-height:1.5em;color:#38594a;}
+  #score-dialog [hidden]{display:none;}
+</style>
+</head>
+<body>
+
+<div id="gbwrap">
+<div id="game-toolbar"><a href="../">GUTSY 官網</a><button id="show-scores" type="button">全球排行榜</button></div>
+<div id="gbshell" style="background:#c9c9c1;border-radius:12px 12px 44px 12px;padding:12px 12px 16px;box-sizing:border-box;border:1px solid #a8a89f;">
+
+  <div style="background:#4a4a52;border-radius:8px 8px 28px 8px;padding:14px 12px 20px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin:0 0 8px;font:400 9px/1 ui-monospace,monospace;color:#9b9bb0;letter-spacing:.08em;">
+      <button id="led" aria-label="靜音切換" style="display:flex;align-items:center;gap:5px;background:transparent;border:0;padding:0;font:inherit;color:#9b9bb0;"><span id="leddot" style="width:6px;height:6px;border-radius:50%;background:#d84a3a;display:inline-block;"></span>POWER</button>
+      <span>DOT MATRIX &middot; GUT SYSTEM</span>
+    </div>
+    <canvas id="scr" width="240" height="216" style="display:block;width:100%;aspect-ratio:240/216;image-rendering:pixelated;border-radius:2px;background:#9bbc0f;"></canvas>
+  </div>
+
+  <div style="text-align:center;font:500 13px/1 ui-serif,Georgia,serif;color:#3a3a44;letter-spacing:.02em;margin:10px 0 2px;">GUTSY <span style="font:400 8px/1 ui-monospace,monospace;letter-spacing:.14em;color:#6b6b75;">腸腸久久</span></div>
+
+  <div style="display:flex;justify-content:space-between;align-items:center;margin:10px 4px 0;">
+    <div style="position:relative;width:108px;height:108px;">
+      <div style="position:absolute;left:36px;top:0;width:36px;height:108px;background:#3a3a42;border-radius:6px;"></div>
+      <div style="position:absolute;left:0;top:36px;width:108px;height:36px;background:#3a3a42;border-radius:6px;"></div>
+      <button data-d="U" aria-label="上" style="position:absolute;left:36px;top:0;width:36px;height:36px;background:transparent;border:0;padding:0;"></button>
+      <button data-d="L" aria-label="左" style="position:absolute;left:0;top:36px;width:36px;height:36px;background:transparent;border:0;padding:0;"></button>
+      <button data-d="R" aria-label="右" style="position:absolute;left:72px;top:36px;width:36px;height:36px;background:transparent;border:0;padding:0;"></button>
+      <button data-d="D" aria-label="下" style="position:absolute;left:36px;top:72px;width:36px;height:36px;background:transparent;border:0;padding:0;"></button>
+      <div style="position:absolute;left:48px;top:48px;width:12px;height:12px;border-radius:50%;background:#2c2c33;pointer-events:none;"></div>
+    </div>
+    <div style="display:flex;gap:12px;transform:rotate(-22deg);">
+      <button data-b="B" style="width:42px;height:42px;border-radius:50%;background:#8e3b5e;border:1px solid #6d2c48;color:#f0dce5;font:500 13px/1 ui-serif,Georgia,serif;padding:0;">B</button>
+      <button data-b="A" style="width:42px;height:42px;border-radius:50%;background:#8e3b5e;border:1px solid #6d2c48;color:#f0dce5;font:500 13px/1 ui-serif,Georgia,serif;padding:0;">A</button>
+    </div>
+  </div>
+
+  <div style="display:flex;justify-content:center;gap:18px;margin:16px 0 0;transform:rotate(-22deg);">
+    <button data-b="SEL" style="width:52px;height:13px;border-radius:8px;background:#5c5c66;border:0;color:#d6d6de;font:400 7px/1 ui-monospace,monospace;letter-spacing:.1em;padding:0;">SELECT</button>
+    <button data-b="STA" style="width:52px;height:13px;border-radius:8px;background:#5c5c66;border:0;color:#d6d6de;font:400 7px/1 ui-monospace,monospace;letter-spacing:.1em;padding:0;">START</button>
+  </div>
+
+  <div style="display:flex;gap:3px;justify-content:flex-end;margin:14px 6px 0;transform:rotate(-22deg);transform-origin:right bottom;">
+    <span style="width:3px;height:26px;background:#b0b0a8;border-radius:2px;"></span><span style="width:3px;height:26px;background:#b0b0a8;border-radius:2px;"></span><span style="width:3px;height:26px;background:#b0b0a8;border-radius:2px;"></span><span style="width:3px;height:26px;background:#b0b0a8;border-radius:2px;"></span><span style="width:3px;height:26px;background:#b0b0a8;border-radius:2px;"></span><span style="width:3px;height:26px;background:#b0b0a8;border-radius:2px;"></span>
+  </div>
+
+</div>
+</div>
+
+<dialog id="score-dialog" aria-labelledby="score-dialog-title">
+  <h2 id="score-dialog-title">全球排行榜</h2>
+  <div id="run-result" hidden>
+    <p id="run-summary"></p>
+    <form id="score-form">
+      <label for="player-name">玩家名稱</label>
+      <input id="player-name" name="player-name" maxlength="20" autocomplete="nickname" required>
+      <p>提交後，玩家名稱與分數會公開顯示。</p>
+      <div class="dialog-actions"><button id="submit-score" type="submit">留下紀錄</button></div>
+    </form>
+  </div>
+  <p id="score-status" role="status" aria-live="polite"></p>
+  <ol id="score-list"></ol>
+  <div class="dialog-actions"><button id="refresh-scores" class="secondary" type="button">重新整理</button><button id="close-scores" class="secondary" type="button">返回遊戲</button></div>
+</dialog>
+
+<script>
+(function(){
+'use strict';
+
+// ============================================================
+// 這份檔案是 iOS 原生版（ios/Gutsy）的行為同步版，2026-09-15 跟著
+// 原生版的一整輪規則同步：240×216 解析度、5 種戰術道具、World 1~3
+// （含仙人掌／俄羅斯方塊障礙物）、10 子關卡制、難度、標準/地圖雙模式。
+// 唯一刻意簡化的地方：原生版有合成的 chiptune BGM 跟實體搖桿支援，
+// 這裡沒有對應物（純網頁音效用方波 beep，沒有背景音樂）。
+// ============================================================
+
+/* ---------- 調色盤 ---------- */
+var P8=['#9bbc0f','#8bac0d','#7a9d0f','#688d14','#567c1b','#426a22','#2b5624','#0f380f'];
+var P4=['#9bbc0f','#8bac0f','#306230','#0f380f'];
+var M4=[0,0,1,1,2,2,2,3];
+var pal8=true;
+function K(i){i=i<0?0:(i>7?7:i);return pal8?P8[i]:P4[M4[i]];}
+
+/* ---------- 常數（對應 Core/Constants.swift） ---------- */
+var W=240,H=216,HUD=15;
+var FX0=3,FY0=18,FX1=W-4,FY1=H-4;
+var BASE_T=5,MIN_LEN=12;
+var LAYER=[6,4,3,2,2,1,1];
+var FOOD_W=[2,4,4,6,6,8,8,10];
+
+var cv=document.getElementById('scr'),ctx=cv.getContext('2d');
+ctx.imageSmoothingEnabled=false;
+
+/* ---------- 難度（對應 Types.swift Difficulty） ---------- */
+var DIFF={
+  EASY:{label:'EASY',gutMax:22,obMul:1.25,speedOff:1.5},
+  NORMAL:{label:'NORMAL',gutMax:18,obMul:1.0,speedOff:0},
+  HARD:{label:'HARD',gutMax:15,obMul:0.75,speedOff:-1.0},
+};
+var DIFF_ORDER=['EASY','NORMAL','HARD'];
+var difficulty='NORMAL';
+function gutMax(){return DIFF[difficulty].gutMax;}
+
+/* ---------- 關卡（對應 GameState 的關卡系統） ---------- */
+var MAX_RELEASE_WORLD=3;
+var SUBSTAGES_PER_WORLD=10;
+var THEME_TITLE={1:'CLASSIC GRASS',2:'DESERT DUNES',3:'BRICK WORLD'};
+function targetFood(sub){return sub<=5?5*sub:25+(sub-5)*3;}
+function obstacleSpawnInterval(){return Math.max(3500,(12000-(currentSubStage-1)*900)*DIFF[difficulty].obMul);}
+function maxObstaclesForSubStage(){return Math.min(10,2+currentSubStage);}
+
+/* ---------- 障礙物：俄羅斯方塊格子表（對應 ObstacleKind.tetrominoCells） ---------- */
+var TETRO_CELL_PX=6;
+var TETRO_CELLS={
+  I:[[0,0],[1,0],[2,0],[3,0]],
+  O:[[0,0],[1,0],[0,1],[1,1]],
+  T:[[0,0],[1,0],[2,0],[1,1]],
+  S:[[1,0],[2,0],[0,1],[1,1]],
+  Z:[[0,0],[1,0],[1,1],[2,1]],
+  J:[[0,0],[0,1],[1,1],[2,1]],
+  L:[[2,0],[0,1],[1,1],[2,1]],
+};
+var TETRO_KINDS=['I','O','T','S','Z','J','L'];
+
+/* ---------- 仙人掌剪影（對應 Renderer.cactusLargeGlyph / cactusSmallGlyph） ---------- */
+var CACTUS_LARGE=['....##....','....##....','##..##....','##..##....','##.###..##','##..##..##','##..##..##','##..##..##','##..##..##','##..##..##','##..##..##','##..##..##','##..##..##','##..##..##'];
+var CACTUS_SMALL=['..##..','..##..','#.##..','#.##.#','#.##.#','#.##.#','#.##.#','#.##.#'];
+
+/* ---------- 道具（對應 Types.swift PowerUpType） ---------- */
+var POWERUP_TYPES=['poison','skates','bomb','diamond','enzyme'];
+var POWERUP_WEIGHT={poison:25,skates:25,bomb:25,diamond:15,enzyme:10};
+var ITEM_GLYPH={
+  poison:['....#####....','....#+++#....','.....###.....','...#######...','..##+++++##..','.##++#+#++##.','.#++#####++#.','.#+++###+++#.','.#++#+#+#++#.','.##+++++++##.','..##+++++##..','...#######...','.............'],
+  skates:['......#####..','...####+++##.','..#++#+++++#.','.#+++#+++++#.','##+++#######.','##++#++++++#.','.#++#++++++#.','.############','.#++++++++++#','..#++++++++#.','...########..','....##..##...','.............'],
+  bomb:['......+......','......#+.....','.....###.....','....#####....','...##...##...','..##.###.##..','.##.##.##.##.','.##.##.##.##.','.##..###..##.','..##.....##..','...#######...','....#####....','.............'],
+  diamond:['....#####....','..#########..','.###########.','#############','##+###+###+##','.#+++++++++#.','..#+++++++#..','...#+++++#...','....#+++#....','.....#+#.....','......#......','.............','.............'],
+  enzyme:['....#####....','....#+++#....','....#####....','.....#+#.....','....##+##....','...##+++##...','..##+++++##..','.##++#+#++##.','.#++#####++#.','.#+++#+#+++#.','.#+++++++++#.','..#########..','.............'],
+};
+
+/* ---------- 3x5 點陣字 ---------- */
+var F={'0':'111,101,101,101,111','1':'010,110,010,010,111','2':'111,001,111,100,111','3':'111,001,111,001,111','4':'101,101,111,001,001','5':'111,100,111,001,111','6':'111,100,111,101,111','7':'111,001,010,010,010','8':'111,101,111,101,111','9':'111,101,111,001,111','A':'111,101,111,101,101','B':'110,101,110,101,110','C':'111,100,100,100,111','D':'110,101,101,101,110','E':'111,100,111,100,111','F':'111,100,111,100,100','G':'111,100,101,101,111','H':'101,101,111,101,101','I':'111,010,010,010,111','J':'001,001,001,101,111','K':'101,101,110,101,101','L':'100,100,100,100,111','M':'101,111,111,101,101','N':'110,101,101,101,101','O':'111,101,101,101,111','P':'111,101,111,100,100','Q':'111,101,101,111,011','R':'111,101,111,110,101','S':'111,100,111,001,111','T':'111,010,010,010,010','U':'101,101,101,101,111','V':'101,101,101,101,010','W':'101,101,111,111,101','X':'101,101,010,101,101','Y':'101,101,010,010,010','Z':'111,001,010,100,111',' ':'000,000,000,000,000',':':'000,010,000,010,000','.':'000,000,000,000,010','-':'000,000,111,000,000','!':'010,010,010,000,010','+':'000,010,111,010,000','/':'001,001,010,100,100','%':'101,001,010,100,101'};
+
+function px(x,y,w,h,c){ctx.fillStyle=c;ctx.fillRect(x|0,y|0,w,h);}
+function bx(x,y,s,c){px(x-(s>>1),y-(s>>1),s,s,c);}
+function tw(s,k){k=k||1;return String(s).length*4*k-k;}
+function txt(s,x,y,c,k){k=k||1;s=String(s).toUpperCase();var cx=x;
+ for(var i=0;i<s.length;i++){var g=F[s[i]]||F[' '],r=g.split(',');
+  for(var a=0;a<5;a++)for(var b=0;b<3;b++)if(r[a][b]==='1')px(cx+b*k,y+a*k,k,k,c);
+  cx+=4*k;}}
+function ctxt(s,y,c,k){txt(s,Math.round((W-tw(s,k))/2),y,c,k);}
+function drawGlyph(glyph,x,y){for(var r=0;r<glyph.length;r++)for(var c=0;c<glyph[r].length;c++){var ch=glyph[r][c];
+  if(ch==='#')px(x+c,y+r,1,1,K(6));else if(ch==='+')px(x+c,y+r,1,1,K(3));}}
+
+/* ---------- 面板（對應 HUD.panel） ---------- */
+function panel(y,h){var inset=(W>=200)?13:6;
+ px(inset,y-1,W-inset*2,h+2,K(5));px(inset+1,y,W-(inset+1)*2,h,K(7));px(inset+3,y+2,W-(inset+3)*2,h-4,K(0));}
+
+/* ============================================================
+   狀態（對應 GameState.swift 的所有欄位）
+   ============================================================ */
+var phase='title',cause='';
+var currentWorld=1,currentSubStage=1,stageFoodTarget=5,stageFoodCount=0,stageTransitionTimer=0;
+var obstacles=[],obstacleSpawnTimer=0;
+var skateMultiplier=1,invincibleRemaining=0,enzymeRemaining=0;
+var scoreBonus=0;
+var tGame=0,sinceEat=0,hungAcc=0,flash=0,acc=0;
+var maxLen=0,eaten=0,best=0,gamesPlayed=0;
+var runRecorded=false;
+var titleMenuIndex=0,hasSuspendedRun=false;
+var settingMenuIndex=0,wasInGame=false;
+var debris=[],explosionTimer=0;
+var lastStageWorld=1,lastStageSubStage=1;
+var howToPlayPage=0,TOTAL_HOWTOPLAY_PAGES=3;
+var pops=[],toast=0,toastS='';
+var isMapMode=false,mapSelectWorld=1,mapSelectSubStage=1;
+var muted=false,lastT=0;
+
+var TITLE_ITEMS=[
+ {key:'start',label:'START GAME'},
+ {key:'mapMode',label:'MAP MODE'},
+ {key:'continueStage',label:function(){return 'CONTINUE '+lastStageWorld+'-'+lastStageSubStage;}},
+ {key:'settings',label:'SETTINGS'},
+ {key:'howToPlay',label:'HOW TO PLAY'},
+];
+var SETTING_ITEMS=['bgm','palette','difficulty','returnHome','back'];
+
+/* ---------- 蛇（對應 SnakeModel.swift） ---------- */
+var pts,dir,inputQueue,tgt,sinceTurn;
+function snakeReset(sx,sy){
+ pts=[{x:sx,y:sy},{x:sx-24,y:sy}];dir={x:1,y:0};inputQueue=[];tgt=24;sinceTurn=9;}
+function plen(){var l=0;for(var i=0;i<pts.length-1;i++)l+=Math.abs(pts[i].x-pts[i+1].x)+Math.abs(pts[i].y-pts[i+1].y);return l;}
+function samp(){var o=[],d=0;
+ for(var i=0;i<pts.length-1;i++){var a=pts[i],b=pts[i+1];
+  var ux=Math.sign(b.x-a.x),uy=Math.sign(b.y-a.y),n=Math.abs(b.x-a.x)+Math.abs(b.y-a.y);
+  for(var k=0;k<n;k++){o.push({x:a.x+ux*k,y:a.y+uy*k,d:d});d++;}}
+ var t=pts[pts.length-1];o.push({x:t.x,y:t.y,d:d});return o;}
+function trim(){var ex=plen()-tgt,guard=0;
+ while(ex>0&&guard++<400){
+  var a=pts[pts.length-2],b=pts[pts.length-1];
+  var sl=Math.abs(a.x-b.x)+Math.abs(a.y-b.y);
+  if(sl<=ex&&pts.length>2){pts.pop();ex-=sl;}
+  else{var ux=Math.sign(a.x-b.x),uy=Math.sign(a.y-b.y),m=Math.min(ex,sl);
+   b.x+=ux*m;b.y+=uy*m;ex-=m;if(m===0)break;}}}
+function thick(d,L,lumpsArr){
+ var t=BASE_T;
+ for(var i=0;i<lumpsArr.length;i++){var l=lumpsArr[i],hw=Math.max(4,l.size+1),dd=Math.abs(d-l.pos);
+  if(dd<hw)t+=l.size*0.62*(1-dd/hw)*(l.tl/l.tt);}
+ if(L-d<6)t-=2.4*(1-(L-d)/6);
+ return 2*Math.round((Math.max(2.5,t)-1)/2)+1;}
+
+/* ---------- 消化（對應 DigestionSystem.swift） ---------- */
+var lumps=[];
+function digClear(){lumps=[];}
+function gut(){var g=0;for(var i=0;i<lumps.length;i++)g+=lumps[i].size*(lumps[i].tl/lumps[i].tt);return g;}
+function addLump(size){var tt=size*900;lumps.push({size:size,pos:0,tl:tt,tt:tt,gain:size/2});}
+
+/* ---------- 生成（對應 SpawnSystem.swift） ---------- */
+var foods=[],powerUps=[];
+var TARGET_ITEM_COUNT=3,MAX_POWERUPS=1;
+function isFree(x,y,r,snakeArr,obArr,compact){
+ var clr=compact?9:13;
+ for(var i=0;i<snakeArr.length;i++)if(Math.abs(snakeArr[i].x-x)<r&&Math.abs(snakeArr[i].y-y)<r)return false;
+ for(var j=0;j<foods.length;j++)if(Math.abs(foods[j].x-x)<clr&&Math.abs(foods[j].y-y)<clr)return false;
+ for(var k=0;k<powerUps.length;k++)if(Math.abs(powerUps[k].x-x)<clr&&Math.abs(powerUps[k].y-y)<clr)return false;
+ for(var m=0;m<obArr.length;m++){var ob=obArr[m];
+  if(x+r>=ob.x&&x-r<=ob.x+ob.w&&y+r>=ob.y&&y-r<=ob.y+ob.h)return false;}
+ return true;}
+function spawnFood(snakeArr,obArr){
+ if(foods.length+powerUps.length>=TARGET_ITEM_COUNT)return;
+ var sz=FOOD_W[(Math.random()*FOOD_W.length)|0];
+ var compact=(FX1-FX0)<150;
+ var spanX=Math.max(4,FX1-FX0-sz-4),spanY=Math.max(4,FY1-FY0-sz-4);
+ for(var t=0;t<40;t++){
+  var x=FX0+4+((Math.random()*spanX)|0),y=FY0+4+((Math.random()*spanY)|0);
+  x&=~1;y&=~1;
+  if(isFree(x+sz/2,y+sz/2,7,snakeArr,obArr,compact)){foods.push({x:x,y:y,s:sz,life:10000+Math.random()*6000});return;}}
+ for(var t2=0;t2<30;t2++){
+  var x2=FX0+3+((Math.random()*spanX)|0),y2=FY0+3+((Math.random()*spanY)|0);
+  x2&=~1;y2&=~1;
+  if(isFree(x2+sz/2,y2+sz/2,4,snakeArr,obArr,compact)){foods.push({x:x2,y:y2,s:sz,life:10000+Math.random()*6000});return;}}}
+function spawnPowerUp(snakeArr,obArr){
+ if(powerUps.length>=MAX_POWERUPS||foods.length+powerUps.length>=TARGET_ITEM_COUNT)return;
+ var roll=(Math.random()*100)|0,type,acc2=0,chosen=null;
+ for(var i=0;i<POWERUP_TYPES.length;i++){acc2+=POWERUP_WEIGHT[POWERUP_TYPES[i]];if(roll<acc2){chosen=POWERUP_TYPES[i];break;}}
+ type=chosen||'enzyme';
+ var compact=(FX1-FX0)<150;
+ var spanX=Math.max(6,FX1-FX0-18),spanY=Math.max(6,FY1-FY0-18);
+ for(var t=0;t<40;t++){
+  var x=FX0+6+((Math.random()*spanX)|0),y=FY0+6+((Math.random()*spanY)|0);
+  x&=~1;y&=~1;
+  if(isFree(x+4,y+4,7,snakeArr,obArr,compact)){powerUps.push({x:x,y:y,type:type,life:12000});return;}}}
+function replenish(snakeArr,obArr){
+ var attempts=0;
+ while((foods.length+powerUps.length)<TARGET_ITEM_COUNT&&attempts<8){
+  attempts++;
+  var needFood=foods.length<2;
+  var rollPowerUp=(powerUps.length<MAX_POWERUPS)&&(Math.random()<0.35);
+  if(!needFood&&rollPowerUp)spawnPowerUp(snakeArr,obArr);else spawnFood(snakeArr,obArr);}}
+function spawnTick(dt,snakeArr,obArr){
+ var removedAny=false;
+ for(var i=foods.length-1;i>=0;i--){foods[i].life-=dt;if(foods[i].life<=0){foods.splice(i,1);removedAny=true;}}
+ for(var j=powerUps.length-1;j>=0;j--){powerUps[j].life-=dt;if(powerUps[j].life<=0){powerUps.splice(j,1);removedAny=true;}}
+ if(removedAny||(foods.length+powerUps.length)<TARGET_ITEM_COUNT)replenish(snakeArr,obArr);}
+function spawnRandomObstacle(world,snakeArr,obArr){
+ var kind,w,h,cells=[];
+ if(world===2){
+  if(Math.random()<0.5){kind='cactusSmall';w=6;h=8;}else{kind='cactusLarge';w=10;h=14;}
+ }else{
+  kind=TETRO_KINDS[(Math.random()*TETRO_KINDS.length)|0];
+  cells=TETRO_CELLS[kind];
+  var maxCol=0,maxRow=0;
+  for(var i=0;i<cells.length;i++){maxCol=Math.max(maxCol,cells[i][0]);maxRow=Math.max(maxRow,cells[i][1]);}
+  w=(maxCol+1)*TETRO_CELL_PX;h=(maxRow+1)*TETRO_CELL_PX;}
+ var spanX=Math.max(10,FX1-FX0-20-w),spanY=Math.max(10,FY1-FY0-20-h);
+ var head=snakeArr[0];
+ var safeDist=Math.min(36,Math.min(FX1-FX0,FY1-FY0)*0.35);
+ for(var t=0;t<50;t++){
+  var x=FX0+10+((Math.random()*spanX)|0),y=FY0+10+((Math.random()*spanY)|0);
+  x&=~1;y&=~1;
+  if(head){var dx=x-head.x,dy=y-head.y;if((dx*dx+dy*dy)<safeDist*safeDist)continue;}
+  if(isFree(x+w/2,y+h/2,Math.max(w,h)/2+4,snakeArr,obArr,false)){
+   obArr.push({x:x,y:y,w:w,h:h,kind:kind,warningTimer:1200,life:20000,cells:cells});return true;}}
+ return false;}
+
+/* ---------- 音效 ---------- */
+function beep(f,d,v){if(muted)return;
+ try{if(!window._ac)window._ac=new (window.AudioContext||window.webkitAudioContext)();
+  var a=window._ac,o=a.createOscillator(),g=a.createGain();
+  o.type='square';o.frequency.value=f;g.gain.value=v||0.035;
+  o.connect(g);g.connect(a.destination);o.start();o.stop(a.currentTime+d);}catch(e){}}
+
+/* ============================================================
+   關卡載入 / 重置（對應 GameState.loadStage / reset）
+   ============================================================ */
+function loadStage(world,sub,updateSave){
+ if(updateSave===undefined)updateSave=true;
+ currentWorld=world;currentSubStage=sub;
+ stageFoodTarget=targetFood(sub);stageFoodCount=0;
+ obstacles=[];obstacleSpawnTimer=obstacleSpawnInterval();
+ if(world>=2){
+  var initialCount=Math.min(3,1+((sub/2)|0));
+  for(var i=0;i<initialCount;i++)spawnRandomObstacle(world,samp(),obstacles);
+  for(var j=0;j<obstacles.length;j++)obstacles[j].warningTimer=0;}
+ if(updateSave)saveLastStage(world,sub);}
+
+function saveLastStage(world,sub){
+ var cur=world*100+sub,saved=lastStageWorld*100+lastStageSubStage;
+ if(cur>=saved){lastStageWorld=world;lastStageSubStage=sub;
+  try{localStorage.setItem('gutsy2:lastWorld',String(world));localStorage.setItem('gutsy2:lastSub',String(sub));}catch(e){}}}
+
+function reset(){
+ runRecorded=false;
+ currentWorld=1;currentSubStage=1;stageFoodCount=0;
+ skateMultiplier=1;invincibleRemaining=0;enzymeRemaining=0;scoreBonus=0;
+ snakeReset(W/2|0,((FY0+FY1)/2)|0);
+ digClear();foods=[];powerUps=[];debris=[];explosionTimer=0;
+ tGame=0;sinceEat=0;hungAcc=0;flash=0;acc=0;
+ maxLen=tgt;eaten=0;pops=[];cause='';
+ loadStage(1,1,false);
+ replenish(samp(),obstacles);}
+
+function returnToTitle(){reset();phase='title';titleMenuIndex=0;hasSuspendedRun=false;}
+
+function startAtStage(world,sub){
+ reset();currentWorld=world;currentSubStage=sub;loadStage(world,sub,false);
+ phase='play';beep(660,0.06);}
+function startAtLastStage(){startAtStage(lastStageWorld,lastStageSubStage);}
+
+/* ============================================================
+   輸入
+   ============================================================ */
+function press(d){
+ if(phase==='title'){
+  if(d!=='U'&&d!=='D')return;
+  var n=TITLE_ITEMS.length;titleMenuIndex=(titleMenuIndex+(d==='D'?1:-1)+n)%n;beep(500,0.03,0.02);return;}
+ if(phase==='mapSelect'){
+  if(d==='L'||d==='R'){var n=MAX_RELEASE_WORLD;mapSelectWorld=((mapSelectWorld-1)+(d==='R'?1:-1)+n)%n+1;mapSelectSubStage=1;beep(560,0.03,0.03);return;}
+  if(d==='U'||d==='D'){var n2=SUBSTAGES_PER_WORLD;mapSelectSubStage=((mapSelectSubStage-1)+(d==='D'?1:-1)+n2)%n2+1;beep(500,0.03,0.02);return;}}
+ if(phase==='settings'){
+  if(d==='U'||d==='D'){settingMenuIndex=(settingMenuIndex+(d==='D'?1:-1)+SETTING_ITEMS.length)%SETTING_ITEMS.length;beep(500,0.03,0.02);return;}
+  if(d==='L'||d==='R'){
+   var item=SETTING_ITEMS[settingMenuIndex],delta=(d==='R'?1:-1);
+   if(item==='palette'){pal8=!pal8;beep(pal8?880:440,0.03,0.03);}
+   else if(item==='difficulty'){
+    var idx=DIFF_ORDER.indexOf(difficulty),next=(idx+delta+DIFF_ORDER.length)%DIFF_ORDER.length;
+    difficulty=DIFF_ORDER[next];try{localStorage.setItem('gutsy2:diff',difficulty);}catch(e){}
+    beep(500+next*120,0.03,0.03);}
+   return;}
+  return;}
+ if(phase==='howToPlay'){
+  if(d!=='L'&&d!=='R')return;
+  var delta=(d==='R'?1:-1);howToPlayPage=(howToPlayPage+delta+TOTAL_HOWTOPLAY_PAGES)%TOTAL_HOWTOPLAY_PAGES;beep(540,0.03,0.02);return;}
+ if(phase!=='play')return;
+ var nd={U:{x:0,y:-1},D:{x:0,y:1},L:{x:-1,y:0},R:{x:1,y:0}}[d];if(!nd)return;
+ var last=inputQueue.length?inputQueue[inputQueue.length-1]:dir;
+ var isRev=nd.x===-last.x&&nd.y===-last.y,isSame=nd.x===last.x&&nd.y===last.y;
+ if(!isRev&&!isSame&&inputQueue.length<2)inputQueue.push(nd);}
+
+function act(b){
+ if(b==='A'||b==='STA'){
+  if(phase==='title'){
+   var item=TITLE_ITEMS[titleMenuIndex].key;
+   if(item==='start'){isMapMode=false;reset();phase='play';beep(660,0.08);}
+   else if(item==='mapMode'){mapSelectWorld=currentWorld;mapSelectSubStage=currentSubStage;phase='mapSelect';beep(660,0.06);}
+   else if(item==='continueStage'){
+    if(hasSuspendedRun){hasSuspendedRun=false;phase='pause';beep(660,0.06);}
+    else{isMapMode=false;startAtLastStage();}}
+   else if(item==='settings'){wasInGame=false;settingMenuIndex=0;phase='settings';beep(660,0.06);}
+   else if(item==='howToPlay'){howToPlayPage=0;phase='howToPlay';beep(660,0.06);}
+  }else if(phase==='mapSelect'){
+   isMapMode=true;startAtStage(mapSelectWorld,mapSelectSubStage);beep(660,0.08);
+  }else if(phase==='settings'){
+   var it=SETTING_ITEMS[settingMenuIndex];
+   if(it==='bgm'||it==='palette'||it==='difficulty')press('R');
+   else if(it==='returnHome'){wasInGame=false;hasSuspendedRun=false;phase='title';beep(440,0.06);}
+   else if(it==='back'){if(wasInGame){wasInGame=false;phase='play';beep(660,0.04);}else{phase='title';beep(440,0.06);}}
+  }else if(phase==='howToPlay'){
+   if(howToPlayPage<TOTAL_HOWTOPLAY_PAGES-1){howToPlayPage++;beep(540,0.03,0.02);}else{phase='title';beep(440,0.06);}
+  }else if(phase==='over'){
+   startAtStage(currentWorld,currentSubStage);beep(660,0.08);
+  }else if(phase==='gameComplete'){
+   isMapMode=false;reset();phase='play';beep(660,0.08);
+  }else if(phase==='play'){phase='pause';
+  }else if(phase==='pause'){phase='play';lastT=0;
+  }else if(phase==='stageClear'){stageTransitionTimer=0;
+  }
+ }else if(b==='B'){
+  if(phase==='pause'){phase='play';lastT=0;}
+  else if(phase==='play'){phase='pause';}
+  else if(phase==='settings'){if(wasInGame){wasInGame=false;phase='play';beep(660,0.04);}else{phase='title';beep(440,0.06);}}
+  else if(phase==='howToPlay'||phase==='mapSelect'){phase='title';beep(440,0.06);}
+ }else if(b==='SEL'){
+  if(phase==='play'||phase==='pause'){wasInGame=true;settingMenuIndex=0;phase='settings';beep(600,0.04);return;}
+  if(phase==='title'){pal8=!pal8;toastS=pal8?'8 SHADES':'4 SHADES DMG';toast=1400;beep(pal8?880:440,0.05);}
+ }}
+
+function mute(){muted=!muted;document.getElementById('leddot').style.background=muted?'#6b3a35':'#d84a3a';}
+
+/* ============================================================
+   道具效果（對應 GameState.applyPowerUp）
+   ============================================================ */
+function applyPowerUp(type,pos){
+ var invinc=invincibleRemaining>0;
+ if(type==='poison'){
+  if(invinc){scoreBonus+=50;pop(pos.x,pos.y,'+50');beep(800,0.08);}
+  else{digClear();tgt=Math.max(MIN_LEN-1,tgt-3);flash=200;pop(pos.x,pos.y,'PURGED -3');beep(300,0.08);
+   setTimeout(function(){beep(200,0.1);},80);
+   if(tgt<MIN_LEN){die('EMPTY');}}
+ }else if(type==='skates'){
+  scoreBonus+=50;skateMultiplier=Math.max(0.35,skateMultiplier*0.82);pop(pos.x,pos.y,'+50 FAST');beep(600,0.04);
+  setTimeout(function(){beep(900,0.06);},50);
+ }else if(type==='bomb'){
+  if(invinc){flash=120;scoreBonus+=100;pop(pos.x,pos.y,'+100');beep(400,0.08);setTimeout(function(){beep(800,0.1);},60);}
+  else{triggerSnakeExplosion('BOMB',pos);}
+ }else if(type==='diamond'){
+  invincibleRemaining=8000;scoreBonus+=200;pop(pos.x,pos.y,'+200 INV');beep(523,0.05);
+  setTimeout(function(){beep(659,0.05);},60);setTimeout(function(){beep(784,0.08);},120);
+ }else if(type==='enzyme'){
+  enzymeRemaining=5000;scoreBonus+=50;pop(pos.x,pos.y,'+50 DIGEST');beep(700,0.08);
+ }}
+
+function triggerStageClear(){
+ phase='stageClear';stageTransitionTimer=1600;flash=300;beep(523,0.08);
+ setTimeout(function(){beep(659,0.08);},90);setTimeout(function(){beep(784,0.08);},180);setTimeout(function(){beep(1046,0.15);},270);}
+
+/* ---------- 蛇身炸裂特效（對應 GameState.triggerSnakeExplosion） ---------- */
+function triggerSnakeExplosion(c,hitPoint){
+ phase='exploding';cause=c;explosionTimer=850;flash=420;beep(140,0.3,0.05);
+ var samples=samp();debris=[];
+ for(var i=0;i<samples.length;i++){var p=samples[i];
+  var angle=Math.random()*Math.PI*2,speed=0.05+Math.random()*0.13;
+  var color=(i%2===0)?6:(i%3===0?5:7);
+  debris.push({x:p.x,y:p.y,vx:Math.cos(angle)*speed,vy:Math.sin(angle)*speed,size:2+((Math.random()*3)|0),color:color,life:850});}
+ for(var j=0;j<18;j++){var a2=Math.random()*Math.PI*2,sp2=0.08+Math.random()*0.16;
+  debris.push({x:hitPoint.x,y:hitPoint.y,vx:Math.cos(a2)*sp2,vy:Math.sin(a2)*sp2,size:2+((Math.random()*4)|0),color:Math.random()<0.5?7:0,life:850});}}
+
+function finishExplosionDeath(){
+ phase='over';gamesPlayed++;try{localStorage.setItem('gutsy2:games',String(gamesPlayed));}catch(e){}
+ var sc=score();if(sc>best){best=sc;try{localStorage.setItem('gutsy2:best',String(best));}catch(e){}}
+ recordRun(false);
+ beep(180,0.12);setTimeout(function(){beep(120,0.25);},130);}
+
+function die(c){
+ if(c==='BOMB'||c==='HAZARD'){triggerSnakeExplosion(c,pts[0]||{x:W/2,y:H/2});return;}
+ phase='over';cause=c;
+ gamesPlayed++;try{localStorage.setItem('gutsy2:games',String(gamesPlayed));}catch(e){}
+ var sc=score();if(sc>best){best=sc;try{localStorage.setItem('gutsy2:best',String(best));}catch(e){}}
+ recordRun(false);
+ beep(180,0.12);setTimeout(function(){beep(120,0.25);},130);}
+
+function score(){return scoreBonus+maxLen*5+Math.floor(tGame/1000)*2;}
+function pop(x,y,s){pops.push({x:x,y:y,s:s,t:900});}
+function hungerCountdownSeconds(){return Math.max(0,Math.ceil((6000-sinceEat)/1000));}
+
+/* ============================================================
+   每幀推進（對應 GameState.advanceFrame / upd / step）
+   ============================================================ */
+function iv(){
+ var worldBonus=(currentWorld-1)*1.5;
+ var base=Math.max(10,20+DIFF[difficulty].speedOff-worldBonus-tGame/7000);
+ var fullness=Math.min(1,gut()/gutMax());
+ var weightPenalty=1+fullness*0.95;
+ return Math.max(4,base*weightPenalty*skateMultiplier);}
+
+function upd(dt){
+ tGame+=dt;sinceEat+=dt;if(flash>0)flash-=dt;
+ if(invincibleRemaining>0)invincibleRemaining-=dt;
+ if(enzymeRemaining>0)enzymeRemaining-=dt;
+
+ var digestDt=(enzymeRemaining>0)?dt*3:dt;
+ for(var i=lumps.length-1;i>=0;i--){lumps[i].tl-=digestDt;
+  if(lumps[i].tl<=0){
+   tgt+=lumps[i].gain;maxLen=Math.max(maxLen,tgt);
+   var s=samp(),p=s[Math.min(s.length-1,Math.round(lumps[i].pos))];
+   pop(p.x,p.y,'+'+lumps[i].gain);beep(760,0.05);lumps.splice(i,1);}}
+ maxLen=Math.max(maxLen,tgt);
+
+ var sample=samp();
+ spawnTick(dt,sample,obstacles);replenish(sample,obstacles);
+
+ if(sinceEat>6000){hungAcc+=dt;
+  if(hungAcc>2000){hungAcc=0;tgt-=1;if(tgt<MIN_LEN){die('EMPTY');return;}}}
+
+ for(var k=0;k<obstacles.length;k++){
+  if(obstacles[k].warningTimer>0){obstacles[k].warningTimer-=dt;
+   if(obstacles[k].warningTimer<=0){obstacles[k].warningTimer=0;beep(200,0.05);}}}
+
+ var expired=0;
+ for(var m=0;m<obstacles.length;m++){
+  if(obstacles[m].warningTimer<=0){obstacles[m].life-=dt;if(obstacles[m].life<=0)expired++;}}
+ if(expired>0){
+  obstacles=obstacles.filter(function(o){return !(o.warningTimer<=0&&o.life<=0);});
+  for(var e=0;e<expired;e++)spawnRandomObstacle(currentWorld,sample,obstacles);}
+
+ if(currentWorld>=2){
+  obstacleSpawnTimer-=dt;
+  if(obstacleSpawnTimer<=0){obstacleSpawnTimer=obstacleSpawnInterval();
+   if(obstacles.length<maxObstaclesForSubStage())spawnRandomObstacle(currentWorld,sample,obstacles);}}
+
+ for(var p=pops.length-1;p>=0;p--){pops[p].t-=dt;pops[p].y-=dt*0.012;if(pops[p].t<=0)pops.splice(p,1);}}
+
+function step(){
+ if(sinceTurn>=BASE_T&&inputQueue.length){
+  var nd=inputQueue.shift();
+  var isRev=nd.x===-dir.x&&nd.y===-dir.y,isSame=nd.x===dir.x&&nd.y===dir.y;
+  if(!isRev&&!isSame){pts.unshift({x:pts[0].x,y:pts[0].y});dir=nd;sinceTurn=0;}}
+
+ pts[0].x+=dir.x;pts[0].y+=dir.y;sinceTurn++;
+ var cap=Math.max(4,tgt-4);for(var i=0;i<lumps.length;i++)lumps[i].pos=Math.min(lumps[i].pos+1,cap);
+ trim();
+
+ var h=pts[0];
+ if(h.x<FX0+2||h.x>FX1-2||h.y<FY0+2||h.y>FY1-2){die('WALL');return;}
+
+ var s=samp(),L=s.length-1,hr=thick(0,L,lumps);
+ var invinc=invincibleRemaining>0;
+
+ if(!invinc){
+  var margin=hr/2;
+  for(var o=0;o<obstacles.length;o++){var ob=obstacles[o];if(ob.warningTimer>0)continue;
+   if(!ob.cells||!ob.cells.length){
+    if(h.x>=ob.x-margin&&h.x<=ob.x+ob.w+margin&&h.y>=ob.y-margin&&h.y<=ob.y+ob.h+margin){die('HAZARD');return;}
+   }else{
+    for(var c=0;c<ob.cells.length;c++){
+     var cx=ob.x+ob.cells[c][0]*TETRO_CELL_PX,cy=ob.y+ob.cells[c][1]*TETRO_CELL_PX;
+     if(h.x>=cx-margin&&h.x<=cx+TETRO_CELL_PX+margin&&h.y>=cy-margin&&h.y<=cy+TETRO_CELL_PX+margin){die('HAZARD');return;}}}}}
+
+ if(!invinc){
+  for(var k=0;k<s.length;k++){
+   if(s[k].d<BASE_T*3)continue;
+   var r2=thick(s[k].d,L,lumps),lim=(hr+r2)/2-2;
+   if(Math.abs(s[k].x-h.x)<lim&&Math.abs(s[k].y-h.y)<lim){die('BITE');return;}}}
+
+ for(var fi=foods.length-1;fi>=0;fi--){
+  var f=foods[fi],cxx=f.x+f.s/2,cyy=f.y+f.s/2;
+  if(Math.abs(cxx-h.x)<(hr+f.s)/2+1&&Math.abs(cyy-h.y)<(hr+f.s)/2+1){
+   addLump(f.s);foods.splice(fi,1);eaten++;stageFoodCount++;sinceEat=0;hungAcc=0;
+   var gained=f.s<5?10:(f.s<7?25:(f.s<9?50:100));
+   scoreBonus+=gained;pop(cxx,cyy,'+'+gained);beep(520+f.s*40,0.06);
+   if(gut()>gutMax()&&!invinc){die('BURST');return;}
+   if(stageFoodCount>=stageFoodTarget){triggerStageClear();return;}
+   replenish(s,obstacles);}}
+
+ for(var pi=powerUps.length-1;pi>=0;pi--){
+  var pu=powerUps[pi],pcx=pu.x+4,pcy=pu.y+4;
+  if(Math.abs(pcx-h.x)<hr/2+5&&Math.abs(pcy-h.y)<hr/2+5){
+   powerUps.splice(pi,1);applyPowerUp(pu.type,h);replenish(s,obstacles);}}}
+
+function advanceFrame(dt){
+ if(toast>0)toast-=dt;
+
+ if(phase==='exploding'){
+  explosionTimer-=dt;if(flash>0)flash-=dt;
+  for(var i=0;i<debris.length;i++){debris[i].x+=debris[i].vx*dt;debris[i].y+=debris[i].vy*dt;debris[i].life-=dt;}
+  if(explosionTimer<=0)finishExplosionDeath();
+  return;}
+
+ if(phase==='stageClear'){
+  stageTransitionTimer-=dt;
+  if(stageTransitionTimer<=0){
+   if(currentSubStage<SUBSTAGES_PER_WORLD){
+    scoreBonus+=100;loadStage(currentWorld,currentSubStage+1,!isMapMode);skateMultiplier=1;phase='play';beep(880,0.1);
+   }else if(currentWorld<MAX_RELEASE_WORLD){
+    scoreBonus+=500;loadStage(currentWorld+1,1,!isMapMode);skateMultiplier=1;phase='play';beep(880,0.1);
+   }else{scoreBonus+=500;phase='gameComplete';recordRun(true);}}
+  return;}
+
+ if(phase!=='play')return;
+ upd(dt);if(phase!=='play')return;
+ acc+=dt;var g=0;
+ while(acc>=iv()&&g++<6){acc-=iv();step();if(phase!=='play')break;}}
+
+/* ============================================================
+   繪製（對應 Render/Renderer.swift + HUD.swift）
+   ============================================================ */
+function drawField(){
+ px(0,HUD,W,H-HUD,K(7));
+ px(1,HUD+1,W-2,H-HUD-2,K(6));
+ var flashing=flash>0&&(((flash/60)|0)%2===0);
+ var bg=flashing?K(2):K(0);
+ px(FX0,FY0,FX1-FX0+1,FY1-FY0+1,bg);
+ if(!flashing){
+  if(currentWorld===2){
+   for(var y=FY0+4;y<FY1-4;y+=8)for(var x=FX0+4;x<FX1-4;x+=8)px(x+((y%16===0)?4:0),y,1,1,K(1));
+  }else if(currentWorld===3){
+   for(var y2=FY0;y2<FY1;y2+=16)px(FX0,y2,FX1-FX0+1,1,K(1));
+   for(var x2=FX0;x2<FX1;x2+=16)px(x2,FY0,1,FY1-FY0+1,K(1));}}
+ px(FX0,FY0,FX1-FX0+1,1,K(1));px(FX0,FY0,1,FY1-FY0+1,K(1));
+ px(FX0,FY1,FX1-FX0+1,1,K(1));px(FX1,FY0,1,FY1-FY0+1,K(1));}
+
+function drawObstacles(){
+ for(var i=0;i<obstacles.length;i++){var ob=obstacles[i];
+  if(ob.warningTimer>0){
+   if((((ob.warningTimer/120)|0)%2)===0){
+    for(var x=ob.x;x<ob.x+ob.w;x+=2){px(x,ob.y,1,1,K(3));px(x,ob.y+ob.h-1,1,1,K(3));}
+    for(var y=ob.y;y<ob.y+ob.h;y+=2){px(ob.x,y,1,1,K(3));px(ob.x+ob.w-1,y,1,1,K(3));}
+    px(ob.x+(ob.w/2|0),ob.y+(ob.h/2|0),1,1,K(2));}
+   continue;}
+  if(ob.kind==='cactusSmall'||ob.kind==='cactusLarge'){
+   var glyph=ob.kind==='cactusLarge'?CACTUS_LARGE:CACTUS_SMALL;
+   for(var r=0;r<glyph.length;r++)for(var c=0;c<glyph[r].length;c++)if(glyph[r][c]==='#')px(ob.x+c,ob.y+r,1,1,K(4));
+   var tipX=ob.kind==='cactusLarge'?ob.x+4:ob.x+2;
+   px(tipX,ob.y,1,1,K(7));px(ob.x,ob.y+2,1,1,K(0));
+  }else{
+   for(var ci=0;ci<ob.cells.length;ci++){
+    var px0=ob.x+ob.cells[ci][0]*TETRO_CELL_PX,py0=ob.y+ob.cells[ci][1]*TETRO_CELL_PX;
+    px(px0,py0,TETRO_CELL_PX,TETRO_CELL_PX,K(6));
+    px(px0+1,py0+1,TETRO_CELL_PX-2,TETRO_CELL_PX-2,K(3));
+    px(px0+1,py0+1,1,1,K(7));}}}}
+
+function drawExplosion(){
+ for(var i=0;i<debris.length;i++){var d=debris[i];px((d.x-d.size/2)|0,(d.y-d.size/2)|0,d.size,d.size,K(d.color));}}
+
+function drawSnake(){
+ var s=samp(),L=s.length-1,invinc=invincibleRemaining>0,i,r;
+ for(i=s.length-1;i>=0;i--){
+  var halo=invinc?((((tGame/60)|0)%2===0)?K(0):K(3)):K(1);
+  bx(s[i].x,s[i].y,thick(s[i].d,L,lumps)+2,halo);}
+ for(i=s.length-1;i>=0;i--){
+  r=thick(s[i].d,L,lumps);
+  var fade=(L-s[i].d<10)?Math.round((10-(L-s[i].d))/4):0;
+  var k=0;
+  while(r>0){var layer=invinc?Math.min(6,k):Math.max(1,LAYER[Math.min(k,6)]-fade);bx(s[i].x,s[i].y,r,K(layer));r-=2;k++;}}
+ for(i=0;i<lumps.length;i++){var l=lumps[i];
+  if(l.tl/l.tt<0.15||l.size<4)continue;
+  var p=s[Math.min(s.length-1,Math.round(l.pos))];
+  bx(p.x,p.y-1,1,K(0));}
+ var h=pts[0];
+ if(dir.x!==0){px(h.x-(dir.x>0?0:1),h.y-2,1,1,K(0));px(h.x-(dir.x>0?0:1),h.y+2,1,1,K(0));}
+ else{px(h.x-2,h.y-(dir.y>0?0:1),1,1,K(0));px(h.x+2,h.y-(dir.y>0?0:1),1,1,K(0));}}
+
+function drawItems(){
+ for(var i=0;i<foods.length;i++){var o=foods[i];
+  if(o.life<3000&&(((o.life/140)|0)%2)===0)continue;
+  var sz=o.s,ox=o.x,oy=o.y,k=0;
+  px(ox-1,oy-1,sz+2,sz+2,K(2));
+  while(sz>0){px(ox,oy,sz,sz,K([7,5,4,3][Math.min(k,3)]));ox++;oy++;sz-=2;k++;}
+  if(o.s>=4)px(o.x+1,o.y+1,1,1,K(0));}
+ for(var j=0;j<powerUps.length;j++){var pu=powerUps[j];
+  if(pu.life<3000&&(((pu.life/140)|0)%2)===0)continue;
+  drawGlyph(ITEM_GLYPH[pu.type],pu.x,pu.y);}
+ for(var p=0;p<pops.length;p++){var o2=pops[p];
+  txt(o2.s,o2.x-tw(o2.s)/2+1,o2.y-7,K(1));
+  txt(o2.s,o2.x-tw(o2.s)/2,o2.y-8,K(6));}}
+
+function drawHud(){
+ px(0,0,W,HUD,K(7));px(0,HUD-2,W,1,K(6));px(0,HUD-1,W,1,K(5));
+ var sec=Math.floor(tGame/1000),mm=('0'+Math.floor(sec/60)).slice(-2),ss=('0'+(sec%60)).slice(-2);
+ txt('TIME '+mm+':'+ss,2,2,K(0));
+ var prog=currentWorld+'-'+currentSubStage+' '+stageFoodCount+'/'+stageFoodTarget;
+ txt(prog,((W-tw(prog))/2)|0,2,K(2));
+ txt('LEN '+('00'+Math.max(0,Math.round(tgt))).slice(-3),W-2-tw('LEN 000'),2,K(0));
+ txt('MAX '+('00'+Math.round(maxLen)).slice(-3),2,8,K(2));
+ var hungerX=(W>=200)?50:36;
+ if(sinceEat>6000){if((((tGame/180)|0)%2)===0)txt('!STARVE!',hungerX,8,K(0));}
+ else{var hs=hungerCountdownSeconds();var ci=(hs<=2)?((((tGame/150)|0)%2===0)?0:4):2;txt('HNG '+hs+'S',hungerX,8,K(ci));}
+ if(W>=200){
+  if(invincibleRemaining>0)txt('INV '+Math.ceil(invincibleRemaining/1000)+'S',96,8,K(0));
+  else if(skateMultiplier<0.95)txt('FAST',98,8,K(2));}
+ var barW=(W>=200)?42:26;
+ var gutLabelX=W-2-tw('GUT')-barW-2;
+ txt('GUT',gutLabelX,8,K(2));
+ var bx0=W-2-barW,g=Math.min(1,gut()/gutMax()),fw=Math.round(barW*g);
+ px(bx0,8,barW,5,K(6));
+ for(var i=0;i<fw;i++){var t=i/barW;px(bx0+i,8,1,5,K(t<0.35?4:(t<0.7?2:0)));}
+ if(g>0.8&&(((tGame/200)|0)%2)===0)px(bx0,8,barW,5,K(0));}
+
+function drawTitle(){
+ px(0,0,W,H,K(7));
+ for(var g=0;g<6;g++)px(0,H-12+g*2,W,2,K(6-g));
+ ctxt('GUTSY',14,K(6),3);ctxt('GUTSY',13,K(0),3);
+ ctxt('EAT BIG. REGRET SLOWLY.',34,K(3),1);
+ var panelY=40,panelH=118;panel(panelY,panelH);
+ var itemStartX=24;
+ for(var i=0;i<TITLE_ITEMS.length;i++){
+  var item=TITLE_ITEMS[i],label=(typeof item.label==='function')?item.label():item.label;
+  var itemY=panelY+10+i*18,sel=(i===titleMenuIndex);
+  if(sel){px(itemStartX-5,itemY-3,W-(itemStartX-5)*2,14,K(7));txt('>',itemStartX-1,itemY,K(0),2);txt(label,itemStartX+12,itemY,K(0),2);}
+  else txt(label,itemStartX+12,itemY,K(6),2);}
+ ctxt('UP DOWN: CHOOSE   A: SELECT',panelY+panelH-12,K(5),1);
+ if(best>0)ctxt('BEST '+best+'   GAMES '+gamesPlayed,170,K(2),1);
+ ctxt('DOT MATRIX - GUT SYSTEM',184,K(4),1);
+ ctxt('SELECT: PALETTE   START: PLAY',198,K(5),1);}
+
+function drawMapSelect(){
+ px(0,0,W,H,K(7));
+ for(var g=0;g<6;g++)px(0,H-12+g*2,W,2,K(6-g));
+ ctxt('MAP MODE',11,K(6),3);ctxt('MAP MODE',10,K(0),3);
+ ctxt('PICK ANY STAGE, PLAY NOW',28,K(3),1);
+ var panelY=42,panelH=110;panel(panelY,panelH);
+ var world=mapSelectWorld,sub=mapSelectSubStage;
+ ctxt('LEFT  WORLD '+world+'  RIGHT',panelY+12,K(6),1);
+ ctxt(THEME_TITLE[world]||('WORLD '+world),panelY+24,K(2),1);
+ ctxt('UP',panelY+42,K(5),1);
+ ctxt('STAGE '+world+'-'+sub,panelY+54,K(7),2);
+ ctxt('DOWN',panelY+74,K(5),1);
+ ctxt('TARGET: '+targetFood(sub)+' EGGS TO CLEAR',panelY+90,K(4),1);
+ ctxt('LEFT/RIGHT WORLD  UP/DOWN STAGE',184,K(4),1);
+ ctxt('A: PLAY   B: BACK',198,K(5),1);}
+
+function drawSettings(){
+ px(0,0,W,H,K(7));
+ for(var g=0;g<6;g++)px(0,H-12+g*2,W,2,K(6-g));
+ ctxt('SETTINGS',11,K(6),3);ctxt('SETTINGS',10,K(0),3);
+ ctxt('SYSTEM CONFIGURATION',28,K(3),1);
+ var panelY=38,panelH=126;panel(panelY,panelH);
+ var palLabel=pal8?'8-SHADE':'4-DMG';
+ var backLabel=wasInGame?'RESUME GAME':'BACK TO TITLE';
+ var rows=[['BGM VOL','< N/A >'],['PALETTE','< '+palLabel+' >'],['DIFFICULTY','< '+DIFF[difficulty].label+' >'],['RETURN HOME',''],[backLabel,'']];
+ var itemStartX=20;
+ for(var i=0;i<rows.length;i++){
+  var row=rows[i],itemY=panelY+12+i*18,sel=(i===settingMenuIndex),isAction=(SETTING_ITEMS[i]==='returnHome'||SETTING_ITEMS[i]==='back');
+  if(sel){px(itemStartX-3,itemY-2,W-(itemStartX-3)*2,14,K(7));txt('>',itemStartX+1,itemY+2,K(0),1);txt(row[0],itemStartX+12,itemY+2,K(0),1);
+   if(!isAction){var vw=tw(row[1],1);txt(row[1],W-itemStartX-vw-4,itemY+2,K(0),1);}}
+  else{txt(row[0],itemStartX+12,itemY+2,K(6),1);
+   if(!isAction){var vw2=tw(row[1],1);txt(row[1],W-itemStartX-vw2-4,itemY+2,K(5),1);}}}
+ var descs=['WEB VERSION HAS NO BGM','8-SHADE: RICH ANALOG DEPTH / 4-DMG: ORIGINAL SCREEN','GUT '+DIFF[difficulty].gutMax+' - '+DIFF[difficulty].label+' RULES','ABANDON RUN & RETURN TO MAIN MENU','RESUME OR SAVE & RETURN'];
+ ctxt(descs[settingMenuIndex]||'',panelY+panelH-12,K(4),1);
+ ctxt('UP DOWN SELECT  LEFT RIGHT CHANGE',172,K(3),1);
+ ctxt('A: CONFIRM   B: BACK',186,K(4),1);}
+
+function drawHowToPlay(){
+ px(0,0,W,H,K(7));
+ for(var g=0;g<6;g++)px(0,H-12+g*2,W,2,K(6-g));
+ ctxt('MANUAL',13,K(6),3);ctxt('MANUAL',12,K(0),3);
+ ctxt('PAGE '+(howToPlayPage+1)+' OF '+TOTAL_HOWTOPLAY_PAGES,32,K(3),1);
+ var panelY=42,panelH=126;panel(panelY,panelH);
+ var cx=22;
+ if(howToPlayPage===0){
+  txt('1. EGG & GUT SYSTEM',cx,panelY+10,K(7),1);
+  txt('SIZES: 2 TO 10PX',cx+16,panelY+24,K(6),1);
+  txt('SNAKES SWALLOW EGGS',cx,panelY+36,K(5),1);
+  txt('FORMING LUMPS IN GUT',cx,panelY+46,K(5),1);
+  txt('HEAVY BULK SLOWS DOWN',cx,panelY+56,K(4),1);
+  txt('THE MORE FULL, THE SLOWER',cx,panelY+66,K(4),1);
+  txt('FULL SPEED RESTORES',cx,panelY+82,K(6),1);
+  txt('WHEN EGG IS DIGESTED!',cx,panelY+92,K(6),1);
+  txt('DANGER: BURST = DEAD!',cx,panelY+106,K(7),1);
+ }else if(howToPlayPage===1){
+  txt('2. TACTICAL ITEMS',cx,panelY+10,K(7),1);
+  txt('POISON: -3PX, CLEAR GUT',cx,panelY+24,K(5),1);
+  txt('SKATES: SPEED UP, STACKS',cx,panelY+36,K(5),1);
+  txt('BOMB: BLOWS UP ON TOUCH',cx,panelY+48,K(5),1);
+  txt('DIAMOND: 8S INVINCIBLE',cx,panelY+60,K(5),1);
+  txt('ENZYME: 3X DIGEST SPEED',cx,panelY+72,K(5),1);
+  txt('INVINCIBLE = SAFE FROM',cx,panelY+88,K(4),1);
+  txt('BOMB / HAZARD / BITE / BURST',cx,panelY+98,K(4),1);
+ }else{
+  txt('3. STAGES & WORLDS',cx,panelY+10,K(7),1);
+  txt('EACH WORLD HAS 10 STAGES',cx,panelY+24,K(5),1);
+  txt('EAT ENOUGH EGGS TO CLEAR',cx,panelY+36,K(5),1);
+  txt('WORLD 2: DESERT CACTUS',cx,panelY+52,K(5),1);
+  txt('WORLD 3: BRICK BLOCKS',cx,panelY+64,K(5),1);
+  txt('HAZARDS VANISH & MOVE',cx,panelY+76,K(5),1);
+  txt('EVERY 20 SECONDS',cx,panelY+86,K(5),1);
+  txt('MAP MODE: PLAY ANY STAGE',cx,panelY+102,K(4),1);
+  txt('ANYTIME, NO PROGRESS NEEDED',cx,panelY+112,K(4),1);}
+ ctxt(howToPlayPage<TOTAL_HOWTOPLAY_PAGES-1?'RIGHT: NEXT PAGE':'RIGHT: BACK TO TITLE',186,K(5),1);}
+
+function drawGameOver(){
+ var isWide=W>=200,panelH=isWide?86:68,panelY=((H-panelH)/2)|0;panel(panelY,panelH);
+ var dy=panelY-40;
+ ctxt('GAME OVER',46+dy,K(7),isWide?2:1);
+ var msg={WALL:'HIT THE WALL',BITE:'BIT YOURSELF',BURST:'GUT EXPLODED!',EMPTY:'TOO EMPTY',BOMB:'BLOWN TO PIECES!',HAZARD:'CRASHED INTO HAZARD!'}[cause]||'';
+ ctxt(msg,60+dy,K(5),1);
+ var labelX=30,valMargin=34;
+ function val(s,y,c){txt(s,W-valMargin-tw(s),y,c);}
+ txt('STAGE',labelX,72+dy,K(6));val(currentWorld+'-'+currentSubStage,72+dy,K(7));
+ txt('MAX LEN',labelX,82+dy,K(6));val(Math.round(maxLen)+'PX',82+dy,K(7));
+ txt('TIME',labelX,92+dy,K(6));val(Math.floor(tGame/1000)+'S',92+dy,K(7));
+ txt('ATE',labelX,102+dy,K(6));val(String(eaten),102+dy,K(7));
+ px(labelX,109+dy,W-labelX*2,1,K(4));
+ txt('SCORE',labelX,113+dy,K(6));val(String(score()),113+dy,K(7));
+ if((((Date.now()/450)|0)%2)===0)ctxt('A TO RETRY THIS STAGE',panelY+panelH-8,K(0),1);}
+
+function drawStageClear(){
+ var isWide=W>=200,panelH=isWide?70:56,panelY=((H-panelH)/2)|0;panel(panelY,panelH);
+ var titleScale=isWide?2:1,titleY=panelY+(isWide?10:8);
+ ctxt('STAGE '+currentWorld+'-'+currentSubStage+' CLEAR!',titleY,K(7),titleScale);
+ ctxt('SPEED RESET TO NORMAL',panelY+(isWide?34:22),K(5),1);
+ var nextStr;
+ if(currentSubStage<SUBSTAGES_PER_WORLD)nextStr='NEXT: '+currentWorld+'-'+(currentSubStage+1);
+ else if(currentWorld<MAX_RELEASE_WORLD)nextStr='NEXT: WORLD '+(currentWorld+1)+' '+(THEME_TITLE[currentWorld+1]||'');
+ else nextStr='ALL WORLDS CLEARED!';
+ ctxt(nextStr,panelY+(isWide?48:34),K(6),1);
+ if(!isWide)ctxt('PRESS A TO CONTINUE',panelY+44,K(4),1);}
+
+function drawGameComplete(){
+ var isWide=W>=200,panelH=isWide?94:76,panelY=((H-panelH)/2)|0;panel(panelY,panelH);
+ ctxt('WORLD 3 CLEARED!',panelY+(isWide?10:8),K(7),isWide?2:1);
+ ctxt('PREVIEW COMPLETE!',panelY+(isWide?32:22),K(6),1);
+ ctxt(isWide?'MORE WORLDS UNLOCKING SOON!':'MORE WORLDS SOON!',panelY+(isWide?44:33),K(5),1);
+ ctxt('FINAL SCORE: '+score(),panelY+(isWide?58:46),K(6),1);
+ if((((Date.now()/450)|0)%2)===0)ctxt('PRESS A TO REPLAY',panelY+(isWide?74:60),K(0),1);}
+
+function draw(){
+ px(0,0,W,H,K(0));
+ if(phase==='title'){drawTitle();return;}
+ if(phase==='settings'){drawSettings();return;}
+ if(phase==='howToPlay'){drawHowToPlay();return;}
+ if(phase==='mapSelect'){drawMapSelect();return;}
+
+ drawField();drawObstacles();drawItems();
+ if(phase==='exploding')drawExplosion();else drawSnake();
+ drawHud();
+
+ if(toast>0){var tx=Math.round((W-tw(toastS))/2);px(tx-3,H-12,tw(toastS)+6,9,K(7));txt(toastS,tx,H-10,K(0));}
+ if(phase==='pause'){panel(((H-40)/2)|0,40);ctxt('PAUSED',((H-40)/2|0)+10,K(7));ctxt('B TO RESUME',((H-40)/2|0)+22,K(5));ctxt('SELECT: SETTINGS',((H-40)/2|0)+31,K(4));}
+ if(phase==='stageClear')drawStageClear();
+ if(phase==='gameComplete')drawGameComplete();
+ if(phase==='over')drawGameOver();}
+
+/* ---------- 主迴圈 ---------- */
+function loop(ts){
+ if(!lastT)lastT=ts;
+ var dt=Math.min(60,ts-lastT);lastT=ts;
+ advanceFrame(dt);
+ draw();
+ requestAnimationFrame(loop);}
+
+/* ---------- 輸入綁定 ---------- */
+var scoreDialog=document.getElementById('score-dialog');
+var scoreForm=document.getElementById('score-form');
+var scoreList=document.getElementById('score-list');
+var scoreStatus=document.getElementById('score-status');
+var scoreApi=document.querySelector('meta[name="gutsy-score-api"]').content;
+var english=new URLSearchParams(location.search).get('lang')==='en';
+var messages=english?{
+ home:'GUTSY home',board:'Global leaderboard',pending:'Leaderboard · pending',name:'Player name',
+ disclosure:'Your name and score will be publicly visible after submission.',submit:'Submit score',
+ refresh:'Refresh',close:'Back to game',complete:'First three worlds complete!',over:'Run over',
+ score:'Score',stage:'Stage',unavailable:'The public leaderboard is not available yet.',
+ loading:'Loading leaderboard…',empty:'No scores yet.',loadError:'Could not load scores. Please try again.',
+ invalid:'Use 1–20 letters, numbers, spaces, underscores, periods, or hyphens.',
+ stored:'The leaderboard is unavailable. Your score is saved in this browser.',
+ submitting:'Submitting…',saved:'Your score is public.',
+ submitError:'Submission failed. Your score is saved in this browser; please try again.'
+}:{
+ home:'GUTSY 官網',board:'全球排行榜',pending:'排行榜 · 待提交',name:'玩家名稱',
+ disclosure:'提交後，玩家名稱與分數會公開顯示。',submit:'留下紀錄',
+ refresh:'重新整理',close:'返回遊戲',complete:'前三個世界完成！',over:'本局結束',
+ score:'分數',stage:'關卡',unavailable:'公開排行榜尚未啟用。',
+ loading:'載入排行榜中…',empty:'目前尚無紀錄。',loadError:'排行榜暫時無法載入，請稍後重試。',
+ invalid:'名稱請使用 1 至 20 個字的文字、數字、空格、底線、句點或連字號。',
+ stored:'公開排行榜尚未啟用，紀錄已暫存於此瀏覽器。',
+ submitting:'提交中…',saved:'紀錄已公開。',
+ submitError:'提交失敗，紀錄已暫存於此瀏覽器，請稍後重試。'
+};
+document.documentElement.lang=english?'en':'zh-Hant';
+document.getElementById('game-toolbar').querySelector('a').textContent=messages.home;
+document.getElementById('score-dialog-title').textContent=messages.board;
+document.querySelector('label[for="player-name"]').textContent=messages.name;
+document.querySelector('#score-form p').textContent=messages.disclosure;
+document.getElementById('submit-score').textContent=messages.submit;
+document.getElementById('refresh-scores').textContent=messages.refresh;
+document.getElementById('close-scores').textContent=messages.close;
+if(english)document.getElementById('game-toolbar').querySelector('a').href='../en/';
+var pendingRun=null,autoPaused=false;
+
+function setPending(run){
+ pendingRun=run;
+ try{if(run)localStorage.setItem('gutsy2:pendingScore',JSON.stringify(run));
+  else localStorage.removeItem('gutsy2:pendingScore');}catch(e){}
+ document.getElementById('show-scores').textContent=run?messages.pending:messages.board;}
+
+function recordRun(completed){
+ if(runRecorded)return;
+ runRecorded=true;
+ setPending({id:crypto.randomUUID(),score:score(),world:currentWorld,
+  stage:currentSubStage,difficulty:difficulty,duration_seconds:Math.floor(tGame/1000),
+  completed:completed});
+ openScores();}
+
+function openScores(){
+ if(phase==='play'){phase='pause';autoPaused=true;}
+ var result=document.getElementById('run-result');
+ result.hidden=!pendingRun;
+ if(pendingRun){
+  document.getElementById('run-summary').textContent=(pendingRun.completed?messages.complete:messages.over)+
+   '  '+messages.score+' '+pendingRun.score+' · '+messages.stage+' '+pendingRun.world+'-'+pendingRun.stage;
+ }
+ scoreStatus.textContent='';
+ if(!scoreDialog.open)scoreDialog.showModal();
+ loadScores();}
+
+function closeScores(){
+ scoreDialog.close();
+ if(autoPaused&&phase==='pause'){phase='play';lastT=0;}
+ autoPaused=false;}
+
+async function loadScores(){
+ scoreList.replaceChildren();
+ if(!scoreApi){scoreStatus.textContent=messages.unavailable;return;}
+ scoreStatus.textContent=messages.loading;
+ try{
+  var res=await fetch(scoreApi+'/scores');
+  if(!res.ok)throw new Error('HTTP '+res.status);
+  var rows=(await res.json()).scores;
+  rows.forEach(function(row){
+   var item=document.createElement('li');
+   item.textContent=row.name+' · '+row.world+'-'+row.stage;
+   var points=document.createElement('span');points.textContent=String(row.score);
+   item.appendChild(points);scoreList.appendChild(item);});
+  scoreStatus.textContent=rows.length?'':messages.empty;
+ }catch(e){scoreStatus.textContent=messages.loadError;}}
+
+scoreForm.addEventListener('submit',async function(e){
+ e.preventDefault();
+ if(!pendingRun)return;
+ var name=document.getElementById('player-name').value.trim();
+ if(!/^[\p{L}\p{N} _.-]{1,20}$/u.test(name)){
+  scoreStatus.textContent=messages.invalid;return;}
+ if(!scoreApi){scoreStatus.textContent=messages.stored;return;}
+ var button=document.getElementById('submit-score');button.disabled=true;
+ scoreStatus.textContent=messages.submitting;
+ try{
+  var run=Object.assign({},pendingRun,{name:name});
+  var res=await fetch(scoreApi+'/scores',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(run)});
+  if(!res.ok)throw new Error('HTTP '+res.status);
+  try{localStorage.setItem('gutsy2:playerName',name);}catch(e){}
+  setPending(null);document.getElementById('run-result').hidden=true;
+  await loadScores();scoreStatus.textContent=messages.saved;
+ }catch(e){scoreStatus.textContent=messages.submitError;}
+ finally{button.disabled=false;}});
+
+document.getElementById('show-scores').addEventListener('click',openScores);
+document.getElementById('refresh-scores').addEventListener('click',loadScores);
+document.getElementById('close-scores').addEventListener('click',closeScores);
+scoreDialog.addEventListener('cancel',function(e){e.preventDefault();closeScores();});
+try{
+ var stored=JSON.parse(localStorage.getItem('gutsy2:pendingScore'));
+ if(stored&&stored.id)setPending(stored);
+ document.getElementById('player-name').value=localStorage.getItem('gutsy2:playerName')||'';
+}catch(e){}
+
+var wrap=document.getElementById('gbwrap');
+wrap.querySelectorAll('[data-d]').forEach(function(el){
+ el.addEventListener('pointerdown',function(e){e.preventDefault();press(el.getAttribute('data-d'));});});
+wrap.querySelectorAll('[data-b]').forEach(function(el){
+ el.addEventListener('pointerdown',function(e){e.preventDefault();act(el.getAttribute('data-b'));});});
+document.getElementById('led').addEventListener('click',function(e){e.preventDefault();mute();});
+
+window.addEventListener('keydown',function(e){
+ if(scoreDialog.open||e.target.tagName==='INPUT')return;
+ var k=e.key;
+ if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight',' '].indexOf(k)>=0)e.preventDefault();
+ if(k==='ArrowUp'||k==='w')press('U');
+ else if(k==='ArrowDown'||k==='s')press('D');
+ else if(k==='ArrowLeft'||k==='a')press('L');
+ else if(k==='ArrowRight'||k==='d')press('R');
+ else if(k===' '||k==='Enter'||k==='z')act('A');
+ else if(k==='p'||k==='x')act('B');
+ else if(k==='c')act('SEL');
+ else if(k==='m')mute();});
+
+var sx=0,sy=0;
+cv.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY;},{passive:true});
+cv.addEventListener('touchend',function(e){
+ var dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;
+ if(Math.abs(dx)<14&&Math.abs(dy)<14){act('A');return;}
+ if(Math.abs(dx)>Math.abs(dy))press(dx>0?'R':'L');else press(dy>0?'D':'U');},{passive:true});
+
+/* ---------- 讀存檔並啟動 ---------- */
+try{
+ var b=localStorage.getItem('gutsy2:best');if(b)best=parseInt(b,10)||0;
+ var gm=localStorage.getItem('gutsy2:games');if(gm)gamesPlayed=parseInt(gm,10)||0;
+ var lw=localStorage.getItem('gutsy2:lastWorld');if(lw)lastStageWorld=parseInt(lw,10)||1;
+ var ls=localStorage.getItem('gutsy2:lastSub');if(ls)lastStageSubStage=parseInt(ls,10)||1;
+ var df=localStorage.getItem('gutsy2:diff');if(df&&DIFF[df])difficulty=df;
+}catch(e){}
+reset();phase='title';requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>

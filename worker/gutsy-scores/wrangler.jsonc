@@ -1,0 +1,13 @@
+{
+  "name": "gutsy-scores",
+  "main": "src/index.js",
+  "compatibility_date": "2026-09-28",
+  "workers_dev": true,
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "gutsy-scores",
+      "database_id": "f265eabb-b671-4f41-a187-273b2bde4886"
+    }
+  ]
+}

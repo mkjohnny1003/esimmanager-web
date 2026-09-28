@@ -10,12 +10,19 @@
   <link rel="apple-touch-icon" href="assets/app-icon.png">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="zh_TW">
+  <meta property="og:site_name" content="我的血壓">
   <meta property="og:url" content="https://getesimmanager.com/bpcare/">
   <meta property="og:title" content="我的血壓｜為台灣長輩設計的血壓紀錄、吃藥提醒、慢箋領藥 App">
   <meta property="og:description" content="依台灣高血壓治療指引判讀、國健署 722 量法、健保慢箋領藥提醒、中文藥名。拍血壓計自動帶入、吃藥提醒、回診清單、手機簡訊通知家人。資料只存在你的 iPhone。">
   <meta property="og:image" content="https://getesimmanager.com/bpcare/assets/hero.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="我的血壓｜為台灣長輩設計的血壓紀錄、吃藥提醒、慢箋領藥 App">
+  <meta name="twitter:description" content="依台灣高血壓治療指引判讀、國健署 722 量法、健保慢箋領藥提醒、中文藥名。拍血壓計自動帶入、吃藥提醒、回診清單、手機簡訊通知家人。資料只存在你的 iPhone。">
+  <meta name="twitter:image" content="https://getesimmanager.com/bpcare/assets/hero.jpg">
   <meta name="apple-itunes-app" content="app-id=6816619503">
   <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MobileApplication", "name": "我的血壓", "url": "https://getesimmanager.com/bpcare/", "downloadUrl": "https://apps.apple.com/tw/app/id6816619503", "operatingSystem": "iOS 17.0 以上", "applicationCategory": "HealthApplication", "inLanguage": "zh-Hant-TW", "image": "https://getesimmanager.com/bpcare/assets/app-icon.png", "description": "依台灣高血壓治療指引判讀、國健署 722 量法、健保慢箋領藥提醒、中文藥名。拍血壓計自動帶入、吃藥提醒、回診清單、手機簡訊通知家人。資料只存在你的 iPhone。", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "TWD"}}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "要錢嗎?需要註冊嗎?", "acceptedAnswer": {"@type": "Answer", "text": "免費下載、所有功能免費使用,不需要註冊帳號。免費版有少量非個人化廣告,可一次買斷永久移除;量到危險值時不會出現廣告。"}}, {"@type": "Question", "name": "我的健康資料會上傳嗎?", "acceptedAnswer": {"@type": "Answer", "text": "不會。資料只存在你的 iPhone(開啟時同步到 Apple「健康」與你的 Apple Watch),開發者沒有伺服器、看不到你的資料。拍血壓計的照片也只在手機上辨識。"}}, {"@type": "Question", "name": "需要什麼樣的手機?一定要有 Apple Watch 嗎?", "acceptedAnswer": {"@type": "Answer", "text": "iPhone 需要 iOS 17 以上;Apple Watch 可有可無,有的話需 watchOS 10 以上。「拍血壓計自動帶入數字」需要支援 Apple Intelligence 的 iPhone(iOS 27 以上),其他功能都不需要。"}}, {"@type": "Question", "name": "長輩不太會用手機,可以嗎?", "acceptedAnswer": {"@type": "Answer", "text": "介面是大字、大按鈕,會跟著 iPhone 的文字大小放大。第一次打開有設定精靈一步步問;家人也可以先照使用教學幫忙設定好,說明書 PDF 也可以印出來放在身邊。"}}, {"@type": "Question", "name": "我吃的藥不在常用藥物清單裡怎麼辦?", "acceptedAnswer": {"@type": "Answer", "text": "直接輸入藥袋上的藥名就可以。常用藥物清單只是方便輸入;吃學名藥或其他廠牌,也可以只填成分名。"}}, {"@type": "Question", "name": "慢箋的領藥日怎麼算?", "acceptedAnswer": {"@type": "Answer", "text": "依健保署規定,第 2 次起須在上次給藥期間屆滿前 10 日內領取(屆滿當日不算)。例如 6/1 領 30 天份,6/20 起可領第 2 次。"}}, {"@type": "Question", "name": "換新手機資料會不見嗎?", "acceptedAnswer": {"@type": "Answer", "text": "用 iPhone 整機移轉或 iCloud 備份還原,資料會一起過去;也可以在 App 裡匯出備份檔,新手機再還原。"}}]}</script>
   <!-- Google Analytics 4(全站共用) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-KJB54JTM44"></script>
   <script>
@@ -33,6 +40,11 @@
       document.querySelectorAll('a[href$=".pdf"]').forEach(function(a) {
         a.addEventListener('click', function() {
           gtag('event', 'file_download', { file_name: 'bpcare-manual-1.1.pdf', link_url: this.href, transport_type: 'beacon' });
+        });
+      });
+      document.querySelectorAll('a[data-app]').forEach(function(a) {
+        a.addEventListener('click', function() {
+          gtag('event', 'sister_app_click', { app_name: this.dataset.app, source_app: 'BPCare', transport_type: 'beacon' });
         });
       });
     });
@@ -54,90 +66,119 @@
         <div class="actions"><a class="btn-appstore" data-pos="hero" href="https://apps.apple.com/tw/app/id6816619503" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.61-.75 1.04-1.8 0.92-2.87-.92.04-2.02.62-2.67 1.37-.58.66-1.09 1.74-.96 2.78 1.03.08 2.08-.54 2.71-1.28z"/></svg><span><span class="sub">免費下載</span><br><span class="title">App Store</span></span></a><a class="btn-ghost" href="guide.html">📖 看使用教學</a></div>
         <div class="chips"><span class="chip">免註冊、免帳號</span><span class="chip">資料只在你的 iPhone</span><span class="chip">繁體中文</span><span class="chip">判讀附指引出處</span></div>
       </div>
-      <div class="art"><img class="illus" src="assets/hero.jpg" alt="台灣長輩在家用手機記錄血壓的插圖">
-        <div class="float-phone"><img src="assets/shots/home.jpg" alt="我的血壓首頁"></div></div>
+      <div class="hero-phones" data-zoom-group>
+        <figure><div class="phone zoom"><img src="assets/shots/home.jpg" alt="首頁:最近一次血壓與判讀、今天的藥" loading="lazy"></div><figcaption>一眼看懂今天的血壓</figcaption></figure>
+        <figure><div class="phone zoom"><img src="assets/shots/meds.jpg" alt="今天吃藥了嗎?點一下記錄已服用" loading="lazy"></div><figcaption>吃了沒,勾一下就記住</figcaption></figure>
+      </div>
     </section>
 
-    <section class="section band">
+    <section class="section" id="glance">
+      <div class="section-head"><span class="tag">8 個畫面看懂</span><h2>每天要做的事,都變簡單</h2>
+        <p>按左右箭頭或用手指滑動看更多,點圖片可以放大。</p></div>
+      <div class="scroller" data-zoom-group><div class="store-strip"><figure class="zoom"><img src="assets/store/01.jpg" alt="血壓高不高,一眼就知道" loading="lazy"><figcaption>首頁</figcaption></figure><figure class="zoom"><img src="assets/store/02.jpg" alt="拍一下血壓計,數字自動帶入" loading="lazy"><figcaption>拍照記錄</figcaption></figure><figure class="zoom"><img src="assets/store/03.jpg" alt="722 居家量測,陪你量完一週" loading="lazy"><figcaption>722 量測</figcaption></figure><figure class="zoom"><img src="assets/store/04.jpg" alt="今天吃藥了嗎?勾一下就記住" loading="lazy"><figcaption>吃藥提醒</figcaption></figure><figure class="zoom"><img src="assets/store/05.jpg" alt="一步步處置,可撥 119、通知家人" loading="lazy"><figcaption>危險值</figcaption></figure><figure class="zoom"><img src="assets/store/06.jpg" alt="回診報告,直接給醫師看" loading="lazy"><figcaption>回診報告</figcaption></figure><figure class="zoom"><img src="assets/store/07.jpg" alt="出門前檢查,該帶的都帶了" loading="lazy"><figcaption>出門清單</figcaption></figure><figure class="zoom"><img src="assets/store/08.jpg" alt="慢箋領藥,時間到就提醒" loading="lazy"><figcaption>慢箋領藥</figcaption></figure></div></div>
+    </section>
+
+    <section class="section band" id="taiwan">
       <div class="section-head"><span class="tag">專為台灣設計</span>
         <h2>不是翻譯過來的國外 App</h2>
         <p>從血壓標準、量法、健保慢箋到藥名,都照台灣的規定與習慣設計。每一項醫療資訊都附上來源,點一下就能看原文。</p></div>
       <div class="tw-grid"><div class="tw"><div class="ic">🇹🇼</div><h3>依台灣高血壓治療指引判讀</h3><p>血壓分級採 2022 台灣心臟學會與台灣高血壓學會指引,居家血壓目標 130/80,不是照搬國外標準。</p><span class="src">來源:<a href="sources.html">2022 台灣高血壓治療指引</a></span></div><div class="tw"><div class="ic">📅</div><h3>國健署推廣的「722」量法</h3><p>連續 7 天、早晚各 1 回、每回量 2 次。App 陪你量完一週、算好平均,回診直接給醫師看。</p><span class="src">來源:<a href="sources.html">國民健康署「血壓要管理 722 在家量」</a></span></div><div class="tw"><div class="ic">🧾</div><h3>懂健保慢箋的規則</h3><p>依健保署規定算出「屆滿前 10 日內」可以領第 2、3 次藥的日子,時間到提醒你去藥局。</p><span class="src">來源:<a href="sources.html">健保署提前 10 日領藥計算說明</a></span></div><div class="tw"><div class="ic">💊</div><h3>熟悉的中文藥名</h3><p>脈優、可悅您、立普妥……常用降血壓、降血脂藥依食藥署許可證資料整理;吃學名藥也能只填成分。</p><span class="src">來源:<a href="sources.html">食藥署藥品許可證開放資料</a></span></div><div class="tw"><div class="ic">🏥</div><h3>台灣的回診習慣</h3><p>回診前一晚提醒,出門清單幫你確認健保卡、慢性病連續處方箋、藥袋都帶了。</p></div><div class="tw"><div class="ic">💬</div><h3>家人也能放心</h3><p>首頁「傳給家人」把今天的血壓與吃藥情況用手機簡訊傳給家人;連續漏服藥會自動傳手機簡訊;量到危險值可直接撥 119。</p></div></div>
     </section>
 
-    <section class="section">
+    <section class="section" id="day">
       <div class="section-head"><span class="tag">一天的陪伴</span>
         <h2>從早上量血壓,到回診、領慢箋</h2>
         <p>不用記,時間到就提醒;不用算,App 幫你算好。</p></div>
-      <div class="day"><div class="moment"><div class="time">07:00<small>起床</small></div><div><h3>量血壓時間到</h3><p>通知一響,點一下就打開記錄畫面。拍一下血壓計,數字自動填好;判讀旁附上指引出處。</p></div><div class="shot"><img class="middle" src="assets/shots/camera.jpg" alt="量血壓時間到" loading="lazy"></div></div><div class="moment"><div class="time">08:00<small>早餐後</small></div><div><h3>該吃藥了</h3><p>通知上直接按「已服用」,或在主畫面小工具點一下圓圈。吃半顆、1 顆半都記得清清楚楚。</p></div><div class="shot"><img class="" src="assets/shots/meds.jpg" alt="該吃藥了" loading="lazy"></div></div><div class="moment"><div class="time">21:00<small>睡前</small></div><div><h3>把今天告訴家人</h3><p>首頁右上角「傳給家人」,用手機簡訊傳一段今日摘要:今天的血壓、近 7 天平均、還沒吃的藥。</p></div><div class="shot"><img class="bottom" src="assets/shots/share.jpg" alt="把今天告訴家人" loading="lazy"></div></div><div class="moment"><div class="time">回診前<small>前一晚 20:00</small></div><div><h3>明天要回診</h3><p>點提醒打開出門清單,健保卡、慢箋、藥袋、血壓紀錄逐項打勾;一鍵產生 PDF 報告給醫師。</p></div><div class="shot"><img class="" src="assets/shots/checklist.jpg" alt="明天要回診" loading="lazy"></div></div><div class="moment"><div class="time">領藥日<small>早上 9:00</small></div><div><h3>可以領慢箋了</h3><p>依健保規定算好的日子一到就提醒;領完按「已領藥」,下一次的日子自動更新。</p></div><div class="shot"><img class="" src="assets/shots/refill.jpg" alt="可以領慢箋了" loading="lazy"></div></div></div>
+      <div class="day" data-zoom-group><div class="moment"><div class="time">07:00<small>起床</small></div><div><h3>量血壓時間到</h3><p>通知一響,點一下就打開記錄畫面。拍一下血壓計,數字自動填好;判讀旁附上指引出處。</p></div><div class="shot zoom"><img class="middle" src="assets/shots/camera.jpg" alt="量血壓時間到" loading="lazy"></div></div><div class="moment"><div class="time">08:00<small>早餐後</small></div><div><h3>該吃藥了</h3><p>通知上直接按「已服用」,或在主畫面小工具點一下圓圈。吃半顆、1 顆半都記得清清楚楚。</p></div><div class="shot zoom"><img class="" src="assets/shots/meds.jpg" alt="該吃藥了" loading="lazy"></div></div><div class="moment"><div class="time">21:00<small>睡前</small></div><div><h3>把今天告訴家人</h3><p>首頁右上角「傳給家人」,用手機簡訊傳一段今日摘要:今天的血壓、近 7 天平均、還沒吃的藥。</p></div><div class="shot zoom"><img class="bottom" src="assets/shots/share.jpg" alt="把今天告訴家人" loading="lazy"></div></div><div class="moment"><div class="time">回診前<small>前一晚 20:00</small></div><div><h3>明天要回診</h3><p>點提醒打開出門清單,健保卡、慢箋、藥袋、血壓紀錄逐項打勾;一鍵產生 PDF 報告給醫師。</p></div><div class="shot zoom"><img class="" src="assets/shots/checklist.jpg" alt="明天要回診" loading="lazy"></div></div><div class="moment"><div class="time">領藥日<small>早上 9:00</small></div><div><h3>可以領慢箋了</h3><p>依健保規定算好的日子一到就提醒;領完按「已領藥」,下一次的日子自動更新。</p></div><div class="shot zoom"><img class="" src="assets/shots/refill.jpg" alt="可以領慢箋了" loading="lazy"></div></div></div>
     </section>
 
-    <section class="section">
+    <section class="section" id="new" data-zoom-group>
       <div class="section-head"><span class="tag">1.1 版新功能</span><h2>更少輸入、更安心</h2></div>
       <div class="showcase">
         <div class="text"><span class="new">NEW</span><h3>拍血壓計,數字自動帶入</h3>
           <p>把血壓計螢幕對準白框拍一張,收縮壓、舒張壓、心率自動填好,不必一個一個按數字。</p>
           <ul><li>在 iPhone 上辨識,照片不上傳、不保存。</li><li>同一張照片讀兩次,看不清楚的欄位留空讓你自己輸入。</li><li>需要支援 Apple Intelligence 的 iPhone(iOS 27 以上)。</li></ul></div>
-        <div class="phones"><div class="phone"><img src="assets/shots/camera.jpg" alt="拍血壓計畫面" loading="lazy"></div><div class="phone"><img src="assets/shots/photo-result.jpg" alt="數字自動帶入後核對" loading="lazy"></div></div>
+        <div class="phones"><div class="phone zoom"><img src="assets/shots/camera.jpg" alt="拍血壓計畫面" loading="lazy"></div><div class="phone zoom"><img src="assets/shots/photo-result.jpg" alt="數字自動帶入後核對" loading="lazy"></div></div>
       </div>
       <div class="showcase flip">
         <div class="text"><span class="new">NEW</span><h3>722 居家量測,陪你量完一週</h3>
           <p>格子顯示 7 天早晚的進度,第 1 次存好會倒數 1 分鐘提醒量第 2 次。7 天後自動算出總平均、早上與晚上平均,與居家目標 130/80 比較,一鍵產生回診報告。</p>
           <span class="cite">📚 722 量法依國民健康署與 2022 台灣高血壓治療指引(<a href="sources.html">參考文獻</a>)</span></div>
-        <div class="phones"><div class="phone"><img src="assets/shots/722-progress.jpg" alt="722 量測進度" loading="lazy"></div><div class="phone"><img src="assets/shots/722-done.jpg" alt="722 量測完成的平均值" loading="lazy"></div></div>
+        <div class="phones"><div class="phone zoom"><img src="assets/shots/722-progress.jpg" alt="722 量測進度" loading="lazy"></div><div class="phone zoom"><img src="assets/shots/722-done.jpg" alt="722 量測完成的平均值" loading="lazy"></div></div>
       </div>
       <div class="showcase">
         <div class="text"><span class="new">NEW</span><h3>主畫面就能勾「已服用」</h3>
           <p>iPhone 主畫面與鎖定畫面小工具:今天吃了幾次、下次幾點吃、吃哪幾顆。中尺寸小工具點一下圓圈,就記錄已服用,不用打開 App。</p></div>
-        <div class="illus"><img src="assets/widget-medium.jpg" alt="今天吃藥了嗎小工具" loading="lazy"></div>
+        <div class="illus zoom"><img src="assets/widget-medium.jpg" alt="今天吃藥了嗎小工具" loading="lazy"></div>
       </div>
       <div class="showcase flip">
         <div class="text"><span class="new">NEW</span><h3>量到危險值也不慌</h3>
           <p>血壓 ≥180/120 時,大字的處置畫面陪你一步步做:先坐下休息、5 分鐘後提醒再量、有胸痛或單側無力等症狀直接撥 119,並可傳手機簡訊給家人。</p>
           <span class="cite">📚 處置建議依美國心臟學會「高血壓何時要叫救護車」(<a href="sources.html">參考文獻</a>)</span></div>
-        <div class="phones"><div class="phone"><img src="assets/shots/crisis.jpg" alt="危險值處置畫面" loading="lazy"></div><div class="phone"><img src="assets/shots/sources.jpg" alt="醫療資訊來源" loading="lazy"></div></div>
+        <div class="phones"><div class="phone zoom"><img src="assets/shots/crisis.jpg" alt="危險值處置畫面" loading="lazy"></div><div class="phone zoom"><img src="assets/shots/sources.jpg" alt="醫療資訊來源" loading="lazy"></div></div>
       </div>
       <div class="showcase">
         <div class="text"><span class="new">NEW</span><h3>第一次使用,幾個問題就設定好</h3>
           <p>設定精靈用大字一步步問:想用來做什麼、幾點量血壓、吃哪些藥、下次回診、要不要同步 Apple 健康、要不要讓家人知道。每一步都能略過;換新手機可直接從備份檔還原。</p></div>
-        <div class="phones"><div class="phone"><img src="assets/shots/ob-welcome.jpg" alt="設定精靈歡迎畫面" loading="lazy"></div><div class="phone"><img src="assets/shots/ob-goals.jpg" alt="選擇用途" loading="lazy"></div></div>
+        <div class="phones"><div class="phone zoom"><img src="assets/shots/ob-welcome.jpg" alt="設定精靈歡迎畫面" loading="lazy"></div><div class="phone zoom"><img src="assets/shots/ob-goals.jpg" alt="選擇用途" loading="lazy"></div></div>
+      </div>
+      <div class="showcase flip">
+        <div class="text"><span class="new">NEW</span><h3>Apple 健康:藍牙血壓計的紀錄也讀得進來</h3>
+          <p>除了把記錄寫入「健康」App,也能讀入其他 App(例如藍牙血壓計的 App)寫進「健康」的血壓與心率,不用再輸入一次。兩項都要你在設定裡開啟並同意才會動作。</p></div>
+        <div class="phones"><div class="phone zoom"><img src="assets/shots/ob-health.jpg" alt="設定精靈詢問 Apple 健康" loading="lazy"></div><div class="phone zoom"><img src="assets/shots/backup.jpg" alt="備份與還原" loading="lazy"></div></div>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="watch">
+      <div class="watch-show">
+        <div class="text"><span class="tag">Apple Watch</span><h2>手錶上也能記錄、勾藥</h2>
+          <ul class="checks"><li>在手錶上記錄血壓,自動帶入手錶最近量到的心率。</li>
+            <li>「今日用藥」一顆一顆列出來,吃完在手錶上勾一下。</li>
+            <li>錶面小工具一眼看到今天吃藥了沒。</li>
+            <li>手錶上也看得到醫療資訊來源。資料由 iPhone 與手錶直接同步,不經過網路伺服器。</li></ul>
+          <p class="small muted">Apple Watch 需 watchOS 10 以上;沒有手錶也能使用全部功能。</p></div>
+        <div class="watches" data-zoom-group><figure><div class="watch zoom"><img src="assets/shots/watch.jpg" alt="手錶主畫面" loading="lazy"></div><figcaption>手錶主畫面</figcaption></figure><figure><div class="watch zoom"><img src="assets/shots/watch-entry.jpg" alt="在手錶記錄血壓" loading="lazy"></div><figcaption>在手錶記錄血壓</figcaption></figure><figure><div class="watch zoom"><img src="assets/shots/watch-meds.jpg" alt="在手錶勾選用藥" loading="lazy"></div><figcaption>在手錶勾選用藥</figcaption></figure></div>
+      </div>
+    </section>
+
+    <section class="section" id="family">
       <div class="showcase">
         <div class="illus"><img src="assets/family.jpg" alt="長輩與女兒透過手機互相關心的插圖" loading="lazy"></div>
         <div class="text"><span class="tag warm">給家人</span><h3>爸媽自己用,你也放心</h3>
           <ul><li><b>傳給家人</b>:一段文字把今天的血壓、近 7 天平均、還沒吃的藥用手機簡訊傳給你。</li>
-            <li><b>漏服藥通知</b>:連續幾次沒按「已服用」,透過 iPhone「捷徑」自動傳簡訊給你。</li>
+            <li><b>漏服藥通知</b>:連續幾次沒按「已服用」,透過 iPhone「捷徑」自動傳手機簡訊給你。</li>
             <li><b>危險值</b>:量到 ≥180/120 時,處置畫面可直接撥 119,或傳手機簡訊給你。</li>
             <li><b>幫忙設定</b>:設定精靈與使用說明書,第一次幫爸媽裝好就能上手。</li></ul>
           <p class="small muted">全部不經過我們的伺服器,也不用註冊帳號。</p></div>
       </div>
+      <div class="phones family-shots" data-zoom-group><div class="phone zoom"><img src="assets/shots/share.jpg" alt="傳給家人:先看內容再傳手機簡訊" loading="lazy"></div><div class="phone zoom"><img src="assets/shots/caregiver.jpg" alt="漏服藥通知家人" loading="lazy"></div><div class="phone zoom"><img src="assets/shots/caregiver-3.jpg" alt="用捷徑自動傳手機簡訊" loading="lazy"></div></div>
     </section>
 
-    <section class="section">
+    <section class="section" id="care">
+      <div class="section-head"><span class="tag">為長輩設計</span><h2>看得清楚、按得準、不怕按錯</h2>
+        <p>大字、大按鈕,跟著 iPhone 的文字大小放大。每個畫面都是為了讓長輩自己就會用。</p></div>
+      <div class="care-grid" data-zoom-group><div class="care"><div class="care-shot zoom"><img src="assets/shots/ob-name.jpg" alt="用你習慣的稱呼" loading="lazy"></div><h3>用你習慣的稱呼</h3><p>首頁會跟「王媽媽」道早安,回診報告也印上稱呼,家人幫忙設定時可以填爸媽習慣的叫法。</p></div><div class="care"><div class="care-shot zoom"><img src="assets/shots/meds-2.jpg" alt="按錯了,再點一次就取消" loading="lazy"></div><h3>按錯了,再點一次就取消</h3><p>「已服用」的綠色勾勾再點一次就取消,手滑也不怕記錯。</p></div><div class="care"><div class="care-shot zoom"><img src="assets/shots/med-edit-2.jpg" alt="半顆、1 顆半都能記" loading="lazy"></div><h3>半顆、1 顆半都能記</h3><p>每次吃幾顆用大大的 + − 調整,早晚吃法不同也能分開設定。</p></div><div class="care"><div class="care-shot zoom"><img src="assets/shots/notif-off.jpg" alt="通知被關掉會提醒你" loading="lazy"></div><h3>通知被關掉會提醒你</h3><p>iPhone 的通知被關掉時,首頁會出現紅色提醒,按「去開啟通知」直接到設定,不會漏掉吃藥時間。</p></div><div class="care"><div class="care-shot zoom"><img src="assets/shots/722-hint.jpg" alt="首頁就看得到該量了" loading="lazy"></div><h3>首頁就看得到該量了</h3><p>722 量測期間,首頁提示今天早晚的進度,不用記第幾天。</p></div><div class="care"><div class="care-shot zoom"><img src="assets/shots/home-citation.jpg" alt="每個建議都有出處" loading="lazy"></div><h3>每個建議都有出處</h3><p>判讀與建議旁的「查看來源」點一下,就能看台灣指引與國內外醫學會的原文。</p></div></div>
+    </section>
+
+    <section class="section" id="features">
       <div class="section-head"><span class="tag">功能總覽</span><h2>每天會用到的,都在這裡</h2></div>
       <div class="grid">
         <div class="feature"><h3>🩺 血壓與心率分級</h3><p>依台灣指引即時判斷正常、偏高、第一期或第二期高血壓,附白話建議與出處。</p></div>
         <div class="feature"><h3>💊 今天吃藥了嗎?</h3><p>像鬧鐘一樣每天提醒,通知上按「已服用」;半顆、1 顆半都能設定,看服藥率。</p></div>
         <div class="feature"><h3>🏥 回診與出門清單</h3><p>前一晚與看診前提醒;大字清單確認健保卡、慢箋、藥袋都帶了。</p></div>
         <div class="feature"><h3>🧾 健保慢箋領藥</h3><p>依健保規定算出每次可領日,時間到提醒;處方箋有效期也幫你記。</p></div>
-        <div class="feature"><h3>📄 回診 PDF 報告</h3><p>早晚平均、趨勢圖、用藥與服藥率、量測明細,可列印或傳給醫師。</p></div>
+        <div class="feature"><h3>📄 回診 PDF 報告</h3><p>早晚平均、趨勢圖、用藥與服藥率、量測明細,可列印或傳給醫師;也能匯出 CSV。</p></div>
         <div class="feature"><h3>⌚ Apple Watch</h3><p>手錶上記錄血壓(自動帶入心率)、勾選用藥;錶面一眼看到今天吃藥了沒。</p></div>
         <div class="feature"><h3>❤️ Apple 健康</h3><p>寫入「健康」App,也能讀入藍牙血壓計 App 的紀錄,不用重複輸入。</p></div>
         <div class="feature"><h3>🔒 資料在你手上</h3><p>免註冊、無雲端帳號,資料只存在 iPhone;可自行匯出備份檔換手機。</p></div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="section-head"><span class="tag">畫面一覽</span><h2>大字、清楚、好按</h2></div>
-      <div class="gallery">
-        <figure><div class="phone"><img src="assets/shots/home.jpg" alt="首頁「今天」" loading="lazy"></div><figcaption>首頁「今天」</figcaption></figure><figure><div class="phone"><img src="assets/shots/bp.jpg" alt="血壓趨勢" loading="lazy"></div><figcaption>血壓趨勢</figcaption></figure><figure><div class="phone"><img src="assets/shots/meds.jpg" alt="今天吃藥了嗎?" loading="lazy"></div><figcaption>今天吃藥了嗎?</figcaption></figure><figure><div class="phone"><img src="assets/shots/visits.jpg" alt="回診" loading="lazy"></div><figcaption>回診</figcaption></figure>
-        <figure><div class="phone"><img src="assets/shots/checklist.jpg" alt="出門前檢查" loading="lazy"></div><figcaption>出門前檢查</figcaption></figure><figure><div class="phone"><img src="assets/shots/refill.jpg" alt="慢箋領藥" loading="lazy"></div><figcaption>慢箋領藥</figcaption></figure><figure><div class="phone"><img src="assets/shots/report.jpg" alt="回診報告" loading="lazy"></div><figcaption>回診報告</figcaption></figure><figure><div class="phone"><img src="assets/shots/drug-catalog.jpg" alt="常用藥物" loading="lazy"></div><figcaption>常用藥物</figcaption></figure>
-        <figure><div class="phone"><img src="assets/shots/backup.jpg" alt="備份與還原" loading="lazy"></div><figcaption>備份與還原</figcaption></figure>
-        <figure><div class="watch"><img src="assets/shots/watch.jpg" alt="Apple Watch" loading="lazy"></div><figcaption>Apple Watch</figcaption></figure>
-      </div>
+    <section class="section" id="screens">
+      <div class="section-head"><span class="tag">畫面一覽</span><h2>大字、清楚、好按</h2>
+        <p>依功能分類;按左右箭頭或用手指滑動看更多,點圖片可以放大。</p></div>
+      <div class="tabs" role="tablist"><button role="tab" aria-controls="g-home">首頁與記錄</button><button role="tab" aria-controls="g-bp">血壓與報告</button><button role="tab" aria-controls="g-meds">用藥</button><button role="tab" aria-controls="g-visit">回診與慢箋</button><button role="tab" aria-controls="g-family">家人與設定</button><button role="tab" aria-controls="g-ob">設定精靈</button><button role="tab" aria-controls="g-watch">Apple Watch 與小工具</button></div>
+      <div data-zoom-group><div class="scroller" role="tabpanel" id="g-home"><div class="gallery"><figure><div class="phone zoom"><img src="assets/shots/home.jpg" alt="首頁「今天」" loading="lazy"></div><figcaption>首頁「今天」</figcaption></figure><figure><div class="phone zoom"><img src="assets/shots/home-2.jpg" alt="今日用藥與近 7 天" loading="lazy"></div><figcaption>今日用藥與近 7 天</figcaption></figure><figure><div class="phone zoom"><img src="assets/shots/home-3.jpg" alt="即將到來的回診與領藥" loading="lazy"></div><figcaption>即將到來的回診與領藥</figcaption></figure><figure><div class="phone zoom"><img src="assets/shots/entry.jpg" alt="記錄血壓" loading="lazy"></div><figcaption>記錄血壓</figcaption></figure><figure><div class="phone zoom"><img src="assets/shots/camera.jpg" alt="拍血壓計" loading="lazy"></div><figcaption>拍血壓計</figcaption></figure><figure><div class="phone zoom"><img src="assets/shots/photo-result.jpg" alt="數字自動帶入" loading="lazy"></div><figcaption>數字自動帶入</figcaption></figure><figure><div class="phone zoom"><img src="assets/shots/crisis.jpg" alt="危險值處置" loading="lazy"></div><figcaption>危險值處置</figcaption></figure><figure><div class="phone zoom"><img src="assets/shots/share.jpg" alt="傳給家人" loading="lazy"></div><figcaption>傳給家人</figcaption></figure></div></div><div class="scroller" role="tabpanel" id="g-bp"><div class="gallery"><figure><div class="phone zoom"><img src="assets/shots/bp.jpg" alt="血壓趨勢" loading="lazy"></div><figcaption>血壓趨勢</figcaption></figure><figure><div class="phone zoom"><img src="assets/shots/bp-2.jpg" alt="平均與統計" loading="lazy"></div><figcaption>平均與統計</figcaption></figure><figure><div class="phone zoom"><img src="assets/shots/bp-3.jpg" alt="量測紀錄" loading="lazy"></div><figcaption>量測紀錄</figcaption></figure><figure><div class="phone zoom"><img src="assets/shots/bp-export.jpg" alt="匯出 PDF 或 CSV" loading="lazy"></div><figcaption>匯出 PDF 或 CSV</figcaption></figure><figure><div class="phone zoom"><img src="assets/shots/report.jpg" alt="回診 PDF 報告" loading="lazy"></div><figcaption>回診 PDF 報告</figcaption></figure><figure><div class="phone zoom"><img src="assets/shots/722-intro.jpg" alt="722 居家量測" loading="lazy"></div><figcaption>722 居家量測</figcaption></figure><figure><div class="phone zoom"><img src="assets/shots/722-progress.jpg" alt="7 天進度" loading="lazy"></div><figcaption>7 天進度</figcaption></figure><figure><div class="phone zoom"><img src="assets/shots/722-second.jpg" alt="倒數量第 2 次" loading="lazy"></div><figcaption>倒數量第 2 次</figcaption></figure><figure><div class="phone zoom"><img src="assets/shots/722-done.jpg" alt="722 平均結果" loading="lazy"></div><figcaption>722 平均結果</figcaption></figure></div></div><div class="scroller" role="tabpanel" id="g-meds"><div class="gallery"><figure><div class="phone zoom"><img src="assets/shots/meds.jpg" alt="今天吃藥了嗎?" loading="lazy"></div><figcaption>今天吃藥了嗎?</figcaption></figure><figure><div class="phone zoom"><img src="assets/shots/meds-2.jpg" alt="服藥率" loading="lazy"></div><figcaption>服藥率</figcaption></figure><figure><div class="phone zoom"><img src="assets/shots/med-new.jpg" alt="新增藥物" loading="lazy"></div><figcaption>新增藥物</figcaption></figure><figure><div class="phone zoom"><img src="assets/shots/med-edit.jpg" alt="編輯藥物" loading="lazy"></div><figcaption>編輯藥物</figcaption></figure><figure><div class="phone zoom"><img src="assets/shots/med-edit-2.jpg" alt="時間與顆數" loading="lazy"></div><figcaption>時間與顆數</figcaption></figure><figure><div class="phone zoom"><img src="assets/shots/drug-catalog.jpg" alt="常用藥物清單" loading="lazy"></div><figcaption>常用藥物清單</figcaption></figure><figure><div class="phone zoom"><img src="assets/shots/drug-strength.jpg" alt="選藥袋上的劑量" loading="lazy"></div><figcaption>選藥袋上的劑量</figcaption></figure></div></div><div class="scroller" role="tabpanel" id="g-visit"><div class="gallery"><figure><div class="phone zoom"><img src="assets/shots/visits.jpg" alt="回診" loading="lazy"></div><figcaption>回診</figcaption></figure><figure><div class="phone zoom"><img src="assets/shots/visit-edit.jpg" alt="新增回診" loading="lazy"></div><figcaption>新增回診</figcaption></figure><figure><div class="phone zoom"><img src="assets/shots/checklist.jpg" alt="出門前檢查" loading="lazy"></div><figcaption>出門前檢查</figcaption></figure><figure><div class="phone zoom"><img src="assets/shots/rx.jpg" alt="慢箋領藥" loading="lazy"></div><figcaption>慢箋領藥</figcaption></figure><figure><div class="phone zoom"><img src="assets/shots/refill.jpg" alt="領藥時程" loading="lazy"></div><figcaption>領藥時程</figcaption></figure></div></div><div class="scroller" role="tabpanel" id="g-family"><div class="gallery"><figure><div class="phone zoom"><img src="assets/shots/caregiver.jpg" alt="漏服藥通知家人" loading="lazy"></div><figcaption>漏服藥通知家人</figcaption></figure><figure><div class="phone zoom"><img src="assets/shots/caregiver-2.jpg" alt="通知家人設定" loading="lazy"></div><figcaption>通知家人設定</figcaption></figure><figure><div class="phone zoom"><img src="assets/shots/caregiver-3.jpg" alt="捷徑自動化步驟" loading="lazy"></div><figcaption>捷徑自動化步驟</figcaption></figure><figure><div class="phone zoom"><img src="assets/shots/settings.jpg" alt="設定" loading="lazy"></div><figcaption>設定</figcaption></figure><figure><div class="phone zoom"><img src="assets/shots/settings-2.jpg" alt="廣告、Apple Watch、備份" loading="lazy"></div><figcaption>廣告、Apple Watch、備份</figcaption></figure><figure><div class="phone zoom"><img src="assets/shots/settings-3.jpg" alt="分級參考與關於" loading="lazy"></div><figcaption>分級參考與關於</figcaption></figure><figure><div class="phone zoom"><img src="assets/shots/reminders.jpg" alt="量血壓提醒時間" loading="lazy"></div><figcaption>量血壓提醒時間</figcaption></figure><figure><div class="phone zoom"><img src="assets/shots/backup.jpg" alt="備份與還原" loading="lazy"></div><figcaption>備份與還原</figcaption></figure><figure><div class="phone zoom"><img src="assets/shots/sources-settings.jpg" alt="醫療資訊來源" loading="lazy"></div><figcaption>醫療資訊來源</figcaption></figure></div></div><div class="scroller" role="tabpanel" id="g-ob"><div class="gallery"><figure><div class="phone zoom"><img src="assets/shots/ob-welcome.jpg" alt="開始設定" loading="lazy"></div><figcaption>開始設定</figcaption></figure><figure><div class="phone zoom"><img src="assets/shots/ob-goals.jpg" alt="想用來做什麼" loading="lazy"></div><figcaption>想用來做什麼</figcaption></figure><figure><div class="phone zoom"><img src="assets/shots/ob-reminders.jpg" alt="量血壓時間" loading="lazy"></div><figcaption>量血壓時間</figcaption></figure><figure><div class="phone zoom"><img src="assets/shots/ob-health.jpg" alt="Apple 健康" loading="lazy"></div><figcaption>Apple 健康</figcaption></figure><figure><div class="phone zoom"><img src="assets/shots/ob-meds.jpg" alt="吃哪些藥" loading="lazy"></div><figcaption>吃哪些藥</figcaption></figure><figure><div class="phone zoom"><img src="assets/shots/ob-visits.jpg" alt="下次回診" loading="lazy"></div><figcaption>下次回診</figcaption></figure><figure><div class="phone zoom"><img src="assets/shots/ob-family.jpg" alt="讓家人知道" loading="lazy"></div><figcaption>讓家人知道</figcaption></figure><figure><div class="phone zoom"><img src="assets/shots/ob-name.jpg" alt="怎麼稱呼你" loading="lazy"></div><figcaption>怎麼稱呼你</figcaption></figure><figure><div class="phone zoom"><img src="assets/shots/ob-done.jpg" alt="設定好了" loading="lazy"></div><figcaption>設定好了</figcaption></figure></div></div><div class="scroller" role="tabpanel" id="g-watch"><div class="gallery"><figure><div class="watch zoom"><img src="assets/shots/watch.jpg" alt="手錶主畫面" loading="lazy"></div><figcaption>手錶主畫面</figcaption></figure><figure><div class="watch zoom"><img src="assets/shots/watch-entry.jpg" alt="手錶記錄血壓" loading="lazy"></div><figcaption>手錶記錄血壓</figcaption></figure><figure><div class="watch zoom"><img src="assets/shots/watch-meds.jpg" alt="手錶勾選用藥" loading="lazy"></div><figcaption>手錶勾選用藥</figcaption></figure><figure><div class="widget zoom"><img src="assets/widget-small.jpg" alt="小尺寸小工具" loading="lazy"></div><figcaption>小尺寸小工具</figcaption></figure><figure><div class="widget wide zoom"><img src="assets/widget-medium.jpg" alt="中尺寸小工具:點圓圈記錄已服用" loading="lazy"></div><figcaption>中尺寸小工具</figcaption></figure></div></div></div>
     </section>
 
     <section class="section">
@@ -153,7 +194,30 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section band" id="privacy">
+      <div class="section-head"><span class="tag">隱私</span><h2>你的健康資料,只在你的手機</h2>
+        <p>我們沒有伺服器,也看不到你的資料。</p></div>
+      <div class="promise">
+        <div><div class="ic">🙅</div><h3>免註冊、免帳號</h3><p>打開就能用,不用 Email、不用手機號碼。</p></div>
+        <div><div class="ic">📱</div><h3>資料只存在 iPhone</h3><p>血壓、用藥、回診紀錄都存在你的手機;與 Apple Watch 是手機和手錶直接同步。</p></div>
+        <div><div class="ic">📷</div><h3>照片不上傳</h3><p>拍血壓計只在手機上辨識,照片不保存、不上傳。</p></div>
+        <div><div class="ic">❤️</div><h3>健康資料不用於廣告</h3><p>Apple 健康資料只在你同意後讀寫,不會用於廣告,也不會傳給任何人。</p></div>
+      </div>
+      <p style="margin-top:18px"><a href="privacy.html">閱讀完整隱私權政策 →</a></p>
+    </section>
+
+    <section class="section" id="pricing">
+      <div class="section-head"><span class="tag">價格</span><h2>全部功能免費,不用訂閱</h2></div>
+      <div class="pricing">
+        <div class="plan"><h3>免費版</h3><div class="price">NT$0</div>
+          <ul class="checks"><li>血壓、用藥、回診、慢箋、722 量測全部功能</li><li>回診 PDF 報告、Apple Watch、小工具</li><li>少量非個人化廣告;量到危險值時不會出現廣告</li></ul></div>
+        <div class="plan best"><span class="badge">一次買斷</span><h3>永久移除廣告</h3><div class="price">NT$120</div>
+          <ul class="checks"><li>一次購買,永久沒有廣告</li><li>不是訂閱,不會每月扣款</li><li>換手機可在設定裡「恢復購買」</li></ul></div>
+      </div>
+      <p class="small muted" style="margin-top:12px">在 App「設定」裡購買;實際價格以 App Store 購買畫面為準。</p>
+    </section>
+
+    <section class="section" id="refs">
       <div class="section-head"><span class="tag">參考文獻</span><h2>每一項判讀,都有出處</h2>
         <p>App 內的血壓分級、心率判讀、建議與提醒規則,依據公開的醫學指引與台灣政府資料。App 裡每個判讀旁都有「資料來源」連結。</p></div>
       <div class="refs"><div class="ref"><b>2022 台灣心臟學會與台灣高血壓學會高血壓治療指引</b><span class="pub">Wang TD, et al. Acta Cardiologica Sinica 2022;38(3):225–325</span><div class="use">用於:血壓分級門檻(居家血壓 130/80)、生活建議、722 量測方式</div><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9121756/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC9121756/</a></div><div class="ref"><b>2017 ACC/AHA 成人高血壓預防、偵測、評估與治療指引</b><span class="pub">Whelton PK, et al. Hypertension 2018;71:e13–e115</span><div class="use">用於:血壓分級(正常、偏高、第一期、第二期)</div><a href="https://www.ahajournals.org/doi/10.1161/HYP.0000000000000065" target="_blank" rel="noopener">https://www.ahajournals.org/doi/10.1161/HYP.0000000000000065</a></div><div class="ref"><b>Understanding Blood Pressure Readings(解讀血壓數值)</b><span class="pub">美國心臟學會 American Heart Association</span><div class="use">用於:血壓分級與危險值(≥180/120)</div><a href="https://www.heart.org/en/health-topics/high-blood-pressure/understanding-blood-pressure-readings" target="_blank" rel="noopener">https://www.heart.org/en/health-topics/high-blood-pressure/understanding-blood-pressure-readings</a></div><div class="ref"><b>Low Blood Pressure(低血壓)</b><span class="pub">美國國家心肺血液研究所 NHLBI, NIH</span><div class="use">用於:血壓偏低(&lt;90/60)</div><a href="https://www.nhlbi.nih.gov/health/low-blood-pressure" target="_blank" rel="noopener">https://www.nhlbi.nih.gov/health/low-blood-pressure</a></div></div>
@@ -166,27 +230,96 @@
       <a href="assets/bpcare-manual-1.1.pdf" target="_blank" rel="noopener">下載 PDF(11 MB)</a>
     </section>
 
-    <section class="section">
+    <section class="section" id="faq">
       <div class="section-head"><span class="tag">常見問題</span><h2>你可能想問</h2></div>
-      <div class="faq">
-        <details><summary>要錢嗎?需要註冊嗎?</summary><p>免費下載、所有功能免費使用,不需要註冊帳號。免費版有少量非個人化廣告,可一次買斷永久移除;量到危險值時不會出現廣告。</p></details>
-        <details><summary>我的健康資料會上傳嗎?</summary><p>不會。資料只存在你的 iPhone(開啟時同步到 Apple「健康」與你的 Apple Watch),開發者沒有伺服器、看不到你的資料。拍血壓計的照片也只在手機上辨識。</p></details>
-        <details><summary>長輩不太會用手機,可以嗎?</summary><p>介面是大字、大按鈕,會跟著 iPhone 的文字大小放大。第一次打開有設定精靈一步步問;家人也可以先照使用教學幫忙設定好。</p></details>
-        <details><summary>慢箋的領藥日怎麼算?</summary><p>依健保署規定,第 2 次起須在上次給藥期間屆滿前 10 日內領取(屆滿當日不算)。例如 6/1 領 30 天份,6/20 起可領第 2 次。詳見<a href="guide.html#refill">使用教學</a>。</p></details>
-        <details><summary>換新手機資料會不見嗎?</summary><p>用 iPhone 整機移轉或 iCloud 備份還原,資料會一起過去;也可以在 App 裡匯出備份檔,新手機再還原。</p></details>
-      </div>
+      <div class="faq"><details><summary>要錢嗎?需要註冊嗎?</summary><p>免費下載、所有功能免費使用,不需要註冊帳號。免費版有少量非個人化廣告,可一次買斷永久移除;量到危險值時不會出現廣告。</p></details><details><summary>我的健康資料會上傳嗎?</summary><p>不會。資料只存在你的 iPhone(開啟時同步到 Apple「健康」與你的 Apple Watch),開發者沒有伺服器、看不到你的資料。拍血壓計的照片也只在手機上辨識。</p></details><details><summary>需要什麼樣的手機?一定要有 Apple Watch 嗎?</summary><p>iPhone 需要 iOS 17 以上;Apple Watch 可有可無,有的話需 watchOS 10 以上。「拍血壓計自動帶入數字」需要支援 Apple Intelligence 的 iPhone(iOS 27 以上),其他功能都不需要。</p></details><details><summary>長輩不太會用手機,可以嗎?</summary><p>介面是大字、大按鈕,會跟著 iPhone 的文字大小放大。第一次打開有設定精靈一步步問;家人也可以先照使用教學幫忙設定好,說明書 PDF 也可以印出來放在身邊。</p></details><details><summary>我吃的藥不在常用藥物清單裡怎麼辦?</summary><p>直接輸入藥袋上的藥名就可以。常用藥物清單只是方便輸入;吃學名藥或其他廠牌,也可以只填成分名。</p></details><details><summary>慢箋的領藥日怎麼算?</summary><p>依健保署規定,第 2 次起須在上次給藥期間屆滿前 10 日內領取(屆滿當日不算)。例如 6/1 領 30 天份,6/20 起可領第 2 次。</p></details><details><summary>換新手機資料會不見嗎?</summary><p>用 iPhone 整機移轉或 iCloud 備份還原,資料會一起過去;也可以在 App 裡匯出備份檔,新手機再還原。</p></details></div>
       <p style="margin-top:14px"><a href="support.html">更多問題 →</a></p>
     </section>
 
+    <section class="cta-final">
+      <img class="cta-illus" src="assets/hero.jpg" alt="台灣長輩在家量血壓、用手機記錄的插圖" loading="lazy">
+      <div>
+        <img class="cta-icon" src="assets/app-icon.png" alt="" width="72" height="72">
+        <h2>今天開始,把血壓顧好</h2>
+        <p>免費下載,第一次打開跟著精靈回答幾個問題就能用。家人也可以先幫爸媽設定好。</p>
+        <div class="actions"><a class="btn-appstore" data-pos="bottom" href="https://apps.apple.com/tw/app/id6816619503" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.61-.75 1.04-1.8 0.92-2.87-.92.04-2.02.62-2.67 1.37-.58.66-1.09 1.74-.96 2.78 1.03.08 2.08-.54 2.71-1.28z"/></svg><span><span class="sub">免費下載</span><br><span class="title">App Store</span></span></a><a class="btn-ghost" href="guide.html">📖 看使用教學</a></div>
+      </div>
+    </section>
+
+    <section class="section" id="apps">
+      <div class="section-head"><span class="tag">我們開發的其他 App</span><h2>出國、工作、休息,也有幫手</h2>
+        <p>同一位開發者做的 iPhone App。帶爸媽出國玩、整理名片、看不懂的菜單,都用得到。</p></div>
+      <div class="apps"><article class="app-card"><img src="assets/apps/esimmanager.png" alt="eSIMManager 圖示" width="80" height="80" loading="lazy"><div><h3>eSIMManager</h3><p class="tagline">帶爸媽出國,上網先準備好</p><p>旅行 eSIM 的出發前設定與本機管理:批次匯入、出發前設定精靈、效期與流量估算,不綁定任何單一 eSIM 品牌。</p><ul class="app-feats"><li>批次匯入 eSIM</li><li>出發前設定精靈</li><li>本機流量估算</li></ul><p class="small muted">iPhone · 免費使用,含廣告及一次性「永久移除廣告」購買</p></div><a class="btn-ghost" href="../" data-app="esimmanager">前往網站 →</a></article><article class="app-card"><img src="assets/apps/menulens.png" alt="MenuLens 圖示" width="80" height="80" loading="lazy"><div><h3>MenuLens</h3><p class="tagline">出國看菜單,價格一起換算</p><p>掃描菜單、價牌與看板,查看翻譯和參考價格,點餐、購物不用猜。</p><ul class="app-feats"><li>鏡頭即時翻譯</li><li>價格換算</li><li>一次買斷</li></ul><p class="small muted">iPhone · 十次免費掃描與一次買斷解鎖</p></div><a class="btn-ghost" href="../menulens/" data-app="menulens">前往網站 →</a></article><article class="app-card"><img src="assets/apps/renmaimaster.png" alt="人脈大師 圖示" width="80" height="80" loading="lazy"><div><h3>人脈大師</h3><p class="tagline">名片拍照整理,資料留在自己手機</p><p>把紙本名片整理成可搜尋、可編輯的聯絡資料。拍照辨識、群組整理與私密名片,讓每一次相識更容易找回。</p><ul class="app-feats"><li>名片拍照辨識</li><li>群組與搜尋</li><li>私密名片</li></ul><p class="small muted">iPhone · 免費下載,含廣告及 App 內購買</p></div><a class="btn-ghost" href="../renmaimaster/" data-app="renmaimaster">前往網站 →</a></article><article class="app-card"><img src="assets/apps/gutsy.png" alt="GUTSY · 腸腸久久 圖示" width="80" height="80" loading="lazy"><div><h3>GUTSY · 腸腸久久</h3><p class="tagline">休息一下,玩一局像素小遊戲</p><p>像素掌機風格的成長制動作遊戲。食物會先在體內消化,胃容量與道具決定每一口的風險。</p><ul class="app-feats"><li>像素掌機風格</li><li>10 個世界關卡</li><li>網頁版可試玩</li></ul><p class="small muted">iPhone · 免費、無廣告、無內購</p></div><a class="btn-ghost" href="../gutsy/" data-app="gutsy">前往網站 →</a></article></div>
+    </section>
+
     <p class="note">本 App 僅供個人紀錄與提醒,不是醫療器材,不能取代醫師診斷。若血壓 ≥ 180/120,或有胸痛、呼吸困難、單側無力、說話不清等症狀,請立即就醫或撥打 119。</p>
-    <div class="actions" style="justify-content:center;margin-top:36px"><a class="btn-appstore" data-pos="bottom" href="https://apps.apple.com/tw/app/id6816619503" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.61-.75 1.04-1.8 0.92-2.87-.92.04-2.02.62-2.67 1.37-.58.66-1.09 1.74-.96 2.78 1.03.08 2.08-.54 2.71-1.28z"/></svg><span><span class="sub">免費下載</span><br><span class="title">App Store</span></span></a></div>
   </main>
   <footer>
-    <div class="wrap">
-      <div>© 2026 我的血壓 · 為台灣長輩與家人設計 · 聯絡我們:<a href="mailto:mkjohnny@gmail.com">mkjohnny@gmail.com</a><br>
-      本 App 僅供個人健康紀錄與提醒,不是醫療器材,不能取代專業醫療診斷。</div>
-      <nav><a href="guide.html">使用教學</a><a href="sources.html">參考文獻</a><a href="support.html">使用支援</a><a href="privacy.html">隱私權政策</a></nav>
+    <div class="wrap foot">
+      <div class="foot-brand">
+        <a class="brand" href="./"><img src="assets/app-icon.png" alt=""><span>我的血壓</span></a>
+        <p>為台灣長輩與家人設計的血壓紀錄、吃藥提醒、回診與慢箋領藥 App。iPhone · Apple Watch · 繁體中文。</p>
+        <a class="btn-appstore" data-pos="footer" href="https://apps.apple.com/tw/app/id6816619503" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.61-.75 1.04-1.8 0.92-2.87-.92.04-2.02.62-2.67 1.37-.58.66-1.09 1.74-.96 2.78 1.03.08 2.08-.54 2.71-1.28z"/></svg><span><span class="sub">免費下載</span><br><span class="title">App Store</span></span></a>
+      </div>
+      <div class="foot-col"><h4>認識 App</h4><a href="./#taiwan">專為台灣設計</a><a href="./#new">1.1 新功能</a><a href="./#watch">Apple Watch</a><a href="./#screens">畫面一覽</a><a href="./#pricing">價格</a></div>
+      <div class="foot-col"><h4>使用與支援</h4><a href="guide.html">使用教學</a><a href="assets/bpcare-manual-1.1.pdf" target="_blank" rel="noopener">使用說明書 PDF</a><a href="sources.html">參考文獻</a><a href="support.html">使用支援</a><a href="privacy.html">隱私權政策</a><a href="mailto:mkjohnny@gmail.com">聯絡開發者</a></div>
+      <div class="foot-col"><h4>我們開發的其他 App</h4><a href="../" data-app="esimmanager">eSIMManager</a><a href="../menulens/" data-app="menulens">MenuLens</a><a href="../renmaimaster/" data-app="renmaimaster">人脈大師</a><a href="../gutsy/" data-app="gutsy">GUTSY · 腸腸久久</a></div>
     </div>
+    <div class="wrap foot-bottom">© 2026 我的血壓 · 本 App 僅供個人健康紀錄與提醒,不是醫療器材,不能取代專業醫療診斷。緊急狀況請撥打 119。</div>
   </footer>
+  <div class="lightbox" id="lightbox" hidden><button class="lb-close" aria-label="關閉">×</button>
+    <button class="lb-prev" aria-label="上一張">‹</button><figure><img alt=""><figcaption></figcaption></figure>
+    <button class="lb-next" aria-label="下一張">›</button></div>
+  <script>
+  (function () {
+    var box = document.getElementById('lightbox'), img = box.querySelector('img'), cap = box.querySelector('figcaption');
+    var list = [], idx = 0;
+    function show(i) { idx = (i + list.length) % list.length; img.src = list[idx].src; img.alt = list[idx].alt; cap.textContent = list[idx].alt; }
+    function group(el) { var g = el.closest('[data-zoom-group]'); return g ? [].slice.call(g.querySelectorAll('.zoom img')).filter(function (x) { return x.offsetParent; }) : [el]; }
+    document.addEventListener('click', function (e) {
+      var t = e.target.closest('.zoom img');
+      if (t) { list = group(t); show(list.indexOf(t)); box.hidden = false; document.body.style.overflow = 'hidden'; return; }
+      if (!box.hidden && (e.target === box || e.target.closest('.lb-close'))) close();
+      if (e.target.closest('.lb-prev')) show(idx - 1);
+      if (e.target.closest('.lb-next')) show(idx + 1);
+    });
+    function close() { box.hidden = true; document.body.style.overflow = ''; }
+    document.addEventListener('keydown', function (e) {
+      if (box.hidden) return;
+      if (e.key === 'Escape') close(); else if (e.key === 'ArrowLeft') show(idx - 1); else if (e.key === 'ArrowRight') show(idx + 1);
+    });
+    document.querySelectorAll('.scroller').forEach(function (sc) {
+      var row = sc.querySelector('.gallery, .store-strip');
+      var prev = document.createElement('button'), next = document.createElement('button');
+      prev.className = 'scroll-btn prev'; prev.setAttribute('aria-label', '往左看'); prev.textContent = '‹';
+      next.className = 'scroll-btn next'; next.setAttribute('aria-label', '往右看'); next.textContent = '›';
+      sc.appendChild(prev); sc.appendChild(next);
+      function step(dir) { row.scrollBy({ left: dir * Math.max(200, row.clientWidth * 0.8), behavior: 'smooth' }); }
+      prev.addEventListener('click', function () { step(-1); });
+      next.addEventListener('click', function () { step(1); });
+      function update() {
+        var max = row.scrollWidth - row.clientWidth - 12;
+        prev.disabled = row.scrollLeft <= 12; next.disabled = row.scrollLeft >= max;
+        sc.classList.toggle('fade-l', !prev.disabled); sc.classList.toggle('fade-r', !next.disabled);
+      }
+      row.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
+      sc.update = update; update();
+      window.addEventListener('load', update);
+    });
+    document.querySelectorAll('.tabs').forEach(function (tabs) {
+      var btns = tabs.querySelectorAll('[role=tab]'), root = tabs.parentElement;
+      function pick(b) {
+        btns.forEach(function (x) { x.setAttribute('aria-selected', x === b); });
+        root.querySelectorAll('[role=tabpanel]').forEach(function (p) {
+          p.hidden = p.id !== b.getAttribute('aria-controls');
+          if (!p.hidden && p.update) { p.querySelector('.gallery').scrollLeft = 0; p.update(); }
+        });
+      }
+      btns.forEach(function (b) { b.addEventListener('click', function () { pick(b); }); });
+      pick(btns[0]);
+    });
+  })();
+  </script>
 </body>
 </html>

@@ -10,10 +10,15 @@
   <link rel="apple-touch-icon" href="assets/app-icon.png">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="zh_TW">
+  <meta property="og:site_name" content="我的血壓">
   <meta property="og:url" content="https://getesimmanager.com/bpcare/sources.html">
   <meta property="og:title" content="參考文獻與醫療資訊來源｜我的血壓">
   <meta property="og:description" content="我的血壓 App 的血壓分級、心率判讀、722 量測、危險值處置與健保慢箋規則所依據的醫學指引與台灣政府資料。">
   <meta property="og:image" content="https://getesimmanager.com/bpcare/assets/hero.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="參考文獻與醫療資訊來源｜我的血壓">
+  <meta name="twitter:description" content="我的血壓 App 的血壓分級、心率判讀、722 量測、危險值處置與健保慢箋規則所依據的醫學指引與台灣政府資料。">
+  <meta name="twitter:image" content="https://getesimmanager.com/bpcare/assets/hero.jpg">
   <meta name="apple-itunes-app" content="app-id=6816619503">
   <link rel="stylesheet" href="style.css">
   <!-- Google Analytics 4(全站共用) -->
@@ -33,6 +38,11 @@
       document.querySelectorAll('a[href$=".pdf"]').forEach(function(a) {
         a.addEventListener('click', function() {
           gtag('event', 'file_download', { file_name: 'bpcare-manual-1.1.pdf', link_url: this.href, transport_type: 'beacon' });
+        });
+      });
+      document.querySelectorAll('a[data-app]').forEach(function(a) {
+        a.addEventListener('click', function() {
+          gtag('event', 'sister_app_click', { app_name: this.dataset.app, source_app: 'BPCare', transport_type: 'beacon' });
         });
       });
     });
@@ -61,15 +71,76 @@
         <li><b>慢箋領藥日</b>:依健保署說明,第 2 次起須在上次給藥期間屆滿前 10 日內領取(屆滿當日不計);處方箋有效至末次調劑之用藥末日。</li>
         <li><b>常用藥物清單</b>:依食藥署藥品許可證開放資料核對(未註銷、有效期限內),僅方便輸入,請以醫師處方與藥袋標示為準。</li>
       </ul>
+      <div class="shot-row" data-zoom-group><figure><div class="phone zoom"><img src="assets/shots/home-citation.jpg" alt="判讀旁的「查看來源」" loading="lazy"></div><figcaption>判讀旁的「查看來源」</figcaption></figure><figure><div class="phone zoom"><img src="assets/shots/sources.jpg" alt="點開就是醫療資訊來源" loading="lazy"></div><figcaption>點開就是醫療資訊來源</figcaption></figure><figure><div class="phone zoom"><img src="assets/shots/sources-settings.jpg" alt="設定 › 關於 › 醫療資訊來源" loading="lazy"></div><figcaption>設定 › 關於 › 醫療資訊來源</figcaption></figure></div>
       <p class="note">本 App 是個人紀錄與提醒工具,不是醫療器材,不做診斷、不能取代醫師的判斷。個人的控制目標與用藥,請一律以醫師建議為準。</p>
     </article>
   </main>
   <footer>
-    <div class="wrap">
-      <div>© 2026 我的血壓 · 為台灣長輩與家人設計 · 聯絡我們:<a href="mailto:mkjohnny@gmail.com">mkjohnny@gmail.com</a><br>
-      本 App 僅供個人健康紀錄與提醒,不是醫療器材,不能取代專業醫療診斷。</div>
-      <nav><a href="guide.html">使用教學</a><a href="sources.html">參考文獻</a><a href="support.html">使用支援</a><a href="privacy.html">隱私權政策</a></nav>
+    <div class="wrap foot">
+      <div class="foot-brand">
+        <a class="brand" href="./"><img src="assets/app-icon.png" alt=""><span>我的血壓</span></a>
+        <p>為台灣長輩與家人設計的血壓紀錄、吃藥提醒、回診與慢箋領藥 App。iPhone · Apple Watch · 繁體中文。</p>
+        <a class="btn-appstore" data-pos="footer" href="https://apps.apple.com/tw/app/id6816619503" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.61-.75 1.04-1.8 0.92-2.87-.92.04-2.02.62-2.67 1.37-.58.66-1.09 1.74-.96 2.78 1.03.08 2.08-.54 2.71-1.28z"/></svg><span><span class="sub">免費下載</span><br><span class="title">App Store</span></span></a>
+      </div>
+      <div class="foot-col"><h4>認識 App</h4><a href="./#taiwan">專為台灣設計</a><a href="./#new">1.1 新功能</a><a href="./#watch">Apple Watch</a><a href="./#screens">畫面一覽</a><a href="./#pricing">價格</a></div>
+      <div class="foot-col"><h4>使用與支援</h4><a href="guide.html">使用教學</a><a href="assets/bpcare-manual-1.1.pdf" target="_blank" rel="noopener">使用說明書 PDF</a><a href="sources.html">參考文獻</a><a href="support.html">使用支援</a><a href="privacy.html">隱私權政策</a><a href="mailto:mkjohnny@gmail.com">聯絡開發者</a></div>
+      <div class="foot-col"><h4>我們開發的其他 App</h4><a href="../" data-app="esimmanager">eSIMManager</a><a href="../menulens/" data-app="menulens">MenuLens</a><a href="../renmaimaster/" data-app="renmaimaster">人脈大師</a><a href="../gutsy/" data-app="gutsy">GUTSY · 腸腸久久</a></div>
     </div>
+    <div class="wrap foot-bottom">© 2026 我的血壓 · 本 App 僅供個人健康紀錄與提醒,不是醫療器材,不能取代專業醫療診斷。緊急狀況請撥打 119。</div>
   </footer>
+  <div class="lightbox" id="lightbox" hidden><button class="lb-close" aria-label="關閉">×</button>
+    <button class="lb-prev" aria-label="上一張">‹</button><figure><img alt=""><figcaption></figcaption></figure>
+    <button class="lb-next" aria-label="下一張">›</button></div>
+  <script>
+  (function () {
+    var box = document.getElementById('lightbox'), img = box.querySelector('img'), cap = box.querySelector('figcaption');
+    var list = [], idx = 0;
+    function show(i) { idx = (i + list.length) % list.length; img.src = list[idx].src; img.alt = list[idx].alt; cap.textContent = list[idx].alt; }
+    function group(el) { var g = el.closest('[data-zoom-group]'); return g ? [].slice.call(g.querySelectorAll('.zoom img')).filter(function (x) { return x.offsetParent; }) : [el]; }
+    document.addEventListener('click', function (e) {
+      var t = e.target.closest('.zoom img');
+      if (t) { list = group(t); show(list.indexOf(t)); box.hidden = false; document.body.style.overflow = 'hidden'; return; }
+      if (!box.hidden && (e.target === box || e.target.closest('.lb-close'))) close();
+      if (e.target.closest('.lb-prev')) show(idx - 1);
+      if (e.target.closest('.lb-next')) show(idx + 1);
+    });
+    function close() { box.hidden = true; document.body.style.overflow = ''; }
+    document.addEventListener('keydown', function (e) {
+      if (box.hidden) return;
+      if (e.key === 'Escape') close(); else if (e.key === 'ArrowLeft') show(idx - 1); else if (e.key === 'ArrowRight') show(idx + 1);
+    });
+    document.querySelectorAll('.scroller').forEach(function (sc) {
+      var row = sc.querySelector('.gallery, .store-strip');
+      var prev = document.createElement('button'), next = document.createElement('button');
+      prev.className = 'scroll-btn prev'; prev.setAttribute('aria-label', '往左看'); prev.textContent = '‹';
+      next.className = 'scroll-btn next'; next.setAttribute('aria-label', '往右看'); next.textContent = '›';
+      sc.appendChild(prev); sc.appendChild(next);
+      function step(dir) { row.scrollBy({ left: dir * Math.max(200, row.clientWidth * 0.8), behavior: 'smooth' }); }
+      prev.addEventListener('click', function () { step(-1); });
+      next.addEventListener('click', function () { step(1); });
+      function update() {
+        var max = row.scrollWidth - row.clientWidth - 12;
+        prev.disabled = row.scrollLeft <= 12; next.disabled = row.scrollLeft >= max;
+        sc.classList.toggle('fade-l', !prev.disabled); sc.classList.toggle('fade-r', !next.disabled);
+      }
+      row.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
+      sc.update = update; update();
+      window.addEventListener('load', update);
+    });
+    document.querySelectorAll('.tabs').forEach(function (tabs) {
+      var btns = tabs.querySelectorAll('[role=tab]'), root = tabs.parentElement;
+      function pick(b) {
+        btns.forEach(function (x) { x.setAttribute('aria-selected', x === b); });
+        root.querySelectorAll('[role=tabpanel]').forEach(function (p) {
+          p.hidden = p.id !== b.getAttribute('aria-controls');
+          if (!p.hidden && p.update) { p.querySelector('.gallery').scrollLeft = 0; p.update(); }
+        });
+      }
+      btns.forEach(function (b) { b.addEventListener('click', function () { pick(b); }); });
+      pick(btns[0]);
+    });
+  })();
+  </script>
 </body>
 </html>

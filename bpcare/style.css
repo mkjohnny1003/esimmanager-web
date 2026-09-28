@@ -56,11 +56,13 @@ p, li { color: var(--ink2); }
 .btn-primary { display: inline-flex; align-items: center; gap: 8px; font-weight: 750; text-decoration: none; color: #fff;
   background: var(--primary); padding: 13px 22px; border-radius: 14px; }
 .btn-appstore { display: inline-flex; align-items: center; gap: 10px; background: #000; color: #fff !important; text-decoration: none;
-  padding: 11px 22px; border-radius: 14px; box-shadow: 0 4px 16px rgba(0, 0, 0, .2); border: 1px solid rgba(255,255,255,.15); }
+  height: 56px; padding: 0 22px; line-height: 1.15; border-radius: 14px; box-shadow: 0 4px 16px rgba(0, 0, 0, .2); border: 1px solid rgba(255,255,255,.15); }
 .btn-appstore svg { width: 24px; height: 24px; fill: currentColor; }
 .btn-appstore .sub { font-size: .72rem; opacity: .85; line-height: 1.1; }
 .btn-appstore .title { font-size: 1.2rem; font-weight: 700; line-height: 1.15; }
 .actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 22px; }
+/* 下載按鈕旁的按鈕與 App Store 按鈕同高 */
+.actions > .btn-ghost, .actions > .btn-primary { height: 56px; padding: 0 22px; box-sizing: border-box; }
 
 /* 首頁主視覺 */
 .hero { display: grid; grid-template-columns: 1.05fr 1fr; gap: 40px; align-items: center; padding: 26px 0 8px; }

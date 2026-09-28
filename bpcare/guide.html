@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>使用教學｜我的血壓</title>
+  <meta name="description" content="我的血壓使用教學:快速設定、記錄血壓與拍照帶入、722 居家量測、吃藥提醒、回診清單、健保慢箋領藥、家人關心、小工具與備份換機。">
+  <link rel="canonical" href="https://getesimmanager.com/bpcare/guide.html">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/app-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="og:url" content="https://getesimmanager.com/bpcare/guide.html">
+  <meta property="og:title" content="使用教學｜我的血壓">
+  <meta property="og:description" content="我的血壓使用教學:快速設定、記錄血壓與拍照帶入、722 居家量測、吃藥提醒、回診清單、健保慢箋領藥、家人關心、小工具與備份換機。">
+  <meta property="og:image" content="https://getesimmanager.com/bpcare/assets/hero.jpg">
+  <meta name="apple-itunes-app" content="app-id=6816619503">
+  <link rel="stylesheet" href="style.css">
+  <!-- Google Analytics 4(全站共用) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KJB54JTM44"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-KJB54JTM44');
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('a[href*="apps.apple.com"]').forEach(function(a) {
+        a.addEventListener('click', function() {
+          gtag('event', 'app_store_click', { event_category: 'conversion', event_label: 'BPCare iOS Download',
+            click_position: this.dataset.pos || 'other', link_url: this.href, transport_type: 'beacon' });
+        });
+      });
+      document.querySelectorAll('a[href$=".pdf"]').forEach(function(a) {
+        a.addEventListener('click', function() {
+          gtag('event', 'file_download', { file_name: 'bpcare-manual-1.1.pdf', link_url: this.href, transport_type: 'beacon' });
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <a class="brand" href="./"><img src="assets/app-icon.png" alt="我的血壓 圖示"><span>我的血壓</span></a>
+      <nav><a href="./">首頁</a><a href="guide.html" class="active">使用教學</a><a href="sources.html">參考文獻</a><a href="support.html">使用支援</a><a href="privacy.html">隱私權</a><a class="nav-cta" href="https://apps.apple.com/tw/app/id6816619503" data-pos="navbar" target="_blank" rel="noopener">免費下載</a></nav>
+    </div>
+  </header>
+  <main class="wrap">
+    <section style="max-width:780px">
+      <span class="tag">使用教學 · 1.1 版</span>
+      <h1>第一次用就上手</h1>
+      <p class="lead">以下是最常用的操作。完整內容(介面導覽、所有設定、常見問題、參考文獻)請下載<a href="assets/bpcare-manual-1.1.pdf" target="_blank" rel="noopener">使用說明書 PDF</a>。</p>
+      <div class="toc-bar"><a href="#start">快速設定</a><a href="#record">記錄血壓</a><a href="#722">722 量測</a><a href="#meds">吃藥提醒</a><a href="#visit">回診</a><a href="#refill">慢箋領藥</a><a href="#family">家人關心</a><a href="#widget">小工具</a><a href="#backup">備份換機</a></div>
+    </section>
+
+    <section class="guide-sec" id="start">
+      <span class="tag">步驟 1</span><h2>快速設定:回答幾個問題</h2>
+      <p>第一次打開 App,設定精靈會用大字一步步問你。每一步都可以「之後再說」,之後也能在「設定」修改。</p>
+      <div class="shot-row six"><figure><div class="phone"><img src="assets/shots/ob-welcome.jpg" alt="① 開始設定" loading="lazy"></div><figcaption>① 開始設定</figcaption></figure><figure><div class="phone"><img src="assets/shots/ob-goals.jpg" alt="② 想用來做什麼" loading="lazy"></div><figcaption>② 想用來做什麼</figcaption></figure><figure><div class="phone"><img src="assets/shots/ob-reminders.jpg" alt="③ 量血壓時間" loading="lazy"></div><figcaption>③ 量血壓時間</figcaption></figure><figure><div class="phone"><img src="assets/shots/ob-health.jpg" alt="④ Apple 健康" loading="lazy"></div><figcaption>④ Apple 健康</figcaption></figure><figure><div class="phone"><img src="assets/shots/ob-meds.jpg" alt="⑤ 吃哪些藥" loading="lazy"></div><figcaption>⑤ 吃哪些藥</figcaption></figure><figure><div class="phone"><img src="assets/shots/ob-done.jpg" alt="⑥ 設定好了" loading="lazy"></div><figcaption>⑥ 設定好了</figcaption></figure></div>
+      <div class="box tip"><b>請按「允許」通知</b>設定量血壓時間後,iPhone 會詢問是否允許通知。要選「允許」,吃藥和量血壓的提醒才會響。</div>
+    </section>
+
+    <section class="guide-sec" id="record">
+      <span class="tag">步驟 2</span><h2>記錄血壓:輸入或拍照</h2>
+      <div class="two-col">
+        <div><h3>手動輸入</h3><ol class="steps2"><li>首頁按「記錄血壓」。</li><li>輸入收縮壓(高壓),會自動跳到下一格。</li><li>輸入舒張壓(低壓)與心率;血壓計沒顯示心率可以不填。</li><li>確認下方的判讀,按右上角「儲存」。</li></ol>
+          <h3 style="margin-top:18px">拍血壓計自動帶入</h3><ol class="steps2"><li>按「拍血壓計,自動帶入數字」。</li><li>把血壓計螢幕放進白框,正面拍、避開反光。</li><li>數字自動填入,<b>對照血壓計確認</b>後儲存。</li></ol>
+          <div class="box info"><b>需要支援 Apple Intelligence 的 iPhone</b>照片只在手機上辨識、不上傳。看不清楚的欄位會留空,請自己輸入。</div></div>
+        <div class="shot-row" style="margin-top:0"><figure><div class="phone"><img src="assets/shots/entry.jpg" alt="記錄血壓畫面" loading="lazy"></div><figcaption>記錄血壓畫面</figcaption></figure><figure><div class="phone"><img src="assets/shots/camera.jpg" alt="對準白框拍照" loading="lazy"></div><figcaption>對準白框拍照</figcaption></figure></div>
+      </div>
+      <div class="two-col">
+        <div><h3>量到危險值(≥180/120)</h3><p>儲存後會出現大字的處置步驟:先坐下休息,按「5 分鐘後提醒我再量」;再量仍過高,或有胸痛、呼吸困難、劇烈頭痛、單側手腳無力、說話不清楚,請按「撥打 119」,並可一鍵通知家人。</p>
+          <span class="cite">📚 美國心臟學會「高血壓何時要叫救護車」(<a href="sources.html">參考文獻</a>)</span>
+          <h3 style="margin-top:18px">血壓分級怎麼看?</h3>
+          <table class="src-table"><tr><th>分級</th><th>收縮壓 / 舒張壓(mmHg)</th></tr>
+            <tr><td>血壓偏低</td><td>&lt; 90 或 &lt; 60</td></tr><tr><td>正常</td><td>&lt; 120 且 &lt; 80</td></tr>
+            <tr><td>血壓偏高</td><td>120–129 且 &lt; 80</td></tr><tr><td>第一期高血壓</td><td>130–139 或 80–89</td></tr>
+            <tr><td>第二期高血壓</td><td>≥ 140 或 ≥ 90</td></tr><tr><td>高血壓危險值</td><td>≥ 180 或 ≥ 120</td></tr></table>
+          <span class="cite">📚 2022 台灣高血壓治療指引、2017 ACC/AHA 指引、美國心臟學會、NHLBI(<a href="sources.html">參考文獻</a>)</span></div>
+        <div class="shot-row" style="margin-top:0"><figure><div class="phone"><img src="assets/shots/crisis.jpg" alt="危險值處置" loading="lazy"></div><figcaption>危險值處置</figcaption></figure><figure><div class="phone"><img src="assets/shots/sources.jpg" alt="點「查看來源」看出處" loading="lazy"></div><figcaption>點「查看來源」看出處</figcaption></figure></div>
+      </div>
+    </section>
+
+    <section class="guide-sec" id="722">
+      <span class="tag">回診前做一次</span><h2>722 居家量測</h2>
+      <p>連續 <b>7</b> 天、每天早晚 <b>2</b> 回、每回量 <b>2</b> 次。早上起床 1 小時內(上完廁所、吃藥與早餐前),晚上睡前 1 小時內。</p>
+      <div class="two-col">
+        <ol class="steps2"><li>「血壓」頁按「開始 7 天量測」。</li><li>每天早晚照常記錄,格子量 2 次會打勾。</li><li>存好第 1 次會倒數 1 分鐘,接著量第 2 次。</li><li>7 天後看平均,按「產生回診報告」給醫師。</li></ol>
+        <div class="shot-row" style="margin-top:0"><figure><div class="phone"><img src="assets/shots/722-progress.jpg" alt="7 天進度" loading="lazy"></div><figcaption>7 天進度</figcaption></figure><figure><div class="phone"><img src="assets/shots/722-second.jpg" alt="倒數量第 2 次" loading="lazy"></div><figcaption>倒數量第 2 次</figcaption></figure><figure><div class="phone"><img src="assets/shots/722-done.jpg" alt="完成:平均值" loading="lazy"></div><figcaption>完成:平均值</figcaption></figure></div>
+      </div>
+      <span class="cite">📚 國民健康署「血壓要管理 722 在家量」、2022 台灣高血壓治療指引(<a href="sources.html">參考文獻</a>)</span>
+    </section>
+
+    <section class="guide-sec" id="meds">
+      <span class="tag">每天</span><h2>吃藥提醒</h2>
+      <div class="two-col">
+        <div><ol class="steps2"><li>「用藥」頁按右上角「+」新增藥物。</li><li>可直接輸入藥名,或從常用藥物清單選(脈優、可悅您、立普妥……)。藥袋是其他廠牌的,選「其他廠牌」只填成分名。</li><li>設定每天幾點吃、每次幾顆(可選半顆),可拍藥袋照片。</li><li>時間到通知會響,通知上直接按「已服用」;按錯了再點一次就取消。</li></ol>
+          <span class="cite">📚 藥名與劑量取自食藥署藥品許可證開放資料(<a href="sources.html">參考文獻</a>)</span></div>
+        <div class="shot-row" style="margin-top:0"><figure><div class="phone"><img src="assets/shots/meds.jpg" alt="今天吃藥了嗎?" loading="lazy"></div><figcaption>今天吃藥了嗎?</figcaption></figure><figure><div class="phone"><img src="assets/shots/drug-catalog.jpg" alt="常用藥物清單" loading="lazy"></div><figcaption>常用藥物清單</figcaption></figure><figure><div class="phone"><img src="assets/shots/drug-strength.jpg" alt="選藥袋上的劑量" loading="lazy"></div><figcaption>選藥袋上的劑量</figcaption></figure></div>
+      </div>
+    </section>
+
+    <section class="guide-sec" id="visit">
+      <span class="tag">回診</span><h2>回診提醒與出門清單</h2>
+      <div class="two-col">
+        <div><p>在「回診領藥」新增回診日期,前一晚 20:00 與看診前幾小時會提醒。點提醒直接打開出門清單:健保卡、慢性病連續處方箋、藥袋、血壓紀錄、老花眼鏡……逐項打勾,全部帶齊顯示「可以出門了」。</p>
+          <p>「血壓」頁左上「匯出」→「回診用 PDF 報告」,可列印或傳給醫師。</p></div>
+        <div class="shot-row" style="margin-top:0"><figure><div class="phone"><img src="assets/shots/visits.jpg" alt="回診列表" loading="lazy"></div><figcaption>回診列表</figcaption></figure><figure><div class="phone"><img src="assets/shots/checklist.jpg" alt="出門前檢查" loading="lazy"></div><figcaption>出門前檢查</figcaption></figure><figure><div class="phone"><img src="assets/shots/report.jpg" alt="回診 PDF 報告" loading="lazy"></div><figcaption>回診 PDF 報告</figcaption></figure></div>
+      </div>
+    </section>
+
+    <section class="guide-sec" id="refill">
+      <span class="tag">健保</span><h2>慢性病連續處方箋領藥</h2>
+      <div class="two-col">
+        <div><p>輸入第 1 次領藥日、每次天數、總共幾次,App 依健保規定算出每次可領的日子並提醒。</p>
+          <div class="box tip"><b>怎麼算?</b>第 2 次起須在上次給藥期間屆滿前 10 日內領取(屆滿當日不算)。例如 6/1 領 30 天份,藥吃到 6/30,<b>6/20 起</b>可領第 2 次。提早領不影響之後的時程;晚領仍可在處方箋有效期間內領,但之後的時程往後延。</div>
+          <ol class="steps2"><li>「回診領藥」切到「慢箋領藥」,按「+」新增。</li><li>每次領完藥,按「已領藥」並選日期。</li></ol>
+          <span class="cite">📚 健保署「提前 10 日領藥檢核邏輯說明」(<a href="sources.html">參考文獻</a>)</span></div>
+        <div class="shot-row" style="margin-top:0"><figure><div class="phone"><img src="assets/shots/rx.jpg" alt="慢箋列表" loading="lazy"></div><figcaption>慢箋列表</figcaption></figure><figure><div class="phone"><img src="assets/shots/refill.jpg" alt="領藥時程" loading="lazy"></div><figcaption>領藥時程</figcaption></figure></div>
+      </div>
+    </section>
+
+    <section class="guide-sec" id="family">
+      <span class="tag warm">給家人</span><h2>家人關心</h2>
+      <div class="two-col">
+        <div><h3>傳給家人</h3><p>首頁右上角「傳給家人」,選 LINE 傳出一段今日摘要:最近一次血壓、近 7 天平均、今天吃藥情況。</p>
+          <h3 style="margin-top:14px">漏服藥自動通知</h3><p>「設定 › 漏服藥通知家人」填好家人電話與門檻,再依畫面 6 個步驟用 iPhone「捷徑」建立自動化。連續沒有服藥紀錄時會自動傳簡訊,同一次只傳一次。</p>
+          <div class="box warn"><b>限制</b>手機關機、沒電或沒有訊號時無法傳送。</div></div>
+        <div class="shot-row" style="margin-top:0"><figure><div class="phone"><img src="assets/shots/share.jpg" alt="傳給家人" loading="lazy"></div><figcaption>傳給家人</figcaption></figure><figure><div class="phone"><img src="assets/shots/caregiver.jpg" alt="漏服藥通知家人" loading="lazy"></div><figcaption>漏服藥通知家人</figcaption></figure></div>
+      </div>
+    </section>
+
+    <section class="guide-sec" id="widget">
+      <span class="tag">1.1 新功能</span><h2>主畫面小工具</h2>
+      <div class="two-col">
+        <ol class="steps2"><li>主畫面空白處長按,直到圖示晃動。</li><li>點「編輯」→「加入小工具」,搜尋「我的血壓」。</li><li>選「今天吃藥了嗎?」或「最近血壓」,按「加入小工具」。</li><li>中尺寸小工具點圓圈就記錄已服用。</li></ol>
+        <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap"><img src="assets/widget-small.jpg" alt="小尺寸小工具" style="width:180px;border-radius:24px" loading="lazy"><img src="assets/widget-medium.jpg" alt="中尺寸小工具" style="width:340px;border-radius:24px" loading="lazy"></div>
+      </div>
+    </section>
+
+    <section class="guide-sec" id="backup">
+      <span class="tag">資料</span><h2>備份與換新手機</h2>
+      <div class="two-col">
+        <div><p>資料只存在你的 iPhone。iPhone 本身的 iCloud 備份或電腦備份會包含本 App 的資料,換新手機用備份還原即可。</p>
+          <p>也可以到「設定 › 備份與還原」按「匯出備份檔」,存到「檔案」或傳 LINE 給自己;新手機在設定精靈第一頁按「我有備份檔」就能還原。還原是合併,不會刪除或重複任何紀錄。</p></div>
+        <div class="shot-row" style="margin-top:0"><figure><div class="phone"><img src="assets/shots/backup.jpg" alt="備份與還原" loading="lazy"></div><figcaption>備份與還原</figcaption></figure><figure><div class="phone"><img src="assets/shots/notif-off.jpg" alt="通知被關閉時的提醒" loading="lazy"></div><figcaption>通知被關閉時的提醒</figcaption></figure></div>
+      </div>
+    </section>
+
+    <section class="manual-cta">
+      <img class="cover" src="assets/manual-cover.jpg" alt="使用說明書封面">
+      <div><h2>完整使用說明書</h2><p>35 頁圖文說明,包含介面導覽、所有設定、Apple Watch、常見問題與參考文獻。</p></div>
+      <a href="assets/bpcare-manual-1.1.pdf" target="_blank" rel="noopener">下載 PDF</a>
+    </section>
+    <p class="note">本 App 僅供個人紀錄與提醒,不是醫療器材,不能取代醫師診斷。身體不舒服請以就醫為優先,緊急狀況請撥打 119。</p>
+  </main>
+  <footer>
+    <div class="wrap">
+      <div>© 2026 我的血壓 · 為台灣長輩與家人設計 · 聯絡我們:<a href="mailto:mkjohnny@gmail.com">mkjohnny@gmail.com</a><br>
+      本 App 僅供個人健康紀錄與提醒,不是醫療器材,不能取代專業醫療診斷。</div>
+      <nav><a href="guide.html">使用教學</a><a href="sources.html">參考文獻</a><a href="support.html">使用支援</a><a href="privacy.html">隱私權政策</a></nav>
+    </div>
+  </footer>
+</body>
+</html>

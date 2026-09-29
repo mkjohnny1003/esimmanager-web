@@ -8,16 +8,74 @@
 <meta name="gutsy-score-api" content="https://gutsy-scores.mkjohnny.workers.dev">
 <style>
   html{min-height:100%;background:#20202a;}
-  body{margin:0;min-height:100dvh;padding:24px 12px;box-sizing:border-box;
-    display:grid;place-items:center;background:#20202a;
-    font-family:ui-sans-serif,system-ui,sans-serif;-webkit-text-size-adjust:100%;}
+  body{margin:0;min-height:100dvh;padding:20px 12px;box-sizing:border-box;background:#20202a;
+    font-family:ui-sans-serif,system-ui,-apple-system,sans-serif;-webkit-text-size-adjust:100%;}
   button{-webkit-tap-highlight-color:transparent;touch-action:manipulation;cursor:pointer;}
+
+  #play-container{display:flex;flex-direction:column;align-items:center;gap:20px;width:100%;max-width:1380px;margin:0 auto;}
+  #game-main{width:100%;display:flex;flex-direction:column;align-items:center;order:1;}
   #gbwrap{width:min(94vw,820px);}
   #gbshell{width:100%;}
+
   @media (min-width:900px){
     #gbwrap{width:min(92vw,max(320px,calc(111dvh - 145px)),960px);}
     #gbshell>div:not(:first-child){display:none!important;}
   }
+  @media (min-width:1080px){
+    #play-container{flex-direction:row;align-items:flex-start;justify-content:center;gap:26px;}
+    #game-sidebar{width:340px;flex-shrink:0;order:1;position:sticky;top:20px;max-height:calc(100vh - 40px);overflow-y:auto;}
+    #game-main{order:2;flex:1;max-width:min(calc(100vw - 390px),880px);}
+  }
+
+  /* 側邊欄解說面板 / Sidebar Guide */
+  #game-sidebar{width:min(94vw,820px);order:2;box-sizing:border-box;background:#181822;border:1px solid #333344;
+    border-radius:12px;padding:18px 20px;color:#dedee8;box-shadow:0 14px 36px rgba(0,0,0,0.4);font-size:13px;line-height:1.5;}
+  #game-sidebar::-webkit-scrollbar{width:6px;}
+  #game-sidebar::-webkit-scrollbar-track{background:#12121a;border-radius:3px;}
+  #game-sidebar::-webkit-scrollbar-thumb{background:#3a3a4e;border-radius:3px;}
+  #game-sidebar::-webkit-scrollbar-thumb:hover{background:#545470;}
+
+  .sidebar-header{border-bottom:1px solid #2c2c3c;padding-bottom:10px;margin-bottom:14px;}
+  .sidebar-title{font-size:16px;font-weight:800;color:#b8da55;margin:0 0 3px;display:flex;align-items:center;gap:7px;letter-spacing:.02em;}
+  .sidebar-subtitle{font-size:11px;color:#8a8aa0;margin:0;}
+  .guide-section{margin-bottom:18px;}
+  .guide-section:last-child{margin-bottom:0;}
+  .section-heading{font-size:12.5px;font-weight:700;color:#fff;background:#242432;padding:6px 10px;border-radius:6px;
+    margin:0 0 9px;display:flex;justify-content:space-between;align-items:center;border-left:3px solid #b8da55;}
+  .section-heading span.en{font-size:11px;color:#9ca0b5;font-weight:500;}
+
+  .hud-list{display:flex;flex-direction:column;gap:7px;margin:0 0 12px;}
+  .hud-item{background:#20202d;border:1px solid #2d2d3e;border-radius:8px;padding:7px 10px;}
+  .hud-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3px;}
+  .hud-badge{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10.5px;font-weight:700;color:#9bbc0f;
+    background:#0f380f;padding:2px 5px;border-radius:4px;border:1px solid #306230;}
+  .hud-title{font-weight:700;font-size:12px;color:#f0f0f8;}
+  .hud-desc{font-size:11.5px;color:#b0b0c2;margin:0;line-height:1.42;}
+  .hud-desc-en{font-size:10.5px;color:#7e7e94;margin:2px 0 0;line-height:1.35;}
+
+  .key-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px 8px;background:#14141c;border:1px solid #282836;
+    border-radius:8px;padding:8px 10px;font-size:11px;margin-bottom:6px;}
+  .key-row{display:flex;align-items:center;justify-content:space-between;gap:4px;}
+  .kbd-key{background:#2b2b3a;color:#e2e2ee;border:1px solid #464658;border-radius:4px;padding:1px 5px;
+    font-family:ui-monospace,monospace;font-size:10px;box-shadow:0 1px 2px #0004;}
+
+  .items-list{display:flex;flex-direction:column;gap:8px;}
+  .item-card{background:#20202d;border:1px solid #2d2d3e;border-radius:8px;padding:8px 10px;transition:border-color .15s ease;}
+  .item-card:hover{border-color:#4a4a62;}
+  .item-title-row{display:flex;align-items:center;gap:7px;margin-bottom:3px;}
+  .item-icon{font-size:15px;line-height:1;}
+  .item-names{display:flex;flex-wrap:wrap;align-items:baseline;gap:5px;}
+  .item-name-zh{font-weight:700;font-size:12px;color:#fff;}
+  .item-name-en{font-size:10.5px;font-weight:600;color:#8e92ac;font-family:ui-monospace,monospace;}
+  .item-tag{font-size:9.5px;padding:1px 5px;border-radius:3px;font-weight:600;margin-left:auto;}
+  .tag-food{background:#383314;color:#dfd270;border:1px solid #585020;}
+  .tag-panic{background:#3a1c46;color:#d494f0;border:1px solid #5e2872;}
+  .tag-buff{background:#163242;color:#70c9fd;border:1px solid #22516b;}
+  .tag-danger{background:#481616;color:#ff8a8a;border:1px solid #6e2424;}
+  .tag-meta{background:#1a361c;color:#97de9a;border:1px solid #29572e;}
+  .item-desc-zh{font-size:11.5px;color:#bebecf;margin:0 0 2px;line-height:1.42;}
+  .item-desc-en{font-size:10.5px;color:#7f7f95;margin:0;line-height:1.35;}
+
   #game-toolbar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;margin:0 0 12px;color:#f0f0e8;font:600 14px/1.4 system-ui,sans-serif;}
   #game-toolbar a{display:inline-flex;align-items:center;min-height:38px;box-sizing:border-box;border:1px solid #d7eb91;
     border-radius:6px;background:#b8da55;color:#182b19;padding:8px 14px;text-decoration:none;font-weight:800;}
@@ -50,46 +108,209 @@
 </head>
 <body>
 
-<div id="gbwrap">
-<div id="game-toolbar"><a href="../">前往 GUTSY 官網下載 App</a><button id="show-scores" type="button">全球排行榜</button></div>
-<div id="gbshell" style="background:#c9c9c1;border-radius:12px 12px 44px 12px;padding:12px 12px 16px;box-sizing:border-box;border:1px solid #a8a89f;">
-
-  <div style="background:#4a4a52;border-radius:8px 8px 28px 8px;padding:14px 12px 20px;">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin:0 0 8px;font:400 9px/1 ui-monospace,monospace;color:#9b9bb0;letter-spacing:.08em;">
-      <button id="led" aria-label="靜音切換" style="display:flex;align-items:center;gap:5px;background:transparent;border:0;padding:0;font:inherit;color:#9b9bb0;"><span id="leddot" style="width:6px;height:6px;border-radius:50%;background:#d84a3a;display:inline-block;"></span>POWER</button>
-      <span>DOT MATRIX &middot; GUT SYSTEM</span>
+<div id="play-container">
+  <aside id="game-sidebar" aria-label="遊戲指南與道具對照 / Game Guide">
+    <div class="sidebar-header">
+      <h2 class="sidebar-title">🕹️ 遊戲指南 · Guide</h2>
+      <p class="sidebar-subtitle">介面解說與道具功能對照 / HUD &amp; Items Manual</p>
     </div>
-    <canvas id="scr" width="240" height="216" style="display:block;width:100%;aspect-ratio:240/216;image-rendering:pixelated;border-radius:2px;background:#9bbc0f;"></canvas>
-  </div>
 
-  <div style="text-align:center;font:500 13px/1 ui-serif,Georgia,serif;color:#3a3a44;letter-spacing:.02em;margin:10px 0 2px;">GUTSY <span style="font:400 8px/1 ui-monospace,monospace;letter-spacing:.14em;color:#6b6b75;">腸腸久久</span></div>
+    <div class="guide-section">
+      <div class="section-heading">
+        <span>介面指標解說</span>
+        <span class="en">HUD Status</span>
+      </div>
+      <div class="hud-list">
+        <div class="hud-item">
+          <div class="hud-header">
+            <span class="hud-badge">GUT 0/18</span>
+            <span class="hud-title">胃容量 · Stomach Load</span>
+          </div>
+          <p class="hud-desc">當前食物負擔 / 胃上限。吃蛋增加負擔，<strong>超載撐爆即死 (GAME OVER)</strong>！</p>
+          <p class="hud-desc-en">Digestion load vs max limit. Eating adds load; overfilling causes fatal gut burst!</p>
+        </div>
 
-  <div style="display:flex;justify-content:space-between;align-items:center;margin:10px 4px 0;">
-    <div style="position:relative;width:108px;height:108px;">
-      <div style="position:absolute;left:36px;top:0;width:36px;height:108px;background:#3a3a42;border-radius:6px;"></div>
-      <div style="position:absolute;left:0;top:36px;width:108px;height:36px;background:#3a3a42;border-radius:6px;"></div>
-      <button data-d="U" aria-label="上" style="position:absolute;left:36px;top:0;width:36px;height:36px;background:transparent;border:0;padding:0;"></button>
-      <button data-d="L" aria-label="左" style="position:absolute;left:0;top:36px;width:36px;height:36px;background:transparent;border:0;padding:0;"></button>
-      <button data-d="R" aria-label="右" style="position:absolute;left:72px;top:36px;width:36px;height:36px;background:transparent;border:0;padding:0;"></button>
-      <button data-d="D" aria-label="下" style="position:absolute;left:36px;top:72px;width:36px;height:36px;background:transparent;border:0;padding:0;"></button>
-      <div style="position:absolute;left:48px;top:48px;width:12px;height:12px;border-radius:50%;background:#2c2c33;pointer-events:none;"></div>
+        <div class="hud-item">
+          <div class="hud-header">
+            <span class="hud-badge">STAGE 1-1</span>
+            <span class="hud-title">關卡進度 · Stage</span>
+          </div>
+          <p class="hud-desc">世界-子關卡。每世界 10 關，達標過關後推進新地形世界與專屬障礙物。</p>
+          <p class="hud-desc-en">World-Substage. 10 stages per world with unique terrain and dynamic hazards.</p>
+        </div>
+
+        <div class="hud-item">
+          <div class="hud-header">
+            <span class="hud-badge">FOOD 0/5</span>
+            <span class="hud-title">目標蛋數 · Target</span>
+          </div>
+          <p class="hud-desc">當前吃蛋數 / 通關門檻。吞滿指定數量即可過關進入下一關卡。</p>
+          <p class="hud-desc-en">Eggs eaten vs clear goal. Swallow required eggs to complete the stage.</p>
+        </div>
+
+        <div class="hud-item">
+          <div class="hud-header">
+            <span class="hud-badge">MAX 12</span>
+            <span class="hud-title">最大身長 · Peak Length</span>
+          </div>
+          <p class="hud-desc">本局曾達到的最長紀錄，結算核心指標（長度 × 5 分）。吃瀉藥縮身不影響已記錄的 MAX！</p>
+          <p class="hud-desc-en">Peak body length reached. Main score multiplier (MAX × 5). Shrinking won't lower MAX!</p>
+        </div>
+
+        <div class="hud-item">
+          <div class="hud-header">
+            <span class="hud-badge">SCORE 0</span>
+            <span class="hud-title">當前得分 · Score</span>
+          </div>
+          <p class="hud-desc">包含吃蛋、道具、過關加分與最大身長結算之累積總分。</p>
+          <p class="hud-desc-en">Cumulative points from food, items, clear bonuses and peak length.</p>
+        </div>
+      </div>
+
+      <div class="section-heading">
+        <span>常用快捷鍵</span>
+        <span class="en">Controls</span>
+      </div>
+      <div class="key-grid">
+        <div class="key-row"><span>轉向 · Move</span><span class="kbd-key">↑ ↓ ← → / WASD</span></div>
+        <div class="key-row"><span>確認 · Confirm</span><span class="kbd-key">Enter / Space</span></div>
+        <div class="key-row"><span>暫停 · Pause</span><span class="kbd-key">P / Esc</span></div>
+        <div class="key-row"><span>調色盤 · Palette</span><span class="kbd-key">C (SELECT)</span></div>
+        <div class="key-row"><span>靜音 · Mute</span><span class="kbd-key">M</span></div>
+        <div class="key-row"><span>返回 · Back</span><span class="kbd-key">X / Esc</span></div>
+      </div>
     </div>
-    <div style="display:flex;gap:12px;transform:rotate(-22deg);">
-      <button data-b="B" style="width:42px;height:42px;border-radius:50%;background:#8e3b5e;border:1px solid #6d2c48;color:#f0dce5;font:500 13px/1 ui-serif,Georgia,serif;padding:0;">B</button>
-      <button data-b="A" style="width:42px;height:42px;border-radius:50%;background:#8e3b5e;border:1px solid #6d2c48;color:#f0dce5;font:500 13px/1 ui-serif,Georgia,serif;padding:0;">A</button>
+
+    <div class="guide-section">
+      <div class="section-heading">
+        <span>道具與食物功能對照</span>
+        <span class="en">Items &amp; Food</span>
+      </div>
+      <div class="items-list">
+        <div class="item-card">
+          <div class="item-title-row">
+            <span class="item-icon">🥚</span>
+            <div class="item-names">
+              <span class="item-name-zh">蛋（食物）</span>
+              <span class="item-name-en">EGG</span>
+            </div>
+            <span class="item-tag tag-food">成長 / Growth</span>
+          </div>
+          <p class="item-desc-zh"><strong>延遲成長核心！</strong>吞下不會立刻變長，先在體內形成腫塊後移，消化後才結算長度。尺寸 2~10px，越大胃負擔越重。</p>
+          <p class="item-desc-en">Delayed growth! Swallowed food forms a lump drifting back; converts to length upon full digestion. Bigger eggs add more gut load.</p>
+        </div>
+
+        <div class="item-card">
+          <div class="item-title-row">
+            <span class="item-icon">🟣</span>
+            <div class="item-names">
+              <span class="item-name-zh">瀉藥 / 毒藥</span>
+              <span class="item-name-en">LAXATIVE / POISON</span>
+            </div>
+            <span class="item-tag tag-panic">戰術救急 / Panic</span>
+          </div>
+          <p class="item-desc-zh"><strong>緊急避險道具！</strong>立即清空體內所有未消化的腫塊，並截斷縮短身體長度，在胃即將撐爆或走投無路時換取生存空間。</p>
+          <p class="item-desc-en">Emergency panic button! Instantly purges all undigested lumps and cuts snake length shorter, saving you from an imminent gut burst.</p>
+        </div>
+
+        <div class="item-card">
+          <div class="item-title-row">
+            <span class="item-icon">🔵</span>
+            <div class="item-names">
+              <span class="item-name-zh">溜冰鞋</span>
+              <span class="item-name-en">SKATES</span>
+            </div>
+            <span class="item-tag tag-buff">節奏 / Speed</span>
+          </div>
+          <p class="item-desc-zh"><strong>速度調節！</strong>改變蛇的移動速度，提供高速衝刺穿梭或穩健降速控場的節奏變化。</p>
+          <p class="item-desc-en">Speed modifier! Adjusts movement velocity for agile high-speed dashes or steady pacing control.</p>
+        </div>
+
+        <div class="item-card">
+          <div class="item-title-row">
+            <span class="item-icon">💣</span>
+            <div class="item-names">
+              <span class="item-name-zh">炸彈</span>
+              <span class="item-name-en">BOMB</span>
+            </div>
+            <span class="item-tag tag-danger">致命危險 / Hazard</span>
+          </div>
+          <p class="item-desc-zh"><strong>極度危險爆裂物！</strong>直接碰撞引發粉碎爆炸死亡（GAME OVER）；持有鑽石護盾時可安全踩爆化解。</p>
+          <p class="item-desc-en">Lethal hazard! Direct hit causes fatal explosion unless you are protected by an active Diamond shield.</p>
+        </div>
+
+        <div class="item-card">
+          <div class="item-title-row">
+            <span class="item-icon">💎</span>
+            <div class="item-names">
+              <span class="item-name-zh">鑽石</span>
+              <span class="item-name-en">DIAMOND</span>
+            </div>
+            <span class="item-tag tag-buff">無敵 / Shield</span>
+          </div>
+          <p class="item-desc-zh"><strong>無敵金身護盾！</strong>短暫時間內免疫一切障礙物碰撞傷害，並可直接踩碎炸彈化險為夷。</p>
+          <p class="item-desc-en">Invincibility shield! Grants temporary immunity to obstacles and safely neutralizes bombs upon contact.</p>
+        </div>
+
+        <div class="item-card">
+          <div class="item-title-row">
+            <span class="item-icon">🧪</span>
+            <div class="item-names">
+              <span class="item-name-zh">消化酵素</span>
+              <span class="item-name-en">ENZYME</span>
+            </div>
+            <span class="item-tag tag-meta">代謝加速 / Boost</span>
+          </div>
+          <p class="item-desc-zh"><strong>新陳代謝催化！</strong>瞬間大幅加快體內消化進度，使腫塊迅速轉化為長度，快速排空釋放胃容量。</p>
+          <p class="item-desc-en">Metabolism booster! Drastically accelerates digestion, clearing lumps into length rapidly to relieve gut capacity.</p>
+        </div>
+      </div>
     </div>
-  </div>
+  </aside>
 
-  <div style="display:flex;justify-content:center;gap:18px;margin:16px 0 0;transform:rotate(-22deg);">
-    <button data-b="SEL" style="width:52px;height:13px;border-radius:8px;background:#5c5c66;border:0;color:#d6d6de;font:400 7px/1 ui-monospace,monospace;letter-spacing:.1em;padding:0;">SELECT</button>
-    <button data-b="STA" style="width:52px;height:13px;border-radius:8px;background:#5c5c66;border:0;color:#d6d6de;font:400 7px/1 ui-monospace,monospace;letter-spacing:.1em;padding:0;">START</button>
-  </div>
+  <main id="game-main">
+    <div id="gbwrap">
+    <div id="game-toolbar"><a href="../">前往 GUTSY 官網下載 App</a><button id="show-scores" type="button">全球排行榜</button></div>
+    <div id="gbshell" style="background:#c9c9c1;border-radius:12px 12px 44px 12px;padding:12px 12px 16px;box-sizing:border-box;border:1px solid #a8a89f;">
 
-  <div style="display:flex;gap:3px;justify-content:flex-end;margin:14px 6px 0;transform:rotate(-22deg);transform-origin:right bottom;">
-    <span style="width:3px;height:26px;background:#b0b0a8;border-radius:2px;"></span><span style="width:3px;height:26px;background:#b0b0a8;border-radius:2px;"></span><span style="width:3px;height:26px;background:#b0b0a8;border-radius:2px;"></span><span style="width:3px;height:26px;background:#b0b0a8;border-radius:2px;"></span><span style="width:3px;height:26px;background:#b0b0a8;border-radius:2px;"></span><span style="width:3px;height:26px;background:#b0b0a8;border-radius:2px;"></span>
-  </div>
+      <div style="background:#4a4a52;border-radius:8px 8px 28px 8px;padding:14px 12px 20px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin:0 0 8px;font:400 9px/1 ui-monospace,monospace;color:#9b9bb0;letter-spacing:.08em;">
+          <button id="led" aria-label="靜音切換" style="display:flex;align-items:center;gap:5px;background:transparent;border:0;padding:0;font:inherit;color:#9b9bb0;"><span id="leddot" style="width:6px;height:6px;border-radius:50%;background:#d84a3a;display:inline-block;"></span>POWER</button>
+          <span>DOT MATRIX &middot; GUT SYSTEM</span>
+        </div>
+        <canvas id="scr" width="240" height="216" style="display:block;width:100%;aspect-ratio:240/216;image-rendering:pixelated;border-radius:2px;background:#9bbc0f;"></canvas>
+      </div>
 
-</div>
+      <div style="text-align:center;font:500 13px/1 ui-serif,Georgia,serif;color:#3a3a44;letter-spacing:.02em;margin:10px 0 2px;">GUTSY <span style="font:400 8px/1 ui-monospace,monospace;letter-spacing:.14em;color:#6b6b75;">腸腸久久</span></div>
+
+      <div style="display:flex;justify-content:space-between;align-items:center;margin:10px 4px 0;">
+        <div style="position:relative;width:108px;height:108px;">
+          <div style="position:absolute;left:36px;top:0;width:36px;height:108px;background:#3a3a42;border-radius:6px;"></div>
+          <div style="position:absolute;left:0;top:36px;width:108px;height:36px;background:#3a3a42;border-radius:6px;"></div>
+          <button data-d="U" aria-label="上" style="position:absolute;left:36px;top:0;width:36px;height:36px;background:transparent;border:0;padding:0;"></button>
+          <button data-d="L" aria-label="左" style="position:absolute;left:0;top:36px;width:36px;height:36px;background:transparent;border:0;padding:0;"></button>
+          <button data-d="R" aria-label="右" style="position:absolute;left:72px;top:36px;width:36px;height:36px;background:transparent;border:0;padding:0;"></button>
+          <button data-d="D" aria-label="下" style="position:absolute;left:36px;top:72px;width:36px;height:36px;background:transparent;border:0;padding:0;"></button>
+          <div style="position:absolute;left:48px;top:48px;width:12px;height:12px;border-radius:50%;background:#2c2c33;pointer-events:none;"></div>
+        </div>
+        <div style="display:flex;gap:12px;transform:rotate(-22deg);">
+          <button data-b="B" style="width:42px;height:42px;border-radius:50%;background:#8e3b5e;border:1px solid #6d2c48;color:#f0dce5;font:500 13px/1 ui-serif,Georgia,serif;padding:0;">B</button>
+          <button data-b="A" style="width:42px;height:42px;border-radius:50%;background:#8e3b5e;border:1px solid #6d2c48;color:#f0dce5;font:500 13px/1 ui-serif,Georgia,serif;padding:0;">A</button>
+        </div>
+      </div>
+
+      <div style="display:flex;justify-content:center;gap:18px;margin:16px 0 0;transform:rotate(-22deg);">
+        <button data-b="SEL" style="width:52px;height:13px;border-radius:8px;background:#5c5c66;border:0;color:#d6d6de;font:400 7px/1 ui-monospace,monospace;letter-spacing:.1em;padding:0;">SELECT</button>
+        <button data-b="STA" style="width:52px;height:13px;border-radius:8px;background:#5c5c66;border:0;color:#d6d6de;font:400 7px/1 ui-monospace,monospace;letter-spacing:.1em;padding:0;">START</button>
+      </div>
+
+      <div style="display:flex;gap:3px;justify-content:flex-end;margin:14px 6px 0;transform:rotate(-22deg);transform-origin:right bottom;">
+        <span style="width:3px;height:26px;background:#b0b0a8;border-radius:2px;"></span><span style="width:3px;height:26px;background:#b0b0a8;border-radius:2px;"></span><span style="width:3px;height:26px;background:#b0b0a8;border-radius:2px;"></span><span style="width:3px;height:26px;background:#b0b0a8;border-radius:2px;"></span><span style="width:3px;height:26px;background:#b0b0a8;border-radius:2px;"></span><span style="width:3px;height:26px;background:#b0b0a8;border-radius:2px;"></span>
+      </div>
+
+    </div>
+    </div>
+  </main>
 </div>
 
 <dialog id="controls-dialog" aria-labelledby="controls-title">

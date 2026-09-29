@@ -104,6 +104,14 @@
   .tag-meta{background:#1a361c;color:#97de9a;border:1px solid #29572e;}
   .item-desc-zh{font-size:11.5px;color:#bebecf;margin:0 0 2px;line-height:1.42;}
   .item-desc-en{font-size:10.5px;color:#7f7f95;margin:0;line-height:1.35;}
+  .rule-box{background:#14141c;border:1px solid #2d2d3e;border-left:3px solid #dfd270;border-radius:6px;padding:9px 12px;margin-bottom:12px;font-size:12px;color:#cfcfdf;line-height:1.5;}
+  .rule-box strong{color:#b8da55;}
+
+  .death-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px 8px;margin-bottom:6px;}
+  .death-card{background:#20202d;border:1px solid #3d2424;border-radius:6px;padding:6px 8px;}
+  .death-badge{font-family:ui-monospace,monospace;font-size:10px;font-weight:700;color:#ff8a8a;background:#381414;padding:1px 5px;border-radius:3px;border:1px solid #582020;}
+  .death-title{font-size:11.5px;font-weight:700;color:#f0f0f8;margin-left:4px;}
+  .death-desc{font-size:10.5px;color:#a0a0b2;margin:3px 0 0;line-height:1.35;}
 </style>
 </head>
 <body>
@@ -159,82 +167,147 @@
 <dialog id="guide-dialog" aria-labelledby="guide-title">
   <div class="guide-header">
     <div>
-      <h2 id="guide-title" class="guide-title">🕹️ 遊戲指南 · Guide</h2>
-      <p class="guide-subtitle">介面解說與道具功能對照 / HUD &amp; Items Manual</p>
+      <h2 id="guide-title" class="guide-title">🕹️ 遊戲指南 · Complete Manual</h2>
+      <p class="guide-subtitle">全介面指標、核心機制、道具與生存手冊 / Full HUD &amp; Mechanics Guide</p>
     </div>
     <button id="close-guide-x" class="close-icon-btn" type="button" aria-label="關閉 / Close">&times;</button>
   </div>
 
+  <!-- 1. 核心玩法與勝利目標 -->
   <div class="guide-section">
     <div class="section-heading">
-      <span>介面指標解說</span>
-      <span class="en">HUD Status</span>
+      <span>核心玩法與過關機制</span>
+      <span class="en">Core Gameplay</span>
     </div>
-    <div class="hud-list">
-      <div class="hud-item">
-        <div class="hud-header">
-          <span class="hud-badge">GUT 0/18</span>
-          <span class="hud-title">胃容量 · Stomach Load</span>
-        </div>
-        <p class="hud-desc">當前食物負擔 / 胃上限。吃蛋增加負擔，<strong>超載撐爆即死 (GAME OVER)</strong>！</p>
-        <p class="hud-desc-en">Digestion load vs max limit. Eating adds load; overfilling causes fatal gut burst!</p>
-      </div>
-
-      <div class="hud-item">
-        <div class="hud-header">
-          <span class="hud-badge">STAGE 1-1</span>
-          <span class="hud-title">關卡進度 · Stage</span>
-        </div>
-        <p class="hud-desc">世界-子關卡。每世界 10 關，達標過關後推進新地形世界與專屬障礙物。</p>
-        <p class="hud-desc-en">World-Substage. 10 stages per world with unique terrain and dynamic hazards.</p>
-      </div>
-
-      <div class="hud-item">
-        <div class="hud-header">
-          <span class="hud-badge">FOOD 0/5</span>
-          <span class="hud-title">目標蛋數 · Target</span>
-        </div>
-        <p class="hud-desc">當前吃蛋數 / 通關門檻。吞滿指定數量即可過關進入下一關卡。</p>
-        <p class="hud-desc-en">Eggs eaten vs clear goal. Swallow required eggs to complete the stage.</p>
-      </div>
-
-      <div class="hud-item">
-        <div class="hud-header">
-          <span class="hud-badge">MAX 12</span>
-          <span class="hud-title">最大身長 · Peak Length</span>
-        </div>
-        <p class="hud-desc">本局曾達到的最長紀錄，結算核心指標（長度 × 5 分）。吃瀉藥縮身不影響已記錄的 MAX！</p>
-        <p class="hud-desc-en">Peak body length reached. Main score multiplier (MAX × 5). Shrinking won't lower MAX!</p>
-      </div>
-
-      <div class="hud-item">
-        <div class="hud-header">
-          <span class="hud-badge">SCORE 0</span>
-          <span class="hud-title">當前得分 · Score</span>
-        </div>
-        <p class="hud-desc">包含吃蛋、道具、過關加分與最大身長結算之累積總分。</p>
-        <p class="hud-desc-en">Cumulative points from food, items, clear bonuses and peak length.</p>
-      </div>
-    </div>
-
-    <div class="section-heading">
-      <span>常用快捷鍵</span>
-      <span class="en">Controls</span>
-    </div>
-    <div class="key-grid">
-      <div class="key-row"><span>轉向 · Move</span><span class="kbd-key">↑ ↓ ← → / WASD</span></div>
-      <div class="key-row"><span>確認 · Confirm</span><span class="kbd-key">Enter / Space</span></div>
-      <div class="key-row"><span>暫停 · Pause</span><span class="kbd-key">P / Esc</span></div>
-      <div class="key-row"><span>調色盤 · Palette</span><span class="kbd-key">C (SELECT)</span></div>
-      <div class="key-row"><span>靜音 · Mute</span><span class="kbd-key">M</span></div>
-      <div class="key-row"><span>返回 · Back</span><span class="kbd-key">X / Esc</span></div>
+    <div class="rule-box">
+      <p style="margin:0 0 6px;">🐍 <strong>進食與延遲成長（Delayed Digestion）</strong>：吞下蛋不會立刻變長，而是在體內形成「腫塊」並增加<strong>胃容量（GUT）</strong>。腫塊隨蛇行移動逐步消化，消化完畢後才真正長出身體（<strong>LEN 增加</strong>）並釋放胃容量。</p>
+      <p style="margin:0 0 6px;">🎯 <strong>過關推進</strong>：每世界包含 10 個子關卡（如 1-1 至 1-10）。吞下足夠數量的蛋（例如 0/5 吞滿 5/5）即通關，清除當前所有障礙並自動推進至下一子關卡。</p>
+      <p style="margin:0;">⚖️ <strong>生存兩難天平</strong>：吃太多太快會<strong>「胃超載撐爆（BURST）」</strong>，太久不吃蛋則會<strong>「飢餓縮身至死（!STARVE!）」</strong>，必須在撐死與餓死之間精準掌控進食節奏！</p>
     </div>
   </div>
 
+  <!-- 2. 全螢幕介面指標徹底解說 -->
   <div class="guide-section">
     <div class="section-heading">
-      <span>道具與食物功能對照</span>
-      <span class="en">Items &amp; Food</span>
+      <span>螢幕介面指標完整解說</span>
+      <span class="en">HUD &amp; Screen Indicators</span>
+    </div>
+    <div class="hud-list">
+      <!-- 第一行 -->
+      <div class="hud-item">
+        <div class="hud-header">
+          <span class="hud-badge">TIME 00:00</span>
+          <span class="hud-title">存活時間 · Survival Time（第 1 行左）</span>
+        </div>
+        <p class="hud-desc">本局累計存活時間（分:秒）。<strong>每多存活 1 秒，總分即時增加 +2 分</strong>（防止玩家消極等待）。</p>
+        <p class="hud-desc-en">Survival clock (MM:SS). Every second survived grants +2 points to your live score.</p>
+      </div>
+
+      <div class="hud-item">
+        <div class="hud-header">
+          <span class="hud-badge">1-1 0/5</span>
+          <span class="hud-title">關卡與進度 · Stage &amp; Target（第 1 行中）</span>
+        </div>
+        <p class="hud-desc"><strong>[世界-子關卡] [已吃蛋數]/[通關門檻]</strong>。吞滿指定數量即可過關進入下一小關。每世界 10 關。</p>
+        <p class="hud-desc-en">[World-Substage] [Eggs Eaten]/[Clear Goal]. Swallow required eggs to complete the stage.</p>
+      </div>
+
+      <div class="hud-item">
+        <div class="hud-header">
+          <span class="hud-badge">LEN 024</span>
+          <span class="hud-title">當前長度 · Current Length（第 1 行右）</span>
+        </div>
+        <p class="hud-desc">當前蛇身體長（像素 px）。⚠️ <strong>下限警戒</strong>：若因挨餓或過量瀉藥導致長度低於 <strong>12 px</strong>，立即因過瘦萎縮死亡（TOO EMPTY）！</p>
+        <p class="hud-desc-en">Current body length (px). Fatal limit: dropping below 12px causes death by starvation!</p>
+      </div>
+
+      <!-- 第二行 -->
+      <div class="hud-item">
+        <div class="hud-header">
+          <span class="hud-badge">MAX 024</span>
+          <span class="hud-title">歷史最大長度 · Peak Length（第 2 行左）</span>
+        </div>
+        <p class="hud-desc">本局曾達到的最長紀錄，結算核心倍率（<strong>MAX × 5 分</strong>）。吃瀉藥縮身<strong>絕不倒扣</strong>已記錄的 MAX！</p>
+        <p class="hud-desc-en">All-time peak length this run. Score multiplier (MAX × 5). Shrinking body will NEVER lower MAX!</p>
+      </div>
+
+      <div class="hud-item">
+        <div class="hud-header">
+          <span class="hud-badge" style="color:#dfd270;background:#383314;border-color:#585020;">HNG 6S / !STARVE!</span>
+          <span class="hud-title">飢餓倒數與挨餓 · Hunger Countdown</span>
+        </div>
+        <p class="hud-desc">每次吃蛋重置為 <strong>6 秒</strong>。剩餘 ≤ 2 秒時文字閃爍警示；超時未吃蛋進入 <strong>!STARVE!</strong> 狀態，<strong>每 2 秒身體長度強制縮減 1 px</strong>，低於 12 px 即宣告餓死！</p>
+        <p class="hud-desc-en">Resets to 6s upon eating. Below 2s warns with blinking; at 0s !STARVE! activates, shrinking 1px every 2s until death!</p>
+      </div>
+
+      <div class="hud-item">
+        <div class="hud-header">
+          <span class="hud-badge">SCORE 120</span>
+          <span class="hud-title">即時累計總分 · Live Total Score</span>
+        </div>
+        <p class="hud-desc">隨遊戲進行即時動態增加的總分。公式：<strong>道具加分 + (MAX × 5) + (存活秒數 × 2)</strong>。</p>
+        <p class="hud-desc-en">Real-time cumulative score: Item Bonuses + (MAX × 5) + (Survival Seconds × 2).</p>
+      </div>
+
+      <div class="hud-item">
+        <div class="hud-header">
+          <span class="hud-badge" style="color:#70c9fd;background:#163242;border-color:#22516b;">INV 8S / FAST</span>
+          <span class="hud-title">特殊狀態提示 · Active Status Buff</span>
+        </div>
+        <p class="hud-desc">吃到鑽石時顯示 <strong>INV [秒數]S</strong>（無敵金身倒數）；吃到溜冰鞋時顯示 <strong>FAST</strong>（速度增益衝刺）。</p>
+        <p class="hud-desc-en">INV ns: Invincibility shield countdown. FAST: Skating speed booster active.</p>
+      </div>
+
+      <div class="hud-item">
+        <div class="hud-header">
+          <span class="hud-badge" style="color:#ff8a8a;background:#381414;border-color:#6e2424;">GUT [▓▓▓░░]</span>
+          <span class="hud-title">胃容量量表 · Stomach Load Bar（第 2 行右）</span>
+        </div>
+        <p class="hud-desc">消化道即時負擔量表。進食增加負擔，消化後排空。負擔 > 80% 時整條<strong>強烈閃爍警告</strong>；若吞下新蛋超過上限（預設 18），<strong>肚子當場撐爆暴斃（BURST）</strong>！</p>
+        <p class="hud-desc-en">Live digestion load. Flashes heavily above 80%. Swallowing past max limit causes instant fatal gut burst!</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. 六種死亡條件判定 -->
+  <div class="guide-section">
+    <div class="section-heading">
+      <span>六種死因判定（GAME OVER）</span>
+      <span class="en">Death Conditions</span>
+    </div>
+    <div class="death-grid">
+      <div class="death-card">
+        <span class="death-badge">BURST</span><span class="death-title">胃部撐爆</span>
+        <p class="death-desc">胃容量（GUT）超載爆裂。進食前請務必確認 GUT 條空檔！</p>
+      </div>
+      <div class="death-card">
+        <span class="death-badge">WALL</span><span class="death-title">撞擊邊界</span>
+        <p class="death-desc">蛇頭撞上外圍牆壁（即便是無敵金身撞牆仍會死亡）。</p>
+      </div>
+      <div class="death-card">
+        <span class="death-badge">BITE</span><span class="death-title">咬到自己</span>
+        <p class="death-desc">蛇身長度變長後，蛇頭轉向咬到自身身軀。</p>
+      </div>
+      <div class="death-card">
+        <span class="death-badge">TOO EMPTY</span><span class="death-title">飢餓枯竭</span>
+        <p class="death-desc">長時間未吃蛋（!STARVE!）或過量嗑瀉藥，導致體長低於 12 px。</p>
+      </div>
+      <div class="death-card">
+        <span class="death-badge">BOMB</span><span class="death-title">引爆炸彈</span>
+        <p class="death-desc">無防護狀態下直接撞上炸彈（無敵時踩中則為安全拆彈）。</p>
+      </div>
+      <div class="death-card">
+        <span class="death-badge">HAZARD</span><span class="death-title">撞擊障礙</span>
+        <p class="death-desc">撞上沙漠仙人掌、俄羅斯方塊或地圖動態實體障礙物。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. 食物與戰術道具詳解 -->
+  <div class="guide-section">
+    <div class="section-heading">
+      <span>食物與戰術道具詳解</span>
+      <span class="en">Items &amp; Food Manual</span>
     </div>
     <div class="items-list">
       <div class="item-card">
@@ -244,10 +317,10 @@
             <span class="item-name-zh">蛋（食物）</span>
             <span class="item-name-en">EGG</span>
           </div>
-          <span class="item-tag tag-food">成長 / Growth</span>
+          <span class="item-tag tag-food">成長核心 / Growth</span>
         </div>
-        <p class="item-desc-zh"><strong>延遲成長核心！</strong>吞下不會立刻變長，先在體內形成腫塊後移，消化後才結算長度。尺寸 2~10px，越大胃負擔越重。</p>
-        <p class="item-desc-en">Delayed growth! Swallowed food forms a lump drifting back; converts to length upon full digestion. Bigger eggs add more gut load.</p>
+        <p class="item-desc-zh"><strong>核心進食標的！</strong>具有 2~10 px 多種尺寸（同心圈越多顆粒越大越重）。吞下後形成體內腫塊逐步消化，排空後才轉化為長度。大蛋帶來的胃負擔沉重，進食前請留意 GUT 條！</p>
+        <p class="item-desc-en">Delayed growth! Swallowed egg drifts back as a lump; converts to length upon full digestion. Bigger eggs carry heavier gut load.</p>
       </div>
 
       <div class="item-card">
@@ -257,10 +330,10 @@
             <span class="item-name-zh">瀉藥 / 毒藥</span>
             <span class="item-name-en">LAXATIVE / POISON</span>
           </div>
-          <span class="item-tag tag-panic">戰術救急 / Panic</span>
+          <span class="item-tag tag-panic">戰術重置 / Reset</span>
         </div>
-        <p class="item-desc-zh"><strong>緊急避險道具！</strong>立即清空體內所有未消化的腫塊，並截斷縮短身體長度，在胃即將撐爆或走投無路時換取生存空間。</p>
-        <p class="item-desc-en">Emergency panic button! Instantly purges all undigested lumps and cuts snake length shorter, saving you from an imminent gut burst.</p>
+        <p class="item-desc-zh"><strong>保命重置神器！</strong>立刻清空排淨體內所有未消化的腫塊，強制截斷縮短身體長度（-3 px）。在肚子即將撐爆或被自己太長卡死時換取生存空間；且<strong>完全不影響已記錄的 MAX 分數</strong>！</p>
+        <p class="item-desc-en">Emergency reset! Instantly purges all lumps and cuts snake length shorter (-3px) without lowering your recorded MAX multiplier!</p>
       </div>
 
       <div class="item-card">
@@ -270,10 +343,10 @@
             <span class="item-name-zh">溜冰鞋</span>
             <span class="item-name-en">SKATES</span>
           </div>
-          <span class="item-tag tag-buff">節奏 / Speed</span>
+          <span class="item-tag tag-buff">敏捷衝刺 / +50 PTS</span>
         </div>
-        <p class="item-desc-zh"><strong>速度調節！</strong>改變蛇的移動速度，提供高速衝刺穿梭或穩健降速控場的節奏變化。</p>
-        <p class="item-desc-en">Speed modifier! Adjusts movement velocity for agile high-speed dashes or steady pacing control.</p>
+        <p class="item-desc-zh"><strong>速度大幅提升！</strong>移動速度倍率 ×0.82（可多重疊加），賦予高速穿梭與反應挑戰。吃到獎勵 +50 分，子關卡過關時速度重置。</p>
+        <p class="item-desc-en">Speed booster! Multiplies movement velocity (stacks up to speed cap). Grants +50 pts; resets on stage clear.</p>
       </div>
 
       <div class="item-card">
@@ -283,10 +356,10 @@
             <span class="item-name-zh">炸彈</span>
             <span class="item-name-en">BOMB</span>
           </div>
-          <span class="item-tag tag-danger">致命危險 / Hazard</span>
+          <span class="item-tag tag-danger">致命地雷 / Hazard</span>
         </div>
-        <p class="item-desc-zh"><strong>極度危險爆裂物！</strong>直接碰撞引發粉碎爆炸死亡（GAME OVER）；持有鑽石護盾時可安全踩爆化解。</p>
-        <p class="item-desc-en">Lethal hazard! Direct hit causes fatal explosion unless you are protected by an active Diamond shield.</p>
+        <p class="item-desc-zh"><strong>極度危險爆裂物！</strong>直接碰觸立即粉碎爆炸死亡（GAME OVER）。唯一的生存之道是在持有<strong>鑽石護盾</strong>期間主動踩爆化解，踩中額外獎勵 +100 分！</p>
+        <p class="item-desc-en">Lethal explosive! Direct hit kills instantly unless protected by Diamond shield, which safely defuses it for +100 pts.</p>
       </div>
 
       <div class="item-card">
@@ -296,10 +369,10 @@
             <span class="item-name-zh">鑽石</span>
             <span class="item-name-en">DIAMOND</span>
           </div>
-          <span class="item-tag tag-buff">無敵 / Shield</span>
+          <span class="item-tag tag-buff">無敵護盾 / +200 PTS</span>
         </div>
-        <p class="item-desc-zh"><strong>無敵金身護盾！</strong>短暫時間內免疫一切障礙物碰撞傷害，並可直接踩碎炸彈化險為夷。</p>
-        <p class="item-desc-en">Invincibility shield! Grants temporary immunity to obstacles and safely neutralizes bombs upon contact.</p>
+        <p class="item-desc-zh"><strong>8 秒無敵無畏金身！</strong>吃到立即獎勵 +200 分。持續期間免疫障礙碰撞、自身咬傷、炸彈與胃撐爆（唯撞邊界牆壁仍會死）。敢打敢衝踩碎炸彈換取高分的黃金時間！</p>
+        <p class="item-desc-en">8-second invincibility! Grants +200 pts. Immune to hazards, self-bites, bombs, and gut bursts (only wall collision remains fatal).</p>
       </div>
 
       <div class="item-card">
@@ -309,11 +382,49 @@
             <span class="item-name-zh">消化酵素</span>
             <span class="item-name-en">ENZYME</span>
           </div>
-          <span class="item-tag tag-meta">代謝加速 / Boost</span>
+          <span class="item-tag tag-meta">代謝超頻 / +50 PTS</span>
         </div>
-        <p class="item-desc-zh"><strong>新陳代謝催化！</strong>瞬間大幅加快體內消化進度，使腫塊迅速轉化為長度，快速排空釋放胃容量。</p>
-        <p class="item-desc-en">Metabolism booster! Drastically accelerates digestion, clearing lumps into length rapidly to relieve gut capacity.</p>
+        <p class="item-desc-zh"><strong>新陳代謝 3 倍超頻！</strong>吃到獎勵 +50 分。在 5 秒內使體內所有腫塊的消化速度暴增 3 倍，極速轉化為長度並排空胃容量，瞬間化解超載危機！</p>
+        <p class="item-desc-en">3x digestion overdrive! Grants +50 pts. Speeds up lump digestion by 300% for 5s, rapidly clearing gut burden into length.</p>
       </div>
+    </div>
+  </div>
+
+  <!-- 5. 世界主題與地圖動態障礙 -->
+  <div class="guide-section">
+    <div class="section-heading">
+      <span>世界主題與動態障礙</span>
+      <span class="en">Worlds &amp; Hazards</span>
+    </div>
+    <div class="hud-list">
+      <div class="hud-item">
+        <div class="hud-header"><span class="hud-badge">WORLD 1</span><span class="hud-title">CLASSIC GRASS（經典草地）</span></div>
+        <p class="hud-desc">開闊平原地形，無固定障礙物。核心在於熟悉蛇身的延遲成長與消化重量感，精準拿捏進食頻率。</p>
+      </div>
+      <div class="hud-item">
+        <div class="hud-header"><span class="hud-badge">WORLD 2</span><span class="hud-title">DESERT DUNES（沙漠沙丘）</span></div>
+        <p class="hud-desc">遍布多刺仙人掌障礙物。障礙每 20 秒會虛線閃爍預警並重新位移生成，大幅考驗穿梭走位！</p>
+      </div>
+      <div class="hud-item">
+        <div class="hud-header"><span class="hud-badge">WORLD 3</span><span class="hud-title">BRICK WORLD（磚塊世界）</span></div>
+        <p class="hud-desc">充滿俄羅斯方塊立體幾何磚塊。地圖走道極為狹窄，必須善用瀉藥控制體長防止自我封死。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. 控制與按鍵對照 -->
+  <div class="guide-section">
+    <div class="section-heading">
+      <span>完整按鍵與控制對照</span>
+      <span class="en">Controls &amp; Shortcuts</span>
+    </div>
+    <div class="key-grid">
+      <div class="key-row"><span>轉向 · Direction</span><span class="kbd-key">↑ ↓ ← → / WASD</span></div>
+      <div class="key-row"><span>確認／重試 · Action</span><span class="kbd-key">Enter / Space / Z (A鍵)</span></div>
+      <div class="key-row"><span>暫停／返回 · Pause</span><span class="kbd-key">P / Esc / X (B鍵)</span></div>
+      <div class="key-row"><span>調色盤切換 · Palette</span><span class="kbd-key">C (SELECT鍵)</span></div>
+      <div class="key-row"><span>靜音切換 · Mute</span><span class="kbd-key">M (或點擊 POWER 燈)</span></div>
+      <div class="key-row"><span>關閉指南 · Close Guide</span><span class="kbd-key">Esc / 點擊遮罩</span></div>
     </div>
   </div>
 
@@ -939,13 +1050,19 @@ function drawHud(){
  txt(prog,((W-tw(prog))/2)|0,2,K(2));
  txt('LEN '+('00'+Math.max(0,Math.round(tgt))).slice(-3),W-2-tw('LEN 000'),2,K(0));
  txt('MAX '+('00'+Math.round(maxLen)).slice(-3),2,8,K(2));
- var hungerX=(W>=200)?50:36;
+ var isWide=(W>=200);
+ var hungerX=isWide?42:32;
  if(sinceEat>6000){if((((tGame/180)|0)%2)===0)txt('!STARVE!',hungerX,8,K(0));}
  else{var hs=hungerCountdownSeconds();var ci=(hs<=2)?((((tGame/150)|0)%2===0)?0:4):2;txt('HNG '+hs+'S',hungerX,8,K(ci));}
- if(W>=200){
-  if(invincibleRemaining>0)txt('INV '+Math.ceil(invincibleRemaining/1000)+'S',96,8,K(0));
-  else if(skateMultiplier<0.95)txt('FAST',98,8,K(2));}
- var barW=(W>=200)?42:26;
+ var scoreLabel=isWide?'SCORE ':'SC ';
+ var scoreStr=scoreLabel+score();
+ var scoreX=isWide?82:62;
+ txt(scoreStr,scoreX,8,K(0));
+ if(isWide){
+  var buffX=scoreX+tw(scoreStr)+8;
+  if(invincibleRemaining>0)txt('INV '+Math.ceil(invincibleRemaining/1000)+'S',buffX,8,K(0));
+  else if(skateMultiplier<0.95)txt('FAST',buffX,8,K(2));}
+ var barW=isWide?42:26;
  var gutLabelX=W-2-tw('GUT')-barW-2;
  txt('GUT',gutLabelX,8,K(2));
  var bx0=W-2-barW,g=Math.min(1,gut()/gutMax()),fw=Math.round(barW*g);

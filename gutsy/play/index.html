@@ -182,7 +182,11 @@
     <div class="rule-box">
       <p style="margin:0 0 6px;">🐍 <strong>進食與延遲成長（Delayed Digestion）</strong>：吞下蛋不會立刻變長，而是在體內形成「腫塊」並增加<strong>胃容量（GUT）</strong>。腫塊隨蛇行移動逐步消化，消化完畢後才真正長出身體（<strong>LEN 增加</strong>）並釋放胃容量。</p>
       <p style="margin:0 0 6px;">🎯 <strong>過關推進</strong>：每世界包含 10 個子關卡（如 1-1 至 1-10）。吞下足夠數量的蛋（例如 0/5 吞滿 5/5）即通關，清除當前所有障礙並自動推進至下一子關卡。</p>
-      <p style="margin:0;">⚖️ <strong>生存兩難天平</strong>：吃太多太快會<strong>「胃超載撐爆（BURST）」</strong>，太久不吃蛋則會<strong>「飢餓縮身至死（!STARVE!）」</strong>，必須在撐死與餓死之間精準掌控進食節奏！</p>
+      <p style="margin:0 0 6px;">⚖️ <strong>生存兩難天平</strong>：吃太多太快會<strong>「胃超載撐爆（BURST）」</strong>，太久不吃蛋則會<strong>「飢餓縮身至死（!STARVE!）」</strong>，必須在撐死與餓死之間精準掌控進食節奏！</p>
+      <p style="margin:0;">🎮 <strong>三大遊戲模式</strong>：<br>
+      • <strong>一般模式（START GAME）</strong>：經典世界巡迴挑戰，解鎖新關卡與世界地貌。<br>
+      • <strong>地圖模式（MAP MODE）</strong>：直接自由選取任意關卡即刻開局，練習特定地形與障礙應對。<br>
+      • <strong>計時模式（TIME ATTACK）</strong>：5 分鐘極速爭霸賽！看誰吃得分數高。<strong>沒有飢餓</strong>（標示 <strong>HNG ∞</strong>），<strong>沒有胃負擔</strong>（不會撐死亦無負重減速，標示 <strong>GUT ∞</strong>），畫面維持 5 個物件，暢快吃蛋衝刺最高分！</p>
     </div>
   </div>
 
@@ -199,17 +203,17 @@
           <span class="hud-badge">TIME 00:00</span>
           <span class="hud-title">存活時間 · Survival Time（第 1 行左）</span>
         </div>
-        <p class="hud-desc">本局累計存活時間（分:秒）。<strong>每多存活 1 秒，總分即時增加 +2 分</strong>（防止玩家消極等待）。</p>
-        <p class="hud-desc-en">Survival clock (MM:SS). Every second survived grants +2 points to your live score.</p>
+        <p class="hud-desc">一般與地圖模式為<strong>正計時</strong>；計時模式（TIME ATTACK）為<strong>5:00 倒數計時</strong>，最後 30 秒進入緊急警示閃爍。</p>
+        <p class="hud-desc-en">Survival clock (MM:SS) for normal/map modes; 5:00 countdown for Time Attack challenge.</p>
       </div>
 
       <div class="hud-item">
         <div class="hud-header">
-          <span class="hud-badge">1-1 0/5</span>
+          <span class="hud-badge">1-1 0/5 · TIME ATTACK</span>
           <span class="hud-title">關卡與進度 · Stage &amp; Target（第 1 行中）</span>
         </div>
-        <p class="hud-desc"><strong>[世界-子關卡] [已吃蛋數]/[通關門檻]</strong>。吞滿指定數量即可過關進入下一小關。每世界 10 關。</p>
-        <p class="hud-desc-en">[World-Substage] [Eggs Eaten]/[Clear Goal]. Swallow required eggs to complete the stage.</p>
+        <p class="hud-desc"><strong>[世界-子關卡] [已吃蛋數]/[通關門檻]</strong>。吞滿指定數量即可過關進入下一小關。計時模式顯示 <strong>TIME ATTACK</strong> 標籤。</p>
+        <p class="hud-desc-en">[World-Substage] [Eggs Eaten]/[Clear Goal]. Shows TIME ATTACK in challenge mode.</p>
       </div>
 
       <div class="hud-item">
@@ -233,11 +237,11 @@
 
       <div class="hud-item">
         <div class="hud-header">
-          <span class="hud-badge" style="color:#dfd270;background:#383314;border-color:#585020;">HNG 6S / !STARVE!</span>
+          <span class="hud-badge" style="color:#dfd270;background:#383314;border-color:#585020;">HNG 6S / HNG ∞</span>
           <span class="hud-title">飢餓倒數與挨餓 · Hunger Countdown</span>
         </div>
-        <p class="hud-desc">每次吃蛋重置為 <strong>6 秒</strong>。剩餘 ≤ 2 秒時文字閃爍警示；超時未吃蛋進入 <strong>!STARVE!</strong> 狀態，<strong>每 2 秒身體長度強制縮減 1 px</strong>，低於 12 px 即宣告餓死！</p>
-        <p class="hud-desc-en">Resets to 6s upon eating. Below 2s warns with blinking; at 0s !STARVE! activates, shrinking 1px every 2s until death!</p>
+        <p class="hud-desc">每次吃蛋重置為 <strong>6 秒</strong>。剩餘 ≤ 2 秒時文字閃爍警示；超時未吃蛋進入 <strong>!STARVE!</strong> 狀態，<strong>每 2 秒身體長度強制縮減 1 px</strong>，低於 12 px 即宣告餓死！<strong>計時模式下無飢餓，顯示為 HNG ∞</strong>。</p>
+        <p class="hud-desc-en">Resets to 6s upon eating. Below 2s warns with blinking; at 0s !STARVE! activates. In Time Attack, shows HNG ∞ (no starvation).</p>
       </div>
 
       <div class="hud-item">
@@ -260,20 +264,23 @@
 
       <div class="hud-item">
         <div class="hud-header">
-          <span class="hud-badge" style="color:#ff8a8a;background:#381414;border-color:#6e2424;">GUT [▓▓▓░░]</span>
+          <span class="hud-badge" style="color:#ff8a8a;background:#381414;border-color:#6e2424;">GUT [▓▓▓░░] / GUT ∞</span>
           <span class="hud-title">胃容量量表 · Stomach Load Bar（第 2 行右）</span>
         </div>
-        <p class="hud-desc">消化道即時負擔量表。進食增加負擔，消化後排空。負擔 > 80% 時整條<strong>強烈閃爍警告</strong>；若吞下新蛋超過上限（預設 18），<strong>肚子當場撐爆暴斃（BURST）</strong>！</p>
-        <p class="hud-desc-en">Live digestion load. Flashes heavily above 80%. Swallowing past max limit causes instant fatal gut burst!</p>
+        <p class="hud-desc">消化道即時負擔量表。進食增加負擔，消化後排空。負擔 > 80% 時整條<strong>強烈閃爍警告</strong>；若吞下新蛋超過上限（預設 18），<strong>肚子當場撐爆暴斃（BURST）</strong>！<strong>計時模式下無胃負擔，顯示為 GUT ∞</strong>（不會爆體，亦無負重減速）。</p>
+        <p class="hud-desc-en">Live digestion load. Flashes heavily above 80%. Swallowing past max limit causes instant fatal gut burst! In Time Attack, shows GUT ∞.</p>
       </div>
     </div>
   </div>
 
-  <!-- 3. 六種死亡條件判定 -->
+  <!-- 3. 死因判定與 Game Over 選單 -->
   <div class="guide-section">
     <div class="section-heading">
-      <span>六種死因判定（GAME OVER）</span>
-      <span class="en">Death Conditions</span>
+      <span>死因判定與接關選單（GAME OVER）</span>
+      <span class="en">Death Conditions &amp; Menu</span>
+    </div>
+    <div class="rule-box" style="margin-bottom:12px;">
+      <p style="margin:0;">🕹️ <strong>Game Over 選擇功能</strong>：遊戲結束時提供 <strong>▲▼ 選擇</strong>「RETRY 接關/重試」或「RETURN TO TITLE 回主選單」，按 <strong>A 鍵確認</strong>。亦可隨時按 <strong>B 鍵直接返回標題選單</strong>。</p>
     </div>
     <div class="death-grid">
       <div class="death-card">
@@ -299,6 +306,10 @@
       <div class="death-card">
         <span class="death-badge">HAZARD</span><span class="death-title">撞擊障礙</span>
         <p class="death-desc">撞上沙漠仙人掌、俄羅斯方塊或地圖動態實體障礙物。</p>
+      </div>
+      <div class="death-card">
+        <span class="death-badge">TIME UP</span><span class="death-title">挑戰結束</span>
+        <p class="death-desc">計時模式 5 分鐘挑戰倒數歸零，結算最終吃蛋最高分數。</p>
       </div>
     </div>
   </div>
@@ -584,15 +595,17 @@ var ITEM_GLYPH={
 };
 
 /* ---------- 3x5 點陣字 ---------- */
-var F={'0':'111,101,101,101,111','1':'010,110,010,010,111','2':'111,001,111,100,111','3':'111,001,111,001,111','4':'101,101,111,001,001','5':'111,100,111,001,111','6':'111,100,111,101,111','7':'111,001,010,010,010','8':'111,101,111,101,111','9':'111,101,111,001,111','A':'111,101,111,101,101','B':'110,101,110,101,110','C':'111,100,100,100,111','D':'110,101,101,101,110','E':'111,100,111,100,111','F':'111,100,111,100,100','G':'111,100,101,101,111','H':'101,101,111,101,101','I':'111,010,010,010,111','J':'001,001,001,101,111','K':'101,101,110,101,101','L':'100,100,100,100,111','M':'101,111,111,101,101','N':'110,101,101,101,101','O':'111,101,101,101,111','P':'111,101,111,100,100','Q':'111,101,101,111,011','R':'111,101,111,110,101','S':'111,100,111,001,111','T':'111,010,010,010,010','U':'101,101,101,101,111','V':'101,101,101,101,010','W':'101,101,111,111,101','X':'101,101,010,101,101','Y':'101,101,010,010,010','Z':'111,001,010,100,111',' ':'000,000,000,000,000',':':'000,010,000,010,000','.':'000,000,000,000,010','-':'000,000,111,000,000','!':'010,010,010,000,010','+':'000,010,111,010,000','/':'001,001,010,100,100','%':'101,001,010,100,101'};
+var F={'0':'111,101,101,101,111','1':'010,110,010,010,111','2':'111,001,111,100,111','3':'111,001,111,001,111','4':'101,101,111,001,001','5':'111,100,111,001,111','6':'111,100,111,101,111','7':'111,001,010,010,010','8':'111,101,111,101,111','9':'111,101,111,001,111','A':'111,101,111,101,101','B':'110,101,110,101,110','C':'111,100,100,100,111','D':'110,101,101,101,110','E':'111,100,111,100,111','F':'111,100,111,100,100','G':'111,100,101,101,111','H':'101,101,111,101,101','I':'111,010,010,010,111','J':'001,001,001,101,111','K':'101,101,110,101,101','L':'100,100,100,100,111','M':'101,111,111,101,101','N':'110,101,101,101,101','O':'111,101,101,101,111','P':'111,101,111,100,100','Q':'111,101,101,111,011','R':'111,101,111,110,101','S':'111,100,111,001,111','T':'111,010,010,010,010','U':'101,101,101,101,111','V':'101,101,101,101,010','W':'101,101,111,111,101','X':'101,101,010,101,101','Y':'101,101,010,010,010','Z':'111,001,010,100,111',' ':'000,000,000,000,000',':':'000,010,000,010,000','.':'000,000,000,000,010','-':'000,000,111,000,000','!':'010,010,010,000,010','+':'000,010,111,010,000','/':'001,001,010,100,100','%':'101,001,010,100,101','∞':'00000,11011,10101,11011,00000'};
 
 function px(x,y,w,h,c){ctx.fillStyle=c;ctx.fillRect(x|0,y|0,w,h);}
 function bx(x,y,s,c){px(x-(s>>1),y-(s>>1),s,s,c);}
-function tw(s,k){k=k||1;return String(s).length*4*k-k;}
+function tw(s,k){k=k||1;s=String(s).toUpperCase();var tot=0;
+ for(var i=0;i<s.length;i++){var g=F[s[i]]||F[' '],gw=g.indexOf(',');if(gw<0)gw=3;tot+=gw;}
+ return (tot+Math.max(0,s.length-1))*k;}
 function txt(s,x,y,c,k){k=k||1;s=String(s).toUpperCase();var cx=x;
- for(var i=0;i<s.length;i++){var g=F[s[i]]||F[' '],r=g.split(',');
-  for(var a=0;a<5;a++)for(var b=0;b<3;b++)if(r[a][b]==='1')px(cx+b*k,y+a*k,k,k,c);
-  cx+=4*k;}}
+ for(var i=0;i<s.length;i++){var g=F[s[i]]||F[' '],r=g.split(','),gw=r[0].length;
+  for(var a=0;a<5;a++)for(var b=0;b<gw;b++)if(r[a][b]==='1')px(cx+b*k,y+a*k,k,k,c);
+  cx+=(gw+1)*k;}}
 function ctxt(s,y,c,k){txt(s,Math.round((W-tw(s,k))/2),y,c,k);}
 function drawGlyph(glyph,x,y){for(var r=0;r<glyph.length;r++)for(var c=0;c<glyph[r].length;c++){var ch=glyph[r][c];
   if(ch==='#')px(x+c,y+r,1,1,K(6));else if(ch==='+')px(x+c,y+r,1,1,K(3));}}
@@ -680,7 +693,7 @@ var debris=[],explosionTimer=0;
 var lastStageWorld=1,lastStageSubStage=1;
 var howToPlayPage=0,TOTAL_HOWTOPLAY_PAGES=3;
 var pops=[],toast=0,toastS='';
-var isMapMode=false,mapSelectWorld=1,mapSelectSubStage=1;
+var isMapMode=false,isTimeAttack=false,timeAttackDuration=300000,gameOverMenuIndex=0,mapSelectWorld=1,mapSelectSubStage=1;
 var muted=false,lastT=0;
 var BGM_VOL_MULTS=[0.0,0.35,0.70,1.0];
 var BGM_VOL_LABELS=['OFF','35%','70%','100%'];
@@ -693,6 +706,7 @@ try{
 var TITLE_ITEMS=[
  {key:'start',label:'START GAME'},
  {key:'mapMode',label:'MAP MODE'},
+ {key:'timeAttack',label:'TIME ATTACK'},
  {key:'continueStage',label:function(){return 'CONTINUE '+lastStageWorld+'-'+lastStageSubStage;}},
  {key:'settings',label:'SETTINGS'},
  {key:'howToPlay',label:'HOW TO PLAY'},
@@ -731,7 +745,7 @@ function addLump(size){var tt=size*900;lumps.push({size:size,pos:0,tl:tt,tt:tt,g
 
 /* ---------- 生成（對應 SpawnSystem.swift） ---------- */
 var foods=[],powerUps=[];
-var TARGET_ITEM_COUNT=3,MAX_POWERUPS=1;
+var TARGET_ITEM_COUNT=5,MAX_POWERUPS=2;
 function isFree(x,y,r,snakeArr,obArr,compact){
  var clr=compact?9:13;
  for(var i=0;i<snakeArr.length;i++)if(Math.abs(snakeArr[i].x-x)<r&&Math.abs(snakeArr[i].y-y)<r)return false;
@@ -766,9 +780,9 @@ function spawnPowerUp(snakeArr,obArr){
   if(isFree(x+4,y+4,7,snakeArr,obArr,compact)){powerUps.push({x:x,y:y,type:type,life:12000});return;}}}
 function replenish(snakeArr,obArr){
  var attempts=0;
- while((foods.length+powerUps.length)<TARGET_ITEM_COUNT&&attempts<8){
+ while((foods.length+powerUps.length)<TARGET_ITEM_COUNT&&attempts<15){
   attempts++;
-  var needFood=foods.length<2;
+  var needFood=foods.length<3;
   var rollPowerUp=(powerUps.length<MAX_POWERUPS)&&(Math.random()<0.35);
   if(!needFood&&rollPowerUp)spawnPowerUp(snakeArr,obArr);else spawnFood(snakeArr,obArr);}}
 function spawnTick(dt,snakeArr,obArr){
@@ -981,7 +995,7 @@ function reset(){
  loadStage(1,1,false);
  replenish(samp(),obstacles);}
 
-function returnToTitle(){stopBGM();reset();phase='title';titleMenuIndex=0;hasSuspendedRun=false;}
+function returnToTitle(){stopBGM();isTimeAttack=false;gameOverMenuIndex=0;reset();phase='title';titleMenuIndex=0;hasSuspendedRun=false;}
 
 function startAtStage(world,sub){
  reset();currentWorld=world;currentSubStage=sub;loadStage(world,sub,false);
@@ -995,6 +1009,9 @@ function press(d){
  if(phase==='title'){
   if(d!=='U'&&d!=='D')return;
   var n=TITLE_ITEMS.length;titleMenuIndex=(titleMenuIndex+(d==='D'?1:-1)+n)%n;beep(500,0.03,0.02);return;}
+ if(phase==='over'){
+  if(d==='U'||d==='D'){gameOverMenuIndex=(gameOverMenuIndex===0?1:0);beep(500,0.03,0.02);}
+  return;}
  if(phase==='mapSelect'){
   if(d==='L'||d==='R'){var n=MAX_RELEASE_WORLD;mapSelectWorld=((mapSelectWorld-1)+(d==='R'?1:-1)+n)%n+1;mapSelectSubStage=1;beep(560,0.03,0.03);return;}
   if(d==='U'||d==='D'){var n2=SUBSTAGES_PER_WORLD;mapSelectSubStage=((mapSelectSubStage-1)+(d==='D'?1:-1)+n2)%n2+1;beep(500,0.03,0.02);return;}}
@@ -1027,15 +1044,16 @@ function act(b){
  if(b==='A'||b==='STA'){
   if(phase==='title'){
    var item=TITLE_ITEMS[titleMenuIndex].key;
-   if(item==='start'){isMapMode=false;reset();phase='play';playStartFanfare(true);}
-   else if(item==='mapMode'){mapSelectWorld=currentWorld;mapSelectSubStage=currentSubStage;phase='mapSelect';beep(660,0.06);}
+   if(item==='start'){isMapMode=false;isTimeAttack=false;reset();phase='play';playStartFanfare(true);}
+   else if(item==='mapMode'){isTimeAttack=false;mapSelectWorld=currentWorld;mapSelectSubStage=currentSubStage;phase='mapSelect';beep(660,0.06);}
+   else if(item==='timeAttack'){isMapMode=false;isTimeAttack=true;reset();phase='play';playStartFanfare(true);}
    else if(item==='continueStage'){
     if(hasSuspendedRun){hasSuspendedRun=false;phase='pause';beep(660,0.06);}
-    else{isMapMode=false;startAtLastStage();}}
+    else{isMapMode=false;isTimeAttack=false;startAtLastStage();}}
    else if(item==='settings'){wasInGame=false;settingMenuIndex=0;phase='settings';beep(660,0.06);}
    else if(item==='howToPlay'){howToPlayPage=0;phase='howToPlay';beep(660,0.06);}
   }else if(phase==='mapSelect'){
-   isMapMode=true;startAtStage(mapSelectWorld,mapSelectSubStage);
+   isMapMode=true;isTimeAttack=false;startAtStage(mapSelectWorld,mapSelectSubStage);
   }else if(phase==='settings'){
    var it=SETTING_ITEMS[settingMenuIndex];
    if(it==='bgm'||it==='palette'||it==='difficulty')press('R');
@@ -1044,15 +1062,24 @@ function act(b){
   }else if(phase==='howToPlay'){
    if(howToPlayPage<TOTAL_HOWTOPLAY_PAGES-1){howToPlayPage++;beep(540,0.03,0.02);}else{phase='title';beep(440,0.06);}
   }else if(phase==='over'){
-   startAtStage(currentWorld,currentSubStage);
+   if(gameOverMenuIndex===0){
+    if(isTimeAttack){
+     isTimeAttack=true;startAtStage(1,1);
+    }else{
+     startAtStage(currentWorld,currentSubStage);
+    }
+   }else{
+    returnToTitle();
+   }
   }else if(phase==='gameComplete'){
-   isMapMode=false;reset();phase='play';playStartFanfare(true);
+   isMapMode=false;isTimeAttack=false;reset();phase='play';playStartFanfare(true);
   }else if(phase==='play'){phase='pause';pauseBGM();
   }else if(phase==='pause'){phase='play';lastT=0;resumeBGM();
   }else if(phase==='stageClear'){stageTransitionTimer=0;
   }
  }else if(b==='B'){
-  if(phase==='pause'){phase='play';lastT=0;resumeBGM();}
+  if(phase==='over'){returnToTitle();}
+  else if(phase==='pause'){phase='play';lastT=0;resumeBGM();}
   else if(phase==='play'){phase='pause';pauseBGM();}
   else if(phase==='settings'){if(wasInGame){wasInGame=false;phase='play';resumeBGM();beep(660,0.04);}else{phase='title';beep(440,0.06);}}
   else if(phase==='howToPlay'||phase==='mapSelect'){phase='title';beep(440,0.06);}
@@ -1115,6 +1142,7 @@ function triggerSnakeExplosion(c,hitPoint){
   debris.push({x:hitPoint.x,y:hitPoint.y,vx:Math.cos(a2)*sp2,vy:Math.sin(a2)*sp2,size:2+((Math.random()*4)|0),color:Math.random()<0.5?7:0,life:850});}}
 
 function finishExplosionDeath(){
+ gameOverMenuIndex=0;
  phase='over';gamesPlayed++;try{localStorage.setItem('gutsy2:games',String(gamesPlayed));}catch(e){}
  var sc=score();if(sc>best){best=sc;try{localStorage.setItem('gutsy2:best',String(best));}catch(e){}}
  recordRun(false);
@@ -1123,6 +1151,7 @@ function finishExplosionDeath(){
 function die(c){
  if(c==='BOMB'||c==='HAZARD'){triggerSnakeExplosion(c,pts[0]||{x:W/2,y:H/2});return;}
  stopBGM();
+ gameOverMenuIndex=0;
  phase='over';cause=c;
  gamesPlayed++;try{localStorage.setItem('gutsy2:games',String(gamesPlayed));}catch(e){}
  var sc=score();if(sc>best){best=sc;try{localStorage.setItem('gutsy2:best',String(best));}catch(e){}}
@@ -1139,7 +1168,7 @@ function hungerCountdownSeconds(){return Math.max(0,Math.ceil((6000-sinceEat)/10
 function iv(){
  var worldBonus=(currentWorld-1)*1.5;
  var base=Math.max(10,20+DIFF[difficulty].speedOff-worldBonus-tGame/7000);
- var fullness=Math.min(1,gut()/gutMax());
+ var fullness=isTimeAttack?0:Math.min(1,gut()/gutMax());
  var weightPenalty=1+fullness*0.95;
  return Math.max(4,base*weightPenalty*skateMultiplier);}
 
@@ -1159,14 +1188,16 @@ function upd(dt){
  var sample=samp();
  spawnTick(dt,sample,obstacles);replenish(sample,obstacles);
 
- if(sinceEat>6000){hungAcc+=dt;
+ if(isTimeAttack&&tGame>=timeAttackDuration){die('TIMEUP');return;}
+ if(!isTimeAttack&&sinceEat>6000){hungAcc+=dt;
   if(hungAcc>2000){hungAcc=0;tgt-=1;if(tgt<MIN_LEN){die('EMPTY');return;}}}
 
  // 動態加快 BGM 節奏（越生存越緊張，挨餓時更急促！）
  var baseRate=1.0+Math.min(0.35,tGame/40000.0);
  var skateBonus=(1.0-skateMultiplier)*0.25;
- var hungerBonus=(hungerCountdownSeconds()<=2)?0.15:0.0;
- setBGMRate(baseRate+skateBonus+hungerBonus);
+ var hungerBonus=(!isTimeAttack&&hungerCountdownSeconds()<=2)?0.15:0.0;
+ var timeAttackBonus=(isTimeAttack&&(timeAttackDuration-tGame)<=60000)?0.20:0.0;
+ setBGMRate(baseRate+skateBonus+hungerBonus+timeAttackBonus);
 
  for(var k=0;k<obstacles.length;k++){
   if(obstacles[k].warningTimer>0){obstacles[k].warningTimer-=dt;
@@ -1224,8 +1255,8 @@ function step(){
    addLump(f.s);foods.splice(fi,1);eaten++;stageFoodCount++;sinceEat=0;hungAcc=0;
    var gained=f.s<5?10:(f.s<7?25:(f.s<9?50:100));
    scoreBonus+=gained;pop(cxx,cyy,'+'+gained);beep(520+f.s*40,0.06);
-   if(gut()>gutMax()&&!invinc){die('BURST');return;}
-   if(stageFoodCount>=stageFoodTarget){triggerStageClear();return;}
+   if(gut()>gutMax()&&!invinc&&!isTimeAttack){die('BURST');return;}
+   if(!isTimeAttack&&stageFoodCount>=stageFoodTarget){triggerStageClear();return;}
    replenish(s,obstacles);}}
 
  for(var pi=powerUps.length-1;pi>=0;pi--){
@@ -1413,15 +1444,34 @@ function drawHud(){
  }else{
   px(0,0,W,HUD,K(7));px(0,HUD-2,W,1,K(6));px(0,HUD-1,W,1,K(5));
  }
- var sec=Math.floor(tGame/1000),mm=('0'+Math.floor(sec/60)).slice(-2),ss=('0'+(sec%60)).slice(-2);
- txt('TIME '+mm+':'+ss,2,2,isGBA()?'#f8fafc':K(0));
- var prog=currentWorld+'-'+currentSubStage+' '+stageFoodCount+'/'+stageFoodTarget;
+ var timeStr,timeColor;
+ if(isTimeAttack){
+  var remSec=Math.max(0,Math.ceil((timeAttackDuration-tGame)/1000));
+  var mm=('0'+Math.floor(remSec/60)).slice(-2),ss=('0'+(remSec%60)).slice(-2);
+  timeStr='TIME '+mm+':'+ss;
+  var isUrgent=remSec<=30&&((((tGame/250)|0)%2)===0);
+  if(isGBA()){
+   timeColor=isUrgent?'#ef4444':(remSec<=60?'#fbbf24':'#f8fafc');
+  }else{
+   timeColor=isUrgent?K(0):(remSec<=60?K(2):K(0));
+  }
+ }else{
+  var sec=Math.floor(tGame/1000),mm=('0'+Math.floor(sec/60)).slice(-2),ss=('0'+(sec%60)).slice(-2);
+  timeStr='TIME '+mm+':'+ss;
+  timeColor=isGBA()?'#f8fafc':K(0);
+ }
+ txt(timeStr,2,2,timeColor);
+
+ var prog=isTimeAttack?'TIME ATTACK':(currentWorld+'-'+currentSubStage+' '+stageFoodCount+'/'+stageFoodTarget);
  txt(prog,((W-tw(prog))/2)|0,2,isGBA()?'#fbbf24':K(2));
  txt('LEN '+('00'+Math.max(0,Math.round(tgt))).slice(-3),W-2-tw('LEN 000'),2,isGBA()?'#4ade80':K(0));
  txt('MAX '+('00'+Math.round(maxLen)).slice(-3),2,8,isGBA()?'#facc15':K(2));
+
  var isWide=(W>=200);
- var hungerX=isWide?42:32;
- if(sinceEat>6000){
+ var hungerX=isWide?40:30;
+ if(isTimeAttack){
+  txt('HNG ∞',hungerX,8,isGBA()?'#38bdf8':K(4));
+ }else if(sinceEat>6000){
   if((((tGame/180)|0)%2)===0)txt('!STARVE!',hungerX,8,isGBA()?'#ef4444':K(0));
  }else{
   var hs=hungerCountdownSeconds();
@@ -1433,48 +1483,56 @@ function drawHud(){
   }
   txt('HNG '+hs+'S',hungerX,8,ci);
  }
+
  var scoreLabel=isWide?'SCORE ':'SC ';
  var scoreStr=scoreLabel+score();
- var scoreX=isWide?82:62;
+ var scoreX=isWide?76:58;
  txt(scoreStr,scoreX,8,isGBA()?'#38bdf8':K(0));
  if(isWide){
-  var buffX=scoreX+tw(scoreStr)+8;
+  var buffX=scoreX+tw(scoreStr)+6;
   if(invincibleRemaining>0)txt('INV '+Math.ceil(invincibleRemaining/1000)+'S',buffX,8,isGBA()?'#67e8f9':K(0));
   else if(skateMultiplier<0.95)txt('FAST',buffX,8,isGBA()?'#fde047':K(2));}
- var barW=isWide?42:26;
- var gutLabelX=W-2-tw('GUT')-barW-2;
- txt('GUT',gutLabelX,8,isGBA()?'#fbbf24':K(2));
- var bx0=W-2-barW,g=Math.min(1,gut()/gutMax()),fw=Math.round(barW*g);
- px(bx0,8,barW,5,isGBA()?'#1e293b':K(6));
- for(var i=0;i<fw;i++){
-  var t=i/barW;
-  var fc;
-  if(isGBA()){
-   fc=(t<0.35)?'#22c55e':((t<0.7)?'#eab308':'#f97316');
-  }else{
-   fc=K(t<0.35?4:(t<0.7?2:0));
+
+ if(isTimeAttack){
+  var gutStr='GUT ∞';
+  var gutX=W-2-tw(gutStr);
+  txt(gutStr,gutX,8,isGBA()?'#38bdf8':K(4));
+ }else{
+  var barW=isWide?42:26;
+  var gutLabelX=W-2-tw('GUT')-barW-2;
+  txt('GUT',gutLabelX,8,isGBA()?'#fbbf24':K(2));
+  var bx0=W-2-barW,g=Math.min(1,gut()/gutMax()),fw=Math.round(barW*g);
+  px(bx0,8,barW,5,isGBA()?'#1e293b':K(6));
+  for(var i=0;i<fw;i++){
+   var t=i/barW;
+   var fc;
+   if(isGBA()){
+    fc=(t<0.35)?'#22c55e':((t<0.7)?'#eab308':'#f97316');
+   }else{
+    fc=K(t<0.35?4:(t<0.7?2:0));
+   }
+   px(bx0+i,8,1,5,fc);
   }
-  px(bx0+i,8,1,5,fc);
- }
   if(g>0.8&&(((tGame/200)|0)%2)===0)px(bx0,8,barW,5,isGBA()?'#ef4444':K(0));
+ }
 }
 
 function drawTitle(){
  px(0,0,W,H,isGBA()?'#090d16':K(7));
  for(var g=0;g<6;g++)px(0,H-12+g*2,W,2,isGBA()?'#1e293b':K(6-g));
- ctxt('GUTSY',14,isGBA()?'#15803d':K(6),3);ctxt('GUTSY',13,isGBA()?'#4ade80':K(0),3);
- ctxt('EAT BIG. REGRET SLOWLY.',34,isGBA()?'#facc15':K(3),1);
- var panelY=40,panelH=118;panel(panelY,panelH);
+ ctxt('GUTSY',11,isGBA()?'#15803d':K(6),3);ctxt('GUTSY',10,isGBA()?'#4ade80':K(0),3);
+ ctxt('EAT BIG. REGRET SLOWLY.',28,isGBA()?'#facc15':K(3),1);
+ var panelY=34,panelH=126;panel(panelY,panelH);
  var itemStartX=24;
  for(var i=0;i<TITLE_ITEMS.length;i++){
   var item=TITLE_ITEMS[i],label=(typeof item.label==='function')?item.label():item.label;
-  var itemY=panelY+10+i*18,sel=(i===titleMenuIndex);
-  if(sel){px(itemStartX-5,itemY-3,W-(itemStartX-5)*2,14,isGBA()?'#1e293b':K(7));txt('>',itemStartX-1,itemY,isGBA()?'#38bdf8':K(0),2);txt(label,itemStartX+12,itemY,isGBA()?'#38bdf8':K(0),2);}
+  var itemY=panelY+7+i*16,sel=(i===titleMenuIndex);
+  if(sel){px(itemStartX-5,itemY-2,W-(itemStartX-5)*2,13,isGBA()?'#1e293b':K(7));txt('>',itemStartX-1,itemY,isGBA()?'#38bdf8':K(0),2);txt(label,itemStartX+12,itemY,isGBA()?'#38bdf8':K(0),2);}
   else txt(label,itemStartX+12,itemY,isGBA()?'#94a3b8':K(6),2);}
- ctxt('UP DOWN: CHOOSE   A: SELECT',panelY+panelH-12,isGBA()?'#64748b':K(5),1);
- if(best>0)ctxt('BEST '+best+'   GAMES '+gamesPlayed,170,isGBA()?'#facc15':K(2),1);
- ctxt('DOT MATRIX - GUT SYSTEM',184,isGBA()?'#38bdf8':K(4),1);
- ctxt('SELECT: PALETTE   START: PLAY',198,isGBA()?'#a3e635':K(5),1);}
+ ctxt('▲▼: CHOOSE   A: SELECT',panelY+panelH-11,isGBA()?'#64748b':K(5),1);
+ if(best>0)ctxt('BEST '+best+'   GAMES '+gamesPlayed,168,isGBA()?'#facc15':K(2),1);
+ ctxt('DOT MATRIX - GUT SYSTEM',182,isGBA()?'#38bdf8':K(4),1);
+ ctxt('SELECT: PALETTE   START: PLAY',196,isGBA()?'#a3e635':K(5),1);}
 
 function drawMapSelect(){
  px(0,0,W,H,isGBA()?'#090d16':K(7));
@@ -1555,20 +1613,29 @@ function drawHowToPlay(){
  ctxt(howToPlayPage<TOTAL_HOWTOPLAY_PAGES-1?'RIGHT: NEXT PAGE':'RIGHT: BACK TO TITLE',186,isGBA()?'#a3e635':K(5),1);}
 
 function drawGameOver(){
- var isWide=W>=200,panelH=isWide?86:68,panelY=((H-panelH)/2)|0;panel(panelY,panelH);
- var dy=panelY-40;
- ctxt('GAME OVER',46+dy,isGBA()?'#ef4444':K(7),isWide?2:1);
- var msg={WALL:'HIT THE WALL',BITE:'BIT YOURSELF',BURST:'GUT EXPLODED!',EMPTY:'TOO EMPTY',BOMB:'BLOWN TO PIECES!',HAZARD:'CRASHED INTO HAZARD!'}[cause]||'';
- ctxt(msg,60+dy,isGBA()?'#f87171':K(5),1);
- var labelX=30,valMargin=34;
+ var isWide=W>=200,panelH=isWide?96:84,panelY=((H-panelH)/2)|0;panel(panelY,panelH);
+ var titleText=(cause==='TIMEUP')?'TIME\'S UP!':'GAME OVER';
+ ctxt(titleText,panelY+6,isGBA()?'#ef4444':K(7),isWide?2:1);
+ var msg={WALL:'HIT THE WALL',BITE:'BIT YOURSELF',BURST:'GUT EXPLODED!',EMPTY:'TOO EMPTY',BOMB:'BLOWN TO PIECES!',HAZARD:'CRASHED INTO HAZARD!',TIMEUP:'5-MIN TIME\'S UP!'}[cause]||'';
+ ctxt(msg,panelY+16,isGBA()?'#f87171':K(5),1);
+ var labelX=isWide?30:14,valMargin=isWide?34:16;
  function val(s,y,c){txt(s,W-valMargin-tw(s),y,c);}
- txt('STAGE',labelX,72+dy,isGBA()?'#94a3b8':K(6));val(currentWorld+'-'+currentSubStage,72+dy,isGBA()?'#f8fafc':K(7));
- txt('MAX LEN',labelX,82+dy,isGBA()?'#94a3b8':K(6));val(Math.round(maxLen)+'PX',82+dy,isGBA()?'#4ade80':K(7));
- txt('TIME',labelX,92+dy,isGBA()?'#94a3b8':K(6));val(Math.floor(tGame/1000)+'S',92+dy,isGBA()?'#38bdf8':K(7));
- txt('ATE',labelX,102+dy,isGBA()?'#94a3b8':K(6));val(String(eaten),102+dy,isGBA()?'#facc15':K(7));
- px(labelX,109+dy,W-labelX*2,1,isGBA()?'#334155':K(4));
- txt('SCORE',labelX,113+dy,isGBA()?'#94a3b8':K(6));val(String(score()),113+dy,isGBA()?'#38bdf8':K(7));
- if((((Date.now()/450)|0)%2)===0)ctxt('A TO RETRY THIS STAGE',panelY+panelH-8,isGBA()?'#facc15':K(0),1);}
+ var stageStr=isTimeAttack?'5-MIN RUSH':(currentWorld+'-'+currentSubStage);
+ txt('STAGE',labelX,panelY+26,isGBA()?'#94a3b8':K(6));val(stageStr,panelY+26,isGBA()?'#f8fafc':K(7));
+ txt('MAX LEN',labelX,panelY+35,isGBA()?'#94a3b8':K(6));val(Math.round(maxLen)+'PX',panelY+35,isGBA()?'#4ade80':K(7));
+ txt('SCORE',labelX,panelY+44,isGBA()?'#94a3b8':K(6));val(String(score()),panelY+44,isGBA()?'#38bdf8':K(7));
+ px(labelX,panelY+53,W-labelX*2,1,isGBA()?'#334155':K(4));
+ var retryText=isTimeAttack?'RETRY TIME ATTACK':'RETRY STAGE';
+ var menuItems=[retryText,'RETURN TO TITLE'];
+ for(var idx=0;idx<menuItems.length;idx++){
+  var my=panelY+57+idx*11;
+  var isSel=(gameOverMenuIndex===idx);
+  var col=isSel?(isGBA()?'#4ade80':K(0)):(isGBA()?'#94a3b8':K(4));
+  var str=(isSel?'> ':'  ')+menuItems[idx];
+  txt(str,Math.round((W-tw(str))/2),my,col,1);
+ }
+ ctxt('▲▼: CHOOSE   A: OK   B: TITLE',panelY+panelH-8,isGBA()?'#64748b':K(2),1);
+}
 
 function drawStageClear(){
  var isWide=W>=200,panelH=isWide?70:56,panelY=((H-panelH)/2)|0;panel(panelY,panelH);

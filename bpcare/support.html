@@ -8,6 +8,10 @@
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="apple-touch-icon" href="assets/app-icon.png">
   <link rel="stylesheet" href="style.css">
+  <style>
+    .lang-switch { margin: -6px 0 22px; font-weight: 700; }
+    .en-section { margin-top: 44px; padding-top: 30px; border-top: 1px solid var(--border); scroll-margin-top: 90px; }
+  </style>
 </head>
 <body>
   <header>
@@ -25,27 +29,73 @@
       <span class="tag">SUPPORT</span>
       <h1>使用支援與常見問題</h1>
       <p class="lead">有任何問題或建議,歡迎來信 <a href="mailto:mkjohnny@gmail.com?subject=我的血壓 使用支援">mkjohnny@gmail.com</a>,我們會盡快回覆。</p>
+      <p class="lang-switch" lang="en"><a href="#en">English version ↓</a></p>
 
       <h2>提醒沒有響?</h2>
-      <p>請到 iPhone「設定 → 通知 → 我的血壓」確認已允許通知,並檢查專注模式是否擋住通知。吃藥提醒會像鬧鐘一樣每天重複;若很多天沒有打開 App,打開一次即可重新排好提醒。</p>
+      <p>若首頁出現紅色的「通知被關閉了」,按「去開啟通知」即可;或到 iPhone「設定 → 通知 → 我的血壓」確認已允許通知,並檢查專注模式、睡眠模式是否擋住通知。吃藥提醒會像鬧鐘一樣每天重複;若很多天沒有打開 App,打開一次即可重新排好提醒。</p>
+
+      <h2>拍血壓計讀不出數字或讀錯?</h2>
+      <p>請靠近一點讓血壓計螢幕佔滿白框、正面拍、避開燈光反射,並在量測結果還顯示時拍。看不清楚的欄位會留空,請自己輸入;帶入的數字也請對照血壓計確認。此功能需要支援 Apple Intelligence 的 iPhone(iOS 27 以上)並已開啟,不支援的手機不會出現這個按鈕。</p>
+
+      <h2>什麼是「722 居家量測」?</h2>
+      <p>台灣高血壓學會建議:連續 7 天、每天早晚 2 回、每回量 2 次(間隔 1 分鐘),取平均最能代表平常的血壓。到「血壓」頁按「開始 7 天量測」,App 會顯示進度、提醒量第 2 次,7 天後算好平均並可產生回診報告。</p>
+
+      <h2>血壓計沒有顯示心率可以嗎?按錯「已服用」怎麼辦?</h2>
+      <p>心率可以不填,會記為「未記錄」,不影響平均與判讀。按錯「已服用」,在首頁或「用藥」頁再點一次同一列就會取消。</p>
 
       <h2>Apple Watch 沒有資料?</h2>
       <p>請先在 iPhone 打開「我的血壓」一次,手錶就會收到最新的用藥與回診資料。手錶上記錄的血壓會在 iPhone 在附近時自動送回。</p>
 
       <h2>慢箋第 2、3 次什麼時候可以領?</h2>
-      <p>依健保規定,需在前一次藥物用完前 10 天內持健保卡與處方箋領取。在「回診領藥 → 慢箋領藥」輸入第一次領藥日,App 會自動算出可領期間並提前提醒;領完後按「已領藥」記錄實際日期即可。</p>
+      <p>依健保規定,第 2 次起須在上次給藥期間屆滿前 10 日內領取(屆滿當日不算)。例如 6/1 領 30 天份,6/30 吃完,6/20 起可以領第 2 次;晚領仍可在處方箋有效期間內領,但之後的時程會往後延。在「回診領藥 → 慢箋領藥」輸入第一次領藥日,App 會自動算出可領日並提醒;領完後按「已領藥」記錄實際日期即可。春節等連假健保署可能另外公告提早領藥。</p>
 
       <h2>怎麼產生給醫師看的報告?</h2>
       <p>到「血壓」頁,按左上角的匯出按鈕,選「回診用 PDF 報告」,可依 7、30、90 天或全部紀錄產生,預覽後可列印或分享。姓名可在「設定 → 回診報告上的姓名」填寫。</p>
 
-      <h2>把血壓寫入「健康」App</h2>
-      <p>到「設定 → 寫入 Apple 健康」開啟並允許血壓、心率。若曾經拒絕,請到「健康」App → 右上角頭像 →「App」→「我的血壓」重新開啟。</p>
+      <h2>Apple「健康」App 寫入與讀入</h2>
+      <p>到「設定 → 健康資料」:「寫入 Apple 健康」會把血壓與心率同步到「健康」App;「從 Apple 健康讀入」會把藍牙血壓計 App(例如 OMRON connect)寫進「健康」的血壓帶進來,不用再手動輸入。若曾經拒絕授權,請到「健康」App → 右上角頭像 →「App」→「我的血壓」重新開啟血壓與心率。</p>
 
       <h2>移除廣告與恢復購買</h2>
       <p>「永久移除廣告」為一次性買斷,不是訂閱。換機或重新安裝後,請到「設定 → 廣告 → 恢復購買」,使用同一個 Apple 帳號即可恢復。</p>
 
       <h2>換手機時資料會不見嗎?</h2>
-      <p>資料存在 iPhone 上,使用 iCloud 或電腦完整備份還原到新手機即可保留。建議定期到「設定 → 匯出全部血壓紀錄(CSV)」另外保存一份。</p>
+      <p>資料存在 iPhone 上,使用 iCloud 備份或電腦完整備份還原到新手機即可保留。也可以到「設定 → 備份與還原」按「匯出備份檔」,存到「檔案」App 或用 Email 傳給自己;新手機安裝後在設定精靈第一頁按「我有備份檔,要還原資料」即可。還原是合併,不會刪除或重複任何紀錄。</p>
+    
+      <section class="en-section" id="en" lang="en">
+        <span class="tag">ENGLISH</span>
+        <h1>Support &amp; FAQ</h1>
+        <p class="lead">If you have any questions or suggestions, email <a href="mailto:mkjohnny@gmail.com?subject=BPCare support">mkjohnny@gmail.com</a> and we will reply as soon as possible. The App's interface is in Traditional Chinese; English names of buttons are given in parentheses.</p>
+
+        <h2>Reminders not ringing?</h2>
+        <p>If the Home screen shows a red 通知被關閉了 (Notifications are off) banner, tap 去開啟通知 (Turn on notifications). Or go to iPhone Settings → Notifications → 我的血壓 and make sure notifications are allowed, and check that a Focus or Sleep mode is not silencing them. Medication reminders repeat every day like an alarm; if you haven't opened the App for many days, open it once to reschedule the reminders.</p>
+
+        <h2>Scanning the blood pressure monitor doesn't read the numbers, or reads them wrong?</h2>
+        <p>Move closer so the monitor's display fills the white frame, shoot straight on, avoid light reflections, and take the photo while the result is still displayed. Any field that can't be read is left blank for you to enter; please check the filled-in numbers against the monitor. This feature requires an iPhone that supports Apple Intelligence (iOS 27 or later) with Apple Intelligence turned on; on other iPhones the button does not appear.</p>
+
+        <h2>What is "722 home monitoring"?</h2>
+        <p>Recommended by the Taiwan Hypertension Society: for 7 consecutive days, measure twice a day (morning and evening), 2 readings each time, 1 minute apart. The average best reflects your usual blood pressure. On the 血壓 (Blood Pressure) tab, tap 開始 7 天量測 (Start 7-day monitoring); the App shows your progress, reminds you to take the second reading, and after 7 days calculates the averages and can create a visit report.</p>
+
+        <h2>My monitor doesn't show heart rate? Tapped "Taken" by mistake?</h2>
+        <p>Heart rate is optional; it is recorded as 未記錄 (not recorded) and does not affect averages or classification. If you tapped 已服用 (Taken) by mistake, tap the same row again on the Home or 用藥 (Medication) tab to undo it.</p>
+
+        <h2>No data on Apple Watch?</h2>
+        <p>Open 我的血壓 on your iPhone once and the watch will receive the latest medication and appointment data. Blood pressure recorded on the watch is sent back automatically when your iPhone is nearby.</p>
+
+        <h2>When can I pick up the 2nd and 3rd refills of a chronic prescription?</h2>
+        <p>Under National Health Insurance rules, the 2nd and later refills must be picked up within 10 days before the previous supply runs out (the last day is not counted). For example, if you picked up a 30-day supply on 6/1 that runs out on 6/30, you can pick up the 2nd refill from 6/20. You can still pick it up later while the prescription is valid, but the following schedule shifts later. In 回診領藥 → 慢箋領藥 (Visits &amp; Refills → Chronic refills), enter the first pickup date; the App calculates the pickup dates and reminds you. After picking up, tap 已領藥 (Picked up) to record the actual date. For long holidays such as Lunar New Year, the NHI Administration may announce early pickups.</p>
+
+        <h2>How do I create a report for my doctor?</h2>
+        <p>On the 血壓 (Blood Pressure) tab, tap the export button at the top left and choose 回診用 PDF 報告 (PDF visit report). You can create it for 7, 30 or 90 days or all records, then preview, print or share it. Your name can be set in Settings → 回診報告上的姓名 (Name on visit report).</p>
+
+        <h2>Writing to and reading from Apple Health</h2>
+        <p>Go to Settings → 健康資料 (Health data): 寫入 Apple 健康 (Write to Apple Health) syncs blood pressure and heart rate to the Health app; 從 Apple 健康讀入 (Read from Apple Health) brings in blood pressure written to Health by a Bluetooth monitor's app (for example OMRON connect), so you don't have to type it. If you previously denied permission, open the Health app → your profile picture at the top right → Apps → 我的血壓, and turn blood pressure and heart rate back on.</p>
+
+        <h2>Remove ads and restore purchases</h2>
+        <p>永久移除廣告 (Remove Ads Permanently) is a one-time purchase, not a subscription, found in Settings → 廣告 (Ads). After changing phones or reinstalling, go to Settings → 廣告 (Ads) → 恢復購買 (Restore Purchases) and use the same Apple Account to restore it.</p>
+
+        <h2>Will I lose my data when I change phones?</h2>
+        <p>Your data is stored on your iPhone and is kept when you restore an iCloud backup or a full computer backup to your new phone. You can also go to Settings → 備份與還原 (Backup &amp; Restore), tap 匯出備份檔 (Export backup file), and save it to the Files app or email it to yourself; on the new phone, tap 我有備份檔,要還原資料 (I have a backup file) on the first page of the setup wizard. Restoring merges records and never deletes or duplicates any.</p>
+      </section>
     </article>
   </main>
   <footer>

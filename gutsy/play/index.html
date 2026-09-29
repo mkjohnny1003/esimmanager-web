@@ -564,9 +564,23 @@ var POWERUP_WEIGHT={poison:25,skates:25,bomb:25,diamond:15,enzyme:10};
 var ITEM_GLYPH={
   poison:['....#####....','....#+++#....','.....###.....','...#######...','..##+++++##..','.##++#+#++##.','.#++#####++#.','.#+++###+++#.','.#++#+#+#++#.','.##+++++++##.','..##+++++##..','...#######...','.............'],
   skates:['......#####..','...####+++##.','..#++#+++++#.','.#+++#+++++#.','##+++#######.','##++#++++++#.','.#++#++++++#.','.############','.#++++++++++#','..#++++++++#.','...########..','....##..##...','.............'],
-  bomb:['......+......','......#+.....','.....###.....','....#####....','...##...##...','..##.###.##..','.##.##.##.##.','.##.##.##.##.','.##..###..##.','..##.....##..','...#######...','....#####....','.............'],
-  diamond:['....#####....','..#########..','.###########.','#############','##+###+###+##','.#+++++++++#.','..#+++++++#..','...#+++++#...','....#+++#....','.....#+#.....','......#......','.............','.............'],
-  enzyme:['....#####....','....#+++#....','....#####....','.....#+#.....','....##+##....','...##+++##...','..##+++++##..','.##++#+#++##.','.#++#####++#.','.#+++#+#+++#.','.#+++++++++#.','..#########..','.............'],
+  bomb:[
+    '........*....',
+    '.......*+*...',
+    '......~~.....',
+    '....#CCC#....',
+    '...#######...',
+    '..##WWwFF##..',
+    '.##WwFFFFFF#.',
+    '.#FFFFFFFFF#.',
+    '.#FFFFFFFFF#.',
+    '..#FFFFFFF#..',
+    '...#FFFFF#...',
+    '....#####....',
+    '....sssss....'
+  ],
+  diamond:['....#####....','..#########..','.###########.','#############','##+###+###+##','.#+++++++++#.','..#+++++++#..','...#+++++#...','....#+++#....','.....#+#.....','......#......','....sssss....','.............'],
+  enzyme:['....#####....','....#+++#....','....#####....','.....#+#.....','....##+##....','...##+++##...','..##+++++##..','.##++#+#++##.','.#++#####++#.','.#+++#+#+++#.','.#+++++++++#.','..#########..','....sssss....'],
 };
 
 /* ---------- 3x5 點陣字 ---------- */
@@ -584,30 +598,55 @@ function drawGlyph(glyph,x,y){for(var r=0;r<glyph.length;r++)for(var c=0;c<glyph
   if(ch==='#')px(x+c,y+r,1,1,K(6));else if(ch==='+')px(x+c,y+r,1,1,K(3));}}
 function drawItemGlyph(type,x,y){
  var glyph=ITEM_GLYPH[type];
- if(!isGBA()){drawGlyph(glyph,x,y);return;}
- var conf={
-   poison:{aura:'#2e1065',out:'#581c87',fill:'#e879f9',cork:'#b45309'},
-   skates:{aura:'#075985',out:'#0284c7',fill:'#38bdf8',wing:'#ffffff',blade:'#e2e8f0'},
-   bomb:{aura:'#1f2937',out:'#111827',fill:'#4b5563',fuse:'#f59e0b',spark:'#ef4444'},
-   diamond:{aura:'#0369a1',out:'#0284c7',fill:'#38bdf8',spark:'#ffffff'},
-   enzyme:{aura:'#365314',out:'#4d7c0f',fill:'#84cc16',cork:'#b45309',bubble:'#fef08a'}
- }[type];
- px(x-1,y-1,15,15,conf.aura);
+ if(!isGBA()){
+  for(var r=0;r<glyph.length;r++){
+   for(var c=0;c<glyph[r].length;c++){
+    var ch=glyph[r][c];
+    if(ch==='.'||ch==='s')continue;
+    var col;
+    if(ch==='#'||ch==='F')col=K(6);
+    else if(ch==='W'||ch==='+')col=K(0);
+    else if(ch==='w'||ch==='*')col=K(1);
+    else if(ch==='C')col=K(4);
+    else if(ch==='~')col=K(3);
+    else col=K(3);
+    px(x+c,y+r,1,1,col);
+   }
+  }
+  return;
+ }
+
+ var shadowCol='rgba(15,23,42,0.22)';
  for(var r=0;r<glyph.length;r++){
   for(var c=0;c<glyph[r].length;c++){
    var ch=glyph[r][c];
-   if(ch==='#'){
-    if((type==='poison'||type==='enzyme')&&r<=2)px(x+c,y+r,1,1,conf.cork);
-    else if(type==='bomb'&&r<=2)px(x+c,y+r,1,1,conf.fuse);
-    else if(type==='skates'&&r>=10)px(x+c,y+r,1,1,conf.blade);
-    else px(x+c,y+r,1,1,conf.out);
-   }else if(ch==='+'){
-    if((type==='poison'||type==='enzyme')&&r<=2)px(x+c,y+r,1,1,conf.cork);
-    else if(type==='bomb'&&r<=2)px(x+c,y+r,1,1,conf.spark);
-    else if(type==='diamond')px(x+c,y+r,1,1,conf.spark);
-    else if(type==='skates'&&(r<=6||r===8))px(x+c,y+r,1,1,conf.wing);
-    else if(type==='enzyme'&&r<=6)px(x+c,y+r,1,1,conf.bubble);
-    else px(x+c,y+r,1,1,conf.fill);
+   if(ch==='.')continue;
+   if(ch==='s'){px(x+c,y+r,1,1,shadowCol);continue;}
+
+   if(type==='bomb'){
+    var col;
+    var sparkFlicker=(((tGame/90)|0)%2===0);
+    if(ch==='#')col='#09090b';
+    else if(ch==='F')col='#1e293b';
+    else if(ch==='W')col='#ffffff';
+    else if(ch==='w')col='#94a3b8';
+    else if(ch==='C')col='#64748b';
+    else if(ch==='~')col='#d97706';
+    else if(ch==='+')col=sparkFlicker?'#fef08a':'#ffffff';
+    else if(ch==='*')col=sparkFlicker?'#ef4444':'#f97316';
+    px(x+c,y+r,1,1,col);
+   }else if(type==='poison'){
+    if(ch==='#')px(x+c,y+r,1,1,r<=2?'#b45309':'#581c87');
+    else if(ch==='+')px(x+c,y+r,1,1,(r===6||r===8)?'#ffffff':'#e879f9');
+   }else if(type==='skates'){
+    if(ch==='#')px(x+c,y+r,1,1,r>=10?'#e2e8f0':'#0284c7');
+    else if(ch==='+')px(x+c,y+r,1,1,(r<=6||r===8)?'#ffffff':'#38bdf8');
+   }else if(type==='diamond'){
+    if(ch==='#')px(x+c,y+r,1,1,'#0284c7');
+    else if(ch==='+')px(x+c,y+r,1,1,(r===4||r===10)?'#ffffff':'#38bdf8');
+   }else if(type==='enzyme'){
+    if(ch==='#')px(x+c,y+r,1,1,r<=2?'#b45309':'#4d7c0f');
+    else if(ch==='+')px(x+c,y+r,1,1,r<=5?'#fef08a':'#84cc16');
    }
   }
  }
@@ -1290,7 +1329,7 @@ function drawSettings(){
    if(!isAction){var vw=tw(row[1],1);txt(row[1],W-itemStartX-vw-4,itemY+2,isGBA()?'#facc15':K(0),1);}}
   else{txt(row[0],itemStartX+12,itemY+2,isGBA()?'#94a3b8':K(6),1);
    if(!isAction){var vw2=tw(row[1],1);txt(row[1],W-itemStartX-vw2-4,itemY+2,isGBA()?'#64748b':K(5),1);}}}
- var palDesc=(currentPalMode()==='GBA COLOR')?'GBA COLOR: 16-BIT RETRO VIBRANT PALETTE':(pal8?'8-SHADE: RICH ANALOG DEPTH':'4-DMG: ORIGINAL RETRO SCREEN');
+ var palDesc=(currentPalMode()==='GBA COLOR')?'GBA COLOR: 32-BIT VIBRANT PIXEL [3/3]':(pal8?'8-SHADE: 8-LEVEL ANALOG GREEN [1/3]':'4-DMG: 4-LEVEL ORIGINAL SCREEN [2/3]');
  var descs=['WEB VERSION HAS NO BGM',palDesc,'GUT '+DIFF[difficulty].gutMax+' - '+DIFF[difficulty].label+' RULES','ABANDON RUN & RETURN TO MAIN MENU','RESUME OR SAVE & RETURN'];
  ctxt(descs[settingMenuIndex]||'',panelY+panelH-12,isGBA()?'#38bdf8':K(4),1);
  ctxt('UP DOWN SELECT  LEFT RIGHT CHANGE',172,isGBA()?'#94a3b8':K(3),1);

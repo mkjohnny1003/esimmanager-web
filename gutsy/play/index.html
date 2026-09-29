@@ -17,14 +17,15 @@
   #gbwrap{width:min(94vw,820px);}
   #gbshell{width:100%;}
 
-  @media (min-width:900px){
-    #gbwrap{width:min(92vw,max(320px,calc(111dvh - 145px)),960px);}
+  @media (min-width:820px){
+    #play-container{flex-direction:row;align-items:flex-start;justify-content:center;gap:22px;}
+    #game-sidebar{width:320px;flex-shrink:0;order:1;position:sticky;top:16px;max-height:calc(100vh - 32px);overflow-y:auto;}
+    #game-main{order:2;flex:1;max-width:min(calc(100vw - 360px),860px);}
+    #gbwrap{width:100%;max-width:min(100%,calc(111dvh - 145px),820px);}
     #gbshell>div:not(:first-child){display:none!important;}
   }
-  @media (min-width:1080px){
-    #play-container{flex-direction:row;align-items:flex-start;justify-content:center;gap:26px;}
-    #game-sidebar{width:340px;flex-shrink:0;order:1;position:sticky;top:20px;max-height:calc(100vh - 40px);overflow-y:auto;}
-    #game-main{order:2;flex:1;max-width:min(calc(100vw - 390px),880px);}
+  @media (min-width:1200px){
+    #game-sidebar{width:345px;}
   }
 
   /* 側邊欄解說面板 / Sidebar Guide */

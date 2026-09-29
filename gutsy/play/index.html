@@ -682,6 +682,13 @@ var howToPlayPage=0,TOTAL_HOWTOPLAY_PAGES=3;
 var pops=[],toast=0,toastS='';
 var isMapMode=false,mapSelectWorld=1,mapSelectSubStage=1;
 var muted=false,lastT=0;
+var BGM_VOL_MULTS=[0.0,0.35,0.70,1.0];
+var BGM_VOL_LABELS=['OFF','35%','70%','100%'];
+var bgmVolumeIndex=3;
+try{
+ var savedBgm=localStorage.getItem('gutsy2:bgmVol');
+ if(savedBgm!==null)bgmVolumeIndex=Math.max(0,Math.min(3,parseInt(savedBgm,10)||3));
+}catch(e){}
 
 var TITLE_ITEMS=[
  {key:'start',label:'START GAME'},
@@ -790,12 +797,159 @@ function spawnRandomObstacle(world,snakeArr,obArr){
    obArr.push({x:x,y:y,w:w,h:h,kind:kind,warningTimer:1200,life:20000,cells:cells});return true;}}
  return false;}
 
-/* ---------- 音效 ---------- */
-function beep(f,d,v){if(muted)return;
- try{if(!window._ac)window._ac=new (window.AudioContext||window.webkitAudioContext)();
-  var a=window._ac,o=a.createOscillator(),g=a.createGain();
-  o.type='square';o.frequency.value=f;g.gain.value=v||0.035;
-  o.connect(g);g.connect(a.destination);o.start();o.stop(a.currentTime+d);}catch(e){}}
+/* ---------- 音訊引擎（對應 AudioEngine.swift） ---------- */
+var bgmAudio=null,isBgmPlayingRequested=false;
+
+function getAudioContext(){
+ try{
+  if(!window._ac)window._ac=new (window.AudioContext||window.webkitAudioContext)();
+  if(window._ac&&window._ac.state==='suspended')window._ac.resume();
+  return window._ac;
+ }catch(e){return null;}
+}
+
+function initBGM(){
+ if(bgmAudio)return bgmAudio;
+ try{
+  bgmAudio=new Audio();
+  bgmAudio.loop=true;
+  bgmAudio.preload='auto';
+  var canM4A=bgmAudio.canPlayType('audio/mp4; codecs="mp4a.40.2"')||bgmAudio.canPlayType('audio/aac');
+  bgmAudio.src=canM4A?'bgm_chiptune.m4a':'bgm_chiptune.wav';
+  updateBGMVolume();
+ }catch(e){}
+ return bgmAudio;
+}
+
+function updateBGMVolume(){
+ if(!bgmAudio)return;
+ var mult=BGM_VOL_MULTS[bgmVolumeIndex];
+ var baseVol=0.22;
+ bgmAudio.volume=baseVol*mult;
+ if(mult===0||muted){
+  bgmAudio.pause();
+ }else if(isBgmPlayingRequested&&bgmAudio.paused){
+  var p=bgmAudio.play();
+  if(p&&p.catch)p.catch(function(){});
+ }
+}
+
+function startBGM(){
+ isBgmPlayingRequested=true;
+ var audio=initBGM();
+ var mult=BGM_VOL_MULTS[bgmVolumeIndex];
+ if(!audio||muted||mult===0)return;
+ audio.playbackRate=1.0;
+ audio.currentTime=0;
+ var p=audio.play();
+ if(p&&p.catch)p.catch(function(){});
+}
+
+function stopBGM(){
+ isBgmPlayingRequested=false;
+ if(bgmAudio){
+  bgmAudio.pause();
+  try{bgmAudio.currentTime=0;}catch(e){}
+ }
+}
+
+function pauseBGM(){
+ if(bgmAudio)bgmAudio.pause();
+}
+
+function resumeBGM(){
+ var mult=BGM_VOL_MULTS[bgmVolumeIndex];
+ if(!muted&&mult>0&&isBgmPlayingRequested){
+  var audio=initBGM();
+  if(audio){
+   var p=audio.play();
+   if(p&&p.catch)p.catch(function(){});
+  }
+ }
+}
+
+function setBGMRate(rate){
+ if(!bgmAudio)return;
+ var clamped=Math.max(0.9,Math.min(1.65,rate));
+ if(Math.abs(bgmAudio.playbackRate-clamped)>0.02){
+  bgmAudio.playbackRate=clamped;
+ }
+}
+
+function beep(f,d,v){
+ if(muted)return;
+ try{
+  var a=getAudioContext();
+  if(!a)return;
+  var o=a.createOscillator(),g=a.createGain();
+  var vol=(v!==undefined)?v:0.035;
+  o.type='square';
+  o.frequency.setValueAtTime(f,a.currentTime);
+  g.gain.setValueAtTime(vol,a.currentTime);
+  var fadeTime=Math.min(0.015,d*0.2);
+  g.gain.setValueAtTime(vol,a.currentTime+d-fadeTime);
+  g.gain.linearRampToValueAtTime(0.0001,a.currentTime+d);
+  o.connect(g);
+  g.connect(a.destination);
+  o.start(a.currentTime);
+  o.stop(a.currentTime+d);
+ }catch(e){}
+}
+
+function playStartFanfare(thenStartBGM){
+ if(thenStartBGM===undefined)thenStartBGM=true;
+ if(muted){
+  if(thenStartBGM)startBGM();
+  return;
+ }
+ stopBGM();
+ beep(523,0.07,0.04);
+ setTimeout(function(){beep(659,0.07,0.04);},80);
+ setTimeout(function(){beep(784,0.11,0.045);},160);
+ if(thenStartBGM){
+  setTimeout(function(){startBGM();},270);
+ }
+}
+
+function playExplosion(){
+ if(muted)return;
+ try{
+  var a=getAudioContext();
+  if(!a)return;
+  var dur=0.42,sr=a.sampleRate;
+  var frameCount=Math.max(1,Math.floor(sr*dur));
+  var buffer=a.createBuffer(1,frameCount,sr);
+  var data=buffer.getChannelData(0);
+  var vol=0.055;
+  for(var i=0;i<frameCount;i++){
+   var t=i/sr;
+   var decay=Math.max(0,1.0-t/dur);
+   var noise=Math.random()*2-1;
+   var freq=Math.max(40,200-t*350);
+   var period=sr/freq;
+   var phase=(i%period)/period;
+   var rumble=phase<0.5?0.6:-0.6;
+   data[i]=(noise*0.7+rumble*0.3)*vol*decay*decay;
+  }
+  var src=a.createBufferSource();
+  src.buffer=buffer;
+  src.connect(a.destination);
+  src.start(a.currentTime);
+ }catch(e){}
+}
+
+function playGameOverJingle(){
+ if(muted)return;
+ beep(440,0.10,0.038);
+ setTimeout(function(){beep(392,0.10,0.038);},110);
+ setTimeout(function(){beep(349,0.12,0.038);},220);
+ setTimeout(function(){beep(293,0.26,0.042);},350);
+}
+
+function unlockAudio(){
+ getAudioContext();
+ initBGM();
+}
 
 /* ============================================================
    關卡載入 / 重置（對應 GameState.loadStage / reset）
@@ -827,11 +981,11 @@ function reset(){
  loadStage(1,1,false);
  replenish(samp(),obstacles);}
 
-function returnToTitle(){reset();phase='title';titleMenuIndex=0;hasSuspendedRun=false;}
+function returnToTitle(){stopBGM();reset();phase='title';titleMenuIndex=0;hasSuspendedRun=false;}
 
 function startAtStage(world,sub){
  reset();currentWorld=world;currentSubStage=sub;loadStage(world,sub,false);
- phase='play';beep(660,0.06);}
+ phase='play';playStartFanfare(true);}
 function startAtLastStage(){startAtStage(lastStageWorld,lastStageSubStage);}
 
 /* ============================================================
@@ -848,7 +1002,12 @@ function press(d){
   if(d==='U'||d==='D'){settingMenuIndex=(settingMenuIndex+(d==='D'?1:-1)+SETTING_ITEMS.length)%SETTING_ITEMS.length;beep(500,0.03,0.02);return;}
   if(d==='L'||d==='R'){
    var item=SETTING_ITEMS[settingMenuIndex],delta=(d==='R'?1:-1);
-   if(item==='palette'){var m=nextPalMode(delta);beep(isGBA()?1046:(palModeIndex===0?880:440),0.03,0.03);}
+   if(item==='bgm'){
+    bgmVolumeIndex=Math.max(0,Math.min(BGM_VOL_MULTS.length-1,bgmVolumeIndex+delta));
+    try{localStorage.setItem('gutsy2:bgmVol',String(bgmVolumeIndex));}catch(e){}
+    updateBGMVolume();
+    beep(520+bgmVolumeIndex*100,0.03,0.03);
+   }else if(item==='palette'){var m=nextPalMode(delta);beep(isGBA()?1046:(palModeIndex===0?880:440),0.03,0.03);}
    else if(item==='difficulty'){
     var idx=DIFF_ORDER.indexOf(difficulty),next=(idx+delta+DIFF_ORDER.length)%DIFF_ORDER.length;
     difficulty=DIFF_ORDER[next];try{localStorage.setItem('gutsy2:diff',difficulty);}catch(e){}
@@ -868,7 +1027,7 @@ function act(b){
  if(b==='A'||b==='STA'){
   if(phase==='title'){
    var item=TITLE_ITEMS[titleMenuIndex].key;
-   if(item==='start'){isMapMode=false;reset();phase='play';beep(660,0.08);}
+   if(item==='start'){isMapMode=false;reset();phase='play';playStartFanfare(true);}
    else if(item==='mapMode'){mapSelectWorld=currentWorld;mapSelectSubStage=currentSubStage;phase='mapSelect';beep(660,0.06);}
    else if(item==='continueStage'){
     if(hasSuspendedRun){hasSuspendedRun=false;phase='pause';beep(660,0.06);}
@@ -876,33 +1035,43 @@ function act(b){
    else if(item==='settings'){wasInGame=false;settingMenuIndex=0;phase='settings';beep(660,0.06);}
    else if(item==='howToPlay'){howToPlayPage=0;phase='howToPlay';beep(660,0.06);}
   }else if(phase==='mapSelect'){
-   isMapMode=true;startAtStage(mapSelectWorld,mapSelectSubStage);beep(660,0.08);
+   isMapMode=true;startAtStage(mapSelectWorld,mapSelectSubStage);
   }else if(phase==='settings'){
    var it=SETTING_ITEMS[settingMenuIndex];
    if(it==='bgm'||it==='palette'||it==='difficulty')press('R');
-   else if(it==='returnHome'){wasInGame=false;hasSuspendedRun=false;phase='title';beep(440,0.06);}
-   else if(it==='back'){if(wasInGame){wasInGame=false;phase='play';beep(660,0.04);}else{phase='title';beep(440,0.06);}}
+   else if(it==='returnHome'){wasInGame=false;hasSuspendedRun=false;stopBGM();phase='title';beep(440,0.06);}
+   else if(it==='back'){if(wasInGame){wasInGame=false;phase='play';resumeBGM();beep(660,0.04);}else{phase='title';beep(440,0.06);}}
   }else if(phase==='howToPlay'){
    if(howToPlayPage<TOTAL_HOWTOPLAY_PAGES-1){howToPlayPage++;beep(540,0.03,0.02);}else{phase='title';beep(440,0.06);}
   }else if(phase==='over'){
-   startAtStage(currentWorld,currentSubStage);beep(660,0.08);
+   startAtStage(currentWorld,currentSubStage);
   }else if(phase==='gameComplete'){
-   isMapMode=false;reset();phase='play';beep(660,0.08);
-  }else if(phase==='play'){phase='pause';
-  }else if(phase==='pause'){phase='play';lastT=0;
+   isMapMode=false;reset();phase='play';playStartFanfare(true);
+  }else if(phase==='play'){phase='pause';pauseBGM();
+  }else if(phase==='pause'){phase='play';lastT=0;resumeBGM();
   }else if(phase==='stageClear'){stageTransitionTimer=0;
   }
  }else if(b==='B'){
-  if(phase==='pause'){phase='play';lastT=0;}
-  else if(phase==='play'){phase='pause';}
-  else if(phase==='settings'){if(wasInGame){wasInGame=false;phase='play';beep(660,0.04);}else{phase='title';beep(440,0.06);}}
+  if(phase==='pause'){phase='play';lastT=0;resumeBGM();}
+  else if(phase==='play'){phase='pause';pauseBGM();}
+  else if(phase==='settings'){if(wasInGame){wasInGame=false;phase='play';resumeBGM();beep(660,0.04);}else{phase='title';beep(440,0.06);}}
   else if(phase==='howToPlay'||phase==='mapSelect'){phase='title';beep(440,0.06);}
  }else if(b==='SEL'){
-  if(phase==='play'||phase==='pause'){wasInGame=true;settingMenuIndex=0;phase='settings';beep(600,0.04);return;}
+  if(phase==='play'||phase==='pause'){wasInGame=true;settingMenuIndex=0;phase='settings';pauseBGM();beep(600,0.04);return;}
   if(phase==='title'){var m=nextPalMode(1);toastS=m;toast=1400;beep(isGBA()?1046:(palModeIndex===0?880:440),0.05);}
  }}
 
-function mute(){muted=!muted;document.getElementById('leddot').style.background=muted?'#6b3a35':'#d84a3a';}
+function mute(){
+ muted=!muted;
+ document.getElementById('leddot').style.background=muted?'#6b3a35':'#d84a3a';
+ toastS=muted?'AUDIO: MUTED':'AUDIO: ACTIVE';toast=1400;
+ if(muted){
+  pauseBGM();
+ }else{
+  beep(660,0.05,0.04);
+  resumeBGM();
+ }
+}
 
 /* ============================================================
    道具效果（對應 GameState.applyPowerUp）
@@ -928,12 +1097,15 @@ function applyPowerUp(type,pos){
  }}
 
 function triggerStageClear(){
+ pauseBGM();
  phase='stageClear';stageTransitionTimer=1600;flash=300;beep(523,0.08);
  setTimeout(function(){beep(659,0.08);},90);setTimeout(function(){beep(784,0.08);},180);setTimeout(function(){beep(1046,0.15);},270);}
 
 /* ---------- 蛇身炸裂特效（對應 GameState.triggerSnakeExplosion） ---------- */
 function triggerSnakeExplosion(c,hitPoint){
- phase='exploding';cause=c;explosionTimer=850;flash=420;beep(140,0.3,0.05);
+ stopBGM();
+ playExplosion();
+ phase='exploding';cause=c;explosionTimer=850;flash=420;
  var samples=samp();debris=[];
  for(var i=0;i<samples.length;i++){var p=samples[i];
   var angle=Math.random()*Math.PI*2,speed=0.05+Math.random()*0.13;
@@ -946,15 +1118,16 @@ function finishExplosionDeath(){
  phase='over';gamesPlayed++;try{localStorage.setItem('gutsy2:games',String(gamesPlayed));}catch(e){}
  var sc=score();if(sc>best){best=sc;try{localStorage.setItem('gutsy2:best',String(best));}catch(e){}}
  recordRun(false);
- beep(180,0.12);setTimeout(function(){beep(120,0.25);},130);}
+ playGameOverJingle();}
 
 function die(c){
  if(c==='BOMB'||c==='HAZARD'){triggerSnakeExplosion(c,pts[0]||{x:W/2,y:H/2});return;}
+ stopBGM();
  phase='over';cause=c;
  gamesPlayed++;try{localStorage.setItem('gutsy2:games',String(gamesPlayed));}catch(e){}
  var sc=score();if(sc>best){best=sc;try{localStorage.setItem('gutsy2:best',String(best));}catch(e){}}
  recordRun(false);
- beep(180,0.12);setTimeout(function(){beep(120,0.25);},130);}
+ playGameOverJingle();}
 
 function score(){return scoreBonus+maxLen*5+Math.floor(tGame/1000)*2;}
 function pop(x,y,s){pops.push({x:x,y:y,s:s,t:900});}
@@ -988,6 +1161,12 @@ function upd(dt){
 
  if(sinceEat>6000){hungAcc+=dt;
   if(hungAcc>2000){hungAcc=0;tgt-=1;if(tgt<MIN_LEN){die('EMPTY');return;}}}
+
+ // 動態加快 BGM 節奏（越生存越緊張，挨餓時更急促！）
+ var baseRate=1.0+Math.min(0.35,tGame/40000.0);
+ var skateBonus=(1.0-skateMultiplier)*0.25;
+ var hungerBonus=(hungerCountdownSeconds()<=2)?0.15:0.0;
+ setBGMRate(baseRate+skateBonus+hungerBonus);
 
  for(var k=0;k<obstacles.length;k++){
   if(obstacles[k].warningTimer>0){obstacles[k].warningTimer-=dt;
@@ -1067,10 +1246,10 @@ function advanceFrame(dt){
   stageTransitionTimer-=dt;
   if(stageTransitionTimer<=0){
    if(currentSubStage<SUBSTAGES_PER_WORLD){
-    scoreBonus+=100;loadStage(currentWorld,currentSubStage+1,!isMapMode);skateMultiplier=1;phase='play';beep(880,0.1);
+    scoreBonus+=100;loadStage(currentWorld,currentSubStage+1,!isMapMode);skateMultiplier=1;phase='play';resumeBGM();beep(880,0.1);
    }else if(currentWorld<MAX_RELEASE_WORLD){
-    scoreBonus+=500;loadStage(currentWorld+1,1,!isMapMode);skateMultiplier=1;phase='play';beep(880,0.1);
-   }else{scoreBonus+=500;phase='gameComplete';recordRun(true);}}
+    scoreBonus+=500;loadStage(currentWorld+1,1,!isMapMode);skateMultiplier=1;phase='play';resumeBGM();beep(880,0.1);
+   }else{scoreBonus+=500;phase='gameComplete';stopBGM();recordRun(true);}}
   return;}
 
  if(phase!=='play')return;
@@ -1319,9 +1498,10 @@ function drawSettings(){
  ctxt('SETTINGS',11,isGBA()?'#0284c7':K(6),3);ctxt('SETTINGS',10,isGBA()?'#38bdf8':K(0),3);
  ctxt('SYSTEM CONFIGURATION',28,isGBA()?'#facc15':K(3),1);
  var panelY=38,panelH=126;panel(panelY,panelH);
+ var bgmLabel=BGM_VOL_LABELS[bgmVolumeIndex];
  var palLabel=currentPalMode();
  var backLabel=wasInGame?'RESUME GAME':'BACK TO TITLE';
- var rows=[['BGM VOL','< N/A >'],['PALETTE','< '+palLabel+' >'],['DIFFICULTY','< '+DIFF[difficulty].label+' >'],['RETURN HOME',''],[backLabel,'']];
+ var rows=[['BGM VOL','< '+bgmLabel+' >'],['PALETTE','< '+palLabel+' >'],['DIFFICULTY','< '+DIFF[difficulty].label+' >'],['RETURN HOME',''],[backLabel,'']];
  var itemStartX=20;
  for(var i=0;i<rows.length;i++){
   var row=rows[i],itemY=panelY+12+i*18,sel=(i===settingMenuIndex),isAction=(SETTING_ITEMS[i]==='returnHome'||SETTING_ITEMS[i]==='back');
@@ -1329,8 +1509,9 @@ function drawSettings(){
    if(!isAction){var vw=tw(row[1],1);txt(row[1],W-itemStartX-vw-4,itemY+2,isGBA()?'#facc15':K(0),1);}}
   else{txt(row[0],itemStartX+12,itemY+2,isGBA()?'#94a3b8':K(6),1);
    if(!isAction){var vw2=tw(row[1],1);txt(row[1],W-itemStartX-vw2-4,itemY+2,isGBA()?'#64748b':K(5),1);}}}
+ var bgmDesc='8-BIT CHIPTUNE BGM VOLUME ['+(bgmVolumeIndex+1)+'/4]';
  var palDesc=(currentPalMode()==='GBA COLOR')?'GBA COLOR: 32-BIT VIBRANT PIXEL [3/3]':(pal8?'8-SHADE: 8-LEVEL ANALOG GREEN [1/3]':'4-DMG: 4-LEVEL ORIGINAL SCREEN [2/3]');
- var descs=['WEB VERSION HAS NO BGM',palDesc,'GUT '+DIFF[difficulty].gutMax+' - '+DIFF[difficulty].label+' RULES','ABANDON RUN & RETURN TO MAIN MENU','RESUME OR SAVE & RETURN'];
+ var descs=[bgmDesc,palDesc,'GUT '+DIFF[difficulty].gutMax+' - '+DIFF[difficulty].label+' RULES','ABANDON RUN & RETURN TO MAIN MENU','RESUME OR SAVE & RETURN'];
  ctxt(descs[settingMenuIndex]||'',panelY+panelH-12,isGBA()?'#38bdf8':K(4),1);
  ctxt('UP DOWN SELECT  LEFT RIGHT CHANGE',172,isGBA()?'#94a3b8':K(3),1);
  ctxt('A: CONFIRM   B: BACK',186,isGBA()?'#facc15':K(4),1);}
@@ -1491,7 +1672,7 @@ function recordRun(completed){
  openScores();}
 
 function openScores(){
- if(phase==='play'){phase='pause';autoPaused=true;}
+ if(phase==='play'){phase='pause';autoPaused=true;pauseBGM();}
  var result=document.getElementById('run-result');
  result.hidden=!pendingRun;
  if(pendingRun){
@@ -1504,7 +1685,7 @@ function openScores(){
 
 function closeScores(){
  scoreDialog.close();
- if(autoPaused&&phase==='pause'){phase='play';lastT=0;}
+ if(autoPaused&&phase==='pause'){phase='play';lastT=0;resumeBGM();}
  autoPaused=false;}
 
 async function loadScores(){
@@ -1543,12 +1724,12 @@ scoreForm.addEventListener('submit',async function(e){
  finally{button.disabled=false;}});
 
 function openGuide(){
- if(phase==='play'){phase='pause';guideAutoPaused=true;}
+ if(phase==='play'){phase='pause';guideAutoPaused=true;pauseBGM();}
  if(!guideDialog.open)guideDialog.showModal();}
 
 function closeGuide(){
  guideDialog.close();
- if(guideAutoPaused&&phase==='pause'){phase='play';lastT=0;}
+ if(guideAutoPaused&&phase==='pause'){phase='play';lastT=0;resumeBGM();}
  guideAutoPaused=false;}
 
 document.getElementById('show-guide').addEventListener('click',openGuide);
@@ -1557,6 +1738,10 @@ var closeGuideX=document.getElementById('close-guide-x');
 if(closeGuideX)closeGuideX.addEventListener('click',closeGuide);
 guideDialog.addEventListener('click',function(e){if(e.target===guideDialog)closeGuide();});
 guideDialog.addEventListener('cancel',function(e){e.preventDefault();closeGuide();});
+
+['pointerdown','keydown','touchstart'].forEach(function(ev){
+ window.addEventListener(ev,unlockAudio,{passive:true});
+});
 
 document.getElementById('show-scores').addEventListener('click',openScores);
 document.getElementById('close-controls').addEventListener('click',function(){controlsDialog.close();});

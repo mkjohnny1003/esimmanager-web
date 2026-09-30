@@ -571,7 +571,7 @@ var CACTUS_SMALL=['..##..','..##..','#.##..','#.##.#','#.##.#','#.##.#','#.##.#'
 
 /* ---------- 道具（對應 Types.swift PowerUpType） ---------- */
 var POWERUP_TYPES=['poison','skates','bomb','diamond','enzyme'];
-var POWERUP_WEIGHT={poison:25,skates:25,bomb:25,diamond:15,enzyme:10};
+var POWERUP_WEIGHT={poison:55,skates:55,bomb:55,diamond:15,enzyme:20};
 var ITEM_GLYPH={
   poison:['....#####....','....#+++#....','.....###.....','...#######...','..##+++++##..','.##++#+#++##.','.#++#####++#.','.#+++###+++#.','.#++#+#+#++#.','.##+++++++##.','..##+++++##..','...#######...','.............'],
   skates:['......#####..','...####+++##.','..#++#+++++#.','.#+++#+++++#.','##+++#######.','##++#++++++#.','.#++#++++++#.','.############','.#++++++++++#','..#++++++++#.','...########..','....##..##...','.............'],
@@ -769,7 +769,7 @@ function spawnFood(snakeArr,obArr){
   if(isFree(x2+sz/2,y2+sz/2,4,snakeArr,obArr,compact)){foods.push({x:x2,y:y2,s:sz,life:10000+Math.random()*6000});return;}}}
 function spawnPowerUp(snakeArr,obArr){
  if(powerUps.length>=MAX_POWERUPS||foods.length+powerUps.length>=TARGET_ITEM_COUNT)return;
- var roll=(Math.random()*100)|0,type,acc2=0,chosen=null;
+ var roll=(Math.random()*200)|0,type,acc2=0,chosen=null;
  for(var i=0;i<POWERUP_TYPES.length;i++){acc2+=POWERUP_WEIGHT[POWERUP_TYPES[i]];if(roll<acc2){chosen=POWERUP_TYPES[i];break;}}
  type=chosen||'enzyme';
  var compact=(FX1-FX0)<150;

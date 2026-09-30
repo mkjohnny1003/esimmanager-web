@@ -156,6 +156,8 @@ main > .details[aria-label="其他 App"] > div:nth-of-type(3)::before,
 main > .details[aria-label="Other apps"] > div:nth-of-type(3)::before { background-image: url("gutsy-icon.png"); }
 main > .details[aria-label="其他 App"] > div:nth-of-type(3)::before,
 main > .details[aria-label="Other apps"] > div:nth-of-type(3)::before { background-image: url("menulens-icon.png"); }
+main > .grid[aria-label="其他 App"] > .tile:nth-of-type(4)::before,
+main > .details[aria-label="其他 App"] > div:nth-of-type(4)::before { background-image: url("bpcare-icon.png"); }
 
 main > .grid[aria-label="其他 App"] .tile > *,
 main > .grid[aria-label="Other apps"] .tile > *,

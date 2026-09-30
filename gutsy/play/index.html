@@ -134,7 +134,13 @@
       <canvas id="scr" width="240" height="216" style="display:block;width:100%;aspect-ratio:240/216;image-rendering:pixelated;border-radius:2px;background:#9bbc0f;"></canvas>
     </div>
 
-    <div style="text-align:center;font:500 13px/1 ui-serif,Georgia,serif;color:#3a3a44;letter-spacing:.02em;margin:10px 0 2px;">GUTSY <span style="font:400 8px/1 ui-monospace,monospace;letter-spacing:.14em;color:#6b6b75;">腸腸久久</span></div>
+    <div style="display:flex;justify-content:center;align-items:center;margin:10px 0 2px;">
+      <div style="text-align:center;line-height:1.15;">
+        <span style="font:800 18px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.05em;color:#2c2c34;">GUTSY</span>
+        <div style="font:600 9px/1 ui-monospace,monospace;letter-spacing:.12em;color:#5a5a64;margin-top:2px;">腸腸久久</div>
+      </div>
+      <button id="guide-pill-btn" type="button" aria-label="遊戲指南" style="margin-left:14px;background:#b8b8b0;border:1.5px solid #62625d;border-radius:12px;padding:3px 8px;font:700 11px/1 system-ui,-apple-system,sans-serif;color:#222226;cursor:pointer;display:inline-flex;align-items:center;gap:3px;box-shadow:0 1px 2px rgba(0,0,0,0.1);">📖 遊戲指南</button>
+    </div>
 
     <div style="display:flex;justify-content:space-between;align-items:center;margin:10px 4px 0;">
       <div style="position:relative;width:108px;height:108px;">
@@ -1801,6 +1807,7 @@ function closeGuide(){
  guideAutoPaused=false;}
 
 document.getElementById('show-guide').addEventListener('click',openGuide);
+var pillBtn=document.getElementById('guide-pill-btn');if(pillBtn)pillBtn.addEventListener('click',openGuide);
 document.getElementById('close-guide').addEventListener('click',closeGuide);
 var closeGuideX=document.getElementById('close-guide-x');
 if(closeGuideX)closeGuideX.addEventListener('click',closeGuide);

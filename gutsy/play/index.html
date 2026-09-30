@@ -548,7 +548,8 @@ function gutMax(){return DIFF[difficulty].gutMax;}
 var MAX_RELEASE_WORLD=3;
 var SUBSTAGES_PER_WORLD=10;
 var THEME_TITLE={1:'CLASSIC GRASS',2:'DESERT DUNES',3:'BRICK WORLD'};
-function targetFood(sub){return sub<=5?5*sub:25+(sub-5)*3;}
+var STAGE_FOOD_TARGETS=[5,7,9,11,13,15,17,19,21,24];
+function targetFood(sub){var idx=Math.max(0,Math.min(9,(sub-1)|0));return STAGE_FOOD_TARGETS[idx];}
 function obstacleSpawnInterval(){return Math.max(3500,(12000-(currentSubStage-1)*900)*DIFF[difficulty].obMul);}
 function maxObstaclesForSubStage(){return Math.min(10,2+currentSubStage);}
 

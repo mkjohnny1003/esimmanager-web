@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>GUTSY — 腸腸久久</title>
-<meta name="description" content="Play the first three worlds of GUTSY in your browser.">
+<title>Gaboon Viper — 胖蛇大作戰</title>
+<meta name="description" content="Play the first three worlds of Gaboon Viper in your browser.">
 <meta name="gutsy-score-api" content="https://gutsy-scores.mkjohnny.workers.dev">
 <style>
   html{min-height:100%;background:#20202a;}
@@ -40,6 +40,9 @@
   #score-dialog li span{float:right;font-variant-numeric:tabular-nums;font-weight:700;}
   #score-status{min-height:1.5em;color:#38594a;}
   #score-dialog [hidden]{display:none;}
+  #score-modes{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px;}
+  #score-modes button{border:1px solid #245d3c;border-radius:999px;background:transparent;color:#245d3c;padding:6px 12px;font:700 13px/1.2 system-ui,sans-serif;}
+  #score-modes button[aria-selected="true"]{background:#245d3c;color:#fff;}
 
   #controls-dialog{width:min(500px,calc(100vw - 32px));box-sizing:border-box;border:1px solid #71917a;
     border-radius:8px;background:#f4f7ef;color:#172a1e;padding:24px;box-shadow:0 12px 42px #0008;
@@ -118,7 +121,7 @@
 
 <div id="gbwrap">
   <div id="game-toolbar">
-    <a href="../">前往 GUTSY 官網下載 App</a>
+    <a href="../">前往胖蛇大作戰官網下載 App</a>
     <div class="toolbar-btns">
       <button id="show-guide" type="button">遊戲指南</button>
       <button id="show-scores" type="button">全球排行榜</button>
@@ -136,8 +139,8 @@
 
     <div style="display:flex;justify-content:center;align-items:center;margin:10px 0 2px;">
       <div style="text-align:center;line-height:1.15;">
-        <span style="font:800 18px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.05em;color:#2c2c34;">GUTSY</span>
-        <div style="font:600 9px/1 ui-monospace,monospace;letter-spacing:.12em;color:#5a5a64;margin-top:2px;">腸腸久久</div>
+        <span style="font:800 18px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.05em;color:#2c2c34;">GABOON VIPER</span>
+        <div style="font:600 9px/1 ui-monospace,monospace;letter-spacing:.12em;color:#5a5a64;margin-top:2px;">胖蛇大作戰</div>
       </div>
       <button id="guide-pill-btn" type="button" aria-label="遊戲指南" style="margin-left:14px;background:#b8b8b0;border:1.5px solid #62625d;border-radius:12px;padding:3px 8px;font:700 11px/1 system-ui,-apple-system,sans-serif;color:#222226;cursor:pointer;display:inline-flex;align-items:center;gap:3px;box-shadow:0 1px 2px rgba(0,0,0,0.1);">📖 遊戲指南</button>
     </div>
@@ -314,6 +317,10 @@
         <p class="death-desc">撞上沙漠仙人掌、俄羅斯方塊或地圖動態實體障礙物。</p>
       </div>
       <div class="death-card">
+        <span class="death-badge">RIVAL</span><span class="death-title">碰到搶食蛇</span>
+        <p class="death-desc">撞到搶食蛇的身體，或被牠的頭撞到（包括被牠追上咬到尾巴）。</p>
+      </div>
+      <div class="death-card">
         <span class="death-badge">TIME UP</span><span class="death-title">挑戰結束</span>
         <p class="death-desc">計時模式 5 分鐘挑戰倒數歸零，結算最終吃蛋最高分數。</p>
       </div>
@@ -404,6 +411,19 @@
         <p class="item-desc-zh"><strong>新陳代謝 3 倍超頻！</strong>吃到獎勵 +50 分。在 5 秒內使體內所有腫塊的消化速度暴增 3 倍，極速轉化為長度並排空胃容量，瞬間化解超載危機！</p>
         <p class="item-desc-en">3x digestion overdrive! Grants +50 pts. Speeds up lump digestion by 300% for 5s, rapidly clearing gut burden into length.</p>
       </div>
+
+      <div class="item-card">
+        <div class="item-title-row">
+          <span class="item-icon">🐍</span>
+          <div class="item-names">
+            <span class="item-name-zh">搶食蛇</span>
+            <span class="item-name-en">RIVAL SNAKE</span>
+          </div>
+          <span class="item-tag tag-danger">搶蛋天敵 / Rival</span>
+        </div>
+        <p class="item-desc-zh"><strong>每個世界第 5 關起出現的三角頭毒蛇！</strong>牠會搶走場上的蛋，搶到後要先消化（身上鼓一塊、速度變慢，這是你的空檔）；消化完蛇頭變紅、頭頂跳出「!」，開始追咬你的尾巴約 3 秒——空腹直線逃開就甩得掉，吃太撐跑不動就危險了。剛出現時會閃爍預警、碰不死；之後只要碰到牠就陣亡。鑽石無敵時可以反撞把牠撞飛，+150 分。只出現在一般模式與地圖模式。</p>
+        <p class="item-desc-en">From stage 5 of every world, a triangle-headed viper steals your eggs. After each steal it must digest (a visible bulge, moving slowly) — your window. Then its head turns red, a "!" pops up, and it chases your tail for about 3 seconds: run straight on an empty stomach and you'll outpace it. It blinks harmlessly when it first appears; after that, any touch is fatal. Ram it while invincible for +150 pts. Standard and Map modes only.</p>
+      </div>
     </div>
   </div>
 
@@ -465,6 +485,11 @@
 
 <dialog id="score-dialog" aria-labelledby="score-dialog-title">
   <h2 id="score-dialog-title">全球排行榜</h2>
+  <div id="score-modes" role="tablist" aria-label="遊戲模式">
+    <button type="button" role="tab" data-mode="standard" aria-selected="true">一般模式</button>
+    <button type="button" role="tab" data-mode="map" aria-selected="false">地圖模式</button>
+    <button type="button" role="tab" data-mode="timeattack" aria-selected="false">計時賽</button>
+  </div>
   <div id="run-result" hidden>
     <p id="run-summary"></p>
     <form id="score-form">
@@ -536,6 +561,17 @@ var FX0=3,FY0=18,FX1=W-4,FY1=H-4;
 var BASE_T=5,MIN_LEN=12;
 var LAYER=[6,4,3,2,2,1,1];
 var FOOD_W=[2,4,4,6,6,8,8,10];
+
+/* ---------- 搶食蛇（2.0.3，對應 Core/RivalSnake.swift、DESIGN.md 6.3） ----------
+   每個世界第 5 子關卡起出現（一般／地圖模式，計時賽不出現）：搶蛋 → 消化 → 追尾 → 搶蛋。
+   數值與 iOS 版 Constants.swift 的 RIVAL_* 相同，要調整兩邊一起改。 */
+var RIVAL_START_SUBSTAGE=5,RIVAL_LEN=30,RIVAL_LEN_MAX=48,RIVAL_WARN_MS=1500,RIVAL_RESPAWN_MS=6000;
+var RIVAL_KO_SCORE=150,RIVAL_LOOKAHEAD=8;
+var RIVAL_DIGEST_MS=3000,RIVAL_DIGEST_SLOW=2.0,RIVAL_CHASE_MS=3000,RIVAL_CHASE_SLOW=1.4;
+// 三角形蛇頭：以蛇頭為原點、朝前進方向，dx 從 -5（後端）到 +4（吻端）每一列的半寬
+var RIVAL_HEAD_BACK=-5,RIVAL_HEAD_SHAPE=[3,5,5,4,4,3,2,2,1,0],RIVAL_HEAD_COLLIDE_W=11;
+function rivalSpeedFactor(sub){return 1.30-0.04*Math.max(0,sub-RIVAL_START_SUBSTAGE);}
+function rivalHeadHalfWidth(dx){var i=dx-RIVAL_HEAD_BACK;return (i>=0&&i<RIVAL_HEAD_SHAPE.length)?RIVAL_HEAD_SHAPE[i]:-1;}
 
 var cv=document.getElementById('scr'),ctx=cv.getContext('2d');
 ctx.imageSmoothingEnabled=false;
@@ -698,7 +734,7 @@ var titleMenuIndex=0,hasSuspendedRun=false;
 var settingMenuIndex=0,wasInGame=false;
 var debris=[],explosionTimer=0;
 var lastStageWorld=1,lastStageSubStage=1;
-var howToPlayPage=0,TOTAL_HOWTOPLAY_PAGES=3;
+var howToPlayPage=0,TOTAL_HOWTOPLAY_PAGES=4;
 var pops=[],toast=0,toastS='';
 var isMapMode=false,isTimeAttack=false,timeAttackDuration=300000,gameOverMenuIndex=0,mapSelectWorld=1,mapSelectSubStage=1;
 var muted=false,lastT=0;
@@ -743,6 +779,20 @@ function thick(d,L,lumpsArr){
   if(dd<hw)t+=l.size*0.62*(1-dd/hw)*(l.tl/l.tt);}
  if(L-d<6)t-=2.4*(1-(L-d)/6);
  return 2*Math.round((Math.max(2.5,t)-1)/2)+1;}
+
+function polyLen(p){var l=0;for(var i=0;i<p.length-1;i++)l+=Math.abs(p[i].x-p[i+1].x)+Math.abs(p[i].y-p[i+1].y);return l;}
+function polySamp(p){var o=[],d=0;if(!p.length)return o;
+ for(var i=0;i<p.length-1;i++){var a=p[i],b=p[i+1];
+  var ux=Math.sign(b.x-a.x),uy=Math.sign(b.y-a.y),n=Math.abs(b.x-a.x)+Math.abs(b.y-a.y);
+  for(var k=0;k<n;k++){o.push({x:a.x+ux*k,y:a.y+uy*k,d:d});d++;}}
+ var t=p[p.length-1];o.push({x:t.x,y:t.y,d:d});return o;}
+function polyTrim(p,target){var ex=polyLen(p)-target,guard=0;
+ while(ex>0&&guard++<400){
+  var a=p[p.length-2],b=p[p.length-1];
+  var sl=Math.abs(a.x-b.x)+Math.abs(a.y-b.y);
+  if(sl<=ex&&p.length>2){p.pop();ex-=sl;}
+  else{var ux=Math.sign(a.x-b.x),uy=Math.sign(a.y-b.y),m=Math.min(ex,sl);
+   b.x+=ux*m;b.y+=uy*m;ex-=m;if(m===0)break;}}}
 
 /* ---------- 消化（對應 DigestionSystem.swift） ---------- */
 var lumps=[];
@@ -973,6 +1023,106 @@ function unlockAudio(){
 }
 
 /* ============================================================
+   搶食蛇（對應 RivalSnake.swift）
+   ============================================================ */
+var rival={active:false,pts:[],dir:{x:1,y:0},tgt:RIVAL_LEN,sinceTurn:BASE_T,warn:0,respawn:0,digest:0,chase:0,wander:{x:0,y:0}};
+var rivalAcc=0;
+function rivalEnabled(){return !isTimeAttack&&currentSubStage>=RIVAL_START_SUBSTAGE;}
+function rivalSolid(){return rival.active&&rival.warn<=0;}
+function rivalDigesting(){return rival.digest>0;}
+function rivalChasing(){return rival.chase>0&&rival.digest<=0;}
+function rivalSamples(){return rival.active?polySamp(rival.pts):[];}
+function rivalClear(){rival.active=false;rival.pts=[];rival.warn=0;rival.respawn=0;rival.digest=0;rival.chase=0;rivalAcc=0;}
+function rivalKnockOut(){rival.active=false;rival.pts=[];rival.warn=0;rival.digest=0;rival.chase=0;rival.respawn=RIVAL_RESPAWN_MS;}
+
+// 從四個角落裡離玩家蛇頭最遠、沒被障礙物擋住的那個冒出來，水平朝場中央
+function rivalSpawn(){
+ var head=pts[0],len=RIVAL_LEN,left=FX0+8+len,right=FX1-8-len,top=FY0+14,bottom=FY1-14;
+ var corners=[{x:left,y:top,dx:1},{x:right,y:top,dx:-1},{x:left,y:bottom,dx:1},{x:right,y:bottom,dx:-1}];
+ function far(c){return Math.abs(c.x-head.x)+Math.abs(c.y-head.y);}
+ corners.sort(function(a,b){return far(b)-far(a);});
+ function blocked(c){var tx=c.x-c.dx*len,x0=Math.min(c.x,tx)-8,x1=Math.max(c.x,tx)+8,y0=c.y-8,y1=c.y+8;
+  for(var i=0;i<obstacles.length;i++){var ob=obstacles[i];if(x1>=ob.x&&x0<=ob.x+ob.w&&y1>=ob.y&&y0<=ob.y+ob.h)return true;}
+  return false;}
+ var c=corners[0];
+ for(var j=0;j<corners.length;j++)if(!blocked(corners[j])){c=corners[j];break;}
+ rival.pts=[{x:c.x,y:c.y},{x:c.x-c.dx*len,y:c.y}];rival.dir={x:c.dx,y:0};rival.tgt=len;rival.sinceTurn=BASE_T;
+ rival.active=true;rival.warn=RIVAL_WARN_MS;rival.respawn=0;rival.digest=0;rival.chase=0;}
+
+// 推進預警／消化／追尾／重生倒數；回傳 'respawn'、'chase' 或 null
+function rivalUpdateTimers(dt){
+ if(rival.active){
+  if(rival.warn>0)rival.warn=Math.max(0,rival.warn-dt);
+  else if(rival.digest>0){rival.digest=Math.max(0,rival.digest-dt);if(rival.digest===0){rival.chase=RIVAL_CHASE_MS;return 'chase';}}
+  else if(rival.chase>0)rival.chase=Math.max(0,rival.chase-dt);
+  return null;}
+ if(rival.respawn>0){rival.respawn-=dt;return rival.respawn<=0?'respawn':null;}
+ return null;}
+
+function rivalHitsObstacle(x,y,pad,solidOnly){
+ for(var i=0;i<obstacles.length;i++){var ob=obstacles[i];if(solidOnly&&ob.warningTimer>0)continue;
+  if(!ob.cells||!ob.cells.length){if(x>=ob.x-pad&&x<=ob.x+ob.w+pad&&y>=ob.y-pad&&y<=ob.y+ob.h+pad)return true;}
+  else{for(var c=0;c<ob.cells.length;c++){var ox=ob.x+ob.cells[c][0]*TETRO_CELL_PX,oy=ob.y+ob.cells[c][1]*TETRO_CELL_PX;
+   if(x>=ox-pad&&x<=ox+TETRO_CELL_PX+pad&&y>=oy-pad&&y<=oy+TETRO_CELL_PX+pad)return true;}}}
+ return false;}
+
+// 走 1px；player 是玩家每個取樣點與該點厚度。回傳 'moved'／'crashed'／'hitPlayer'／{ate:index}
+function rivalStep(player){
+ if(!rivalSolid())return 'moved';
+ var h=rival.pts[0],own=polySamp(rival.pts),r=BASE_T;
+ var chasingTail=(rivalChasing()&&invincibleRemaining<=0)?pts[pts.length-1]:null;
+ // 預看：牆、障礙物（含預警中的）、自己身體都閃；玩家身體只有不追尾時才閃（追尾時碰到就是目的）
+ function safe(d){
+  for(var k=1;k<=RIVAL_LOOKAHEAD;k++){var x=h.x+d.x*k,y=h.y+d.y*k;
+   if(x<FX0+4||x>FX1-4||y<FY0+4||y>FY1-4)return false;
+   if(rivalHitsObstacle(x,y,(r>>1)+1,false))return false;
+   if(!chasingTail){for(var i=0;i<player.length;i++){var p=player[i],lim=((p.r+r)>>1)+3;
+    if(Math.abs(p.x-x)<lim&&Math.abs(p.y-y)<lim)return false;}}
+   for(var j=0;j<own.length;j++){var o=own[j];if(o.d>=BASE_T*3&&Math.abs(o.x-x)<r&&Math.abs(o.y-y)<r)return false;}}
+  return true;}
+ // 目標：追尾 → 玩家尾端；消化中 → 隨機點晃；其餘 → 曼哈頓距離最近的蛋（沒蛋就往場中央）
+ var target=chasingTail||(rivalDigesting()?rival.wander:{x:((FX0+FX1)/2)|0,y:((FY0+FY1)/2)|0});
+ if(!chasingTail&&!rivalDigesting()){var best=1e9;
+  for(var f=0;f<foods.length;f++){var fo=foods[f],fx=fo.x+fo.s/2,fy=fo.y+fo.s/2,dd=Math.abs(fx-h.x)+Math.abs(fy-h.y);
+   if(dd<best){best=dd;target={x:fx,y:fy};}}}
+ var cur=rival.dir,turns=[{x:cur.y,y:cur.x},{x:-cur.y,y:-cur.x}];
+ function dist(d){return Math.abs(h.x+d.x-target.x)+Math.abs(h.y+d.y-target.y);}
+ // 轉彎間隔跟玩家一樣要 BASE_T；直走優先於等距轉彎；都不安全就緊急轉
+ var allowed=rival.sinceTurn>=BASE_T?[cur,turns[0],turns[1]]:[cur],choice=null;
+ for(var a=0;a<allowed.length;a++){var dv=allowed[a];if(!safe(dv))continue;if(!choice||dist(dv)<dist(choice))choice=dv;}
+ if(!choice)choice=safe(turns[0])?turns[0]:(safe(turns[1])?turns[1]:cur);
+ if(choice.x!==cur.x||choice.y!==cur.y){rival.pts.unshift({x:h.x,y:h.y});rival.dir=choice;rival.sinceTurn=0;}
+ rival.pts[0].x+=rival.dir.x;rival.pts[0].y+=rival.dir.y;rival.sinceTurn++;
+ polyTrim(rival.pts,rival.tgt);
+
+ var nh=rival.pts[0];
+ if(nh.x<FX0+2||nh.x>FX1-2||nh.y<FY0+2||nh.y>FY1-2)return 'crashed';
+ if(rivalHitsObstacle(nh.x,nh.y,r>>1,true))return 'crashed';
+ var own2=polySamp(rival.pts);
+ for(var q=0;q<own2.length;q++){var o2=own2[q];if(o2.d>=BASE_T*3&&Math.abs(o2.x-nh.x)<r-1&&Math.abs(o2.y-nh.y)<r-1)return 'crashed';}
+ for(var pi=0;pi<player.length;pi++){var pp=player[pi],pl=((pp.r+r)>>1)-1;
+  if(Math.abs(pp.x-nh.x)<pl&&Math.abs(pp.y-nh.y)<pl)return 'hitPlayer';}
+ if(!rivalDigesting()){
+  for(var fi=0;fi<foods.length;fi++){var ef=foods[fi],ecx=ef.x+ef.s/2,ecy=ef.y+ef.s/2,el=((r+ef.s)>>1)+1;
+   if(Math.abs(ecx-nh.x)<el&&Math.abs(ecy-nh.y)<el){
+    rival.tgt=Math.min(RIVAL_LEN_MAX,rival.tgt+ef.s/2);
+    rival.digest=RIVAL_DIGEST_MS;rival.chase=0; // 追尾途中順路吃到：先消化，消化完再追一輪
+    rival.wander={x:FX0+20+((Math.random()*(FX1-FX0-40))|0),y:FY0+20+((Math.random()*(FY1-FY0-40))|0)};
+    return {ate:fi};}}}
+ return 'moved';}
+
+function rivalKO(){
+ var kh=rival.pts[0];if(kh)pop(kh.x,kh.y,'+'+RIVAL_KO_SCORE+' KO!');
+ scoreBonus+=RIVAL_KO_SCORE;rivalKnockOut();beep(800,0.06);setTimeout(function(){beep(1046,0.08);},60);}
+
+function rivalTick(player){
+ var ev=rivalStep(player);
+ if(ev==='crashed'){var ch=rival.pts[0];if(ch)pop(ch.x,ch.y,'CRASH!');rivalKnockOut();beep(180,0.06);}
+ else if(ev==='hitPlayer'){if(invincibleRemaining>0)rivalKO();else die('RIVAL');}
+ else if(ev&&ev.ate!==undefined){var o=foods[ev.ate];pop(o.x+o.s/2,o.y+o.s/2,'STOLEN!');foods.splice(ev.ate,1);
+  beep(240,0.05);replenish(samp(),obstacles);}}
+
+/* ============================================================
    關卡載入 / 重置（對應 GameState.loadStage / reset）
    ============================================================ */
 function loadStage(world,sub,updateSave){
@@ -984,6 +1134,7 @@ function loadStage(world,sub,updateSave){
   var initialCount=Math.min(3,1+((sub/2)|0));
   for(var i=0;i<initialCount;i++)spawnRandomObstacle(world,samp(),obstacles);
   for(var j=0;j<obstacles.length;j++)obstacles[j].warningTimer=0;}
+ rivalClear();if(rivalEnabled()&&pts&&pts.length)rivalSpawn();
  if(updateSave)saveLastStage(world,sub);}
 
 function saveLastStage(world,sub){
@@ -1156,7 +1307,7 @@ function finishExplosionDeath(){
  playGameOverJingle();}
 
 function die(c){
- if(c==='BOMB'||c==='HAZARD'){triggerSnakeExplosion(c,pts[0]||{x:W/2,y:H/2});return;}
+ if(c==='BOMB'||c==='HAZARD'||c==='RIVAL'){triggerSnakeExplosion(c,pts[0]||{x:W/2,y:H/2});return;}
  stopBGM();
  gameOverMenuIndex=0;
  phase='over';cause=c;
@@ -1172,9 +1323,16 @@ function hungerCountdownSeconds(){return Math.max(0,Math.ceil((6000-sinceEat)/10
 /* ============================================================
    每幀推進（對應 GameState.advanceFrame / upd / step）
    ============================================================ */
-function iv(){
+function baseInterval(){
  var worldBonus=(currentWorld-1)*1.5;
- var base=Math.max(10,20+DIFF[difficulty].speedOff-worldBonus-tGame/7000);
+ return Math.max(10,20+DIFF[difficulty].speedOff-worldBonus-tGame/7000);}
+// 搶食蛇：玩家空腹基礎間隔 × 倍率（第 5 關慢 30%、第 10 關慢 10%）；消化中再 ×2、追尾中再 ×1.4
+function rivalIv(){
+ var modeSlow=rivalDigesting()?RIVAL_DIGEST_SLOW:(rivalChasing()?RIVAL_CHASE_SLOW:1);
+ return Math.max(6,baseInterval()*rivalSpeedFactor(currentSubStage)*modeSlow);}
+
+function iv(){
+ var base=baseInterval();
  var fullness=isTimeAttack?0:Math.min(1,gut()/gutMax());
  var weightPenalty=1+fullness*0.95;
  return Math.max(4,base*weightPenalty*skateMultiplier);}
@@ -1183,6 +1341,9 @@ function upd(dt){
  tGame+=dt;sinceEat+=dt;if(flash>0)flash-=dt;
  if(invincibleRemaining>0)invincibleRemaining-=dt;
  if(enzymeRemaining>0)enzymeRemaining-=dt;
+ if(rivalEnabled()){var rev=rivalUpdateTimers(dt);
+  if(rev==='respawn')rivalSpawn();
+  else if(rev==='chase'){var rh=rival.pts[0];if(rh)pop(rh.x,rh.y-4,'!');beep(150,0.10);}}
 
  var digestDt=(enzymeRemaining>0)?dt*3:dt;
  for(var i=lumps.length-1;i>=0;i--){lumps[i].tl-=digestDt;
@@ -1250,6 +1411,10 @@ function step(){
      var cx=ob.x+ob.cells[c][0]*TETRO_CELL_PX,cy=ob.y+ob.cells[c][1]*TETRO_CELL_PX;
      if(h.x>=cx-margin&&h.x<=cx+TETRO_CELL_PX+margin&&h.y>=cy-margin&&h.y<=cy+TETRO_CELL_PX+margin){die('HAZARD');return;}}}}}
 
+ if(rivalSolid()){var rs=rivalSamples();
+  for(var ri=0;ri<rs.length;ri++){var rr=rs[ri].d<6?RIVAL_HEAD_COLLIDE_W:BASE_T,rlim=((hr+rr)>>1)-1;
+   if(Math.abs(rs[ri].x-h.x)<rlim&&Math.abs(rs[ri].y-h.y)<rlim){if(invinc){rivalKO();break;}die('RIVAL');return;}}}
+
  if(!invinc){
   for(var k=0;k<s.length;k++){
    if(s[k].d<BASE_T*3)continue;
@@ -1293,7 +1458,14 @@ function advanceFrame(dt){
  if(phase!=='play')return;
  upd(dt);if(phase!=='play')return;
  acc+=dt;var g=0;
- while(acc>=iv()&&g++<6){acc-=iv();step();if(phase!=='play')break;}}
+ while(acc>=iv()&&g++<6){acc-=iv();step();if(phase!=='play')break;}
+ if(phase!=='play')return;
+ if(rivalSolid()){
+  rivalAcc+=dt;
+  var ps=samp(),PL=ps.length-1,pb=ps.map(function(p){return {x:p.x,y:p.y,r:thick(p.d,PL,lumps)};});
+  var g2=0;
+  while(rivalAcc>=rivalIv()&&g2++<6){rivalAcc-=rivalIv();rivalTick(pb);if(phase!=='play'||!rivalSolid())break;}
+ }else rivalAcc=0;}
 
 /* ============================================================
    繪製（對應 Render/Renderer.swift + HUD.swift）
@@ -1400,6 +1572,29 @@ function drawSnake(){
   px(h.x-2,ey,1,1,pupil);px(h.x+2,ey,1,1,pupil);
   if(isGBA()){px(h.x-2,ey+(dir.y>0?1:0),1,1,glint);px(h.x+2,ey+(dir.y>0?1:0),1,1,glint);}
  }}
+
+// 深色外框＋每 4px 交錯斑紋＋中線菱點（加彭蝰蛇花紋）、三角頭；預警中閃爍；
+// 消化中身上有腫塊；追尾中蛇頭變紅、眼睛閃。分三輪畫，免得下一點的外框蓋掉斑紋。
+function drawRival(){
+ if(!rival.active||!rival.pts.length)return;
+ if(rival.warn>0&&(((rival.warn/120)|0)%2)===0)return;
+ var s=polySamp(rival.pts),L=s.length-1,gba=isGBA(),outer=gba?'#3b1f0e':K(7),i;
+ var radii=s.map(function(p){return thick(p.d,L,[]);});
+ for(i=s.length-1;i>=0;i--)if(s[i].d>=3)bx(s[i].x,s[i].y,radii[i],outer);
+ for(i=s.length-1;i>=0;i--)if(s[i].d>=3&&radii[i]>2){var bandA=(((s[i].d/4)|0)%2)===0;
+  bx(s[i].x,s[i].y,radii[i]-2,gba?(bandA?'#9a6b3f':'#d6b98c'):K(bandA?4:2));}
+ for(i=0;i<s.length;i++)if(s[i].d%8===4)px(s[i].x,s[i].y,1,1,outer);
+ if(rivalDigesting()&&L>6){var prog=1-rival.digest/RIVAL_DIGEST_MS,idx=Math.min(L-3,Math.max(4,(L*prog)|0)),lp=s[idx],lump=prog<0.6?9:7;
+  bx(lp.x,lp.y,lump,outer);bx(lp.x,lp.y,lump-2,gba?'#d6b98c':K(2));}
+ var h=rival.pts[0],f=rival.dir,side={x:-f.y,y:f.x};
+ function plot(dx,dy,c){px(h.x+f.x*dx+side.x*dy,h.y+f.y*dx+side.y*dy,1,1,c);}
+ var chasing=rivalChasing()&&invincibleRemaining<=0;
+ var headCol=chasing?(gba?'#b91c1c':K(6)):(gba?'#9a6b3f':K(4));
+ var back=RIVAL_HEAD_BACK,front=back+RIVAL_HEAD_SHAPE.length-1,dx,dy,hw;
+ for(dx=back;dx<=front;dx++){hw=rivalHeadHalfWidth(dx);for(dy=-hw;dy<=hw;dy++)plot(dx,dy,outer);}
+ for(dx=back+1;dx<front;dx++){hw=rivalHeadHalfWidth(dx)-1;if(hw<1)continue;for(dy=-hw;dy<=hw;dy++)plot(dx,dy,headCol);}
+ var eye=chasing?(gba?'#fde047':K(0)):(gba?'#dc2626':K(0));
+ if(!chasing||(((tGame/120)|0)%2)===0){plot(-2,-3,eye);plot(-2,3,eye);}}
 
 function drawEgg(x,y,s){
  if(isGBA()){
@@ -1527,7 +1722,7 @@ function drawHud(){
 function drawTitle(){
  px(0,0,W,H,isGBA()?'#090d16':K(7));
  for(var g=0;g<6;g++)px(0,H-12+g*2,W,2,isGBA()?'#1e293b':K(6-g));
- ctxt('GUTSY',11,isGBA()?'#15803d':K(6),3);ctxt('GUTSY',10,isGBA()?'#4ade80':K(0),3);
+ ctxt('GABOON VIPER',11,isGBA()?'#15803d':K(6),3);ctxt('GABOON VIPER',10,isGBA()?'#4ade80':K(0),3);
  ctxt('EAT BIG. REGRET SLOWLY.',28,isGBA()?'#facc15':K(3),1);
  var panelY=34,panelH=126;panel(panelY,panelH);
  var itemStartX=24;
@@ -1607,7 +1802,7 @@ function drawHowToPlay(){
   txt('ENZYME: 3X DIGEST SPEED',cx,panelY+72,isGBA()?'#a3e635':K(5),1);
   txt('INVINCIBLE = SAFE FROM',cx,panelY+88,isGBA()?'#fef08a':K(4),1);
   txt('BOMB / HAZARD / BITE / BURST',cx,panelY+98,isGBA()?'#fef08a':K(4),1);
- }else{
+ }else if(howToPlayPage===2){
   txt('3. STAGES & WORLDS',cx,panelY+10,isGBA()?'#38bdf8':K(7),1);
   txt('EACH WORLD HAS 10 STAGES',cx,panelY+24,isGBA()?'#f8fafc':K(5),1);
   txt('EAT ENOUGH EGGS TO CLEAR',cx,panelY+36,isGBA()?'#4ade80':K(5),1);
@@ -1616,14 +1811,25 @@ function drawHowToPlay(){
   txt('HAZARDS VANISH & MOVE',cx,panelY+76,isGBA()?'#f87171':K(5),1);
   txt('EVERY 20 SECONDS',cx,panelY+86,isGBA()?'#f87171':K(5),1);
   txt('MAP MODE: PLAY ANY STAGE',cx,panelY+102,isGBA()?'#38bdf8':K(4),1);
-  txt('ANYTIME, NO PROGRESS NEEDED',cx,panelY+112,isGBA()?'#38bdf8':K(4),1);}
+  txt('ANYTIME, NO PROGRESS NEEDED',cx,panelY+112,isGBA()?'#38bdf8':K(4),1);
+ }else{
+  // 3×5 點陣字沒有 & = 逗號 引號（會變空白），這頁的句子刻意避開
+  txt('4. RIVAL SNAKE',cx,panelY+10,isGBA()?'#38bdf8':K(7),1);
+  txt('APPEARS FROM STAGE X-5',cx,panelY+24,isGBA()?'#f8fafc':K(6),1);
+  txt('START AND MAP MODE ONLY',cx,panelY+34,isGBA()?'#94a3b8':K(5),1);
+  txt('IT STEALS YOUR EGGS',cx,panelY+48,isGBA()?'#fbbf24':K(6),1);
+  txt('THEN ITS HEAD TURNS RED',cx,panelY+58,isGBA()?'#f87171':K(6),1);
+  txt('AND IT CHASES YOUR TAIL!',cx,panelY+68,isGBA()?'#ef4444':K(7),1);
+  txt('ANY TOUCH IS FATAL!',cx,panelY+82,isGBA()?'#ef4444':K(7),1);
+  txt('RAM IT WHILE INVINCIBLE',cx,panelY+98,isGBA()?'#67e8f9':K(4),1);
+  txt('FOR +150 POINTS',cx,panelY+108,isGBA()?'#67e8f9':K(4),1);}
  ctxt(howToPlayPage<TOTAL_HOWTOPLAY_PAGES-1?'RIGHT: NEXT PAGE':'RIGHT: BACK TO TITLE',186,isGBA()?'#a3e635':K(5),1);}
 
 function drawGameOver(){
  var isWide=W>=200,panelH=isWide?96:84,panelY=((H-panelH)/2)|0;panel(panelY,panelH);
  var titleText=(cause==='TIMEUP')?'TIME\'S UP!':'GAME OVER';
  ctxt(titleText,panelY+6,isGBA()?'#ef4444':K(7),isWide?2:1);
- var msg={WALL:'HIT THE WALL',BITE:'BIT YOURSELF',BURST:'GUT EXPLODED!',EMPTY:'TOO EMPTY',BOMB:'BLOWN TO PIECES!',HAZARD:'CRASHED INTO HAZARD!',TIMEUP:'5-MIN TIME\'S UP!'}[cause]||'';
+ var msg={WALL:'HIT THE WALL',BITE:'BIT YOURSELF',BURST:'GUT EXPLODED!',EMPTY:'TOO EMPTY',BOMB:'BLOWN TO PIECES!',HAZARD:'CRASHED INTO HAZARD!',RIVAL:'HIT THE RIVAL SNAKE',TIMEUP:'5-MIN TIME\'S UP!'}[cause]||'';
  ctxt(msg,panelY+16,isGBA()?'#f87171':K(5),1);
  var labelX=isWide?30:14,valMargin=isWide?34:16;
  function val(s,y,c){txt(s,W-valMargin-tw(s),y,c);}
@@ -1671,7 +1877,7 @@ function draw(){
  if(phase==='howToPlay'){drawHowToPlay();return;}
  if(phase==='mapSelect'){drawMapSelect();return;}
 
- drawField();drawObstacles();drawItems();
+ drawField();drawObstacles();drawItems();drawRival();
  if(phase==='exploding')drawExplosion();else drawSnake();
  drawHud();
 
@@ -1699,7 +1905,7 @@ var scoreStatus=document.getElementById('score-status');
 var scoreApi=document.querySelector('meta[name="gutsy-score-api"]').content;
 var english=new URLSearchParams(location.search).get('lang')==='en';
 var messages=english?{
- home:'GUTSY site · Get app',guide:'Game Guide',board:'Global leaderboard',pending:'Leaderboard · pending',name:'Player name',
+ home:'Gaboon Viper site · Get app',guide:'Game Guide',board:'Global leaderboard',pending:'Leaderboard · pending',name:'Player name',
  disclosure:'Your name and score will be publicly visible after submission.',submit:'Submit score',
  refresh:'Refresh',close:'Back to game',complete:'First three worlds complete!',over:'Run over',
  score:'Score',stage:'Stage',unavailable:'The public leaderboard is not available yet.',
@@ -1707,9 +1913,10 @@ var messages=english?{
  invalid:'Use 1–20 letters, numbers, spaces, underscores, periods, or hyphens.',
  stored:'The leaderboard is unavailable. Your score is saved in this browser.',
  submitting:'Submitting…',saved:'Your score is public.',
- submitError:'Submission failed. Your score is saved in this browser; please try again.'
+ submitError:'Submission failed. Your score is saved in this browser; please try again.',
+ modes:{standard:'Standard',map:'Map Mode',timeattack:'Time Attack'},modeLabel:'Mode'
 }:{
- home:'前往 GUTSY 官網下載 App',guide:'遊戲指南',board:'全球排行榜',pending:'排行榜 · 待提交',name:'玩家名稱',
+ home:'前往胖蛇大作戰官網下載 App',guide:'遊戲指南',board:'全球排行榜',pending:'排行榜 · 待提交',name:'玩家名稱',
  disclosure:'提交後，玩家名稱與分數會公開顯示。',submit:'留下紀錄',
  refresh:'重新整理',close:'返回遊戲',complete:'前三個世界完成！',over:'本局結束',
  score:'分數',stage:'關卡',unavailable:'公開排行榜尚未啟用。',
@@ -1717,7 +1924,8 @@ var messages=english?{
  invalid:'名稱請使用 1 至 20 個字的文字、數字、空格、底線、句點或連字號。',
  stored:'公開排行榜尚未啟用，紀錄已暫存於此瀏覽器。',
  submitting:'提交中…',saved:'紀錄已公開。',
- submitError:'提交失敗，紀錄已暫存於此瀏覽器，請稍後重試。'
+ submitError:'提交失敗，紀錄已暫存於此瀏覽器，請稍後重試。',
+ modes:{standard:'一般模式',map:'地圖模式',timeattack:'計時賽'},modeLabel:'模式'
 };
 document.documentElement.lang=english?'en':'zh-Hant';
 document.getElementById('game-toolbar').querySelector('a').textContent=messages.home;
@@ -1729,6 +1937,16 @@ document.getElementById('submit-score').textContent=messages.submit;
 document.getElementById('refresh-scores').textContent=messages.refresh;
 document.getElementById('close-scores').textContent=messages.close;
 if(english)document.getElementById('game-toolbar').querySelector('a').href='../en/';
+// 排行榜依遊戲模式分開：一般模式、地圖模式（可以直接挑後面的關卡開始）、計時賽各自排名，混在一起比沒有意義
+var MODES=['standard','map','timeattack'],boardMode='standard';
+var modeTabs=document.querySelectorAll('#score-modes [data-mode]');
+document.getElementById('score-modes').setAttribute('aria-label',messages.modeLabel);
+modeTabs.forEach(function(tab){tab.textContent=messages.modes[tab.dataset.mode];
+ tab.addEventListener('click',function(){selectBoardMode(tab.dataset.mode);loadScores();});});
+function selectBoardMode(mode){
+ boardMode=MODES.indexOf(mode)>=0?mode:'standard';
+ modeTabs.forEach(function(tab){tab.setAttribute('aria-selected',String(tab.dataset.mode===boardMode));});}
+function currentMode(){return isTimeAttack?'timeattack':(isMapMode?'map':'standard');}
 var pendingRun=null,autoPaused=false,guideAutoPaused=false;
 
 function setPending(run){
@@ -1742,7 +1960,7 @@ function recordRun(completed){
  runRecorded=true;
  setPending({id:crypto.randomUUID(),score:score(),world:currentWorld,
   stage:currentSubStage,difficulty:difficulty,duration_seconds:Math.floor(tGame/1000),
-  completed:completed});
+  completed:completed,mode:currentMode()});
  openScores();}
 
 function openScores(){
@@ -1750,8 +1968,12 @@ function openScores(){
  var result=document.getElementById('run-result');
  result.hidden=!pendingRun;
  if(pendingRun){
+  // 改版前暫存、沒有模式的紀錄一律算一般模式（跟伺服器端的舊資料處理一致）
+  var runMode=pendingRun.mode||'standard';
+  selectBoardMode(runMode);
   document.getElementById('run-summary').textContent=(pendingRun.completed?messages.complete:messages.over)+
-   '  '+messages.score+' '+pendingRun.score+' · '+messages.stage+' '+pendingRun.world+'-'+pendingRun.stage;
+   '  '+messages.modes[runMode]+' · '+messages.score+' '+pendingRun.score+
+   (runMode==='timeattack'?'':' · '+messages.stage+' '+pendingRun.world+'-'+pendingRun.stage);
  }
  scoreStatus.textContent='';
  if(!scoreDialog.open)scoreDialog.showModal();
@@ -1767,12 +1989,12 @@ async function loadScores(){
  if(!scoreApi){scoreStatus.textContent=messages.unavailable;return;}
  scoreStatus.textContent=messages.loading;
  try{
-  var res=await fetch(scoreApi+'/scores');
+  var res=await fetch(scoreApi+'/scores?mode='+encodeURIComponent(boardMode));
   if(!res.ok)throw new Error('HTTP '+res.status);
   var rows=(await res.json()).scores;
   rows.forEach(function(row){
    var item=document.createElement('li');
-   item.textContent=row.name+' · '+row.world+'-'+row.stage;
+   item.textContent=boardMode==='timeattack'?row.name:(row.name+' · '+row.world+'-'+row.stage);
    var points=document.createElement('span');points.textContent=String(row.score);
    item.appendChild(points);scoreList.appendChild(item);});
   scoreStatus.textContent=rows.length?'':messages.empty;
@@ -1788,7 +2010,7 @@ scoreForm.addEventListener('submit',async function(e){
  var button=document.getElementById('submit-score');button.disabled=true;
  scoreStatus.textContent=messages.submitting;
  try{
-  var run=Object.assign({},pendingRun,{name:name});
+  var run=Object.assign({mode:'standard'},pendingRun,{name:name});
   var res=await fetch(scoreApi+'/scores',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(run)});
   if(!res.ok)throw new Error('HTTP '+res.status);
   try{localStorage.setItem('gutsy2:playerName',name);}catch(e){}

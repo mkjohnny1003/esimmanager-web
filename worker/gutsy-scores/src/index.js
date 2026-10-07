@@ -18,6 +18,10 @@ function response(data, status, origin) {
   return new Response(status === 204 ? null : JSON.stringify(data), { status, headers });
 }
 
+// 2026-10-08：排行榜依遊戲模式分開（一般／地圖／計時賽）。沒帶 mode 的（舊版網頁、
+// 加欄位前的舊紀錄）一律算一般模式。
+const MODES = ["standard", "map", "timeattack"];
+
 function validRun(run) {
   if (!run || typeof run !== "object") return false;
   const name = typeof run.name === "string" ? run.name.trim() : "";
@@ -29,7 +33,8 @@ function validRun(run) {
     && ["EASY", "NORMAL", "HARD"].includes(run.difficulty)
     && Number.isInteger(run.duration_seconds)
     && run.duration_seconds >= 0 && run.duration_seconds <= 86400
-    && typeof run.completed === "boolean";
+    && typeof run.completed === "boolean"
+    && (run.mode === undefined || MODES.includes(run.mode));
 }
 
 export default {
@@ -46,10 +51,14 @@ export default {
       return response({ error: "Not found" }, 404, origin);
     }
     if (request.method === "GET") {
+      const mode = url.searchParams.get("mode") || "standard";
+      if (!MODES.includes(mode)) {
+        return response({ error: "Invalid mode" }, 400, origin);
+      }
       const result = await env.DB.prepare(
-        "SELECT name, score, world, stage FROM scores ORDER BY score DESC, created_at ASC LIMIT 20"
-      ).all();
-      return response({ scores: result.results }, 200, origin);
+        "SELECT name, score, world, stage FROM scores WHERE mode = ? ORDER BY score DESC, created_at ASC LIMIT 20"
+      ).bind(mode).all();
+      return response({ mode, scores: result.results }, 200, origin);
     }
     if (request.method !== "POST") {
       return response({ error: "Method not allowed" }, 405, origin);
@@ -70,9 +79,9 @@ export default {
     }
     const id = run.id.toLowerCase();
     await env.DB.prepare(
-      "INSERT OR IGNORE INTO scores (id, name, score, world, stage, difficulty, duration_seconds, completed) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
+      "INSERT OR IGNORE INTO scores (id, name, score, world, stage, difficulty, duration_seconds, completed, mode) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
     ).bind(id, run.name.trim(), run.score, run.world, run.stage, run.difficulty,
-      run.duration_seconds, run.completed ? 1 : 0).run();
+      run.duration_seconds, run.completed ? 1 : 0, run.mode || "standard").run();
     return response({ saved: true }, 201, origin);
   },
 };

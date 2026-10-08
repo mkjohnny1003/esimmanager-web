@@ -264,11 +264,11 @@
 
       <div class="hud-item">
         <div class="hud-header">
-          <span class="hud-badge" style="color:#70c9fd;background:#163242;border-color:#22516b;">INV 8S / FAST</span>
+          <span class="hud-badge" style="color:#70c9fd;background:#163242;border-color:#22516b;">INV 8S / FAST / SLOW</span>
           <span class="hud-title">特殊狀態提示 · Active Status Buff</span>
         </div>
-        <p class="hud-desc">吃到鑽石時顯示 <strong>INV [秒數]S</strong>（無敵金身倒數）；吃到溜冰鞋時顯示 <strong>FAST</strong>（速度增益衝刺）。</p>
-        <p class="hud-desc-en">INV ns: Invincibility shield countdown. FAST: Skating speed booster active.</p>
+        <p class="hud-desc">吃到鑽石時顯示 <strong>INV [秒數]S</strong>（無敵金身倒數）；吃到溜冰鞋時顯示 <strong>FAST</strong>（速度增益衝刺）；吃到木屐時顯示 <strong>SLOW</strong>（減速中）。</p>
+        <p class="hud-desc-en">INV ns: Invincibility shield countdown. FAST: Skating speed booster active. SLOW: Clog slowdown active.</p>
       </div>
 
       <div class="hud-item">
@@ -371,6 +371,19 @@
         </div>
         <p class="item-desc-zh"><strong>速度大幅提升！</strong>移動速度倍率 ×0.82（可多重疊加），賦予高速穿梭與反應挑戰。吃到獎勵 +50 分，子關卡過關時速度重置。</p>
         <p class="item-desc-en">Speed booster! Multiplies movement velocity (stacks up to speed cap). Grants +50 pts; resets on stage clear.</p>
+      </div>
+
+      <div class="item-card">
+        <div class="item-title-row">
+          <span class="item-icon">🩴</span>
+          <div class="item-names">
+            <span class="item-name-zh">木屐</span>
+            <span class="item-name-en">CLOG</span>
+          </div>
+          <span class="item-tag tag-buff">減速穩控 / +50 PTS</span>
+        </div>
+        <p class="item-desc-zh"><strong>跟溜冰鞋相反！</strong>移動速度倍率 ×1.22（一個木屐剛好抵銷一雙溜冰鞋），可疊加、最慢到原速的 2/3。吃撐時想放慢操控也能拿來用。吃到獎勵 +50 分，子關卡過關時速度重置。</p>
+        <p class="item-desc-en">The opposite of skates! Slows you down (one clog cancels one pair of skates; stacks down to 2/3 speed). Grants +50 pts; resets on stage clear.</p>
       </div>
 
       <div class="item-card">
@@ -613,10 +626,12 @@ var CACTUS_LARGE=['....##....','....##....','##..##....','##..##....','##.###..#
 var CACTUS_SMALL=['..##..','..##..','#.##..','#.##.#','#.##.#','#.##.#','#.##.#','#.##.#'];
 
 /* ---------- 道具（對應 Types.swift PowerUpType） ---------- */
-var POWERUP_TYPES=['poison','skates','bomb','diamond','enzyme'];
-var POWERUP_WEIGHT={poison:55,skates:55,bomb:55,diamond:15,enzyme:20};
+// 2.0.4：木屐（clog）的 20 從溜冰鞋 55 分出來，總權重仍是 200
+var POWERUP_TYPES=['poison','skates','clog','bomb','diamond','enzyme'];
+var POWERUP_WEIGHT={poison:55,skates:35,clog:20,bomb:55,diamond:15,enzyme:20};
 var ITEM_GLYPH={
   poison:['....#####....','....#+++#....','.....###.....','...#######...','..##+++++##..','.##++#+#++##.','.#++#####++#.','.#+++###+++#.','.#++#+#+#++#.','.##+++++++##.','..##+++++##..','...#######...','.............'],
+  clog:['.............','...CCCCCCC...','..CC.....CC..','..C.......C..','.###########.','#+++++++++++#','#+++++++++++#','.###########.','..##.....##..','..##.....##..','..##.....##..','.............','.............'],
   skates:['......#####..','...####+++##.','..#++#+++++#.','.#+++#+++++#.','##+++#######.','##++#++++++#.','.#++#++++++#.','.############','.#++++++++++#','..#++++++++#.','...########..','....##..##...','.............'],
   bomb:[
     '........*....',
@@ -697,6 +712,10 @@ function drawItemGlyph(type,x,y){
    }else if(type==='skates'){
     if(ch==='#')px(x+c,y+r,1,1,r>=10?'#e2e8f0':'#0284c7');
     else if(ch==='+')px(x+c,y+r,1,1,(r<=6||r===8)?'#ffffff':'#38bdf8');
+   }else if(type==='clog'){
+    if(ch==='#')px(x+c,y+r,1,1,r>=8?'#5b2a0c':'#78350f');
+    else if(ch==='+')px(x+c,y+r,1,1,r===5?'#e9b872':'#c2803f');
+    else if(ch==='C')px(x+c,y+r,1,1,'#dc2626');
    }else if(type==='diamond'){
     if(ch==='#')px(x+c,y+r,1,1,'#0284c7');
     else if(ch==='+')px(x+c,y+r,1,1,(r===4||r===10)?'#ffffff':'#38bdf8');
@@ -1271,6 +1290,9 @@ function applyPowerUp(type,pos){
  }else if(type==='skates'){
   scoreBonus+=50;skateMultiplier=Math.max(0.35,skateMultiplier*0.82);pop(pos.x,pos.y,'+50 FAST');beep(600,0.04);
   setTimeout(function(){beep(900,0.06);},50);
+ }else if(type==='clog'){
+  scoreBonus+=50;skateMultiplier=Math.min(1.5,skateMultiplier*1.22);pop(pos.x,pos.y,'+50 SLOW');beep(500,0.04);
+  setTimeout(function(){beep(330,0.06);},50);
  }else if(type==='bomb'){
   if(invinc){flash=120;scoreBonus+=100;pop(pos.x,pos.y,'+100');beep(400,0.08);setTimeout(function(){beep(800,0.1);},60);}
   else{triggerSnakeExplosion('BOMB',pos);}
@@ -1693,7 +1715,8 @@ function drawHud(){
  if(isWide){
   var buffX=scoreX+tw(scoreStr)+6;
   if(invincibleRemaining>0)txt('INV '+Math.ceil(invincibleRemaining/1000)+'S',buffX,8,isGBA()?'#67e8f9':K(0));
-  else if(skateMultiplier<0.95)txt('FAST',buffX,8,isGBA()?'#fde047':K(2));}
+  else if(skateMultiplier<0.95)txt('FAST',buffX,8,isGBA()?'#fde047':K(2));
+  else if(skateMultiplier>1.05)txt('SLOW',buffX,8,isGBA()?'#fb923c':K(2));}
 
  if(isTimeAttack){
   var gutStr='GUT ∞';
@@ -1795,13 +1818,15 @@ function drawHowToPlay(){
   txt('DANGER: BURST = DEAD!',cx,panelY+106,isGBA()?'#ef4444':K(7),1);
  }else if(howToPlayPage===1){
   txt('2. TACTICAL ITEMS',cx,panelY+10,isGBA()?'#38bdf8':K(7),1);
-  txt('POISON: -3PX, CLEAR GUT',cx,panelY+24,isGBA()?'#e879f9':K(5),1);
-  txt('SKATES: SPEED UP, STACKS',cx,panelY+36,isGBA()?'#38bdf8':K(5),1);
-  txt('BOMB: BLOWS UP ON TOUCH',cx,panelY+48,isGBA()?'#f87171':K(5),1);
-  txt('DIAMOND: 8S INVINCIBLE',cx,panelY+60,isGBA()?'#67e8f9':K(5),1);
-  txt('ENZYME: 3X DIGEST SPEED',cx,panelY+72,isGBA()?'#a3e635':K(5),1);
-  txt('INVINCIBLE = SAFE FROM',cx,panelY+88,isGBA()?'#fef08a':K(4),1);
-  txt('BOMB / HAZARD / BITE / BURST',cx,panelY+98,isGBA()?'#fef08a':K(4),1);
+  // 2.0.4 加了木屐變六行，行距從 12 縮成 11
+  txt('POISON: -3PX, CLEAR GUT',cx,panelY+22,isGBA()?'#e879f9':K(5),1);
+  txt('SKATES: SPEED UP, STACKS',cx,panelY+33,isGBA()?'#38bdf8':K(5),1);
+  txt('CLOG: SLOWS YOU DOWN',cx,panelY+44,isGBA()?'#fb923c':K(5),1);
+  txt('BOMB: BLOWS UP ON TOUCH',cx,panelY+55,isGBA()?'#f87171':K(5),1);
+  txt('DIAMOND: 8S INVINCIBLE',cx,panelY+66,isGBA()?'#67e8f9':K(5),1);
+  txt('ENZYME: 3X DIGEST SPEED',cx,panelY+77,isGBA()?'#a3e635':K(5),1);
+  txt('INVINCIBLE = SAFE FROM',cx,panelY+92,isGBA()?'#fef08a':K(4),1);
+  txt('BOMB / HAZARD / BITE / BURST',cx,panelY+102,isGBA()?'#fef08a':K(4),1);
  }else if(howToPlayPage===2){
   txt('3. STAGES & WORLDS',cx,panelY+10,isGBA()?'#38bdf8':K(7),1);
   txt('EACH WORLD HAS 10 STAGES',cx,panelY+24,isGBA()?'#f8fafc':K(5),1);

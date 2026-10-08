@@ -168,6 +168,26 @@ p {
 .play-button:hover { background: var(--line); color: var(--accent); }
 .play-button:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
 
+.beta-section {
+  padding: 36px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.beta-section h2 { margin-top: 4px; }
+
+.beta-steps {
+  display: grid;
+  gap: 8px;
+  margin: 20px 0 0;
+  padding-left: 26px;
+}
+
+.beta-steps li { padding-left: 4px; }
+
+.beta-section .actions { margin: 20px 0; }
+
+.beta-note { color: var(--muted); font-size: 15px; }
+
 .screenshot-grid {
   padding: 32px 0;
   border-bottom: 1px solid var(--line);
@@ -472,4 +492,3 @@ footer {
   background: var(--line);
   color: var(--ink);
 }
-

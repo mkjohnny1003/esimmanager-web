@@ -1,0 +1,241 @@
+/* 荒野大對決 Wild West Showdown 官網。配色取自 App 機身：乳白機殼、深木紋、橘框、黃按鍵條。 */
+:root {
+  color-scheme: light dark;
+  --bg: #f6efe3;
+  --surface: #fffaf2;
+  --ink: #2a1a12;
+  --muted: #6a5244;
+  --accent: #c4501f;
+  --accent-ink: #fff;
+  --wood: #3b2418;
+  --mustard: #f2b632;
+  --line: #e4d3bd;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 17px/1.8 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  overflow-x: hidden;
+}
+
+a { color: var(--accent); text-underline-offset: 4px; }
+
+header, main, footer {
+  max-width: 1040px;
+  margin: auto;
+  padding: 28px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+nav { display: flex; gap: 20px; flex-wrap: wrap; }
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink);
+  font-size: 23px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.brand img {
+  width: 40px;
+  height: 40px;
+  border-radius: 9px;
+  box-shadow: 0 8px 20px rgb(59 36 24 / 18%);
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  padding: 44px 0 36px;
+  border-bottom: 1px solid var(--line);
+}
+
+.app-icon {
+  display: block;
+  width: 104px;
+  height: 104px;
+  border-radius: 22px;
+  margin-bottom: 22px;
+  box-shadow: 0 14px 28px rgb(59 36 24 / 20%);
+}
+
+.pill, .eyebrow { color: var(--accent); font-weight: 700; }
+.pill { display: inline-flex; margin-bottom: 14px; }
+
+h1 {
+  margin: 0 0 22px;
+  max-width: 800px;
+  font-size: 44px;
+  line-height: 1.25;
+  letter-spacing: 0;
+  overflow-wrap: anywhere;
+}
+
+h2 { margin: 0 0 12px; font-size: 25px; line-height: 1.4; letter-spacing: 0; }
+h3 { margin: 0 0 6px; font-size: 19px; line-height: 1.45; }
+
+p { max-width: 780px; margin-top: 0; overflow-wrap: anywhere; }
+
+.lead { color: var(--muted); font-size: 21px; }
+
+.actions { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; margin-top: 24px; }
+
+.app-store-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 58px;
+  padding: 10px 16px;
+  border: 1px solid #1d1d1d;
+  border-radius: 8px;
+  background: #050505;
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgb(0 0 0 / 16%);
+}
+
+.app-store-badge:hover { background: #222; color: #fff; }
+.app-store-badge:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+.app-store-badge svg { width: 28px; height: 28px; fill: currentColor; flex: none; }
+.app-store-badge span { display: grid; line-height: 1.1; }
+.app-store-badge small { font-size: 11px; font-weight: 500; }
+.app-store-badge strong { font-size: 21px; font-weight: 700; }
+
+.button { color: var(--accent); font-weight: 700; }
+
+.price-note { color: var(--muted); font-size: 15px; }
+
+/* 遊戲畫面：網格排列（不做橫向捲動），每張圖完整呈現、不互相遮蓋 */
+.gallery {
+  padding: 40px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 20px;
+}
+
+.gallery figure {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+}
+
+.gallery img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2868 / 1320;
+  background: var(--wood);
+}
+
+.gallery figcaption {
+  padding: 14px 18px 16px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.gallery figcaption strong {
+  display: block;
+  margin-bottom: 2px;
+  color: var(--ink);
+  font-size: 17px;
+}
+
+.feature-band {
+  display: grid;
+  grid-template-columns: .8fr 1.2fr;
+  gap: 32px;
+  padding: 44px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.feature-grid, .details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 28px;
+}
+
+.feature-grid article, .details > div {
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.feature-grid p, .details p { color: var(--muted); margin-bottom: 0; }
+
+.details { padding: 32px 0; }
+
+/* 計分表 */
+.score-table {
+  width: 100%;
+  max-width: 780px;
+  border-collapse: collapse;
+  margin: 8px 0 4px;
+  font-size: 15px;
+  background: var(--surface);
+}
+
+.score-table th, .score-table td {
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  text-align: center;
+}
+
+.score-table th { background: var(--mustard); color: #2a1a12; font-weight: 700; }
+.score-table th, .score-table td:first-child { white-space: nowrap; }
+
+.table-wrap { overflow-x: auto; }
+
+/* 隱私、支援頁 */
+article { margin: 0; padding: 20px 0; }
+article h1 { font-size: 40px; }
+article h2 { margin-top: 32px; }
+
+footer {
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 14px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1a120d;
+    --surface: #241913;
+    --ink: #f4e9dc;
+    --muted: #cdb8a5;
+    --accent: #f08a52;
+    --line: #3e2c21;
+  }
+}
+
+@media (max-width: 720px) {
+  header { align-items: flex-start; flex-direction: column; }
+  header, main, footer { padding: 20px; }
+  .hero { padding: 24px 0; }
+  h1, article h1 { font-size: 30px; }
+  .lead { font-size: 18px; }
+  .feature-band, .feature-grid, .details, .gallery-grid { grid-template-columns: 1fr; }
+  .score-table { font-size: 13px; }
+  .score-table th, .score-table td { padding: 6px 5px; }
+  .score-table th { white-space: normal; }
+}

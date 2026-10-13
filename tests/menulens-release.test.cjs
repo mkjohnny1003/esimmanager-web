@@ -38,3 +38,14 @@ test('shopping announcement keeps the experimental label visually secondary', ()
   assert.match(style, /\.feature-alert h2\{[^}]*font-size:42px/);
   assert.match(style, /\.feature-alert h2 small\{[^}]*font-size:14px/);
 });
+
+test('both site homepages promote MenuLens shopping comparison', () => {
+  for (const [path, label] of [
+    ['index.html', '新增購物比價'],
+    ['en/index.html', 'New: Shopping comparison'],
+  ]) {
+    const homepage = readFileSync(resolve(__dirname, '..', path), 'utf8');
+    assert.match(homepage, new RegExp(`<h2>MenuLens<\\/h2>[\\s\\S]*?${label}`));
+    assert.match(homepage, /https:\/\/getesimmanager\.com\/menulens\//);
+  }
+});

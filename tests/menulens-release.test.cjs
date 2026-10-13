@@ -22,6 +22,8 @@ for (const [locale, home, support, privacy, comparison, provider] of [
     }
     assert.ok(homepage.includes(comparison));
     assert.ok(homepage.includes(provider));
+    assert.match(homepage, /class="feature-alert"[\s\S]*?<h2 id="shopping-launch-heading">[^<]+<small>[^<]+<\/small><\/h2>/);
+    assert.match(homepage, /class="feature-alert"[\s\S]*?class="download-link" href="https:\/\/apps\.apple\.com/);
     assert.match(homepage, /consent|同意/);
     assert.match(homepage, /id6815122498/);
     assert.match(homepage, /privacy\.html/);
@@ -30,3 +32,9 @@ for (const [locale, home, support, privacy, comparison, provider] of [
     assert.equal((homepage.match(/<figure class="screenshot/g) || []).length, 4);
   });
 }
+
+test('shopping announcement keeps the experimental label visually secondary', () => {
+  const style = page('style.css');
+  assert.match(style, /\.feature-alert h2\{[^}]*font-size:42px/);
+  assert.match(style, /\.feature-alert h2 small\{[^}]*font-size:14px/);
+});

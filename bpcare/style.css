@@ -375,3 +375,30 @@ ul.checks li::before { content: "✓"; position: absolute; left: 0; top: 0; widt
   .scroll-btn.prev { left: -4px; }
   .scroll-btn.next { right: -4px; }
 }
+
+/* 1.2 念給我聽:首頁重點強調 */
+.new-banner { display: inline-flex; align-items: center; gap: 10px; margin: 0 0 14px; padding: 6px 14px 6px 6px;
+  border-radius: 999px; background: var(--warm-soft); border: 1px solid color-mix(in srgb, var(--warm) 35%, transparent);
+  color: var(--ink); text-decoration: none; font-weight: 750; font-size: 1.02rem; line-height: 1.4; }
+.new-banner:hover { border-color: var(--warm); }
+.new-banner .nb-tag { background: var(--warm); color: #fff; border-radius: 999px; padding: 3px 12px; font-size: .85rem; font-weight: 800; white-space: nowrap; }
+.new-banner .nb-arrow { color: var(--warm); font-weight: 800; }
+.chip.hl { background: var(--warm-soft); border-color: color-mix(in srgb, var(--warm) 40%, transparent); color: var(--warm); text-decoration: none; }
+.voice-spot { margin-top: 34px; border: 2px solid color-mix(in srgb, var(--warm) 30%, transparent); }
+.voice-spot .section-head { max-width: 860px; }
+.voice-spot .section-head h2 { font-size: 2.5rem; }
+.voice-spot .section-head p { font-size: 1.18rem; }
+.voice-points { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 28px; }
+.vp { background: var(--card); border-radius: var(--radius); padding: 22px 22px 18px; box-shadow: var(--shadow); }
+.vp-ic { font-size: 2rem; line-height: 1; }
+.vp h3 { font-size: 1.2rem; margin: 10px 0 8px; }
+.vp .quote { margin: 0; padding: 12px 14px; border-radius: 14px; background: var(--primary-soft); color: var(--primary-deep);
+  font-size: 1rem; line-height: 1.75; font-weight: 600; }
+@media (max-width: 900px) {
+  .voice-points { grid-template-columns: 1fr; }
+  .voice-spot .section-head h2 { font-size: 1.9rem; }
+}
+@media (max-width: 560px) {
+  .new-banner { font-size: .92rem; border-radius: 18px; align-items: flex-start; }
+  .voice-spot .section-head h2 { font-size: 1.6rem; }
+}

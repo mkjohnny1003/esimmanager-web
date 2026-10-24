@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Android 版隱私權政策｜我的血壓</title>
-  <meta name="description" content="我的血壓 Android 版隱私權政策:健康資料只存在你的手機,開發者不經營伺服器;拍血壓計的照片只在手機上辨識、不上傳;免費版使用 Google AdMob 非個人化廣告。">
+  <meta name="description" content="我的血壓 Android 版隱私權政策:健康資料只存在你的手機,開發者不經營伺服器;Health Connect 由你自行開啟、只在手機上交換;拍血壓計的照片與語音朗讀都在手機上處理、不上傳;1.1 新版測試包停用廣告,正式版才會啟用廣告。">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="apple-touch-icon" href="assets/app-icon.png">
   <link rel="stylesheet" href="style.css">
@@ -18,27 +18,35 @@
   </header>
   <main class="wrap">
     <article class="card">
-      <span class="tag">PRIVACY POLICY · ANDROID 版 · 2026 年 10 月 2 日</span>
+      <span class="tag">PRIVACY POLICY · ANDROID 版 · 2026 年 10 月 24 日</span>
       <h1>Android 版:你的健康資料如何被處理</h1>
       <p class="lead">本政策適用於「我的血壓」Android App(套件名稱 com.mkjohnny.bpcare,以下稱本 App)。iPhone 與 Apple Watch 版請見<a href="privacy.html">這一頁</a>。</p>
       <p class="lang-switch" lang="en"><a href="#en">English version ↓</a></p>
 
       <h2>1. 健康資料只存在你的手機</h2>
-      <p>你輸入的血壓、心率、用藥、服藥紀錄、回診、慢性病連續處方箋、攜帶物品清單與藥物照片,都只保存在你手機上本 App 的私有儲存空間。開發者不經營任何伺服器,也沒有 App 帳號,因此無法看到、取得或出售你的健康資料。本 App 關閉了 Android 的自動備份,這些資料不會被上傳到 Google 雲端備份。</p>
+      <p>你輸入的血壓、心率、用藥、服藥紀錄、回診、慢性病連續處方箋、攜帶物品清單與藥物照片,都只保存在你手機上本 App 的私有儲存空間(你自行開啟 Health Connect 時,血壓與心率也會存在手機上的 Health Connect,見第 2 節)。開發者不經營任何伺服器,也沒有 App 帳號,因此無法看到、取得或出售你的健康資料。本 App 關閉了 Android 的自動備份,這些資料不會被上傳到 Google 雲端備份。</p>
 
-      <h2>2. 本 App 不會讀取的資料</h2>
-      <p>本 App 不讀取或寫入 Health Connect,也不讀取你的通訊錄、簡訊、通話紀錄或 GPS 定位,不會要求這些權限。</p>
+      <h2>2. Health Connect(健康資料)與本 App 不會讀取的資料</h2>
+      <p>1.1 版起,你可以在「設定 › 健康資料(Health Connect)」或第一次使用的設定精靈中自行開啟,預設是關閉的,並由 Android 的 Health Connect 權限畫面請你逐項允許:</p>
+      <ul>
+        <li><strong>寫入血壓、心率</strong>:把你在本 App 記錄的血壓與心率存到手機上的 Health Connect,方便和其他健康 App 一起看。</li>
+        <li><strong>讀取血壓、心率</strong>:把其他 App(例如藍牙血壓計的 App)存進 Health Connect 的血壓讀進本 App,並取量測時間前後 3 分鐘內的心率,就不用自己輸入。讀入的紀錄只存在本 App,不會再寫回 Health Connect。</li>
+      </ul>
+      <p>Health Connect 的資料只在你的手機上與本 App 交換,<strong>不會上傳到任何伺服器,也不會提供給廣告服務或其他第三方</strong>,只用來提供上面說的紀錄功能。你可以隨時在 Health Connect 或 Android 設定中撤銷權限;在本 App 刪除讀入的紀錄,不會刪除其他 App 的原始資料。本 App 使用 Health Connect 資料的方式遵守 <a href="https://support.google.com/googleplay/android-developer/answer/12991134" target="_blank" rel="noopener">Health Connect 權限政策</a>(含限制使用規定)。</p>
+      <p>本 App 不讀取你的通訊錄、簡訊、通話紀錄或 GPS 定位,不會要求這些權限。</p>
 
       <h2>3. 相機與照片</h2>
-      <p>你為藥丸或藥袋拍的照片只保存在本 App 內。「拍血壓計自動帶入數字」只會出現在支援裝置端 AI(Gemini Nano)的手機上:照片由 Google ML Kit 在你的手機上辨識數字,不會上傳到任何伺服器,也不會存到相簿。照片只暫存在本 App 的私有暫存區,下次拍照時會被取代,你也可以在 Android 設定中清除本 App 的快取。為了維護與改善服務,Google ML Kit 可能會把功能使用情形與診斷資料傳給 Google,但不包含你的照片與健康資料。</p>
+      <p>你為藥丸或藥袋拍的照片只保存在本 App 內。「拍血壓計自動帶入數字」:支援裝置端 AI(Gemini Nano)的手機用 Gemini Nano 辨識,其他手機(1.1 版起)用 Google ML Kit 的裝置端文字辨識(新版測試包的文字辨識模型隨 App 安裝);兩種都在你的手機上辨識數字,照片不會上傳到任何伺服器,也不會存到相簿。新版測試包的照片只暫存在 App 私有快取,辨識結束後刪除;若流程中斷,可在 Android 設定清除快取。無法辨識或手機不支援時,仍可手動輸入,不影響其他功能。為了維護與改善服務,Google ML Kit 可能會把功能使用情形與診斷資料傳給 Google,但不包含你的照片與健康資料。</p>
 
-      <h2>4. 通知與提醒</h2>
+      <h2>4. 通知、提醒、主畫面小工具與語音朗讀</h2>
       <p>量血壓、吃藥、回診與領藥提醒都是手機本機通知。「鬧鐘與提醒」權限只用來讓提醒準時響起。這個版本沒有任何自動傳訊息給家人的功能。</p>
+      <p>你自行加到主畫面的小工具(「今天吃藥了嗎?」「最近血壓」)會在手機主畫面顯示藥名、服藥進度與最近一次血壓,資料直接讀取本 App 內的紀錄,不會傳出手機;不想讓旁人看到時,請從主畫面移除小工具。</p>
+      <p>「念給我聽」(1.1 版起)使用手機內建的文字轉語音,本 App 只會選用已安裝在手機上、不需要連網的中文聲音,要念的內容不會傳出手機。手機沒有中文聲音時,本 App 會引導你到 Google 文字轉語音的設定下載,下載由 Google 處理。</p>
 
-      <h2>5. 廣告(Google AdMob)</h2>
-      <p>免費版會顯示 Google AdMob 提供的<strong>非個人化廣告</strong>。本 App 不會把任何健康資料提供給廣告服務。為了顯示廣告、計算成效與防止詐欺,Google 可能會收集裝置與網路資訊,例如 IP 位址(可推估大致位置)、Android 廣告 ID 與應用程式集 ID、裝置型號與系統版本、廣告互動紀錄及診斷資料。你可以在 Android 設定的「隱私權 › 廣告」重設或刪除廣告 ID;所在地區需要時,本 App 會詢問你的廣告同意,之後可在 App 的「設定 › 廣告 › 廣告隱私選項」修改。詳情請見 <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google 隱私權政策</a>與 <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">Google 如何使用合作夥伴網站或應用程式的資訊</a>。購買「永久移除廣告」後,本 App 不再載入任何廣告。</p>
+      <h2>5. 廣告(Google AdMob)</h2><p><strong>1.1 新版測試包(版本代碼 4 起)停用廣告載入與顯示,也不提供移除廣告購買。正式版才會啟用下列廣告服務。</strong>舊版測試包仍適用其原有廣告行為。是否已更新請查看 App 版本,以 Google Play 實際提供為準。</p>
+      <p>正式版預計會顯示 Google AdMob 提供的廣告;AdMob 也會向合作的廣告聯播網 <a href="https://unity.com/legal/game-player-and-app-user-privacy-policy" target="_blank" rel="noopener">Unity Ads</a> 與 <a href="https://liftoff.io/privacy-policy/" target="_blank" rel="noopener">Liftoff Monetize(Vungle)</a> 取得廣告。1.1 版起,<strong>是否顯示依你的興趣挑選的個人化廣告,依你在 Android 的廣告 ID 設定與廣告同意而定</strong>:你在 Android 設定的「隱私權 › 廣告」刪除或限制廣告 ID,或所在地區需要同意而你沒有同意時,一律只顯示非個人化廣告。不論哪一種,本 App 都<strong>不會把任何健康資料</strong>(血壓、心率、用藥、回診、照片、Health Connect 資料等)提供給廣告服務。為了顯示廣告、計算成效與防止詐欺,Google 及上述聯播網可能會收集裝置與網路資訊,例如 IP 位址(可推估大致位置)、Android 廣告 ID 與應用程式集 ID、裝置型號與系統版本、廣告互動紀錄及診斷資料。你可以在 Android 設定的「隱私權 › 廣告」重設或刪除廣告 ID;所在地區需要時,本 App 會詢問你的廣告同意,之後可在 App 的「設定 › 廣告 › 廣告隱私選項」修改。詳情請見 <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google 隱私權政策</a>與 <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">Google 如何使用合作夥伴網站或應用程式的資訊</a>,以及上述 Unity、Liftoff 的隱私權政策。購買「永久移除廣告」後,本 App 不再載入任何廣告。</p>
 
-      <h2>6. 購買</h2>
+      <p>語音問題回報會開啟你手機的郵件 App,預填手機型號、Android 與 App 版本。由你確認並寄出,不會自動附上健康紀錄。</p><h2>6. 購買</h2>
       <p>「永久移除廣告」由 Google Play 處理付款,開發者不會取得你的付款資訊。本 App 只會向 Google Play 確認你是否已購買。</p>
 
       <h2>7. 你主動分享的內容</h2>
@@ -57,24 +65,32 @@
       <p>本政策如有更新,會公布在本頁並更新日期。若有任何隱私問題,請來信 <a href="mailto:mkjohnny@gmail.com?subject=我的血壓 Android 隱私問題">mkjohnny@gmail.com</a>。</p>
 
       <section class="en-section" id="en" lang="en">
-        <span class="tag">ENGLISH · ANDROID · UPDATED OCTOBER 2, 2026</span>
+        <span class="tag">ENGLISH · ANDROID · UPDATED OCTOBER 24, 2026</span>
         <h1>Privacy Policy (Android)</h1>
         <p class="lead">This policy applies to the 我的血壓 (My Blood Pressure) Android app, package name com.mkjohnny.bpcare (the "App"). For the iPhone and Apple Watch app, see <a href="privacy.html#en">this page</a>. The App's interface is in Traditional Chinese; English names of settings are given in parentheses.</p>
 
         <h2>1. Health data stays on your phone</h2>
-        <p>The blood pressure, heart rate, medications, dose records, appointments, chronic prescription refills, checklists and medication photos you enter are stored only in the App's private storage on your phone. The developer does not operate any server and the App has no accounts, so the developer cannot see, obtain or sell your health data. The App turns off Android Auto Backup, so this data is not uploaded to Google cloud backup.</p>
+        <p>The blood pressure, heart rate, medications, dose records, appointments, chronic prescription refills, checklists and medication photos you enter are stored only in the App's private storage on your phone (if you turn on Health Connect, blood pressure and heart rate are also stored in Health Connect on your phone; see section 2). The developer does not operate any server and the App has no accounts, so the developer cannot see, obtain or sell your health data. The App turns off Android Auto Backup, so this data is not uploaded to Google cloud backup.</p>
 
-        <h2>2. Data the App does not access</h2>
-        <p>The App does not read or write Health Connect and does not access your contacts, text messages, call log or GPS location. It does not request these permissions.</p>
+        <h2>2. Health Connect and data the App does not access</h2>
+        <p>Starting with version 1.1, you can turn on Health Connect yourself in 設定 › 健康資料 (Settings › Health data) or in the first-run setup. It is off by default, and Android's Health Connect permission screen asks you to allow each item:</p>
+        <ul>
+          <li><strong>Write blood pressure and heart rate</strong>: saves the blood pressure and heart rate you record in the App to Health Connect on your phone, so you can see them with other health apps.</li>
+          <li><strong>Read blood pressure and heart rate</strong>: imports blood pressure that other apps (for example a Bluetooth blood pressure monitor's app) saved to Health Connect, together with heart rate recorded within 3 minutes of each measurement, so you don't have to type it in. Imported records are kept only in the App and are never written back to Health Connect.</li>
+        </ul>
+        <p>Health Connect data is exchanged only between Health Connect and the App on your phone. It is <strong>never uploaded to any server and never shared with advertising services or other third parties</strong>, and it is used only for the record-keeping features described above. You can revoke these permissions at any time in Health Connect or Android settings; deleting an imported record in the App does not delete the original data in other apps. The App's use of Health Connect data complies with the <a href="https://support.google.com/googleplay/android-developer/answer/12991134" target="_blank" rel="noopener">Health Connect Permissions policy</a>, including the Limited Use requirements.</p>
+        <p>The App does not access your contacts, text messages, call log or GPS location, and does not request these permissions.</p>
 
         <h2>3. Camera and photos</h2>
-        <p>Photos you take of your pills or medication bags are stored only inside the App. 拍血壓計 (Scan BP monitor) is offered only on phones that support on-device AI (Gemini Nano): Google ML Kit reads the numbers on your phone, and the photo is never uploaded to any server or saved to your photo library. The photo is kept only in the App's private cache until your next scan replaces it, and you can clear the App's cache in Android settings. To maintain and improve the service, Google ML Kit may send feature usage and diagnostic data to Google; this never includes your photos or health data.</p>
+        <p>Photos you take of your pills or medication bags are stored only inside the App. 拍血壓計 (Scan BP monitor) uses Gemini Nano on phones that support on-device AI and, starting with version 1.1, Google ML Kit on-device text recognition on other phones (the text recognition model is bundled with the new test build). Either way the numbers are read on your phone, and the photo is never uploaded to any server or saved to your photo library. In the new test build, photos are temporarily cached and deleted after recognition; interrupted scans can be cleared through Android settings. Manual entry remains available when recognition is unsupported or fails. To maintain and improve the service, Google ML Kit may send feature usage and diagnostic data to Google; this never includes your photos or health data.</p>
 
-        <h2>4. Notifications and reminders</h2>
+        <h2>4. Notifications, reminders, home screen widgets and read-aloud</h2>
         <p>Reminders to measure blood pressure, take medication, attend appointments and pick up refills are local notifications on your phone. The Alarms &amp; reminders permission is used only so that reminders ring on time. This version has no feature that sends messages to family members automatically.</p>
+        <p>Home screen widgets you add yourself (今天吃藥了嗎? / Did I take my medicine today? and 最近血壓 / Latest blood pressure) show medication names, today's progress and your latest reading on the home screen. They read the App's own records and nothing leaves your phone; remove the widgets if you don't want others to see this information.</p>
+        <p>念給我聽 (Read aloud, from version 1.1) uses your phone's built-in text-to-speech. The App only uses Chinese voices that are installed on the phone and do not need a network connection, so the text being read never leaves your phone. If no Chinese voice is installed, the App guides you to download one in Google's text-to-speech settings; that download is handled by Google.</p>
 
-        <h2>5. Advertising (Google AdMob)</h2>
-        <p>The free version shows <strong>non-personalized ads</strong> provided by Google AdMob. The App never provides any health data to advertising services. To serve ads, measure performance and prevent fraud, Google may collect device and network information such as IP address (which can indicate approximate location), the Android advertising ID and app set ID, device model and OS version, ad interactions and diagnostic data. You can reset or delete your advertising ID in Android Settings › Privacy › Ads. Where required in your region, the App asks for your ad consent, and you can change it later in the App under 設定 › 廣告 › 廣告隱私選項 (Settings › Ads › Ad privacy options). See the <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a> and <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">how Google uses information from sites or apps that use its services</a>. After you purchase 永久移除廣告 (Remove Ads Permanently), the App no longer loads any ads.</p>
+        <h2>5. Advertising (Google AdMob)</h2><p><strong>The new 1.1 test build (version code 4 onward) disables ad loading and display, and does not offer ad-removal purchases. The advertising services below are planned for production.</strong> Older test builds retain their original behavior. Availability depends on the version actually offered by Google Play.</p>
+        <p>The production version is planned to show ads provided by Google AdMob; AdMob may also obtain ads from its mediation partners <a href="https://unity.com/legal/game-player-and-app-user-privacy-policy" target="_blank" rel="noopener">Unity Ads</a> and <a href="https://liftoff.io/privacy-policy/" target="_blank" rel="noopener">Liftoff Monetize (Vungle)</a>. Starting with version 1.1, <strong>whether you see personalized ads based on your interests depends on your Android advertising ID setting and your ad consent</strong>: if you delete or limit your advertising ID in Android Settings › Privacy › Ads, or if consent is required in your region and you have not given it, only non-personalized ads are shown. In every case the App <strong>never provides any health data</strong> (blood pressure, heart rate, medications, appointments, photos, Health Connect data, etc.) to advertising services. To serve ads, measure performance and prevent fraud, Google and these mediation partners may collect device and network information such as IP address (which can indicate approximate location), the Android advertising ID and app set ID, device model and OS version, ad interactions and diagnostic data. You can reset or delete your advertising ID in Android Settings › Privacy › Ads. Where required in your region, the App asks for your ad consent, and you can change it later in the App under 設定 › 廣告 › 廣告隱私選項 (Settings › Ads › Ad privacy options). See the <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a> and <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">how Google uses information from sites or apps that use its services</a>, as well as the Unity and Liftoff privacy policies linked above. After you purchase 永久移除廣告 (Remove Ads Permanently), the App no longer loads any ads.</p>
 
         <h2>6. Purchases</h2>
         <p>Payment for Remove Ads Permanently is handled by Google Play. The developer does not receive your payment information. The App only checks with Google Play whether you have made the purchase.</p>

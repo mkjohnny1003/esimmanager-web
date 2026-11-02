@@ -158,6 +158,8 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 24px;
+  max-width: 1560px;
   height: var(--header-height);
 }
 
@@ -169,6 +171,7 @@ a:hover {
   font-size: 1.25rem;
   color: var(--text-primary);
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .brand-icon {
@@ -181,7 +184,7 @@ a:hover {
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 20px;
   list-style: none;
 }
 
@@ -190,6 +193,7 @@ a:hover {
   font-weight: 500;
   color: var(--text-secondary);
   transition: color 0.2s ease;
+  white-space: nowrap;
 }
 
 .nav-link:hover {
@@ -200,6 +204,8 @@ a:hover {
   display: flex;
   align-items: center;
   gap: 16px;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .lang-switch {
@@ -600,6 +606,66 @@ a:hover {
 .section-desc {
   font-size: 1.1rem;
   color: var(--text-secondary);
+}
+
+/* iPhone Duo 1.6 showcase */
+.duo-section {
+  background: var(--bg-surface);
+  scroll-margin-top: calc(var(--header-height) + 16px);
+}
+
+.duo-section .section-header {
+  max-width: 780px;
+  margin-bottom: 32px;
+}
+
+.duo-preview {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  background: var(--bg-muted);
+  box-shadow: var(--shadow-lg);
+}
+
+.duo-preview img {
+  width: 100%;
+  border-radius: calc(var(--radius-xl) - 10px);
+}
+
+.duo-preview figcaption {
+  padding: 12px 8px 2px;
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  text-align: center;
+}
+
+.duo-highlights {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 28px;
+  padding: 0;
+  list-style: none;
+}
+
+.duo-highlight {
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--bg-card);
+}
+
+.duo-highlight h3 {
+  margin-bottom: 8px;
+  color: var(--text-primary);
+  font-size: 1.08rem;
+}
+
+.duo-highlight p {
+  color: var(--text-secondary);
+  font-size: 0.96rem;
 }
 
 .contrast-table-wrapper {
@@ -1005,6 +1071,12 @@ a:hover {
   .features-grid {
     grid-template-columns: 1fr;
   }
+  .duo-highlights {
+    grid-template-columns: 1fr;
+  }
+  .duo-preview {
+    padding: 6px;
+  }
   .pricing-grid {
     grid-template-columns: 1fr;
   }
@@ -1060,8 +1132,8 @@ html[lang="ja"] body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans
 html[lang="ko-KR"] body{font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;}
 .nav-actions{flex-wrap:wrap;}
 @media(max-width:600px){.nav-container{flex-wrap:wrap;gap:12px;height:auto;min-height:var(--header-height);padding-top:12px;padding-bottom:12px}.nav-actions{gap:12px}.hero-title{overflow-wrap:anywhere}.section-title{overflow-wrap:anywhere}}
-@media(max-width:1100px){.nav-menu{display:none}.nav-container{height:auto;min-height:var(--header-height);flex-wrap:wrap;gap:12px;padding-top:12px;padding-bottom:12px}}
-@media(max-width:600px){.nav-actions{gap:8px}.lang-switch{padding:5px 8px}}
+@media(max-width:1450px){.nav-menu{display:none}.nav-container{height:auto;min-height:var(--header-height);flex-wrap:wrap;gap:12px;padding-top:12px;padding-bottom:12px}}
+@media(max-width:600px){.nav-actions{gap:6px;max-width:100%;flex-shrink:1;justify-content:center;white-space:normal}.nav-actions .btn{padding:8px 12px}.lang-switch{padding:5px 6px;white-space:nowrap}}
 
 html[lang="ja"] .pricing-price{font-size:2.8rem;}
 html[lang="ja"] .hero-title{line-height:1.3;}

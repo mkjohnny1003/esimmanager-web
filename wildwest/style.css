@@ -239,3 +239,41 @@ footer {
   .score-table th, .score-table td { padding: 6px 5px; }
   .score-table th { white-space: normal; }
 }
+
+/* 1.1：Duo 發行介紹。截圖完整呈現，保持原始比例。 */
+.hero { grid-template-columns: 1.08fr .92fr; gap: 36px; align-items: center; }
+.hero > div { min-width: 0; }
+.hero h1 { font-size: 38px; }
+.release-flag {
+  display: flex; width: fit-content; align-items: center; gap: 12px;
+  margin: 0 0 16px; padding: 7px 12px; border-radius: 6px;
+  background: var(--mustard); color: #2a1a12; font-size: 15px;
+  font-weight: 800; line-height: 1.5; text-decoration: none;
+}
+.release-flag:hover { text-decoration: underline; }
+.hero-game { margin: 0; }
+.hero-game img { display: block; width: 100%; height: auto; border-radius: 12px; box-shadow: 0 18px 38px rgb(59 36 24 / 18%); }
+.hero-game figcaption { margin-top: 14px; color: var(--muted); font-size: 15px; line-height: 1.6; }
+.duo-section { padding: 44px 0; border-bottom: 1px solid var(--line); scroll-margin-top: 24px; }
+.duo-section h2 { font-size: 32px; }
+.duo-highlights { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 28px; margin: 24px 0; }
+.duo-highlights p { color: var(--muted); margin-bottom: 0; }
+.duo-gallery { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 20px; }
+.duo-gallery figure { margin: 0; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--surface); }
+.duo-image { height: 310px; display: flex; align-items: center; justify-content: center; padding: 12px; background: #eeebe3; }
+.duo-image img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.duo-gallery figcaption { padding: 16px; font-size: 15px; line-height: 1.7; color: var(--muted); }
+.duo-gallery figcaption strong { display: block; margin-bottom: 4px; font-size: 18px; color: var(--ink); }
+.duo-help { margin: 22px 0 0; font-weight: 700; }
+a:focus-visible, summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+@media (max-width: 860px) {
+  .hero { grid-template-columns: 1fr; gap: 24px; }
+  .hero-game { max-width: 640px; }
+  .duo-gallery { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media (max-width: 540px) {
+  nav { gap: 12px 18px; }
+  .hero h1, .duo-section h2 { font-size: 30px; }
+  .duo-highlights, .duo-gallery { grid-template-columns: 1fr; gap: 20px; }
+  .duo-image { height: 340px; }
+}

@@ -12,6 +12,10 @@ for (const [folder, lang] of Object.entries(locales)) {
     const text = html.replace(/<[^>]*>/g, '');
     assert.match(html, new RegExp(`<html lang="${lang}"`));
     assert.match(html, /class="hero-badge">\s*<span>iOS 2\.3/);
+    assert.match(html, /<h1>[\s\S]*?iPhone Duo[\s\S]*?<\/h1>/);
+    assert.match(html, /class="hero-duo-link" href="#ios-23"/);
+    assert.match(html, /class="hero-duo-screen"/);
+    assert.doesNotMatch(html, /class="float-card /);
     assert.doesNotMatch(text, /2\.2|2\.3\.1|base44/i);
     assert.match(html, /id="ios-23" aria-labelledby="duo-title"/);
     const section = html.match(/<section class="duo-release"[\s\S]*?<\/section>/)[0];

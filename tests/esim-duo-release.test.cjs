@@ -9,7 +9,8 @@ for (const [folder, lang] of Object.entries(locales)) {
   const path = resolve(root, folder, 'index.html');
   const html = readFileSync(path, 'utf8');
   test(`${lang}: live 2.3 Duo copy, real images, no unreleased version`, () => {
-    const text = html.replace(/<[^>]*>/g, '');
+    // Other apps have independent version numbers in recommendation cards.
+    const text = html.replace(/<article class="sister-app-card">[\s\S]*?<\/article>/g, '').replace(/<[^>]*>/g, '');
     assert.match(html, new RegExp(`<html lang="${lang}"`));
     assert.match(html, /class="hero-badge">\s*<span>iOS 2\.3/);
     assert.match(html, /<h1>[\s\S]*?iPhone Duo[\s\S]*?<\/h1>/);

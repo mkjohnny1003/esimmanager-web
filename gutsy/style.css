@@ -118,6 +118,25 @@ p {
   font-size: 22px;
 }
 
+.duo-hero-link {
+  display: grid;
+  gap: 3px;
+  max-width: 760px;
+  padding: 14px 18px;
+  border: 1px solid var(--accent);
+  border-left-width: 5px;
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--ink);
+  text-decoration: none;
+  line-height: 1.5;
+}
+
+.duo-hero-link strong { color: var(--accent); }
+.duo-hero-link span { color: var(--muted); font-size: 15px; }
+.duo-hero-link:hover { background: var(--line); }
+.duo-hero-link:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+
 .actions {
   display: flex;
   gap: 14px;
@@ -431,6 +450,14 @@ footer {
   display: block;
   color: var(--ink);
   font-size: 16px;
+}
+
+.duo-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+  margin-top: 24px;
 }
 
 @media (max-width: 650px) {

@@ -2,6 +2,17 @@
 
 Official landing page, privacy policy, and user documentation for the eSIMManager iOS application.
 
+## eSIMManager 2.3 website preparation — 2026-11-04
+
+- Approved for publication on 2026-11-04. The App Store version was verified as 2.3. The separate 2.3.1 maintenance work does not require a website update and is not part of this website release.
+- All eight homepages now introduce the Duo inner/outer layouts, retained card selection, editing drafts and search filters, and improved manual entry / QR sharing / large-text layouts.
+- `assets/v2_3/` contains the original final 2.3 simulator screenshots from the iOS project's `v2.3_release_assets/duo/`. They show Traditional Chinese and fictional demo cards; every locale discloses this. They are not screenshots of 2.3.1.
+- `assets/duo-release.css` reuses the existing site palette, preserves screenshot proportions and stacks the layout on phones. Existing feature illustrations and version-labelled manuals remain available; this task does not replace the manuals.
+- Download, affiliate, analytics and advertising URLs were compared against HEAD and are unchanged in all eight homepages. App source code and other products' pages were not edited.
+- Validation: `node --test tests/esim-duo-release.test.cjs` passes 17/17. Browser checks passed for all eight language selections at 1440px; French, German and Simplified Chinese menu selections at 390px; and Simplified Chinese layout at 320px, without page overflow. Direct `file:` browser testing was unavailable; HTTP navigation was tested. No language-router changes were made.
+- The full existing suite has one unrelated, pre-existing failure: `menulens-release.test.cjs` matches `Version 2.0` inside the Gaboon Viper `Version 2.0.6` recommendation on the English MenuLens page. Neither that page nor that test was changed.
+- Review images: `../eSIMManager/v2.3_release_assets/website-preview/duo-desktop.png` and `duo-mobile.png`. For a local preview, run `python3 -m http.server 8233 --bind 127.0.0.1` here and open `http://127.0.0.1:8233/?lang=zh-TW`.
+
 - Website: https://getesimmanager.com/
 - Privacy Policy: https://getesimmanager.com/privacy.html
 - Terms: https://getesimmanager.com/terms.html

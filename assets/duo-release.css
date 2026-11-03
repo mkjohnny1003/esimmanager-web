@@ -1,0 +1,31 @@
+/* eSIMManager 2.3: scoped styles; reuse the site's light/dark palette. */
+.hero .phone-mockup { height: auto; }
+.duo-release { padding: clamp(48px, 7vw, 88px) 0; background: var(--sky-blue); scroll-margin-top: 90px; }
+.duo-release .sec-head { max-width: 800px; margin-bottom: 32px; }
+.duo-release h2 { text-wrap: balance; }
+.duo-release h2 span { display: inline-block; }
+.duo-gallery { display: grid; grid-template-columns: minmax(0, 2.3fr) minmax(0, 1fr); gap: 24px; align-items: stretch; }
+.duo-shot { min-width: 0; margin: 0; padding: 18px; border: 1px solid var(--border); border-radius: 24px; background: var(--bg-card); }
+.duo-shot > a { display: flex; align-items: center; justify-content: center; height: clamp(260px, 37vw, 420px); border-radius: 14px; background: var(--ivory); overflow: hidden; }
+.duo-shot img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.duo-shot figcaption { display: flex; flex-direction: column; gap: 6px; margin-top: 18px; }
+.duo-shot strong { font-size: 1.1rem; color: var(--text-main); }
+.duo-shot span, .duo-caption, .duo-note { color: var(--text-muted); line-height: 1.7; }
+.duo-caption { text-align: center; font-size: .875rem; margin: 18px 0 24px; }
+.duo-caption a { display: inline-block; margin: 4px 8px; padding: 5px 10px; color: var(--deep-teal); text-decoration: underline; text-underline-offset: 3px; }
+.duo-benefits { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.duo-benefit { min-width: 0; border-top: 2px solid var(--deep-teal); padding-top: 18px; }
+.duo-benefit .pixel-icon { width: 24px; height: 24px; color: var(--deep-teal); margin-bottom: 10px; }
+.duo-benefit h3 { font-size: 1.15rem; margin: 0 0 10px; }
+.duo-benefit p { color: var(--text-muted); line-height: 1.75; margin: 0; }
+.duo-note { font-size: .875rem; border-top: 1px solid var(--border); padding-top: 20px; margin-top: 26px; }
+.duo-release a:focus-visible { outline: 3px solid var(--deep-teal); outline-offset: 4px; }
+@media (max-width: 700px) {
+  .duo-gallery, .duo-benefits { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .duo-shot { padding: 12px; border-radius: 18px; }
+  .duo-shot > a { height: auto; }
+  .duo-shot img { height: auto; }
+  .duo-shot--outer > a { height: 360px; }
+  .duo-shot--outer img { width: auto; height: 100%; max-width: 100%; }
+  .duo-benefit { padding-top: 14px; }
+}
